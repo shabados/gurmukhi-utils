@@ -1,0 +1,23 @@
+{
+  "name": "gurmukhi-utils",
+  "version": "1.0.0",
+  "description": "Gurmukhi utility functions such as ascii to unicode conversion",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    "release": "./release.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShabadOS/gurmukhi-utils.git"
+  },
+  "author": "ShabadOS Team <shabados.com@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ShabadOS/gurmukhi-utils/issues"
+  },
+  "homepage": "https://github.com/ShabadOS/gurmukhi-utils#readme",
+  "dependencies": {
+    "release-it": "^7.2.1"
+  }
+}
