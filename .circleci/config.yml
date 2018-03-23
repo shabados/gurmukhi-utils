@@ -8,7 +8,7 @@ jobs:
       - run: npm install
       - add_ssh_keys:
           fingerprints:
-            - "e5:71:50:86:4f:6c:3e:f6:8b:f2:d5:45:ec:f0:9a:f1"
+            - "c5:21:77:ad:71:12:b2:f3:67:3f:c4:77:37:4d:fb:1a"
       - run:
           name: Run tests
           command: npm run test
