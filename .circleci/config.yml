@@ -1,0 +1,37 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.9.2
+    steps:
+      - checkout
+      - run: npm install
+      - run:
+          name: Build database
+          command: npm run build
+      - store_artifacts:
+          path: build/database.sqlite
+      - add_ssh_keys:
+          fingerprints:
+            - "e5:71:50:86:4f:6c:3e:f6:8b:f2:d5:45:ec:f0:9a:f1"
+      - run:
+          name: Run tests
+          command: npm run test
+      - deploy:
+          name: Release database on Github
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              # Write npm token to .npmrc
+              echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+
+              # Configure git
+              git config --global push.default current
+
+              # Remove .gitignore
+              rm .gitignore
+
+              # Run Release script
+              chmod +x release.sh
+              echo "Releasing on Github"
+              npm run release
+            fi
