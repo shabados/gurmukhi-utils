@@ -1,5 +1,8 @@
 {
   "extends": "airbnb",
+  "env": {
+    "mocha": true
+  },
   "rules": {
     "array-bracket-spacing": [
       "error",

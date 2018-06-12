@@ -8,8 +8,8 @@ const words = [
   [ 'ihr', 'ਹਿਰ' ],
 ]
 
-describe( 'toUnicode()', function () {
-  words.map( ( [ ascii, unicode ] ) => it( `should convert ${ascii} to ${unicode}`, function () {
+describe( 'toUnicode()', () => {
+  words.map( ( [ ascii, unicode ] ) => it( `should convert ${ascii} to ${unicode}`, () => {
     expect( toUnicode( ascii ) ).to.equal( unicode )
   } ) )
 } )
