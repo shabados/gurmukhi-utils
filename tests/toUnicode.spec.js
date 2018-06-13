@@ -9,7 +9,7 @@ const words = [
 ]
 
 describe( 'toUnicode()', () => {
-  words.map( ( [ ascii, unicode ] ) => it( `should convert ${ascii} to ${unicode}`, () => {
+  words.map( ( [ ascii, unicode ] ) => it( `should convert '${ascii}' to '${unicode}'`, () => {
     expect( toUnicode( ascii ) ).to.equal( unicode )
   } ) )
 } )

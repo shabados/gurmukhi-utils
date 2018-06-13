@@ -24,6 +24,29 @@ firstLetters('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ')      // Returns ਹ�
 
 * * *
 
+## Functions
+
+<dl>
+<dt><a href="#firstLetters">firstLetters(line, [baseLetters])</a></dt>
+<dd><p>Generates the first letters for a given ASCII gurmukhi string.</p>
+</dd>
+<dt><a href="#toUnicode">toUnicode(text)</a> ⇒ <code>String</code></dt>
+<dd><p>Converts ASCII text used in the GurmukhiAkhar font to Unicode.</p>
+</dd>
+</dl>
+
+<a name="firstLetters"></a>
+
+## firstLetters(line, [baseLetters])
+Generates the first letters for a given ASCII gurmukhi string.
+
+**Kind**: global function  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| line | <code>String</code> |  | The line to generate the first letters for. |
+| [baseLetters] | <code>Boolean</code> | <code>true</code> | Enables mapping to the equivalent base letters. |
+
 <a name="toUnicode"></a>
 
 ## toUnicode(text) ⇒ <code>String</code>
