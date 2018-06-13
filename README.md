@@ -28,7 +28,9 @@ firstLetters('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ')      // Returns ਹ�
 
 <dl>
 <dt><a href="#firstLetters">firstLetters(line, [baseLetters])</a></dt>
-<dd><p>Generates the first letters for a given ASCII gurmukhi string.</p>
+<dd><p>Generates the first letters for a given ASCII or unicode gurmukhi string.
+By default, the function will transform letters with bindi to their simple equivalent,
+for example, zaza to jaja (ਜ਼ =&gt; ਜ).</p>
 </dd>
 <dt><a href="#toUnicode">toUnicode(text)</a> ⇒ <code>String</code></dt>
 <dd><p>Converts ASCII text used in the GurmukhiAkhar font to Unicode.</p>
@@ -38,7 +40,7 @@ firstLetters('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ')      // Returns ਹ�
 <a name="firstLetters"></a>
 
 ## firstLetters(line, [baseLetters])
-Generates the first letters for a given ASCII gurmukhi string.
+Generates the first letters for a given ASCII or unicode gurmukhi string.By default, the function will transform letters with bindi to their simple equivalent,for example, zaza to jaja (ਜ਼ => ਜ).
 
 **Kind**: global function  
 
@@ -47,6 +49,23 @@ Generates the first letters for a given ASCII gurmukhi string.
 | line | <code>String</code> |  | The line to generate the first letters for. |
 | [baseLetters] | <code>Boolean</code> | <code>true</code> | Enables mapping to the equivalent base letters. |
 
+**Example** *(ASCII)*  
+```js
+firstLetters('ijs no ik®pw krih iqin nwmu rqnu pwieAw ]') // => jnkkqnrp
+firstLetters('iZir&qym sMdUk drIXw AmIk ]') // => gsdA
+```
+**Example** *(ASCII with no base letter mappings:)*  
+```js
+firstLetters('iZir&qym sMdUk* drIXw AmIk* ]', false) // => Zsda
+```
+**Example** *(Unicode:)*  
+```js
+firstLetters('ਗ਼ੈਰਿ ਹਮਦਿ ਹੱਕ ਨਿਆਇਦ ਬਰ ਜ਼ਬਾਨਮ ਹੀਚ ਗਾਹ') // => ਗਹਹਨਬਜਹਗ
+```
+**Example** *(Unicode with no base letter mappings:)*  
+```js
+firstLetters('ਗ਼ੈਰਿ ਹਮਦਿ ਹੱਕ ਨਿਆਇਦ ਬਰ ਜ਼ਬਾਨਮ ਹੀਚ ਗਾਹ') // => ਗ਼ਹਹਨਬਜ਼ਹਗ
+```
 <a name="toUnicode"></a>
 
 ## toUnicode(text) ⇒ <code>String</code>
