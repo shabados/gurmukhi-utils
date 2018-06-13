@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha tests",
-    "release": "./release.sh"
+    "release": "./release.sh",
+    "build-docs": "npm run build-markdown && npm run build-html",
+    "build-html": "jsdoc lib README.md -d docs -t node_modules/docdash",
+    "build-markdown": "jsdoc2md --template README.hbs lib/**/*.js > README.md",
+    "precommit": "npm run build-docs && git add -A"
   },
   "repository": {
     "type": "git",
@@ -22,11 +26,16 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "docdash": "^0.4.0",
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
+    "husky": "^0.14.3",
+    "jsdoc": "^3.5.5",
+    "jsdoc-to-markdown": "^4.0.1",
+    "latodoc": "github:smeijer/latodoc",
     "mocha": "^5.0.5"
   }
 }
