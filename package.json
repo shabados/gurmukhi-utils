@@ -1,7 +1,7 @@
 {
   "name": "@shabados/gurmukhi-utils",
   "version": "1.0.0",
-  "description": "Gurmukhi utility functions such as ascii to unicode conversion",
+  "description": "General functions for working with lines of Gurmukhi.",
   "main": "index.js",
   "scripts": {
     "test": "mocha tests",
