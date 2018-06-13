@@ -49,20 +49,20 @@ Generates the first letters for a given ASCII or unicode gurmukhi string.By def
 | line | <code>String</code> |  | The line to generate the first letters for. |
 | [stripNukta] | <code>Boolean</code> | <code>true</code> | If `true`, replaces letters pair bindi (such as ਜ਼) with their equivalent without the bindi (ਜ). Also replaces open oora with closed oora. |
 
-**Example** *(Unicode first letters)*  
+**Example** *(Unicode first letters no pair bindi/nukta)*  
 ```js
 firstLetters('ਗ਼ੈਰਿ ਹਮਦਿ ਹੱਕ ਨਿਆਇਦ ਬਰ ਜ਼ਬਾਨਮ ਹੀਚ ਗਾਹ') // => ਗਹਹਨਬਜਹਗ
 ```
-**Example** *(Unicode first letters with no pair bindi/nukta)*  
+**Example** *(Unicode first letters with pair bindi/nukta)*  
 ```js
 firstLetters('ਗ਼ੈਰਿ ਹਮਦਿ ਹੱਕ ਨਿਆਇਦ ਬਰ ਜ਼ਬਾਨਮ ਹੀਚ ਗਾਹ') // => ਗ਼ਹਹਨਬਜ਼ਹਗ
 ```
-**Example** *(ASCII first letters)*  
+**Example** *(ASCII first letters no pair bindi/nukta)*  
 ```js
 firstLetters('ijs no ik®pw krih iqin nwmu rqnu pwieAw ]') // => jnkkqnrp
 firstLetters('iZir&qym sMdUk drIXw AmIk ]') // => gsdA
 ```
-**Example** *(ASCII first letters with no pair bindi/nukta)*  
+**Example** *(ASCII first letters with pair bindi/nukta)*  
 ```js
 firstLetters('iZir&qym sMdUk* drIXw AmIk* ]', false) // => Zsda
 ```
