@@ -40,7 +40,9 @@ for example, zaza to jaja (ਜ਼ =&gt; ਜ).</p>
 <a name="firstLetters"></a>
 
 ## firstLetters(line, [stripNukta])
-Generates the first letters for a given ASCII or unicode gurmukhi string.By default, the function will transform letters with bindi to their simple equivalent,for example, zaza to jaja (ਜ਼ => ਜ).
+Generates the first letters for a given ASCII or unicode gurmukhi string.
+By default, the function will transform letters with bindi to their simple equivalent,
+for example, zaza to jaja (ਜ਼ => ਜ).
 
 **Kind**: global function  
 
