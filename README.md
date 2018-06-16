@@ -88,7 +88,8 @@ Converts ASCII text used in the GurmukhiAkhar font to Unicode.
 <a name="transliterate"></a>
 
 ## transliterate(line) ⇒ <code>String</code>
-Transliterates a line from ASCII Gurmukhi to english.Currently supports the `,`, `;`, `.` vishraam characters.
+Transliterates a line from ASCII Gurmukhi to english.
+Currently supports the `,`, `;`, `.` vishraam characters.
 
 **Kind**: global function  
 **Returns**: <code>String</code> - The English transliteration of the provided Gurmukhi line.  
