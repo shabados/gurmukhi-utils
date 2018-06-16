@@ -15,6 +15,10 @@ const transliterations = [
   [ '<> siq nwmu krqw purKu inrBau inrvYru Akwl mUriq AjUnI sYBM gurpRswid ]', 'IkOankaar sat naam karataa purakh nirabhu niravair akaal moorat ajoonee saibhan guraprasaadh ||' ],
   [ 'hukmI hukmu clwey rwhu ]', 'hukamee hukam chalaae raahu ||' ],
   [ 'iqn ky nwm Anyk Anµq ]', 'tin ke naam anek anant ||' ],
+  [ 'BWfw Bwau AMimRqu iqqu Fwil ]', 'bhaa(n)ddaa bhaau anmrit tit ddaal ||' ],
+  [ 'ikRpw', 'kripaa' ],
+  [ 'ik®pw', 'kripaa' ],
+  [ 'ijs no ik®pw krih iqin nwmu rqnu pwieAw ]', 'jis no kripaa kareh tin naam ratan paaeiaa ||' ],
 ]
 
 describe( 'transliterate()', () => {
