@@ -60,3 +60,4 @@ typings/
 .idea/
 
 *.tmp
+dist/
