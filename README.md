@@ -35,12 +35,18 @@ for example, zaza to jaja (ਜ਼ =&gt; ਜ).</p>
 <dt><a href="#toUnicode">toUnicode(text)</a> ⇒ <code>String</code></dt>
 <dd><p>Converts ASCII text used in the GurmukhiAkhar font to Unicode.</p>
 </dd>
+<dt><a href="#transliterate">transliterate(line)</a></dt>
+<dd><p>Transliterates a line from ASCII gurmukhi to english.
+Currently supports the <code>,</code>, <code>;</code>, <code>.</code> vishraam characters.</p>
+</dd>
 </dl>
 
 <a name="firstLetters"></a>
 
 ## firstLetters(line, [stripNukta])
-Generates the first letters for a given ASCII or unicode gurmukhi string.By default, the function will transform letters with bindi to their simple equivalent,for example, zaza to jaja (ਜ਼ => ਜ).
+Generates the first letters for a given ASCII or unicode gurmukhi string.
+By default, the function will transform letters with bindi to their simple equivalent,
+for example, zaza to jaja (ਜ਼ => ਜ).
 
 **Kind**: global function  
 
@@ -78,6 +84,25 @@ Converts ASCII text used in the GurmukhiAkhar font to Unicode.
 | --- | --- | --- |
 | text | <code>String</code> | The ascii text to convert. |
 
+<a name="transliterate"></a>
+
+## transliterate(line)
+Transliterates a line from ASCII gurmukhi to english.Currently supports the `,`, `;`, `.` vishraam characters.
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| line | <code>String</code> | The gurmukhi ASCII line to transliterate. |
+
+**Example**  
+```js
+transliterate('hukmI hukmu clwey rwhu ]') // => hukamee hukam chalaae raahu ||
+```
+**Example**  
+```js
+transliterate('BWfw Bwau AMimRqu iqqu Fwil ]') // => bhaa(n)ddaa bhaau anmrit tit ddaal ||
+```
 
 * * *
 
