@@ -10,6 +10,11 @@ const transliterations = [
   [ 'gx gMDRb BUq ipswc qbY ]388]', 'gaN gandhrab bhoot pisaach tabai ||388||' ],
   [ 'AbRXkq AMg ]', 'abrayakat ang ||' ],
   [ 'jgMnwQ jgdIsur krqy sB vsgiq hY hir kyrI ]', 'jagannaath jagadheesur karate sabh vasagat hai har keree ||' ],
+  [ 'Awid scu jugwid scu ]', 'aadh sach jugaadh sach ||' ],
+  [ 'shs isAwxpw lK hoih q iek n clY nwil ]', 'sahas siaaNapaa lakh hoh ta eik na chalai naal ||' ],
+  [ '<> siq nwmu krqw purKu inrBau inrvYru Akwl mUriq AjUnI sYBM gurpRswid ]', 'IkOankaar sat naam karataa purakh nirabhu niravair akaal moorat ajoonee saibhan guraprasaadh ||' ],
+  [ 'hukmI hukmu clwey rwhu ]', 'hukamee hukam chalaae raahu ||' ],
+  [ 'iqn ky nwm Anyk Anµq ]', 'tin ke naam anek anant ||' ],
 ]
 
 describe( 'transliterate()', () => {
