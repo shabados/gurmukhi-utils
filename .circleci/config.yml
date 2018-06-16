@@ -12,6 +12,7 @@ jobs:
       - run:
           name: Run tests
           command: npm run test
+      - run: npm run build
       - deploy:
           name: Release module on npm
           command: |
@@ -28,5 +29,6 @@ jobs:
               # Run Release script
               chmod +x release.sh
               echo "Releasing on Github"
-              NODE_ENV=development npm run release
+              
+              npm run release
             fi

@@ -1,6 +1,6 @@
 <!-- Do not modify README.md, instead modify README.hbs -->
 
-# @shabados/gurmukhi-utils
+# gurmukhi-utils
 
 General utilities for working with Gurmukhi.
 
@@ -11,6 +11,7 @@ General utilities for working with Gurmukhi.
 
 ## Usage
 
+The library can be imported into Node as below:
 ```javascript
 const { toUnicode, toAscii, firstLetters } = require('gurmukhi-utils')
 
@@ -18,6 +19,11 @@ toUnicode('Koj')    // Returns ਖੋਜ
 toAscii('ਖੋਜ')       // Returns Koj
 firstLetters('hir hir hir gunI')   // Returns hhhg
 firstLetters('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ')      // Returns ਹਹਹਗ
+```
+
+Additionally, the package is available for web use via [unpkg CDN](https://unpkg.com/gurmukhi-utils).
+```
+<script src="https://unpkg.com/gurmukhi-utils"></script>
 ```
 
 ## Docs
