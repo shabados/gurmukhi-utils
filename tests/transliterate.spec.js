@@ -20,6 +20,7 @@ const transliterations = [
   [ 'ik®pw', 'kripaa' ],
   [ 'mÚ', 'mahalaa' ],
   [ 'ijs no ik®pw krih iqin nwmu rqnu pwieAw ]', 'jis no kripaa kareh tin naam ratan paaeiaa ||' ],
+  [ 'Awvxu vM\\xu fwKVo CofI kMiq ivswir ]4]', 'aavaN vann(y)N ddaakhaRo chhoddee kant visaar ||4||' ],
 ]
 
 describe( 'transliterate()', () => {
