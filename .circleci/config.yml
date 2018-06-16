@@ -28,5 +28,5 @@ jobs:
               # Run Release script
               chmod +x release.sh
               echo "Releasing on Github"
-              npm run release
+              NODE_ENV=development npm run release
             fi
