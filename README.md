@@ -27,28 +27,29 @@ firstLetters('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ')      // Returns ਹ�
 ## Functions
 
 <dl>
-<dt><a href="#firstLetters">firstLetters(line, [stripNukta])</a></dt>
-<dd><p>Generates the first letters for a given ASCII or unicode gurmukhi string.
+<dt><a href="#firstLetters">firstLetters(line, [stripNukta])</a> ⇒ <code>String</code></dt>
+<dd><p>Generates the first letters for a given ASCII or unicode Gurmukhi string.
 By default, the function will transform letters with bindi to their simple equivalent,
 for example, zaza to jaja (ਜ਼ =&gt; ਜ).</p>
 </dd>
 <dt><a href="#toUnicode">toUnicode(text)</a> ⇒ <code>String</code></dt>
 <dd><p>Converts ASCII text used in the GurmukhiAkhar font to Unicode.</p>
 </dd>
-<dt><a href="#transliterate">transliterate(line)</a></dt>
-<dd><p>Transliterates a line from ASCII gurmukhi to english.
+<dt><a href="#transliterate">transliterate(line)</a> ⇒ <code>String</code></dt>
+<dd><p>Transliterates a line from ASCII Gurmukhi to english.
 Currently supports the <code>,</code>, <code>;</code>, <code>.</code> vishraam characters.</p>
 </dd>
 </dl>
 
 <a name="firstLetters"></a>
 
-## firstLetters(line, [stripNukta])
-Generates the first letters for a given ASCII or unicode gurmukhi string.
+## firstLetters(line, [stripNukta]) ⇒ <code>String</code>
+Generates the first letters for a given ASCII or unicode Gurmukhi string.
 By default, the function will transform letters with bindi to their simple equivalent,
 for example, zaza to jaja (ਜ਼ => ਜ).
 
 **Kind**: global function  
+**Returns**: <code>String</code> - The first letters of each word in the provided Gurmukhi line.  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -78,22 +79,23 @@ firstLetters('iZir&qym sMdUk* drIXw AmIk* ]', false) // => Zsda
 Converts ASCII text used in the GurmukhiAkhar font to Unicode.
 
 **Kind**: global function  
-**Returns**: <code>String</code> - A unicode representation of the provided ascii gurmukhi string.  
+**Returns**: <code>String</code> - A unicode representation of the provided ASCII Gurmukhi string.  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| text | <code>String</code> | The ascii text to convert. |
+| text | <code>String</code> | The ASCII text to convert. |
 
 <a name="transliterate"></a>
 
-## transliterate(line)
-Transliterates a line from ASCII gurmukhi to english.Currently supports the `,`, `;`, `.` vishraam characters.
+## transliterate(line) ⇒ <code>String</code>
+Transliterates a line from ASCII Gurmukhi to english.Currently supports the `,`, `;`, `.` vishraam characters.
 
 **Kind**: global function  
+**Returns**: <code>String</code> - The English transliteration of the provided Gurmukhi line.  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| line | <code>String</code> | The gurmukhi ASCII line to transliterate. |
+| line | <code>String</code> | The Gurmukhi ASCII line to transliterate. |
 
 **Example**  
 ```js
