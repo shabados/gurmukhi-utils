@@ -21,6 +21,7 @@ const transliterations = [
   [ 'mÚ', 'mahalaa' ],
   [ 'ijs no ik®pw krih iqin nwmu rqnu pwieAw ]', 'jis no kripaa kareh tin naam ratan paaeiaa ||' ],
   [ 'Awvxu vM\\xu fwKVo CofI kMiq ivswir ]4]', 'aavaN vann(y)N ddaakhaRo chhoddee kant visaar ||4||' ],
+  [ 'GVI mUrq ismrq pl vM\\ih jIvxu sPlu iqQweI jIau ]1]', "ghaRee moorat simarat pal vann(y)h jeevaN safal tithaae'ee jeeu ||1||" ],
 ]
 
 describe( 'transliterate()', () => {
