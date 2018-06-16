@@ -18,6 +18,7 @@ const transliterations = [
   [ 'BWfw Bwau AMimRqu iqqu Fwil ]', 'bhaa(n)ddaa bhaau anmrit tit ddaal ||' ],
   [ 'ikRpw', 'kripaa' ],
   [ 'ik®pw', 'kripaa' ],
+  [ 'mÚ', 'mahalaa' ],
   [ 'ijs no ik®pw krih iqin nwmu rqnu pwieAw ]', 'jis no kripaa kareh tin naam ratan paaeiaa ||' ],
 ]
 
