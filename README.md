@@ -5,9 +5,13 @@
 General utilities for working with Gurmukhi.
 
 [![CircleCI](https://img.shields.io/circleci/project/github/ShabadOS/gurmukhi-utils.svg?style=for-the-badge)](https://circleci.com/gh/ShabadOS/gurmukhi-utils)
-[![npm (scoped)](https://img.shields.io/npm/v/@shabados/gurmukhi-utils.svg?style=for-the-badge)](https://www.npmjs.com/package/@shabados/gurmukhi-utils)
-[![David](https://img.shields.io/david/ShabadOS/gurmukhi-utils.svg?style=for-the-badge)](<>)
-[![license](https://img.shields.io/github/license/ShabadOS/gurmukhi-utils.svg?style=for-the-badge)](<>)
+[![npm](https://img.shields.io/npm/v/gurmukhi-utils.svg?style=for-the-badge)](https://www.npmjs.com/package/@shabados/gurmukhi-utils)
+[![David](https://img.shields.io/david/ShabadOS/gurmukhi-utils.svg?style=for-the-badge)](./package)
+[![license](https://img.shields.io/github/license/ShabadOS/gurmukhi-utils.svg?style=for-the-badge)](./License)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com)
+
+
+Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https://slack.shabados.com)</p>
 
 ## Usage
 
@@ -25,8 +29,6 @@ Additionally, the package is available for web use via [unpkg CDN](https://unpkg
 ```
 <script src="https://unpkg.com/gurmukhi-utils"></script>
 ```
-
-## Docs
 
 * * *
 
@@ -114,6 +116,34 @@ transliterate('BWfw Bwau AMimRqu iqqu Fwil ]') // => bhaa(n)ddaa bhaau anmrit ti
 ```
 
 * * *
+
+## Contributing
+
+We're happy to accept suggestions and pull requests!
+
+To get started, clone this repo and run `npm install` inside this directory. 
+
+This repository follows the Airbnb's Javascript Style Guide, with a few minor modifications. Notably, spaces should be included inside parentheses and brackets (weird, right!). 
+It is recommended to install an ESLint plugin for your editor (VS Code's `ESLint` plugin works out of the box).
+
+When writing commit messages, please follow the [seven rules](https://chris.beams.io/posts/git-commit/#seven-rules). 
+Markdown and HTML JSDoc documentation is generated automatically, on commit,
+however if you'd like to preview any changes to documentation, `npm run build-docs` will
+update `README.md` and the files in `docs/`. `README.md` should *not* be edited, instead
+apply modifications to `README.hbs`.
+
+The general workflow for contributing:
+1) Fork/create a new branch.
+2) Write or update existing tests with expected results
+3) Implement functions/changes
+4) Add JSDoc function documentation and examples.
+5) Ensure ESLint reports no errors with style.
+6) Run tests with `npm test` and ensure they all pass. Testing is done with the `mocha` testing framework.
+7) Create a pull request with the changes.
+
+**Note to contributors with push access to master:** Any commits or merge commits containing the strings 
+`#Major`, `#Minor`, `#Patch` (case-sensitive) will trigger an automatic npm release with the
+respective semver bump.
 
 ## Future
 
