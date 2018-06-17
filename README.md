@@ -83,6 +83,10 @@ Converts ASCII text used in the GurmukhiAkhar font to Unicode.
 | --- | --- | --- |
 | text | <code>String</code> | The ASCII text to convert. |
 
+**Example**  
+```js
+toUnicode('kul jn mDy imil´o swrg pwn ry ]') // => ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥
+```
 ### transliterate(line) ⇒ <code>String</code>
 Transliterates a line from ASCII Gurmukhi to english.
 Currently supports the `,`, `;`, `.` vishraam characters.
