@@ -1,6 +1,6 @@
 const { toUnicode, firstLetters, transliterate } = require( 'gurmukhi-utils' )
 
-toUnicode( 'Koj' )
-firstLetters( 'hir hir hir gun gwvhu ]' )
-firstLetters( 'ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ' )
-transliterate( 'hukmI hukmu clwey rwhu ]' )
+console.log(toUnicode( 'Koj' ))
+console.log(firstLetters( 'hir hir hir gun gwvhu ]' ))
+console.log(firstLetters( 'ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ' ))
+console.log(transliterate( 'hukmI hukmu clwey rwhu ]' ))
