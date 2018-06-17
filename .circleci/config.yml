@@ -9,14 +9,15 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "c5:21:77:ad:71:12:b2:f3:67:3f:c4:77:37:4d:fb:1a"
-      - run:
-          name: Run tests
-          command: npm run test
-      - run: npm run build
+      - run: npm lint
+      - run: npm run test
       - deploy:
           name: Release module on npm
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              # Build the app
+              npm run build
+
               # Write npm token to .npmrc
               echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
 
