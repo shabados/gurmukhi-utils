@@ -5,7 +5,7 @@
 General utilities for working with Gurmukhi text data.
 
 [![CircleCI](https://img.shields.io/circleci/project/github/ShabadOS/gurmukhi-utils.svg?style=for-the-badge)](https://circleci.com/gh/ShabadOS/gurmukhi-utils)
-[![npm](https://img.shields.io/npm/v/gurmukhi-utils.svg?style=for-the-badge)](https://www.npmjs.com/package/@shabados/gurmukhi-utils)
+[![npm](https://img.shields.io/npm/v/gurmukhi-utils.svg?style=for-the-badge)](https://www.npmjs.com/package/gurmukhi-utils)
 [![license](https://img.shields.io/github/license/ShabadOS/gurmukhi-utils.svg?style=for-the-badge)](./License)
 [![Try on RunKit](https://img.shields.io/badge/Try%20on%20RunKit-Playground-brightgreen.svg?style=for-the-badge)](https://npm.runkit.com/gurmukhi-utils)
 
