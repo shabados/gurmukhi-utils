@@ -11,7 +11,8 @@
     "build-docs": "npm run build-markdown && npm run build-html",
     "build-html": "jsdoc lib README.md -d docs -t node_modules/docdash",
     "build-markdown": "jsdoc2md --template README.hbs lib/**/*.js > README.md",
-    "precommit": "npm run build-docs && git add docs/ README.md"
+    "precommit": "npm run lint && npm run build-docs && git add docs/ README.md",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
