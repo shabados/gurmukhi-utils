@@ -108,8 +108,10 @@ We're happy to accept suggestions and pull requests!
 
 To get started, clone this repo and run `npm install` inside this directory. 
 
-This repository follows the **Airbnb's Javascript Style Guide**, with a few minor modifications. Notably, spaces should be included inside parentheses and brackets (weird, right!). 
-It is recommended to install an ESLint plugin for your editor (VS Code's `ESLint` plugin works out of the box).
+This repository follows the **Airbnb's Javascript Style Guide**, with a few minor modifications. Notably, spaces should be included inside parentheses and brackets (weird, right!). An ESLint file is provided,
+and your code will automatically be checked on-commit for style.
+It is recommended to install an ESLint plugin for your editor (VS Code's `ESLint` plugin works out of the box), so you can receive
+linter suggestions as you type.
 
 When writing commit messages, please follow the **[seven rules](https://chris.beams.io/posts/git-commit/#seven-rules)**. 
 Markdown and HTML JSDoc documentation is generated automatically, on commit,
@@ -123,7 +125,6 @@ The general workflow for contributing:
 - Write or update existing tests with expected results
 - Implement functions/changes
 - Add JSDoc function documentation and examples.
-- Ensure ESLint reports no errors with style.
 - Run tests with `npm test` and ensure they all pass. Testing is done with the `mocha` testing framework.
 - Create a pull request with the changes.
 
