@@ -6,6 +6,7 @@ const { toUnicode } = require( '../index' )
 const words = [
   [ 'Koj', 'ਖੋਜ' ],
   [ 'ihr', 'ਹਿਰ' ],
+  [ 'imil´o', 'ਮਿਲੵੋਿ' ]
 ]
 
 describe( 'toUnicode()', () => {
