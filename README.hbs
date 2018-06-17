@@ -2,7 +2,7 @@
 
 # gurmukhi-utils
 
-General utilities for working with Gurmukhi.
+General utilities for working with Gurmukhi text data.
 
 [![CircleCI](https://img.shields.io/circleci/project/github/ShabadOS/gurmukhi-utils.svg?style=for-the-badge)](https://circleci.com/gh/ShabadOS/gurmukhi-utils)
 [![npm](https://img.shields.io/npm/v/gurmukhi-utils.svg?style=for-the-badge)](https://www.npmjs.com/package/@shabados/gurmukhi-utils)
