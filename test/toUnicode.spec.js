@@ -17,10 +17,12 @@ const words = [
   [ 'su bYiT iekMqR ]578]', 'ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥' ],
   [ 'ieiq sRI bicqR nwtky mnu rwjw ko rwj smwpqM ]1]5]', 'ਇਤਿ ਸ੍ਰੀ ਬਚਿਤ੍ਰ ਨਾਟਕੇ ਮਨੁ ਰਾਜਾ ਕੋ ਰਾਜ ਸਮਾਪਤੰ ॥੧॥੫॥' ],
   [ 'Fwknhwry pRBU hmwry jIA pRwn suKdwqy ]', 'ਢਾਕਨਹਾਰੇ ਪ੍ਰਭੂ ਹਮਾਰੇ ਜੀਅ ਪ੍ਰਾਨ ਸੁਖਦਾਤੇ ॥' ],
+  [ 'BuiKAw.', 'ਭੁਖਿਆ.' ],
+  [ '<> siq nwmu krqw purKu inrBau inrvYru; Akwl mUriq AjUnI sYBM gurpRswid ]', 'ੴ ਸਤਿ ਨਾਮੁ ਕਰਤਾ ਪੁਰਖੁ ਨਿਰਭਉ ਨਿਰਵੈਰੁ; ਅਕਾਲ ਮੂਰਤਿ ਅਜੂਨੀ ਸੈਭੰ ਗੁਰਪ੍ਰਸਾਦਿ ॥' ],
 ]
 
 describe( 'toUnicode()', () => {
   words.map( ( [ ascii, unicode ] ) => it( `should convert '${ascii}' to '${unicode}'`, () => {
-    expect( toUnicode( ascii ) ).to.equal( unicode )
+    expect( console.log( toUnicode( ascii ) ) || toUnicode( ascii ) ).to.equal( unicode )
   } ) )
 } )
