@@ -17,6 +17,8 @@ const words = [
   [ 'ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥', 'su bYiT iekMqR ]578]' ],
   [ 'ਇਤਿ ਸ੍ਰੀ ਬਚਿਤ੍ਰ ਨਾਟਕੇ ਮਨੁ ਰਾਜਾ ਕੋ ਰਾਜ ਸਮਾਪਤੰ ॥੧॥੫॥', 'ieiq sRI bicqR nwtky mnu rwjw ko rwj smwpqM ]1]5]' ],
   [ 'ਢਾਕਨਹਾਰੇ ਪ੍ਰਭੂ ਹਮਾਰੇ ਜੀਅ ਪ੍ਰਾਨ ਸੁਖਦਾਤੇ ॥', 'Fwknhwry pRBU hmwry jIA pRwn suKdwqy ]' ],
+  [ 'ਮੰਤ੍ਰੁ', 'mMqRü' ],
+  [ 'ਤਿਸੁ ਵਿਣੁ ਸਭੁ ਅਪਵਿਤ੍ਰੁ ਹੈ ਜੇਤਾ ਪੈਨਣੁ ਖਾਣੁ ॥', 'iqsu ivxu sBu ApivqRü hY jyqw pYnxu Kwxu ]' ],
 ]
 
 describe( 'toAscii()', () => {
