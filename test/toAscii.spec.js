@@ -19,6 +19,8 @@ const words = [
   [ 'ਢਾਕਨਹਾਰੇ ਪ੍ਰਭੂ ਹਮਾਰੇ ਜੀਅ ਪ੍ਰਾਨ ਸੁਖਦਾਤੇ ॥', 'Fwknhwry pRBU hmwry jIA pRwn suKdwqy ]' ],
   [ 'ਮੰਤ੍ਰੁ', 'mMqRü' ],
   [ 'ਤਿਸੁ ਵਿਣੁ ਸਭੁ ਅਪਵਿਤ੍ਰੁ ਹੈ ਜੇਤਾ ਪੈਨਣੁ ਖਾਣੁ ॥', 'iqsu ivxu sBu ApivqRü hY jyqw pYnxu Kwxu ]' ],
+  [ 'ਸੋਢੀ ਸ੍ਰਿਸ੍ਟਿ ਸਕਲ ਤਾਰਣ ਕਉ ਅਬ ਗੁਰ ਰਾਮਦਾਸ ਕਉ ਮਿਲੀ ਬਡਾਈ ॥੩॥', 'soFI isRis† skl qwrx kau Ab gur rwmdws kau imlI bfweI ]3]' ],
+  [ 'ਭੰਜਨ ਗੜ੍ਹਣ ਸਮਥੁ ਤਰਣ ਤਾਰਣ ਪ੍ਰਭੁ ਸੋਈ ॥', 'BMjn gVHx smQu qrx qwrx pRBu soeI ]' ],
 ]
 
 describe( 'toAscii()', () => {
