@@ -21,6 +21,7 @@ const words = [
   [ 'ਤਿਸੁ ਵਿਣੁ ਸਭੁ ਅਪਵਿਤ੍ਰੁ ਹੈ ਜੇਤਾ ਪੈਨਣੁ ਖਾਣੁ ॥', 'iqsu ivxu sBu ApivqRü hY jyqw pYnxu Kwxu ]' ],
   [ 'ਸੋਢੀ ਸ੍ਰਿਸ੍ਟਿ ਸਕਲ ਤਾਰਣ ਕਉ ਅਬ ਗੁਰ ਰਾਮਦਾਸ ਕਉ ਮਿਲੀ ਬਡਾਈ ॥੩॥', 'soFI isRis† skl qwrx kau Ab gur rwmdws kau imlI bfweI ]3]' ],
   [ 'ਭੰਜਨ ਗੜ੍ਹਣ ਸਮਥੁ ਤਰਣ ਤਾਰਣ ਪ੍ਰਭੁ ਸੋਈ ॥', 'BMjn gVHx smQu qrx qwrx pRBu soeI ]' ],
+  [ 'ਰਾਗੁ ਗਉੜੀ ਥਿਤੰੀ ਕਬੀਰ ਜੀ ਕੰੀ ॥', 'rwgu gauVI iQqµØI kbIr jI kMØI ]' ],
 ]
 
 describe( 'toAscii()', () => {

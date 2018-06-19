@@ -19,6 +19,7 @@ const words = [
   [ 'Fwknhwry pRBU hmwry jIA pRwn suKdwqy ]', 'ਢਾਕਨਹਾਰੇ ਪ੍ਰਭੂ ਹਮਾਰੇ ਜੀਅ ਪ੍ਰਾਨ ਸੁਖਦਾਤੇ ॥' ],
   [ 'BuiKAw.', 'ਭੁਖਿਆ.' ],
   [ '<> siq nwmu krqw purKu inrBau inrvYru; Akwl mUriq AjUnI sYBM gurpRswid ]', 'ੴ ਸਤਿ ਨਾਮੁ ਕਰਤਾ ਪੁਰਖੁ ਨਿਰਭਉ ਨਿਰਵੈਰੁ; ਅਕਾਲ ਮੂਰਤਿ ਅਜੂਨੀ ਸੈਭੰ ਗੁਰਪ੍ਰਸਾਦਿ ॥' ],
+  [ 'rwgu gauVI iQqMØI kbIr jI kMØI ]', 'ਰਾਗੁ ਗਉੜੀ ਥਿਤੰੀ ਕਬੀਰ ਜੀ ਕੰੀ ॥' ],
 ]
 
 describe( 'toUnicode()', () => {
