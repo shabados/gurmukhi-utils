@@ -2,7 +2,7 @@
 
 # gurmukhi-utils
 
-General utilities for working with Gurmukhi text data.
+> General utilities for working with Gurmukhi text data.
 
 [![CircleCI](https://img.shields.io/circleci/project/github/ShabadOS/gurmukhi-utils.svg?style=for-the-badge)](https://circleci.com/gh/ShabadOS/gurmukhi-utils)
 [![npm](https://img.shields.io/npm/v/gurmukhi-utils.svg?style=for-the-badge)](https://www.npmjs.com/package/gurmukhi-utils)
@@ -19,9 +19,10 @@ Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https
 
 The library can be imported into Node as below:
 ```javascript
-const { toUnicode, firstLetters, transliterate } = require('gurmukhi-utils')
+const { toUnicode, toAscii, firstLetters, transliterate } = require('gurmukhi-utils')
 
 toUnicode('Koj')    // => ਖੋਜ
+toAscii('ਖੋਜ')      // => Koj
 firstLetters('hir hir hir gunI')   // => hhhg
 firstLetters('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ')      // => ਹਹਹਗ
 transliterate('hukmI hukmu clwey rwhu ]')  // => hukamee hukam chalaae raahu ||

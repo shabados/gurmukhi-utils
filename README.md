@@ -2,7 +2,7 @@
 
 # gurmukhi-utils
 
-General utilities for working with Gurmukhi text data.
+> General utilities for working with Gurmukhi text data.
 
 [![CircleCI](https://img.shields.io/circleci/project/github/ShabadOS/gurmukhi-utils.svg?style=for-the-badge)](https://circleci.com/gh/ShabadOS/gurmukhi-utils)
 [![npm](https://img.shields.io/npm/v/gurmukhi-utils.svg?style=for-the-badge)](https://www.npmjs.com/package/gurmukhi-utils)
@@ -19,6 +19,7 @@ Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https
 - [Usage](#usage)
 - [API](#api)
   * [firstLetters(line, [stripNukta]) ⇒ String](#firstlettersline-stripnukta-%E2%87%92-string)
+  * [toAscii(text) ⇒ String](#toasciitext-%E2%87%92-string)
   * [toUnicode(text) ⇒ String](#tounicodetext-%E2%87%92-string)
   * [transliterate(line) ⇒ String](#transliterateline-%E2%87%92-string)
 - [Contributing](#contributing)
@@ -30,9 +31,10 @@ Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https
 
 The library can be imported into Node as below:
 ```javascript
-const { toUnicode, firstLetters, transliterate } = require('gurmukhi-utils')
+const { toUnicode, toAscii, firstLetters, transliterate } = require('gurmukhi-utils')
 
 toUnicode('Koj')    // => ਖੋਜ
+toAscii('ਖੋਜ')      // => Koj
 firstLetters('hir hir hir gunI')   // => hhhg
 firstLetters('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ')      // => ਹਹਹਗ
 transliterate('hukmI hukmu clwey rwhu ]')  // => hukamee hukam chalaae raahu ||
@@ -76,6 +78,20 @@ firstLetters('iZir&qym sMdUk drIXw AmIk ]') // => gsdA
 **Example** *(ASCII first letters with pair bindi/nukta)*  
 ```js
 firstLetters('iZir&qym sMdUk* drIXw AmIk* ]', false) // => Zsda
+```
+### toAscii(text) ⇒ <code>String</code>
+Converts Gurmukhi unicode text to ASCII, used GurmukhiAkhar font.
+
+**Returns**: <code>String</code> - An ASCII representation of the provided unicode Gurmukhi string.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| text | <code>String</code> | The unicode text to convert. |
+
+**Example**  
+```js
+toAscii('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => hmw swieil luqi& hk prvrS ]
+toAscii('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => su bYiT iekMqR ]578]
 ```
 ### toUnicode(text) ⇒ <code>String</code>
 Converts ASCII text used in the GurmukhiAkhar font to Unicode.

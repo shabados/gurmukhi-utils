@@ -17,6 +17,14 @@ const words = [
   [ 'su bYiT iekMqR ]578]', 'ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥' ],
   [ 'ieiq sRI bicqR nwtky mnu rwjw ko rwj smwpqM ]1]5]', 'ਇਤਿ ਸ੍ਰੀ ਬਚਿਤ੍ਰ ਨਾਟਕੇ ਮਨੁ ਰਾਜਾ ਕੋ ਰਾਜ ਸਮਾਪਤੰ ॥੧॥੫॥' ],
   [ 'Fwknhwry pRBU hmwry jIA pRwn suKdwqy ]', 'ਢਾਕਨਹਾਰੇ ਪ੍ਰਭੂ ਹਮਾਰੇ ਜੀਅ ਪ੍ਰਾਨ ਸੁਖਦਾਤੇ ॥' ],
+  [ 'BuiKAw.', 'ਭੁਖਿਆ.' ],
+  [ '<> siq nwmu krqw purKu inrBau inrvYru; Akwl mUriq AjUnI sYBM gurpRswid ]', 'ੴ ਸਤਿ ਨਾਮੁ ਕਰਤਾ ਪੁਰਖੁ ਨਿਰਭਉ ਨਿਰਵੈਰੁ; ਅਕਾਲ ਮੂਰਤਿ ਅਜੂਨੀ ਸੈਭੰ ਗੁਰਪ੍ਰਸਾਦਿ ॥' ],
+  [ 'rwgu gauVI iQqMØI kbIr jI kMØI ]', 'ਰਾਗੁ ਗਉੜੀ ਥਿਤੰੀ ਕਬੀਰ ਜੀ ਕੰੀ ॥' ],
+  [ 'Awqmw bwsudyvis´ jy ko jwxY Byau ]', 'ਆਤਮਾ ਬਾਸੁਦੇਵਸੵਿ ਜੇ ਕੋ ਜਾਣੈ ਭੇਉ ॥' ],
+  [ 'Asmwn im´wny lhMg drIAw gusl krdn bUd ]', 'ਅਸਮਾਨ ਮੵਾਿਨੇ ਲਹੰਗ ਦਰੀਆ ਗੁਸਲ ਕਰਦਨ ਬੂਦ ॥' ],
+  [ 'durlBM eyk Bgvwn nwmh nwnk lbiD´M swDsMig ik®pw pRBM ]35]', 'ਦੁਰਲਭੰ ਏਕ ਭਗਵਾਨ ਨਾਮਹ ਨਾਨਕ ਲਬਧੵਿੰ ਸਾਧਸੰਗਿ ਕ੍ਰਿਪਾ ਪ੍ਰਭੰ ॥੩੫॥' ],
+  [ 'jyn klw sis sUr nK´qR joiq´M swsM srIr DwrxM ]', 'ਜੇਨ ਕਲਾ ਸਸਿ ਸੂਰ ਨਖੵਤ੍ਰ ਜੋਤੵਿੰ ਸਾਸੰ ਸਰੀਰ ਧਾਰਣੰ ॥' ],
+  [ 'bis´Mq iriKAM iqAwig mwnµ ]', 'ਬਸੵਿੰਤ ਰਿਖਿਅੰ ਤਿਆਗਿ ਮਾਨੰ ॥' ],
 ]
 
 describe( 'toUnicode()', () => {
