@@ -23,7 +23,6 @@ Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https
   * [toUnicode(text) ⇒ String](#tounicodetext-%E2%87%92-string)
   * [transliterate(line) ⇒ String](#transliterateline-%E2%87%92-string)
 - [Contributing](#contributing)
-- [Future](#future)
 
 <!-- tocstop -->
 
@@ -155,7 +154,3 @@ The general workflow for contributing:
 *Note to contributors with push access to master:* Any commits or merge commits containing the strings 
 `#Major`, `#Minor`, `#Patch` (case-sensitive) will trigger an automatic npm release with the
 respective semver bump.
-
-## Future
-
--   Unicode to ASCII
