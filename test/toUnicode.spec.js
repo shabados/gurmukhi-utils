@@ -23,6 +23,6 @@ const words = [
 
 describe( 'toUnicode()', () => {
   words.map( ( [ ascii, unicode ] ) => it( `should convert '${ascii}' to '${unicode}'`, () => {
-    expect( console.log( toUnicode( ascii ) ) || toUnicode( ascii ) ).to.equal( unicode )
+    expect( toUnicode( ascii ) ).to.equal( unicode )
   } ) )
 } )
