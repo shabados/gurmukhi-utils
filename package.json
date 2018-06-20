@@ -48,7 +48,11 @@
     "gurbani",
     "sikhi",
     "transliteration",
-    "transliterate"
+    "transliterate",
+    "ascii",
+    "unicode",
+    "gurbaniAkhar",
+    "converter"
   ],
   "dependencies": {
     "escape-string-regexp": "^1.0.5"
