@@ -15,9 +15,6 @@ jobs:
           name: Release module on npm
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              # Build the app
-              npm run build
-
               # Write npm token to .npmrc
               echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
 

@@ -11,7 +11,8 @@
     "build": "webpack --mode production",
     "build-docs": "jsdoc2md --template README.hbs lib/**/*.js > README.md &&  markdown-toc -i README.md && cp README.md docs/",
     "precommit": "npm run lint && npm run build-docs && git add docs/ README.md",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
