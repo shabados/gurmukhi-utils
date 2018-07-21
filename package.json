@@ -2,7 +2,7 @@
   "name": "gurmukhi-utils",
   "version": "1.0.0",
   "description": "General functions for working with lines of Gurmukhi.",
-  "main": "index",
+  "main": "dist/index.min.js",
   "unpkg": "dist/index.min.js",
   "runkitExampleFilename": "example.js",
   "scripts": {
