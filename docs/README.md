@@ -20,6 +20,7 @@ Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https
 - [API](#api)
   * [firstLetters(line, [stripNukta]) ⇒ String](#firstlettersline-stripnukta-%E2%87%92-string)
   * [toAscii(text) ⇒ String](#toasciitext-%E2%87%92-string)
+  * [toShahmukhi(text) ⇒ String](#toshahmukhitext-%E2%87%92-string)
   * [toUnicode(text) ⇒ String](#tounicodetext-%E2%87%92-string)
   * [transliterate(line) ⇒ String](#transliterateline-%E2%87%92-string)
 - [Contributing](#contributing)
@@ -50,9 +51,7 @@ Want to play around? [![Try gurmukhi-utils on RunKit](https://badge.runkitcdn.co
 ## API
 
 ### firstLetters(line, [stripNukta]) ⇒ <code>String</code>
-Generates the first letters for a given ASCII or unicode Gurmukhi string.
-By default, the function will transform letters with bindi to their simple equivalent,
-for example, zaza to jaja (ਜ਼ => ਜ).
+Generates the first letters for a given ASCII or unicode Gurmukhi string.By default, the function will transform letters with bindi to their simple equivalent,for example, zaza to jaja (ਜ਼ => ਜ).
 
 **Returns**: <code>String</code> - The first letters of each word in the provided Gurmukhi line.  
 
@@ -89,8 +88,20 @@ Converts Gurmukhi unicode text to ASCII, used GurmukhiAkhar font.
 
 **Example**  
 ```js
-toAscii('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => hmw swieil luqi& hk prvrS ]
-toAscii('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => su bYiT iekMqR ]578]
+toAscii('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => hmw swieil luqi& hk prvrS ]toAscii('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => su bYiT iekMqR ]578]
+```
+### toShahmukhi(text) ⇒ <code>String</code>
+Transliterates Unicode Gurmukhi text to the Shahmukhi script.
+
+**Returns**: <code>String</code> - A Shahmukhi transliteration of the provided Unicode Gurmukhi string.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| text | <code>String</code> | The Unicode Gurmukhi text to convert. |
+
+**Example**  
+```js
+toShahmukhi('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => ہما سائلِ لتفِ ہک پرورش ۔۔toShahmukhi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => سو بیٹھ اکنتر ۔۔۵۷۸۔۔
 ```
 ### toUnicode(text) ⇒ <code>String</code>
 Converts ASCII text used in the GurmukhiAkhar font to Unicode.
@@ -103,12 +114,10 @@ Converts ASCII text used in the GurmukhiAkhar font to Unicode.
 
 **Example**  
 ```js
-toUnicode('kul jn mDy imil´o swrg pwn ry ]') // => ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥
-toUnicode('su bYiT iekMqR ]578]') // => ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥
+toUnicode('kul jn mDy imil´o swrg pwn ry ]') // => ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥toUnicode('su bYiT iekMqR ]578]') // => ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥
 ```
 ### transliterate(line) ⇒ <code>String</code>
-Transliterates a line from ASCII Gurmukhi to english.
-Currently supports the `,`, `;`, `.` vishraam characters.
+Transliterates a line from ASCII Gurmukhi to english.Currently supports the `,`, `;`, `.` vishraam characters.
 
 **Returns**: <code>String</code> - The English transliteration of the provided Gurmukhi line.  
 
