@@ -21,6 +21,8 @@ jobs:
 
               # Configure git
               git config --global push.default current
+              git config --global user.email "shabados.com@gmail.com"
+              git config --global user.name "ShabadOS Bot"
 
               # Remove .gitignore
               rm .gitignore
