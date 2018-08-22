@@ -11,6 +11,7 @@ jobs:
             - "c5:21:77:ad:71:12:b2:f3:67:3f:c4:77:37:4d:fb:1a"
       - run: npm run lint
       - run: npm run test
+      - run: npm run build
       - deploy:
           name: Release module on npm
           command: |

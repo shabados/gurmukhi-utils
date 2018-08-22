@@ -11,10 +11,9 @@ describe( 'firstLetters()', () => {
     [ 'ijs no ik®pw krih iqin nwmu rqnu pwieAw ]', 'jnkkqnrp' ],
   ]
 
-  lines.map( ( [ line, expectedFirstLetters ] ) =>
-    it( `should generate first letters for '${line}' as '${expectedFirstLetters}'`, () => {
-      expect( firstLetters( line ) ).to.equal( expectedFirstLetters )
-    } ) )
+  lines.map( ( [ line, expectedFirstLetters ] ) => it( `should generate first letters for '${line}' as '${expectedFirstLetters}'`, () => {
+    expect( firstLetters( line ) ).to.equal( expectedFirstLetters )
+  } ) )
 } )
 
 describe( 'firstLetters() with baseLetters=false', () => {
@@ -22,10 +21,9 @@ describe( 'firstLetters() with baseLetters=false', () => {
     [ 'iZir&qym sMdUk* drIXw AmIk* ]', 'ZsdA' ],
   ]
 
-  lines.map( ( [ line, expectedFirstLetters ] ) =>
-    it( `should generate first letters for '${line}' as '${expectedFirstLetters}'`, () => {
-      expect( firstLetters( line, false ) ).to.equal( expectedFirstLetters )
-    } ) )
+  lines.map( ( [ line, expectedFirstLetters ] ) => it( `should generate first letters for '${line}' as '${expectedFirstLetters}'`, () => {
+    expect( firstLetters( line, false ) ).to.equal( expectedFirstLetters )
+  } ) )
 } )
 
 describe( 'firstLetters() with unicode strings', () => {
@@ -36,10 +34,9 @@ describe( 'firstLetters() with unicode strings', () => {
     [ 'ਗ਼ੈਰਿ ਹਮਦਿ ਹੱਕ ਨਿਆਇਦ ਬਰ ਜ਼ਬਾਨਮ ਹੀਚ ਗਾਹ', 'ਗਹਹਨਬਜਹਗ' ],
   ]
 
-  lines.map( ( [ line, expectedFirstLetters ] ) =>
-    it( `should generate first letters for '${line}' as '${expectedFirstLetters}'`, () => {
-      expect( firstLetters( line ) ).to.equal( expectedFirstLetters )
-    } ) )
+  lines.map( ( [ line, expectedFirstLetters ] ) => it( `should generate first letters for '${line}' as '${expectedFirstLetters}'`, () => {
+    expect( firstLetters( line ) ).to.equal( expectedFirstLetters )
+  } ) )
 } )
 
 describe( 'firstLetters() with unicode strings and baseLetters=false', () => {
@@ -48,8 +45,7 @@ describe( 'firstLetters() with unicode strings and baseLetters=false', () => {
     [ 'ਗ਼ੈਰਿ ਹਮਦਿ ਹੱਕ ਨਿਆਇਦ ਬਰ ਜ਼ਬਾਨਮ ਹੀਚ ਗਾਹ,', 'ਗ਼ਹਹਨਬਜ਼ਹਗ' ],
   ]
 
-  lines.map( ( [ line, expectedFirstLetters ] ) =>
-    it( `should generate first letters for '${line}' as '${expectedFirstLetters}'`, () => {
-      expect( firstLetters( line, false ) ).to.equal( expectedFirstLetters )
-    } ) )
+  lines.map( ( [ line, expectedFirstLetters ] ) => it( `should generate first letters for '${line}' as '${expectedFirstLetters}'`, () => {
+    expect( firstLetters( line, false ) ).to.equal( expectedFirstLetters )
+  } ) )
 } )
