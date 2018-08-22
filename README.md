@@ -52,9 +52,7 @@ Want to play around? [![Try gurmukhi-utils on RunKit](https://badge.runkitcdn.co
 ## API
 
 ### firstLetters(line, [stripNukta]) ⇒ <code>String</code>
-Generates the first letters for a given ASCII or unicode Gurmukhi string.
-By default, the function will transform letters with bindi to their simple equivalent,
-for example, zaza to jaja (ਜ਼ => ਜ).
+Generates the first letters for a given ASCII or unicode Gurmukhi string.By default, the function will transform letters with bindi to their simple equivalent,for example, zaza to jaja (ਜ਼ => ਜ).
 
 **Returns**: <code>String</code> - The first letters of each word in the provided Gurmukhi line.  
 
@@ -91,8 +89,7 @@ Converts Gurmukhi unicode text to ASCII, used GurmukhiAkhar font.
 
 **Example**  
 ```js
-toAscii('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => hmw swieil luqi& hk prvrS ]
-toAscii('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => su bYiT iekMqR ]578]
+toAscii('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => hmw swieil luqi& hk prvrS ]toAscii('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => su bYiT iekMqR ]578]
 ```
 ### toShahmukhi(text) ⇒ <code>String</code>
 Transliterates Unicode Gurmukhi text to the Shahmukhi script.
@@ -105,8 +102,7 @@ Transliterates Unicode Gurmukhi text to the Shahmukhi script.
 
 **Example**  
 ```js
-toShahmukhi('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => هما ساِال لُتف هک پرورش ۔۔
-toShahmukhi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => سُ بَےٹھ ِاکںتر ۔۔۵۷۸۔۔
+toShahmukhi('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => هما ساِال لُتف هک پرورش ۔۔toShahmukhi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => سُ بَےٹھ ِاکںتر ۔۔۵۷۸۔۔
 ```
 ### toUnicode(text) ⇒ <code>String</code>
 Converts ASCII text used in the GurmukhiAkhar font to Unicode.
@@ -119,12 +115,10 @@ Converts ASCII text used in the GurmukhiAkhar font to Unicode.
 
 **Example**  
 ```js
-toUnicode('kul jn mDy imil´o swrg pwn ry ]') // => ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥
-toUnicode('su bYiT iekMqR ]578]') // => ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥
+toUnicode('kul jn mDy imil´o swrg pwn ry ]') // => ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥toUnicode('su bYiT iekMqR ]578]') // => ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥
 ```
 ### transliterate(line) ⇒ <code>String</code>
-Transliterates a line from ASCII Gurmukhi to english.
-Currently supports the `,`, `;`, `.` vishraam characters.
+Transliterates a line from ASCII Gurmukhi to english.Currently supports the `,`, `;`, `.` vishraam characters.
 
 **Returns**: <code>String</code> - The English transliteration of the provided Gurmukhi line.  
 
