@@ -101,7 +101,7 @@ Transliterates Unicode Gurmukhi text to the Shahmukhi script.
 
 **Example**  
 ```js
-toShahmukhi('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => ہما سائلِ لتفِ ہک پرورش ۔۔toShahmukhi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => سو بیٹھ اکنتر ۔۔۵۷۸۔۔
+toShahmukhi('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => هما ساِال لُتف هک پرورش ۔۔toShahmukhi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => سُ بَےٹھ ِاکںتر ۔۔۵۷۸۔۔
 ```
 ### toUnicode(text) ⇒ <code>String</code>
 Converts ASCII text used in the GurmukhiAkhar font to Unicode.
