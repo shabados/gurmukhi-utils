@@ -36,9 +36,10 @@ const { toUnicode, toAscii, firstLetters, transliterate, toShahmukhi } = require
 
 toUnicode('Koj')    // => ਖੋਜ
 toAscii('ਖੋਜ')      // => Koj
-firstLetters('hir hir hir gunI')   // => hhhg
-firstLetters('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ')      // => ਹਹਹਗ
+firstLetters('hir hir hir gunI')  // => hhhg
+firstLetters('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ')   // => ਹਹਹਗ
 transliterate('hukmI hukmu clwey rwhu ]')  // => hukamee hukam chalaae raahu ||
+toHindi('ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥')    // => कुल जन मधे मिल्यो सारग पान रे ॥
 toShahmukhi('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ') // => هر هر هر گُنی
 ```
 
@@ -103,7 +104,7 @@ Transliterates Unicode Gurmukhi text to Hindi (Devanagari script).
 
 **Example**  
 ```js
-toHindi('ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥') // => هما ساِال لُتف هک پرورش ۔۔toHindi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => سُ بَےٹھ ِاکںتر ۔۔۵۷۸۔۔
+toHindi('ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥') // => कुल जन मधे मिल्यो सारग पान रे ॥toHindi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => सु बैठ इकंत्र ॥५७८॥
 ```
 ### toShahmukhi(text) ⇒ <code>String</code>
 Transliterates Unicode Gurmukhi text to the Shahmukhi script.
