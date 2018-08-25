@@ -20,6 +20,7 @@ Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https
 - [API](#api)
   * [firstLetters(line, [stripNukta]) ⇒ String](#firstlettersline-stripnukta-%E2%87%92-string)
   * [toAscii(text) ⇒ String](#toasciitext-%E2%87%92-string)
+  * [toHindi(text) ⇒ String](#tohinditext-%E2%87%92-string)
   * [toShahmukhi(text) ⇒ String](#toshahmukhitext-%E2%87%92-string)
   * [toUnicode(text) ⇒ String](#tounicodetext-%E2%87%92-string)
   * [transliterate(line) ⇒ String](#transliterateline-%E2%87%92-string)
@@ -35,9 +36,10 @@ const { toUnicode, toAscii, firstLetters, transliterate, toShahmukhi } = require
 
 toUnicode('Koj')    // => ਖੋਜ
 toAscii('ਖੋਜ')      // => Koj
-firstLetters('hir hir hir gunI')   // => hhhg
-firstLetters('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ')      // => ਹਹਹਗ
+firstLetters('hir hir hir gunI')  // => hhhg
+firstLetters('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ')   // => ਹਹਹਗ
 transliterate('hukmI hukmu clwey rwhu ]')  // => hukamee hukam chalaae raahu ||
+toHindi('ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥')    // => कुल जन मधे मिल्यो सारग पान रे ॥
 toShahmukhi('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ') // => هر هر هر گُنی
 ```
 
@@ -90,6 +92,19 @@ Converts Gurmukhi unicode text to ASCII, used GurmukhiAkhar font.
 **Example**  
 ```js
 toAscii('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => hmw swieil luqi& hk prvrS ]toAscii('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => su bYiT iekMqR ]578]
+```
+### toHindi(text) ⇒ <code>String</code>
+Transliterates Unicode Gurmukhi text to Hindi (Devanagari script).
+
+**Returns**: <code>String</code> - A Hindi transliteration of the provided Unicode Gurmukhi string.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| text | <code>String</code> | The Unicode Gurmukhi text to convert. |
+
+**Example**  
+```js
+toHindi('ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥') // => कुल जन मधे मिल्यो सारग पान रे ॥toHindi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => सु बैठ इकंत्र ॥५७८॥
 ```
 ### toShahmukhi(text) ⇒ <code>String</code>
 Transliterates Unicode Gurmukhi text to the Shahmukhi script.
