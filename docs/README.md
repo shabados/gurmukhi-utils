@@ -104,7 +104,7 @@ Currently supports the `,`, `;`, `.` vishraam characters.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| line | <code>String</code> | The Gurmukhi ASCII line to transliterate. |
+| line | <code>String</code> | The Gurmukhi Unicode line to transliterate. |
 
 **Example**  
 ```js

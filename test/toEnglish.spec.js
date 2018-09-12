@@ -11,8 +11,8 @@ const transliterations = [
   [ 'ਅਬ੍ਰਯਕਤ ਅੰਗ ॥', 'abrayakat ang ||' ],
   [ 'ਜਗੰਨਾਥ ਜਗਦੀਸੁਰ ਕਰਤੇ ਸਭ ਵਸਗਤਿ ਹੈ ਹਰਿ ਕੇਰੀ ॥', 'jagannaath jagadheesur karate sabh vasagat hai har keree ||' ],
   [ 'ਆਦਿ ਸਚੁ ਜੁਗਾਦਿ ਸਚੁ ॥', 'aadh sach jugaadh sach ||' ],
-  [ 'ਸਹਸ ਸਿਆਣਪਾ ਲਖ ਹੋਹਿ ਤ ਇਕ ਨ ਚਲੈ ਨਾਲਿ ॥', 'sahas siaaNapaa lakh hoh ta eik na chalai naal ||' ],
-  [ 'ੴ ਸਤਿ ਨਾਮੁ ਕਰਤਾ ਪੁਰਖੁ ਨਿਰਭਉ ਨਿਰਵੈਰੁ ਅਕਾਲ ਮੂਰਤਿ ਅਜੂਨੀ ਸੈਭੰ ਗੁਰਪ੍ਰਸਾਦਿ ॥', 'IkOankaar sat naam karataa purakh nirabhu niravair akaal moorat ajoonee saibhan guraprasaadh ||' ],
+  [ 'ਸਹਸ ਸਿਆਣਪਾ ਲਖ ਹੋਹਿ ਤ ਇਕ ਨ ਚਲੈ ਨਾਲਿ ॥', 'sahas siaaNapaa lakh hohi ta eik na chalai naal ||' ],
+  [ 'ੴ ਸਤਿ ਨਾਮੁ ਕਰਤਾ ਪੁਰਖੁ ਨਿਰਭਉ ਨਿਰਵੈਰੁ ਅਕਾਲ ਮੂਰਤਿ ਅਜੂਨੀ ਸੈਭੰ ਗੁਰਪ੍ਰਸਾਦਿ ॥', 'IkOankaar sat naam karataa purakh nirabhau niravair akaal moorat ajoonee saibhan guraprasaadh ||' ],
   [ 'ਹੁਕਮੀ ਹੁਕਮੁ ਚਲਾਏ ਰਾਹੁ ॥', 'hukamee hukam chalaae raahu ||' ],
   [ 'ਤਿਨ ਕੇ ਨਾਮ ਅਨੇਕ ਅਨੰਤ ॥', 'tin ke naam anek anant ||' ],
   [ 'ਭਾਂਡਾ ਭਾਉ ਅੰਮ੍ਰਿਤੁ ਤਿਤੁ ਢਾਲਿ ॥', 'bhaa(n)ddaa bhaau anmrit tit ddaal ||' ],
@@ -20,7 +20,7 @@ const transliterations = [
   [ 'ਮਃ', 'mahalaa' ],
   [ 'ਜਿਸ ਨੋ ਕ੍ਰਿਪਾ ਕਰਹਿ ਤਿਨਿ ਨਾਮੁ ਰਤਨੁ ਪਾਇਆ ॥', 'jis no kripaa kareh tin naam ratan paaeiaa ||' ],
   [ 'ਆਵਣੁ ਵੰਞਣੁ ਡਾਖੜੋ ਛੋਡੀ ਕੰਤਿ ਵਿਸਾਰਿ ॥੪॥', 'aavaN vann(y)N ddaakhaRo chhoddee kant visaar ||4||' ],
-  [ 'ਘੜੀ ਮੂਰਤ ਸਿਮਰਤ ਪਲ ਵੰਞਹਿ ਜੀਵਣੁ ਸਫਲੁ ਤਿਥਾਈ ਜੀਉ ॥੧॥', "ghaRee moorat simarat pal vann(y)h jeevaN safal tithaae'ee jeeu ||1||" ],
+  [ 'ਘੜੀ ਮੂਰਤ ਸਿਮਰਤ ਪਲ ਵੰਞਹਿ ਜੀਵਣੁ ਸਫਲੁ ਤਿਥਾਈ ਜੀਉ ॥੧॥', "ghaRee moorat simarat pal vann(y)hi jeevaN safal tithaae'ee jeeau ||1||" ],
   [ 'ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨ ਗਾਵਹੁ ॥', 'har har har gun gaavahu ||' ],
 ]
 
