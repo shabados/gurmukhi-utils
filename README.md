@@ -20,10 +20,10 @@ Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https
 - [API](#api)
   * [firstLetters(line, [stripNukta]) ⇒ String](#firstlettersline-stripnukta-%E2%87%92-string)
   * [toAscii(text) ⇒ String](#toasciitext-%E2%87%92-string)
+  * [toEnglish(line) ⇒ String](#toenglishline-%E2%87%92-string)
   * [toHindi(text) ⇒ String](#tohinditext-%E2%87%92-string)
   * [toShahmukhi(text) ⇒ String](#toshahmukhitext-%E2%87%92-string)
   * [toUnicode(text) ⇒ String](#tounicodetext-%E2%87%92-string)
-  * [transliterate(line) ⇒ String](#transliterateline-%E2%87%92-string)
 - [Contributing](#contributing)
 
 <!-- tocstop -->
@@ -54,7 +54,9 @@ Want to play around? [![Try gurmukhi-utils on RunKit](https://badge.runkitcdn.co
 ## API
 
 ### firstLetters(line, [stripNukta]) ⇒ <code>String</code>
-Generates the first letters for a given ASCII or unicode Gurmukhi string.By default, the function will transform letters with bindi to their simple equivalent,for example, zaza to jaja (ਜ਼ => ਜ).
+Generates the first letters for a given ASCII or unicode Gurmukhi string.
+By default, the function will transform letters with bindi to their simple equivalent,
+for example, zaza to jaja (ਜ਼ => ਜ).
 
 **Returns**: <code>String</code> - The first letters of each word in the provided Gurmukhi line.  
 
@@ -91,7 +93,26 @@ Converts Gurmukhi unicode text to ASCII, used GurmukhiAkhar font.
 
 **Example**  
 ```js
-toAscii('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => hmw swieil luqi& hk prvrS ]toAscii('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => su bYiT iekMqR ]578]
+toAscii('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => hmw swieil luqi& hk prvrS ]
+toAscii('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => su bYiT iekMqR ]578]
+```
+### toEnglish(line) ⇒ <code>String</code>
+Transliterates a line from ASCII Gurmukhi to english.
+Currently supports the `,`, `;`, `.` vishraam characters.
+
+**Returns**: <code>String</code> - The English transliteration of the provided Gurmukhi line.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| line | <code>String</code> | The Gurmukhi ASCII line to transliterate. |
+
+**Example**  
+```js
+toEnglish('hukmI hukmu clwey rwhu ]') // => hukamee hukam chalaae raahu ||
+```
+**Example**  
+```js
+toEnglish('BWfw Bwau AMimRqu iqqu Fwil ]') // => bhaa(n)ddaa bhaau anmrit tit ddaal ||
 ```
 ### toHindi(text) ⇒ <code>String</code>
 Transliterates Unicode Gurmukhi text to Hindi (Devanagari script).
@@ -104,7 +125,8 @@ Transliterates Unicode Gurmukhi text to Hindi (Devanagari script).
 
 **Example**  
 ```js
-toHindi('ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥') // => कुल जन मधे मिल्यो सारग पान रे ॥toHindi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => सु बैठ इकंत्र ॥५७८॥
+toHindi('ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥') // => कुल जन मधे मिल्यो सारग पान रे ॥
+toHindi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => सु बैठ इकंत्र ॥५७८॥
 ```
 ### toShahmukhi(text) ⇒ <code>String</code>
 Transliterates Unicode Gurmukhi text to the Shahmukhi script.
@@ -117,7 +139,8 @@ Transliterates Unicode Gurmukhi text to the Shahmukhi script.
 
 **Example**  
 ```js
-toShahmukhi('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => هما ساِال لُتف هک پرورش ۔۔toShahmukhi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => سُ بَےٹھ ِاکںتر ۔۔۵۷۸۔۔
+toShahmukhi('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => هما ساِال لُتف هک پرورش ۔۔
+toShahmukhi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => سُ بَےٹھ ِاکںتر ۔۔۵۷۸۔۔
 ```
 ### toUnicode(text) ⇒ <code>String</code>
 Converts ASCII text used in the GurmukhiAkhar font to Unicode.
@@ -130,24 +153,8 @@ Converts ASCII text used in the GurmukhiAkhar font to Unicode.
 
 **Example**  
 ```js
-toUnicode('kul jn mDy imil´o swrg pwn ry ]') // => ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥toUnicode('su bYiT iekMqR ]578]') // => ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥
-```
-### transliterate(line) ⇒ <code>String</code>
-Transliterates a line from ASCII Gurmukhi to english.Currently supports the `,`, `;`, `.` vishraam characters.
-
-**Returns**: <code>String</code> - The English transliteration of the provided Gurmukhi line.  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| line | <code>String</code> | The Gurmukhi ASCII line to transliterate. |
-
-**Example**  
-```js
-transliterate('hukmI hukmu clwey rwhu ]') // => hukamee hukam chalaae raahu ||
-```
-**Example**  
-```js
-transliterate('BWfw Bwau AMimRqu iqqu Fwil ]') // => bhaa(n)ddaa bhaau anmrit tit ddaal ||
+toUnicode('kul jn mDy imil´o swrg pwn ry ]') // => ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥
+toUnicode('su bYiT iekMqR ]578]') // => ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥
 ```
 
 ## Contributing
