@@ -97,7 +97,7 @@ toAscii('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') 
 toAscii('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => su bYiT iekMqR ]578]
 ```
 ### toEnglish(line) ⇒ <code>String</code>
-Transliterates a line from ASCII Gurmukhi to english.
+Transliterates a line from Unicode Gurmukhi to english.
 Currently supports the `,`, `;`, `.` vishraam characters.
 
 **Returns**: <code>String</code> - The English transliteration of the provided Gurmukhi line.  
@@ -108,11 +108,11 @@ Currently supports the `,`, `;`, `.` vishraam characters.
 
 **Example**  
 ```js
-toEnglish('hukmI hukmu clwey rwhu ]') // => hukamee hukam chalaae raahu ||
+toEnglish('ਹੁਕਮੀ ਹੁਕਮੁ ਚਲਾਏ ਰਾਹੁ ॥') // => hukamee hukam chalaae raahu ||
 ```
 **Example**  
 ```js
-toEnglish('BWfw Bwau AMimRqu iqqu Fwil ]') // => bhaa(n)ddaa bhaau anmrit tit ddaal ||
+toEnglish('ਭਾਂਡਾ ਭਾਉ ਅੰਮ੍ਰਿਤੁ ਤਿਤੁ ਢਾਲਿ ॥') // => bhaa(n)ddaa bhaau anmrit tit ddaal ||
 ```
 ### toHindi(text) ⇒ <code>String</code>
 Transliterates Unicode Gurmukhi text to Hindi (Devanagari script).

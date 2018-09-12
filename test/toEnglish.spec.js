@@ -4,28 +4,27 @@ const { toEnglish } = require( '../index' )
 
 // Test lines
 const transliterations = [
-  [ 'ikv sicAwrw hoeIAY ikv kUVY qutY pwil ]', "kiv sachiaaraa hoe'eeaai kiv kooRai tuTai paal ||" ],
-  [ 'knkM duiq aujl AMg sny ]', 'kanakan dhut aujal ang sane ||' ],
-  [ 'gun imRghw ko icq bIc lIAw ]385]', 'gun mrigahaa ko chit beech leeaa ||385||' ],
-  [ 'gx gMDRb BUq ipswc qbY ]388]', 'gaN gandhrab bhoot pisaach tabai ||388||' ],
-  [ 'AbRXkq AMg ]', 'abrayakat ang ||' ],
-  [ 'jgMnwQ jgdIsur krqy sB vsgiq hY hir kyrI ]', 'jagannaath jagadheesur karate sabh vasagat hai har keree ||' ],
-  [ 'Awid scu jugwid scu ]', 'aadh sach jugaadh sach ||' ],
-  [ 'shs isAwxpw lK hoih q iek n clY nwil ]', 'sahas siaaNapaa lakh hoh ta eik na chalai naal ||' ],
-  [ '<> siq nwmu krqw purKu inrBau inrvYru Akwl mUriq AjUnI sYBM gurpRswid ]', 'IkOankaar sat naam karataa purakh nirabhu niravair akaal moorat ajoonee saibhan guraprasaadh ||' ],
-  [ 'hukmI hukmu clwey rwhu ]', 'hukamee hukam chalaae raahu ||' ],
-  [ 'iqn ky nwm Anyk Anµq ]', 'tin ke naam anek anant ||' ],
-  [ 'BWfw Bwau AMimRqu iqqu Fwil ]', 'bhaa(n)ddaa bhaau anmrit tit ddaal ||' ],
-  [ 'ikRpw', 'kripaa' ],
-  [ 'ik®pw', 'kripaa' ],
-  [ 'mÚ', 'mahalaa' ],
-  [ 'ijs no ik®pw krih iqin nwmu rqnu pwieAw ]', 'jis no kripaa kareh tin naam ratan paaeiaa ||' ],
-  [ 'Awvxu vM\\xu fwKVo CofI kMiq ivswir ]4]', 'aavaN vann(y)N ddaakhaRo chhoddee kant visaar ||4||' ],
-  [ 'GVI mUrq ismrq pl vM\\ih jIvxu sPlu iqQweI jIau ]1]', "ghaRee moorat simarat pal vann(y)h jeevaN safal tithaae'ee jeeu ||1||" ],
-  [ 'hir hir hir gun gwvhu ]', 'har har har gun gaavahu ||' ],
+  [ 'ਕਿਵ ਸਚਿਆਰਾ ਹੋਈਐ ਕਿਵ ਕੂੜੈ ਤੁਟੈ ਪਾਲਿ ॥', "kiv sachiaaraa hoe'eeaai kiv kooRai tuTai paal ||" ],
+  [ 'ਕਨਕੰ ਦੁਤਿ ਉਜਲ ਅੰਗ ਸਨੇ ॥', 'kanakan dhut aujal ang sane ||' ],
+  [ 'ਗੁਨ ਮ੍ਰਿਗਹਾ ਕੋ ਚਿਤ ਬੀਚ ਲੀਆ ॥੩੮੫॥', 'gun mrigahaa ko chit beech leeaa ||385||' ],
+  [ 'ਗਣ ਗੰਧ੍ਰਬ ਭੂਤ ਪਿਸਾਚ ਤਬੈ ॥੩੮੮॥', 'gaN gandhrab bhoot pisaach tabai ||388||' ],
+  [ 'ਅਬ੍ਰਯਕਤ ਅੰਗ ॥', 'abrayakat ang ||' ],
+  [ 'ਜਗੰਨਾਥ ਜਗਦੀਸੁਰ ਕਰਤੇ ਸਭ ਵਸਗਤਿ ਹੈ ਹਰਿ ਕੇਰੀ ॥', 'jagannaath jagadheesur karate sabh vasagat hai har keree ||' ],
+  [ 'ਆਦਿ ਸਚੁ ਜੁਗਾਦਿ ਸਚੁ ॥', 'aadh sach jugaadh sach ||' ],
+  [ 'ਸਹਸ ਸਿਆਣਪਾ ਲਖ ਹੋਹਿ ਤ ਇਕ ਨ ਚਲੈ ਨਾਲਿ ॥', 'sahas siaaNapaa lakh hoh ta eik na chalai naal ||' ],
+  [ 'ੴ ਸਤਿ ਨਾਮੁ ਕਰਤਾ ਪੁਰਖੁ ਨਿਰਭਉ ਨਿਰਵੈਰੁ ਅਕਾਲ ਮੂਰਤਿ ਅਜੂਨੀ ਸੈਭੰ ਗੁਰਪ੍ਰਸਾਦਿ ॥', 'IkOankaar sat naam karataa purakh nirabhu niravair akaal moorat ajoonee saibhan guraprasaadh ||' ],
+  [ 'ਹੁਕਮੀ ਹੁਕਮੁ ਚਲਾਏ ਰਾਹੁ ॥', 'hukamee hukam chalaae raahu ||' ],
+  [ 'ਤਿਨ ਕੇ ਨਾਮ ਅਨੇਕ ਅਨੰਤ ॥', 'tin ke naam anek anant ||' ],
+  [ 'ਭਾਂਡਾ ਭਾਉ ਅੰਮ੍ਰਿਤੁ ਤਿਤੁ ਢਾਲਿ ॥', 'bhaa(n)ddaa bhaau anmrit tit ddaal ||' ],
+  [ 'ਕ੍ਰਿਪਾ', 'kripaa' ],
+  [ 'ਮਃ', 'mahalaa' ],
+  [ 'ਜਿਸ ਨੋ ਕ੍ਰਿਪਾ ਕਰਹਿ ਤਿਨਿ ਨਾਮੁ ਰਤਨੁ ਪਾਇਆ ॥', 'jis no kripaa kareh tin naam ratan paaeiaa ||' ],
+  [ 'ਆਵਣੁ ਵੰਞਣੁ ਡਾਖੜੋ ਛੋਡੀ ਕੰਤਿ ਵਿਸਾਰਿ ॥੪॥', 'aavaN vann(y)N ddaakhaRo chhoddee kant visaar ||4||' ],
+  [ 'ਘੜੀ ਮੂਰਤ ਸਿਮਰਤ ਪਲ ਵੰਞਹਿ ਜੀਵਣੁ ਸਫਲੁ ਤਿਥਾਈ ਜੀਉ ॥੧॥', "ghaRee moorat simarat pal vann(y)h jeevaN safal tithaae'ee jeeu ||1||" ],
+  [ 'ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨ ਗਾਵਹੁ ॥', 'har har har gun gaavahu ||' ],
 ]
 
-describe( 'transliterate()', () => {
+describe( 'toEnglish()', () => {
   transliterations.map( ( [ gurmukhi, transliteration ] ) => it( `should transliterate '${gurmukhi}' to '${transliteration}'`, () => {
     expect( toEnglish( gurmukhi ) ).to.equal( transliteration )
   } ) )
