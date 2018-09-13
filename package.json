@@ -4,6 +4,7 @@
   "description": "General functions for working with lines of Gurmukhi.",
   "main": "dist/index.min.js",
   "unpkg": "dist/index.min.js",
+  "types": "index.d.ts",
   "runkitExampleFilename": "example.js",
   "scripts": {
     "test": "mocha test",
