@@ -1,6 +1,6 @@
 {
   "name": "gurmukhi-utils",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "General functions for working with lines of Gurmukhi.",
   "main": "dist/index.min.js",
   "unpkg": "dist/index.min.js",
