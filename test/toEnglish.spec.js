@@ -22,6 +22,7 @@ const transliterations = [
   [ 'ਆਵਣੁ ਵੰਞਣੁ ਡਾਖੜੋ ਛੋਡੀ ਕੰਤਿ ਵਿਸਾਰਿ ॥੪॥', 'aavaN vann(y)N ddaakhaRo chhoddee kant visaar ||4||' ],
   [ 'ਘੜੀ ਮੂਰਤ ਸਿਮਰਤ ਪਲ ਵੰਞਹਿ ਜੀਵਣੁ ਸਫਲੁ ਤਿਥਾਈ ਜੀਉ ॥੧॥', "ghaRee moorat simarat pal vann(y)hi jeevaN safal tithaae'ee jeeau ||1||" ],
   [ 'ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨ ਗਾਵਹੁ ॥', 'har har har gun gaavahu ||' ],
+  [ 'ਹੁਕਮੈ ਅੰਦਰਿ. ਸਭੁ ਕੋ; ਬਾਹਰਿ ਹੁਕਮ. ਨ ਕੋਇ ॥', 'hukamai andhar. sabh ko; baahar hukam. na koe ||' ],
 ]
 
 describe( 'toEnglish()', () => {
