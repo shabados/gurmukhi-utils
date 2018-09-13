@@ -49,7 +49,7 @@ Additionally, the package is available for web use via [unpkg CDN](https://unpkg
 <script src="https://unpkg.com/gurmukhi-utils"></script>
 ```
 
-Want to play around? [![Try gurmukhi-utils on RunKit](https://badge.runkitcdn.com/gurmukhi-utils.svg)](https://npm.runkit.com/gurmukhi-utils)
+Want to play around? [![Try gurmukhi-utils on RunKit](https://badge.runkitcdn.com/gurmukhi-utils.svg)](https://npm.runkit.com/gurmukhi-utils) [![Greenkeeper badge](https://badges.greenkeeper.io/ShabadOS/gurmukhi-utils.svg)](https://greenkeeper.io/)
 
 
 ## API
