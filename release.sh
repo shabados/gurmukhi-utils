@@ -4,7 +4,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-log_messages=$(git log -1 --format=%s)
+log_messages=$(git log -1 --format=%B)
 major_re=\#Major
 minor_re=\#Minor
 patch_re=\#Patch
