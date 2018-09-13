@@ -8,6 +8,7 @@
   "runkitExampleFilename": "example.js",
   "scripts": {
     "test": "nyc mocha test",
+    "publish-coverage": "nyc report --reporter=text-lcov | coveralls",
     "release": "./release.sh",
     "build": "webpack --mode production",
     "build-docs": "jsdoc2md --template README.hbs lib/**/*.js > README.md &&  markdown-toc -i README.md && cp README.md docs/",
