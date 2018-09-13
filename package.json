@@ -7,7 +7,7 @@
   "types": "index.d.ts",
   "runkitExampleFilename": "example.js",
   "scripts": {
-    "test": "mocha test",
+    "test": "nyc mocha test",
     "release": "./release.sh",
     "build": "webpack --mode production",
     "build-docs": "jsdoc2md --template README.hbs lib/**/*.js > README.md &&  markdown-toc -i README.md && cp README.md docs/",
@@ -31,6 +31,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-3": "^6.24.1",
     "chai": "^4.1.2",
+    "coveralls": "^3.0.2",
     "eslint": "^5.4.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -40,6 +41,8 @@
     "jsdoc-to-markdown": "^4.0.1",
     "markdown-toc": "^1.2.0",
     "mocha": "^5.0.5",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^13.0.1",
     "release-it": "^7.2.1",
     "webpack": "^4.12.0",
     "webpack-cli": "^3.0.8"
