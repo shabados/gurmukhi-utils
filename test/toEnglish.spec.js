@@ -5,7 +5,7 @@ const { toEnglish } = require( '../index' )
 // Test lines
 const transliterations = [
   [ 'ਕਿਵ ਸਚਿਆਰਾ ਹੋਈਐ ਕਿਵ ਕੂੜੈ ਤੁਟੈ ਪਾਲਿ ॥', "kiv sachiaaraa hoe'eeaai kiv kooRai tuTai paal ||" ],
-  [ 'ਕਨਕੰ ਦੁਤਿ ਉਜਲ ਅੰਗ ਸਨੇ ॥', 'kanakan dhut aujal ang sane ||' ],
+  [ 'ਕਨਕੰ ਦੁਤਿ ਉਜਲ ਅੰਗ ਸਨੇ ॥', 'kanakan dhut ujal ang sane ||' ],
   [ 'ਗੁਨ ਮ੍ਰਿਗਹਾ ਕੋ ਚਿਤ ਬੀਚ ਲੀਆ ॥੩੮੫॥', 'gun mrigahaa ko chit beech leeaa ||385||' ],
   [ 'ਗਣ ਗੰਧ੍ਰਬ ਭੂਤ ਪਿਸਾਚ ਤਬੈ ॥੩੮੮॥', 'gaN gandhrab bhoot pisaach tabai ||388||' ],
   [ 'ਅਬ੍ਰਯਕਤ ਅੰਗ ॥', 'abrayakat ang ||' ],
