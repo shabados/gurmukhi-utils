@@ -25,13 +25,13 @@ describe( 'firstLetters() with stripNukta=false', () => {
   } ) )
 } )
 
-describe( 'firstLetters() with stripNukta=true and stripVishraams=false', () => {
+describe( 'firstLetters() with stripNukta=true and withVishraams=true', () => {
   const lines = [
     [ 'sbid mrY. so mir rhY; iPir. mrY n, dUjI vwr ]', 'sm.smr;P.mn,dv' ],
   ]
 
   lines.map( ( [ line, expectedFirstLetters ] ) => it( `should generate first letters for '${line}' as '${expectedFirstLetters}'`, () => {
-    expect( firstLetters( line, true, false ) ).to.equal( expectedFirstLetters )
+    expect( firstLetters( line, true, true ) ).to.equal( expectedFirstLetters )
   } ) )
 } )
 
@@ -57,12 +57,12 @@ describe( 'firstLetters() with unicode strings and stripNukta=false', () => {
   } ) )
 } )
 
-describe( 'firstLetters() with unicode strings, stripNukta=true, and stripVishraams=false', () => {
+describe( 'firstLetters() with unicode strings, stripNukta=true, and withVishraams=true', () => {
   const lines = [
     [ 'ਸਬਦਿ ਮਰੈ. ਸੋ ਮਰਿ ਰਹੈ; ਫਿਰਿ. ਮਰੈ ਨ, ਦੂਜੀ ਵਾਰ ॥', 'ਸਮ.ਸਮਰ;ਫ.ਮਨ,ਦਵ' ],
   ]
 
   lines.map( ( [ line, expectedFirstLetters ] ) => it( `should generate first letters for '${line}' as '${expectedFirstLetters}'`, () => {
-    expect( firstLetters( line, true, false ) ).to.equal( expectedFirstLetters )
+    expect( firstLetters( line, true, true ) ).to.equal( expectedFirstLetters )
   } ) )
 } )
