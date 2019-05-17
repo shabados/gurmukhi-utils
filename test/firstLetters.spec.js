@@ -4,7 +4,6 @@ const { firstLetters } = require( '../index' )
 
 
 describe( 'firstLetters()', () => {
-  // Test lines with mappings for baseLetters = true
   const lines = [
     [ 'hir hir nwmu jphu mn myry muiK gurmuiK pRIiq lgwqI ]', 'hhnjmmmgpl' ],
     [ 'iZir&qym sMdUk* drIXw AmIk* ]', 'gsdA' ],
@@ -16,7 +15,7 @@ describe( 'firstLetters()', () => {
   } ) )
 } )
 
-describe( 'firstLetters() with baseLetters=false', () => {
+describe( 'firstLetters() with stripNukta=false', () => {
   const lines = [
     [ 'iZir&qym sMdUk* drIXw AmIk* ]', 'ZsdA' ],
   ]
@@ -26,8 +25,17 @@ describe( 'firstLetters() with baseLetters=false', () => {
   } ) )
 } )
 
+describe( 'firstLetters() with stripNukta=true and stripVishraams=false', () => {
+  const lines = [
+    [ 'sbid mrY. so mir rhY; iPir. mrY n, dUjI vwr ]', 'sm.smr;P.mn,dv' ],
+  ]
+
+  lines.map( ( [ line, expectedFirstLetters ] ) => it( `should generate first letters for '${line}' as '${expectedFirstLetters}'`, () => {
+    expect( firstLetters( line, true, false ) ).to.equal( expectedFirstLetters )
+  } ) )
+} )
+
 describe( 'firstLetters() with unicode strings', () => {
-  // Test lines with mappings for baseLetters = true
   const lines = [
     [ 'ਗੁਰਮੁਖਿ ਲਾਧਾ ਮਨਮੁਖਿ ਗਵਾਇਆ ॥', 'ਗਲਮਗ' ],
     [ 'ਜਿਨਿ ਹਰਿ ਸੇਵਿਆ ਤਿਨਿ ਸੁਖੁ ਪਾਇਆ ॥', 'ਜਹਸਤਸਪ' ],
@@ -39,8 +47,7 @@ describe( 'firstLetters() with unicode strings', () => {
   } ) )
 } )
 
-describe( 'firstLetters() with unicode strings and baseLetters=false', () => {
-  // Test lines with mappings for baseLetters = true
+describe( 'firstLetters() with unicode strings and stripNukta=false', () => {
   const lines = [
     [ 'ਗ਼ੈਰਿ ਹਮਦਿ ਹੱਕ ਨਿਆਇਦ ਬਰ ਜ਼ਬਾਨਮ ਹੀਚ ਗਾਹ,', 'ਗ਼ਹਹਨਬਜ਼ਹਗ' ],
   ]
