@@ -19,7 +19,7 @@ Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https
 
 - [Usage](#usage)
 - [API](#api)
-  * [firstLetters(line, [stripNukta]) ⇒ String](#firstlettersline-stripnukta-%E2%87%92-string)
+  * [firstLetters(line, [stripNukta], [withVishraams]) ⇒ String](#firstlettersline-stripnukta-withvishraams-%E2%87%92-string)
   * [toAscii(text) ⇒ String](#toasciitext-%E2%87%92-string)
   * [toEnglish(line) ⇒ String](#toenglishline-%E2%87%92-string)
   * [toHindi(text) ⇒ String](#tohinditext-%E2%87%92-string)
@@ -54,7 +54,7 @@ Want to play around? [![Try gurmukhi-utils on RunKit](https://badge.runkitcdn.co
 
 ## API
 
-### firstLetters(line, [stripNukta]) ⇒ <code>String</code>
+### firstLetters(line, [stripNukta], [withVishraams]) ⇒ <code>String</code>
 Generates the first letters for a given ASCII or unicode Gurmukhi string.
 By default, the function will transform letters with bindi to their simple equivalent,
 for example, zaza to jaja (ਜ਼ => ਜ).
@@ -65,6 +65,7 @@ for example, zaza to jaja (ਜ਼ => ਜ).
 | --- | --- | --- | --- |
 | line | <code>String</code> |  | The line to generate the first letters for. |
 | [stripNukta] | <code>Boolean</code> | <code>true</code> | If `true`, replaces letters pair bindi (such as ਜ਼) with their equivalent without the bindi (ਜ). Also replaces open oora with closed oora. |
+| [withVishraams] | <code>Boolean</code> | <code>false</code> | Keeps the vishraam characters at the end of each word. |
 
 **Example** *(Unicode first letters no pair bindi/nukta)*  
 ```js
@@ -76,7 +77,7 @@ firstLetters('ਗ਼ੈਰਿ ਹਮਦਿ ਹੱਕ ਨਿਆਇਦ ਬਰ ਜ਼ਬ�
 ```
 **Example** *(ASCII first letters with vishraams)*  
 ```js
-firstLetters('iZir&qym sMdUk* drIXw AmIk* ]', true, false) // => Zsda
+firstLetters('iZir&qym sMdUk* drIXw AmIk* ]', true, true) // => Zsda
 ```
 **Example** *(ASCII first letters no pair bindi/nukta)*  
 ```js
@@ -89,7 +90,7 @@ firstLetters('iZir&qym sMdUk* drIXw AmIk* ]', false) // => Zsda
 ```
 **Example** *(ASCII first letters with vishraams)*  
 ```js
-firstLetters('iZir&qym sMdUk* drIXw AmIk* ]', true, false) // => Zsda
+firstLetters('iZir&qym sMdUk* drIXw AmIk* ]', true, true) // => Zsda
 ```
 ### toAscii(text) ⇒ <code>String</code>
 Converts Gurmukhi unicode text to ASCII, used GurmukhiAkhar font.
