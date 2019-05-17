@@ -6,8 +6,8 @@ const { toUnicode } = require( '../index' )
 const words = [
   [ 'Koj', 'ਖੋਜ' ],
   [ 'ihr', 'ਹਿਰ' ],
-  [ 'imil´o', 'ਮਿਲੵੋਿ' ],
-  [ 'kul jn mDy imil´o swrg pwn ry ]', 'ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥' ],
+  [ 'imil´o', 'ਮਿਲਿੋੵ' ],
+  [ 'kul jn mDy imil´o swrg pwn ry ]', 'ਕੁਲ ਜਨ ਮਧੇ ਮਿਲਿੋੵ ਸਾਰਗ ਪਾਨ ਰੇ ॥' ],
   [ 'qU pRB dwqw dwin miq pUrw hm Qwry ByKwrI jIau ]', 'ਤੂ ਪ੍ਰਭ ਦਾਤਾ ਦਾਨਿ ਮਤਿ ਪੂਰਾ ਹਮ ਥਾਰੇ ਭੇਖਾਰੀ ਜੀਉ ॥' ],
   [ 'so bRhmu AjonI hY BI honI Gt BIqir dyKu murwrI jIau ]2]', 'ਸੋ ਬ੍ਰਹਮੁ ਅਜੋਨੀ ਹੈ ਭੀ ਹੋਨੀ ਘਟ ਭੀਤਰਿ ਦੇਖੁ ਮੁਰਾਰੀ ਜੀਉ ॥੨॥' ],
   [ 'zny pyc dsqwr rw qwbdwd ]', 'ਜ਼ਨੇ ਪੇਚ ਦਸਤਾਰ ਰਾ ਤਾਬਦਾਦ ॥' ],
@@ -20,11 +20,11 @@ const words = [
   [ 'BuiKAw.', 'ਭੁਖਿਆ.' ],
   [ '<> siq nwmu krqw purKu inrBau inrvYru; Akwl mUriq AjUnI sYBM gurpRswid ]', 'ੴ ਸਤਿ ਨਾਮੁ ਕਰਤਾ ਪੁਰਖੁ ਨਿਰਭਉ ਨਿਰਵੈਰੁ; ਅਕਾਲ ਮੂਰਤਿ ਅਜੂਨੀ ਸੈਭੰ ਗੁਰਪ੍ਰਸਾਦਿ ॥' ],
   [ 'rwgu gauVI iQqMØI kbIr jI kMØI ]', 'ਰਾਗੁ ਗਉੜੀ ਥਿਤੰੀ ਕਬੀਰ ਜੀ ਕੰੀ ॥' ],
-  [ 'Awqmw bwsudyvis´ jy ko jwxY Byau ]', 'ਆਤਮਾ ਬਾਸੁਦੇਵਸੵਿ ਜੇ ਕੋ ਜਾਣੈ ਭੇਉ ॥' ],
-  [ 'Asmwn im´wny lhMg drIAw gusl krdn bUd ]', 'ਅਸਮਾਨ ਮੵਾਿਨੇ ਲਹੰਗ ਦਰੀਆ ਗੁਸਲ ਕਰਦਨ ਬੂਦ ॥' ],
-  [ 'durlBM eyk Bgvwn nwmh nwnk lbiD´M swDsMig ik®pw pRBM ]35]', 'ਦੁਰਲਭੰ ਏਕ ਭਗਵਾਨ ਨਾਮਹ ਨਾਨਕ ਲਬਧੵਿੰ ਸਾਧਸੰਗਿ ਕ੍ਰਿਪਾ ਪ੍ਰਭੰ ॥੩੫॥' ],
-  [ 'jyn klw sis sUr nK´qR joiq´M swsM srIr DwrxM ]', 'ਜੇਨ ਕਲਾ ਸਸਿ ਸੂਰ ਨਖੵਤ੍ਰ ਜੋਤੵਿੰ ਸਾਸੰ ਸਰੀਰ ਧਾਰਣੰ ॥' ],
-  [ 'bis´Mq iriKAM iqAwig mwnµ ]', 'ਬਸੵਿੰਤ ਰਿਖਿਅੰ ਤਿਆਗਿ ਮਾਨੰ ॥' ],
+  [ 'Awqmw bwsudyvis´ jy ko jwxY Byau ]', 'ਆਤਮਾ ਬਾਸੁਦੇਵਸਿੵ ਜੇ ਕੋ ਜਾਣੈ ਭੇਉ ॥' ],
+  [ 'Asmwn im´wny lhMg drIAw gusl krdn bUd ]', 'ਅਸਮਾਨ ਮਿਾੵਨੇ ਲਹੰਗ ਦਰੀਆ ਗੁਸਲ ਕਰਦਨ ਬੂਦ ॥' ],
+  [ 'durlBM eyk Bgvwn nwmh nwnk lbiD´M swDsMig ik®pw pRBM ]35]', 'ਦੁਰਲਭੰ ਏਕ ਭਗਵਾਨ ਨਾਮਹ ਨਾਨਕ ਲਬਧਿੰੵ ਸਾਧਸੰਗਿ ਕ੍ਰਿਪਾ ਪ੍ਰਭੰ ॥੩੫॥' ],
+  [ 'jyn klw sis sUr nK´qR joiq´M swsM srIr DwrxM ]', 'ਜੇਨ ਕਲਾ ਸਸਿ ਸੂਰ ਨਖੵਤ੍ਰ ਜੋਤਿੰੵ ਸਾਸੰ ਸਰੀਰ ਧਾਰਣੰ ॥' ],
+  [ 'bis´Mq iriKAM iqAwig mwnµ ]', 'ਬਸਿੰੵਤ ਰਿਖਿਅੰ ਤਿਆਗਿ ਮਾਨੰ ॥' ],
 ]
 
 describe( 'toUnicode()', () => {
