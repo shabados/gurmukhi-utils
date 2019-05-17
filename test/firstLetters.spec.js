@@ -56,3 +56,13 @@ describe( 'firstLetters() with unicode strings and stripNukta=false', () => {
     expect( firstLetters( line, false ) ).to.equal( expectedFirstLetters )
   } ) )
 } )
+
+describe( 'firstLetters() with unicode strings, stripNukta=true, and stripVishraams=false', () => {
+  const lines = [
+    [ 'ਸਬਦਿ ਮਰੈ. ਸੋ ਮਰਿ ਰਹੈ; ਫਿਰਿ. ਮਰੈ ਨ, ਦੂਜੀ ਵਾਰ ॥', 'ਸਮ.ਸਮਰ;ਫ.ਮਨ,ਦਵ' ],
+  ]
+
+  lines.map( ( [ line, expectedFirstLetters ] ) => it( `should generate first letters for '${line}' as '${expectedFirstLetters}'`, () => {
+    expect( firstLetters( line, true, false ) ).to.equal( expectedFirstLetters )
+  } ) )
+} )
