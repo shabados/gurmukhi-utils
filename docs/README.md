@@ -75,9 +75,9 @@ firstLetters('ਗ਼ੈਰਿ ਹਮਦਿ ਹੱਕ ਨਿਆਇਦ ਬਰ ਜ਼ਬ�
 ```js
 firstLetters('ਗ਼ੈਰਿ ਹਮਦਿ ਹੱਕ ਨਿਆਇਦ ਬਰ ਜ਼ਬਾਨਮ ਹੀਚ ਗਾਹ', false) // => ਗ਼ਹਹਨਬਜ਼ਹਗ
 ```
-**Example** *(ASCII first letters with vishraams)*  
+**Example** *(Unicode first letters with vishraams)*  
 ```js
-firstLetters('iZir&qym sMdUk* drIXw AmIk* ]', true, true) // => Zsda
+firstLetters('ਸਬਦਿ ਮਰੈ. ਸੋ ਮਰਿ ਰਹੈ; ਫਿਰਿ. ਮਰੈ ਨ, ਦੂਜੀ ਵਾਰ ॥', true, true) // => ਸਮ.ਸਮਰ;ਫ.ਮਨ,ਦਵ
 ```
 **Example** *(ASCII first letters no pair bindi/nukta)*  
 ```js
@@ -90,7 +90,7 @@ firstLetters('iZir&qym sMdUk* drIXw AmIk* ]', false) // => Zsda
 ```
 **Example** *(ASCII first letters with vishraams)*  
 ```js
-firstLetters('iZir&qym sMdUk* drIXw AmIk* ]', true, true) // => Zsda
+firstLetters('sbid mrY. so mir rhY; iPir. mrY n, dUjI vwr ]', true, true) // => sm.smr;P.mn,dv
 ```
 ### toAscii(text) ⇒ <code>String</code>
 Converts Gurmukhi unicode text to ASCII, used GurmukhiAkhar font.
