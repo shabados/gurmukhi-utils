@@ -19,7 +19,7 @@ Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https
 
 - [Usage](#usage)
 - [API](#api)
-  * [firstLetters(line, [stripNukta]) ⇒ String](#firstlettersline-stripnukta-%E2%87%92-string)
+  * [firstLetters(line, [stripNukta], [withVishraams]) ⇒ String](#firstlettersline-stripnukta-withvishraams-%E2%87%92-string)
   * [toAscii(text) ⇒ String](#toasciitext-%E2%87%92-string)
   * [toEnglish(line) ⇒ String](#toenglishline-%E2%87%92-string)
   * [toHindi(text) ⇒ String](#tohinditext-%E2%87%92-string)
@@ -54,8 +54,10 @@ Want to play around? [![Try gurmukhi-utils on RunKit](https://badge.runkitcdn.co
 
 ## API
 
-### firstLetters(line, [stripNukta]) ⇒ <code>String</code>
-Generates the first letters for a given ASCII or unicode Gurmukhi string.By default, the function will transform letters with bindi to their simple equivalent,for example, zaza to jaja (ਜ਼ => ਜ).
+### firstLetters(line, [stripNukta], [withVishraams]) ⇒ <code>String</code>
+Generates the first letters for a given ASCII or unicode Gurmukhi string.
+By default, the function will transform letters with bindi to their simple equivalent,
+for example, zaza to jaja (ਜ਼ => ਜ).
 
 **Returns**: <code>String</code> - The first letters of each word in the provided Gurmukhi line.  
 
@@ -63,6 +65,7 @@ Generates the first letters for a given ASCII or unicode Gurmukhi string.By def
 | --- | --- | --- | --- |
 | line | <code>String</code> |  | The line to generate the first letters for. |
 | [stripNukta] | <code>Boolean</code> | <code>true</code> | If `true`, replaces letters pair bindi (such as ਜ਼) with their equivalent without the bindi (ਜ). Also replaces open oora with closed oora. |
+| [withVishraams] | <code>Boolean</code> | <code>false</code> | Keeps the vishraam characters at the end of each word. |
 
 **Example** *(Unicode first letters no pair bindi/nukta)*  
 ```js
@@ -72,6 +75,10 @@ firstLetters('ਗ਼ੈਰਿ ਹਮਦਿ ਹੱਕ ਨਿਆਇਦ ਬਰ ਜ਼ਬ�
 ```js
 firstLetters('ਗ਼ੈਰਿ ਹਮਦਿ ਹੱਕ ਨਿਆਇਦ ਬਰ ਜ਼ਬਾਨਮ ਹੀਚ ਗਾਹ', false) // => ਗ਼ਹਹਨਬਜ਼ਹਗ
 ```
+**Example** *(Unicode first letters with vishraams)*  
+```js
+firstLetters('ਸਬਦਿ ਮਰੈ. ਸੋ ਮਰਿ ਰਹੈ; ਫਿਰਿ. ਮਰੈ ਨ, ਦੂਜੀ ਵਾਰ ॥', true, true) // => ਸਮ.ਸਮਰ;ਫ.ਮਨ,ਦਵ
+```
 **Example** *(ASCII first letters no pair bindi/nukta)*  
 ```js
 firstLetters('ijs no ik®pw krih iqin nwmu rqnu pwieAw ]') // => jnkkqnrp
@@ -80,6 +87,10 @@ firstLetters('iZir&qym sMdUk drIXw AmIk ]') // => gsdA
 **Example** *(ASCII first letters with pair bindi/nukta)*  
 ```js
 firstLetters('iZir&qym sMdUk* drIXw AmIk* ]', false) // => Zsda
+```
+**Example** *(ASCII first letters with vishraams)*  
+```js
+firstLetters('sbid mrY. so mir rhY; iPir. mrY n, dUjI vwr ]', true, true) // => sm.smr;P.mn,dv
 ```
 ### toAscii(text) ⇒ <code>String</code>
 Converts Gurmukhi unicode text to ASCII, used GurmukhiAkhar font.
@@ -92,10 +103,12 @@ Converts Gurmukhi unicode text to ASCII, used GurmukhiAkhar font.
 
 **Example**  
 ```js
-toAscii('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => hmw swieil luqi& hk prvrS ]toAscii('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => su bYiT iekMqR ]578]
+toAscii('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => hmw swieil luqi& hk prvrS ]
+toAscii('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => su bYiT iekMqR ]578]
 ```
 ### toEnglish(line) ⇒ <code>String</code>
-Transliterates a line from Unicode Gurmukhi to english.Currently supports the `,`, `;`, `.` vishraam characters.
+Transliterates a line from Unicode Gurmukhi to english.
+Currently supports the `,`, `;`, `.` vishraam characters.
 
 **Returns**: <code>String</code> - The English transliteration of the provided Gurmukhi line.  
 
@@ -122,7 +135,8 @@ Transliterates Unicode Gurmukhi text to Hindi (Devanagari script).
 
 **Example**  
 ```js
-toHindi('ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥') // => कुल जन मधे मिल्यो सारग पान रे ॥toHindi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => सु बैठ इकंत्र ॥५७८॥
+toHindi('ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥') // => कुल जन मधे मिल्यो सारग पान रे ॥
+toHindi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => सु बैठ इकंत्र ॥५७८॥
 ```
 ### toShahmukhi(text) ⇒ <code>String</code>
 Transliterates Unicode Gurmukhi text to the Shahmukhi script.
@@ -135,7 +149,8 @@ Transliterates Unicode Gurmukhi text to the Shahmukhi script.
 
 **Example**  
 ```js
-toShahmukhi('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => هما ساِال لُتف هک پرورش ۔۔toShahmukhi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => سُ بَےٹھ ِاکںتر ۔۔۵۷۸۔۔
+toShahmukhi('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => هما ساِال لُتف هک پرورش ۔۔
+toShahmukhi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => سُ بَےٹھ ِاکںتر ۔۔۵۷۸۔۔
 ```
 ### toUnicode(text) ⇒ <code>String</code>
 Converts ASCII text used in the GurmukhiAkhar font to Unicode.
@@ -148,7 +163,8 @@ Converts ASCII text used in the GurmukhiAkhar font to Unicode.
 
 **Example**  
 ```js
-toUnicode('kul jn mDy imil´o swrg pwn ry ]') // => ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥toUnicode('su bYiT iekMqR ]578]') // => ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥
+toUnicode('kul jn mDy imil´o swrg pwn ry ]') // => ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥
+toUnicode('su bYiT iekMqR ]578]') // => ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥
 ```
 
 ## Contributing
