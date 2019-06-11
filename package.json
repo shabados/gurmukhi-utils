@@ -44,7 +44,7 @@
     "mocha": "^5.0.5",
     "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^13.3.0",
-    "release-it": "^7.6.3",
+    "release-it": "^12.3.0",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3"
   },
