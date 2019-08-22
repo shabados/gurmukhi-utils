@@ -6,8 +6,8 @@ const { toAscii } = require( '../index' )
 const words = [
   [ 'ਖੋਜ', 'Koj' ],
   [ 'ਹਿਰ', 'ihr' ],
-  [ 'ਮਿਲੵੋਿ', 'imil´o' ],
-  [ 'ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥', 'kul jn mDy imil´o swrg pwn ry ]' ],
+  [ 'ਮਿਲੵਿੋ', 'imil´o' ],
+  [ 'ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵਿੋ ਸਾਰਗ ਪਾਨ ਰੇ ॥', 'kul jn mDy imil´o swrg pwn ry ]' ],
   [ 'ਤੂ ਪ੍ਰਭ ਦਾਤਾ ਦਾਨਿ ਮਤਿ ਪੂਰਾ ਹਮ ਥਾਰੇ ਭੇਖਾਰੀ ਜੀਉ ॥', 'qU pRB dwqw dwin miq pUrw hm Qwry ByKwrI jIau ]' ],
   [ 'ਸੋ ਬ੍ਰਹਮੁ ਅਜੋਨੀ ਹੈ ਭੀ ਹੋਨੀ ਘਟ ਭੀਤਰਿ ਦੇਖੁ ਮੁਰਾਰੀ ਜੀਉ ॥੨॥', 'so bRhmu AjonI hY BI honI Gt BIqir dyKu murwrI jIau ]2]' ],
   [ 'ਜ਼ਨੇ ਪੇਚ ਦਸਤਾਰ ਰਾ ਤਾਬਦਾਦ ॥', 'zny pyc dsqwr rw qwbdwd ]' ],
