@@ -6,8 +6,9 @@ const { toAscii } = require( '../index' )
 const words = [
   [ 'ਖੋਜ', 'Koj' ],
   [ 'ਹਿਰ', 'ihr' ],
-  [ 'ਮਿਲੵੋਿ', 'imil´o' ],
-  [ 'ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥', 'kul jn mDy imil´o swrg pwn ry ]' ],
+  [ 'ਮਿਲੵਿੋ', 'imil´o' ],
+  [ 'ਭ੍ਯਿੋ', 'iBÎo' ],
+  [ 'ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵਿੋ ਸਾਰਗ ਪਾਨ ਰੇ ॥', 'kul jn mDy imil´o swrg pwn ry ]' ],
   [ 'ਤੂ ਪ੍ਰਭ ਦਾਤਾ ਦਾਨਿ ਮਤਿ ਪੂਰਾ ਹਮ ਥਾਰੇ ਭੇਖਾਰੀ ਜੀਉ ॥', 'qU pRB dwqw dwin miq pUrw hm Qwry ByKwrI jIau ]' ],
   [ 'ਸੋ ਬ੍ਰਹਮੁ ਅਜੋਨੀ ਹੈ ਭੀ ਹੋਨੀ ਘਟ ਭੀਤਰਿ ਦੇਖੁ ਮੁਰਾਰੀ ਜੀਉ ॥੨॥', 'so bRhmu AjonI hY BI honI Gt BIqir dyKu murwrI jIau ]2]' ],
   [ 'ਜ਼ਨੇ ਪੇਚ ਦਸਤਾਰ ਰਾ ਤਾਬਦਾਦ ॥', 'zny pyc dsqwr rw qwbdwd ]' ],
@@ -22,6 +23,11 @@ const words = [
   [ 'ਸੋਢੀ ਸ੍ਰਿਸ੍ਟਿ ਸਕਲ ਤਾਰਣ ਕਉ ਅਬ ਗੁਰ ਰਾਮਦਾਸ ਕਉ ਮਿਲੀ ਬਡਾਈ ॥੩॥', 'soFI isRis† skl qwrx kau Ab gur rwmdws kau imlI bfweI ]3]' ],
   [ 'ਭੰਜਨ ਗੜ੍ਹਣ ਸਮਥੁ ਤਰਣ ਤਾਰਣ ਪ੍ਰਭੁ ਸੋਈ ॥', 'BMjn gVHx smQu qrx qwrx pRBu soeI ]' ],
   [ 'ਰਾਗੁ ਗਉੜੀ ਥਿਤੰੀ ਕਬੀਰ ਜੀ ਕੰੀ ॥', 'rwgu gauVI iQqµØI kbIr jI kµØI ]' ],
+  [ 'ਆਤਮਾ ਬਾਸੁਦੇਵਸੵਿ ਜੇ ਕੋ ਜਾਣੈ ਭੇਉ ॥', 'Awqmw bwsudyvis´ jy ko jwxY Byau ]' ],
+  [ 'ਅਸਮਾਨ ਮੵਿਾਨੇ ਲਹੰਗ ਦਰੀਆ ਗੁਸਲ ਕਰਦਨ ਬੂਦ ॥', 'Asmwn im´wny lhMg drIAw gusl krdn bUd ]' ],
+  [ 'ਦੁਰਲਭੰ ਏਕ ਭਗਵਾਨ ਨਾਮਹ ਨਾਨਕ ਲਬਧੵਿੰ ਸਾਧਸੰਗਿ ਕ੍ਰਿਪਾ ਪ੍ਰਭੰ ॥੩੫॥', 'durlBM eyk Bgvwn nwmh nwnk lbiD´M swDsMig ik®pw pRBM ]35]' ],
+  [ 'ਜੇਨ ਕਲਾ ਸਸਿ ਸੂਰ ਨਖੵਤ੍ਰ ਜੋਤੵਿੰ ਸਾਸੰ ਸਰੀਰ ਧਾਰਣੰ ॥', 'jyn klw sis sUr nK´qR joiq´M swsM srIr DwrxM ]' ],
+  [ 'ਬਸੵਿੰਤ ਰਿਖਿਅੰ ਤਿਆਗਿ ਮਾਨੰ ॥', 'bis´Mq iriKAM iqAwig mwnµ ]' ],
 ]
 
 describe( 'toAscii()', () => {
