@@ -8,4 +8,4 @@ export function toHindi(text: string): string
 
 export function toShamukhi(text: string): string
 
-export function firstLetters(text: string, stripNukta?: boolean = true): string
+export function firstLetters(text: string, stripNukta?: boolean = true, withVishraams?: boolean): string
