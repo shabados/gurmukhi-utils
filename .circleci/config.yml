@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
@@ -31,3 +31,9 @@ jobs:
               
               npm run release
             fi
+
+workflows:
+  version: 2
+  build_all:
+    jobs:
+      - build
