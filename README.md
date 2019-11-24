@@ -118,7 +118,7 @@ toEnglish('ਹੁਕਮੀ ਹੁਕਮੁ ਚਲਾਏ ਰਾਹੁ ॥') // =>
 ```
 **Example**  
 ```js
-toEnglish('ਭਾਂਡਾ ਭਾਉ ਅੰਮ੍ਰਿਤੁ ਤਿਤੁ ਢਾਲਿ ॥') // => bhaa(n)ddaa bhaau anmrit tit ddaal ||
+toEnglish('ਭਾਂਡਾ ਭਾਉ ਅੰਮ੍ਰਿਤੁ ਤਿਤੁ ਢਾਲਿ ॥') // => bhaa(n)ddaa bhaou anmrit tit dtaal ||
 ```
 ### toHindi(text) ⇒ <code>String</code>
 Transliterates Unicode Gurmukhi text to Hindi (Devanagari script).
