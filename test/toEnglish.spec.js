@@ -20,7 +20,7 @@ const transliterations = [
   [ 'ਮਃ', 'mahalaa' ],
   [ 'ਜਿਸ ਨੋ ਕ੍ਰਿਪਾ ਕਰਹਿ ਤਿਨਿ ਨਾਮੁ ਰਤਨੁ ਪਾਇਆ ॥', 'jis no kripaa kareh tin naam ratan paaeaa |' ],
   [ 'ਆਵਣੁ ਵੰਞਣੁ ਡਾਖੜੋ ਛੋਡੀ ਕੰਤਿ ਵਿਸਾਰਿ ॥੪॥', 'aavan vanyan ddaakharro chhoddee kant visaar |4|' ],
-  [ 'ਘੜੀ ਮੂਰਤ ਸਿਮਰਤ ਪਲ ਵੰਞਹਿ ਜੀਵਣੁ ਸਫਲੁ ਤਿਥਾਈ ਜੀਉ ॥੧॥', 'gharree moorat simarat pal vanyeh jeevan safal tithaaee jeeau |1|' ],
+  [ 'ਘੜੀ ਮੂਰਤ ਸਿਮਰਤ ਪਲ ਵੰਞਹਿ ਜੀਵਣੁ ਸਫਲੁ ਤਿਥਾਈ ਜੀਉ ॥੧॥', 'gharree moorat simarat pal vanyeh jeevan safal tithaaee jeeo |1|' ],
   [ 'ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨ ਗਾਵਹੁ ॥', 'har har har gun gaavahu |' ],
   [ 'ਹੁਕਮੈ ਅੰਦਰਿ. ਸਭੁ ਕੋ; ਬਾਹਰਿ ਹੁਕਮ. ਨ ਕੋਇ ॥', 'hukamai andar. sabh ko; baahar hukam. na koe |' ],
 ]
