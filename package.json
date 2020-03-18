@@ -7,7 +7,9 @@
   "types": "index.d.ts",
   "runkitExampleFilename": "example.js",
   "husky": {
-    "pre-commit": "npm run lint && npm run build-docs && git add docs/ README.md"
+    "hooks": {
+      "pre-commit": "npm run lint && npm run build-docs && git add docs/ README.md"
+    }
   },
   "scripts": {
     "test": "nyc mocha test",
