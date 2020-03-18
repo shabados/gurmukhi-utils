@@ -11,7 +11,7 @@ const transliterations = [
   [ 'ਅਬ੍ਰਯਕਤ ਅੰਗ ॥', 'abrayakat ang |' ],
   [ 'ਜਗੰਨਾਥ ਜਗਦੀਸੁਰ ਕਰਤੇ ਸਭ ਵਸਗਤਿ ਹੈ ਹਰਿ ਕੇਰੀ ॥', 'jaganaath jagadeesur karate sabh vasagat hai har keree |' ],
   [ 'ਆਦਿ ਸਚੁ ਜੁਗਾਦਿ ਸਚੁ ॥', 'aad sach jugaad sach |' ],
-  [ 'ਸਹਸ ਸਿਆਣਪਾ ਲਖ ਹੋਹਿ ਤ ਇਕ ਨ ਚਲੈ ਨਾਲਿ ॥', 'sahas siaanapaa lakh hohi ta ik na chalai naal |' ],
+  [ 'ਸਹਸ ਸਿਆਣਪਾ ਲਖ ਹੋਹਿ ਤ ਇਕ ਨ ਚਲੈ ਨਾਲਿ ॥', 'sehas siaanapaa lakh hohi ta ik na chalai naal |' ],
   [ 'ੴ ਸਤਿ ਨਾਮੁ ਕਰਤਾ ਪੁਰਖੁ ਨਿਰਭਉ ਨਿਰਵੈਰੁ ਅਕਾਲ ਮੂਰਤਿ ਅਜੂਨੀ ਸੈਭੰ ਗੁਰ ਪ੍ਰਸਾਦਿ ॥', 'ik oankaar sat naam karataa purakh nirbhau niravair akaal moorat ajoonee saibhan gur prasaad |' ],
   [ 'ਹੁਕਮੀ ਹੁਕਮੁ ਚਲਾਏ ਰਾਹੁ ॥', 'hukamee hukam chalaae raahu |' ],
   [ 'ਤਿਨ ਕੇ ਨਾਮ ਅਨੇਕ ਅਨੰਤ ॥', 'tin ke naam anek anant |' ],
@@ -23,6 +23,8 @@ const transliterations = [
   [ 'ਘੜੀ ਮੂਰਤ ਸਿਮਰਤ ਪਲ ਵੰਞਹਿ ਜੀਵਣੁ ਸਫਲੁ ਤਿਥਾਈ ਜੀਉ ॥੧॥', 'gharree moorat simarat pal vanyeh jeevan safal tithaaee jeeo |1|' ],
   [ 'ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨ ਗਾਵਹੁ ॥', 'har har har gun gaavahu |' ],
   [ 'ਹੁਕਮੈ ਅੰਦਰਿ. ਸਭੁ ਕੋ; ਬਾਹਰਿ ਹੁਕਮ. ਨ ਕੋਇ ॥', 'hukamai andar. sabh ko; baahar hukam. na koe |' ],
+  [ 'ਸਹਜ; ਸਸਹਜ ਅਨਹਦ ਰਹਤ ਕਹਤ ਪਹਰ, ਸਹਸ ਮਹਲ ਟਹਲ ਕਹਨਨ ਕਹਨ', 'sehaj; sasahaj anahad rehat kehat pehar, sehas mehal ttehal kahanan kehan' ],
+  [ 'ਸਭ ਭਇਓ ਪਰਾਇਓ', 'sabh bheo paraaeo' ],
 ]
 
 describe( 'toEnglish()', () => {
