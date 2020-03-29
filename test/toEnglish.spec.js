@@ -25,6 +25,7 @@ const transliterations = [
   [ 'ਹੁਕਮੈ ਅੰਦਰਿ. ਸਭੁ ਕੋ; ਬਾਹਰਿ ਹੁਕਮ. ਨ ਕੋਇ ॥', 'hukamai andar. sabh ko; baahar hukam. na koe |' ],
   [ 'ਸਹਜ; ਸਸਹਜ ਅਨਹਦ ਰਹਤ ਕਹਤ ਪਹਰ, ਸਹਸ ਮਹਲ ਟਹਲ ਕਹਨਨ ਕਹਨ', 'sehaj; sasahaj anahad rehat kehat pehar, sehas mehal ttehal kahanan kehan' ],
   [ 'ਸਭ ਭਇਓ ਪਰਾਇਓ', 'sabh bheo paraaeo' ],
+  [ 'ਆਸਾ ਮਹਲਾ ੫ ਪੰਚਪਦੇ₃ ॥', 'aasaa mahalaa 5 panchapade₃ |' ],
 ]
 
 describe( 'toEnglish()', () => {
