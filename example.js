@@ -1,4 +1,12 @@
-const { toHindi, toShahmukhi, toAscii, toUnicode, firstLetters, transliterate } = require( 'gurmukhi-utils' )
+const {
+  toHindi,
+  toShahmukhi,
+  toAscii,
+  toUnicode,
+  firstLetters,
+  transliterate,
+  toAkhar,
+} = require( 'gurmukhi-utils' )
 
 console.log(toUnicode( 'Koj' ))
 console.log(toAscii('ਖੋਜ'))
@@ -7,3 +15,4 @@ console.log(firstLetters( 'ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ' ))
 console.log(transliterate( 'ਹੁਕਮੀ ਹੁਕਮੁ ਚਲਾਏ ਰਾਹੁ ॥' ))
 console.log(toShahmukhi( 'ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ' ))
 console.log(toHindi( 'ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥' ))
+console.log(toAkhar('ਜ਼ਫ਼ੈਸ਼ਸ'))
