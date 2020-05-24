@@ -5,7 +5,7 @@ const {
   toUnicode,
   firstLetters,
   transliterate,
-  toAkhar,
+  stripAccents,
 } = require( 'gurmukhi-utils' )
 
 console.log(toUnicode( 'Koj' ))
@@ -15,4 +15,4 @@ console.log(firstLetters( 'ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ' ))
 console.log(transliterate( 'ਹੁਕਮੀ ਹੁਕਮੁ ਚਲਾਏ ਰਾਹੁ ॥' ))
 console.log(toShahmukhi( 'ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ' ))
 console.log(toHindi( 'ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥' ))
-console.log(toAkhar('ਜ਼ਫ਼ੈਸ਼ਸ'))
+console.log(stripAccents('ਜ਼ਫ਼ੈਸ਼ਸ'))

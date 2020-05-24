@@ -10,4 +10,4 @@ export function toShamukhi(text: string): string
 
 export function firstLetters(text: string, stripNukta?: boolean = true, withVishraams?: boolean): string
 
-export function toAkhar(text: string): string
+export function stripAccents(text: string): string

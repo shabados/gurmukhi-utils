@@ -4,7 +4,7 @@ const firstLetters = require( './lib/firstLetters' )
 const toEnglish = require( './lib/toEnglish' )
 const toShahmukhi = require( './lib/toShahmukhi' )
 const toHindi = require( './lib/toHindi' )
-const toAkhar = require( './lib/toAkhar' )
+const stripAccents = require( './lib/stripAccents' )
 
 module.exports = {
   toAscii,
@@ -13,5 +13,5 @@ module.exports = {
   toEnglish,
   toShahmukhi,
   toHindi,
-  toAkhar,
+  stripAccents,
 }
