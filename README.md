@@ -20,7 +20,7 @@ Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https
 - [Usage](#usage)
 - [API](#api)
   * [firstLetters(line, [stripNukta], [withVishraams]) ⇒ String](#firstlettersline-stripnukta-withvishraams-%E2%87%92-string)
-  * [isGurmukhi(text) ⇒ boolean](#isgurmukhitext-%E2%87%92-boolean)
+  * [isGurmukhi(text, [exhaustive]) ⇒ boolean](#isgurmukhitext-exhaustive-%E2%87%92-boolean)
   * [toAscii(text) ⇒ String](#toasciitext-%E2%87%92-string)
   * [toEnglish(line) ⇒ String](#toenglishline-%E2%87%92-string)
   * [toHindi(text) ⇒ String](#tohinditext-%E2%87%92-string)
@@ -93,7 +93,7 @@ firstLetters('iZir&qym sMdUk* drIXw AmIk* ]', false) // => Zsda
 ```js
 firstLetters('sbid mrY. so mir rhY; iPir. mrY n, dUjI vwr ]', true, true) // => sm.smr;P.mn,dv
 ```
-### isGurmukhi(text) ⇒ <code>boolean</code>
+### isGurmukhi(text, [exhaustive]) ⇒ <code>boolean</code>
 Checks if first char in string is part of the Gurmukhi Unicode block.
 
 **Returns**: <code>boolean</code> - True if Unicode Gurmukhi, false if other.  
@@ -101,6 +101,7 @@ Checks if first char in string is part of the Gurmukhi Unicode block.
 | Param | Type | Description |
 | --- | --- | --- |
 | text | <code>String</code> | The text to check. |
+| [exhaustive] | <code>boolean</code> | If `true`, checks if the whole string is Unicode Gurmukhi. |
 
 **Example**  
 ```js
