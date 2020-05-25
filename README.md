@@ -95,7 +95,7 @@ firstLetters('iZir&qym sMdUk* drIXw AmIk* ]', false) // => Zsda
 firstLetters('sbid mrY. so mir rhY; iPir. mrY n, dUjI vwr ]', true, true) // => sm.smr;P.mn,dv
 ```
 ### stripAccents(text) ⇒ <code>String</code>
-Removes accesnts from ASCII/Unicode Gumrukhi letters with their base letter.
+Removes accents from ASCII/Unicode Gumrukhi letters with their base letter.
 Useful for generalising search queries.
 
 **Returns**: <code>String</code> - A simplified version of the provided Gurmukhi string.  
@@ -106,7 +106,7 @@ Useful for generalising search queries.
 
 **Example**  
 ```js
-stripAccents('ਜ਼ਫ਼ੈਸ਼ਸ') // => ਜਫੈਸਸ
+stripAccents('ਜ਼ਫ਼ੈਸ਼ਸਓ') // => ਜਫੈਸਸੳ
 stripAccents('Z^Svb') // => gKsvb
 ```
 ### toAscii(text) ⇒ <code>String</code>

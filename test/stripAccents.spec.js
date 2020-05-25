@@ -4,7 +4,7 @@ const { toAkhar } = require( '../index' )
 
 // Test words
 const words = [
-  [ 'ਜ਼ਫ਼ੈਸ਼ਸ', 'ਜਫੈਸਸ' ],
+  [ 'ਜ਼ਫ਼ੈਸ਼ਸਓ', 'ਜਫੈਸਸੳ' ],
   [ 'Z^Svb', 'gKsvb' ],
 ]
 
