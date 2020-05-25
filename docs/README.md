@@ -21,6 +21,7 @@ Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https
 - [API](#api)
   * [firstLetters(line, [stripNukta], [withVishraams]) ⇒ String](#firstlettersline-stripnukta-withvishraams-%E2%87%92-string)
   * [stripAccents(text) ⇒ String](#stripaccentstext-%E2%87%92-string)
+  * [stripVishraams(text, options) ⇒ String](#stripvishraamstext-options-%E2%87%92-string)
   * [toAscii(text) ⇒ String](#toasciitext-%E2%87%92-string)
   * [toEnglish(line) ⇒ String](#toenglishline-%E2%87%92-string)
   * [toHindi(text) ⇒ String](#tohinditext-%E2%87%92-string)
@@ -44,6 +45,7 @@ transliterate('hukmI hukmu clwey rwhu ]')  // => hukamee hukam chalaae raahu ||
 toHindi('ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥')    // => कुल जन मधे मिल्यो सारग पान रे ॥
 toShahmukhi('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ') // => هر هر هر گُنی
 stripAccents('ਜ਼ਫ਼ੈਸ਼ਸ') // => ਜਫੈਸਸ
+stripVishraams('sbid mrY. so mir rhY; iPir.') // => sbid mrY so mir rhY iPir
 ```
 
 Additionally, the package is available for web use via [unpkg CDN](https://unpkg.com/gurmukhi-utils).
@@ -108,6 +110,33 @@ Useful for generalising search queries.
 ```js
 stripAccents('ਜ਼ਫ਼ੈਸ਼ਸਓ') // => ਜਫੈਸਸੳ
 stripAccents('Z^Svb') // => gKsvb
+```
+### stripVishraams(text, options) ⇒ <code>String</code>
+Removes the specified vishraams from a string.
+
+**Returns**: <code>String</code> - A vishraam-less Gurmukhi string.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| text | <code>String</code> | The text to remove vishraams from. |
+| options | <code>Object</code> | The vishraams to remove. Defaults to all. |
+
+**Example** *(Text only, default options)*  
+```js
+stripVishraams('ਸਬਦਿ ਮਰੈ. ਸੋ ਮਰਿ ਰਹੈ;') // => 'ਸਬਦਿ ਮਰੈ ਸੋ ਮਰਿ ਰਹੈ
+stripVishraams('sbid mrY. so mir rhY; iPir.') // => sbid mrY so mir rhY iPir
+```
+**Example** *(Heavy vishraams only)*  
+```js
+stripVishraams('sbid mrY. so mir rhY; iPir.', { heavy: true }) // => sbid mrY. so mir rhY iPir.
+```
+**Example** *(Medium vishrams only)*  
+```js
+stripVishraams('Anhd sbd vjwey,', { medium: true }) // => Anhd sbd vjwey
+```
+**Example** *(Light vishrams only)*  
+```js
+stripVishraams('sbid mrY. so mir rhY; iPir.', { light: true }) // => sbid mrY so mir rhY; iPir
 ```
 ### toAscii(text) ⇒ <code>String</code>
 Converts Gurmukhi unicode text to ASCII, used GurmukhiAkhar font.
