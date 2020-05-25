@@ -20,6 +20,7 @@ Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https
 - [Usage](#usage)
 - [API](#api)
   * [firstLetters(line, [stripNukta], [withVishraams]) ⇒ String](#firstlettersline-stripnukta-withvishraams-%E2%87%92-string)
+  * [stripAccents(text) ⇒ String](#stripaccentstext-%E2%87%92-string)
   * [toAscii(text) ⇒ String](#toasciitext-%E2%87%92-string)
   * [toEnglish(line) ⇒ String](#toenglishline-%E2%87%92-string)
   * [toHindi(text) ⇒ String](#tohinditext-%E2%87%92-string)
@@ -42,6 +43,7 @@ firstLetters('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ')   // => ਹਹਹਗ
 transliterate('hukmI hukmu clwey rwhu ]')  // => hukamee hukam chalaae raahu ||
 toHindi('ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥')    // => कुल जन मधे मिल्यो सारग पान रे ॥
 toShahmukhi('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ') // => هر هر هر گُنی
+stripAccents('ਜ਼ਫ਼ੈਸ਼ਸ') // => ਜਫੈਸਸ
 ```
 
 Additionally, the package is available for web use via [unpkg CDN](https://unpkg.com/gurmukhi-utils).
@@ -91,6 +93,21 @@ firstLetters('iZir&qym sMdUk* drIXw AmIk* ]', false) // => Zsda
 **Example** *(ASCII first letters with vishraams)*  
 ```js
 firstLetters('sbid mrY. so mir rhY; iPir. mrY n, dUjI vwr ]', true, true) // => sm.smr;P.mn,dv
+```
+### stripAccents(text) ⇒ <code>String</code>
+Removes accents from ASCII/Unicode Gumrukhi letters with their base letter.
+Useful for generalising search queries.
+
+**Returns**: <code>String</code> - A simplified version of the provided Gurmukhi string.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| text | <code>String</code> | The text to convert. |
+
+**Example**  
+```js
+stripAccents('ਜ਼ਫ਼ੈਸ਼ਸਓ') // => ਜਫੈਸਸੳ
+stripAccents('Z^Svb') // => gKsvb
 ```
 ### toAscii(text) ⇒ <code>String</code>
 Converts Gurmukhi unicode text to ASCII, used GurmukhiAkhar font.
