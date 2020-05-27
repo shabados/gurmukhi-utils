@@ -11,3 +11,10 @@ export function toShamukhi(text: string): string
 export function firstLetters(text: string, stripNukta?: boolean = true, withVishraams?: boolean): string
 
 export function stripAccents(text: string): string
+interface StripVishraamsOptions {
+  heavy?: boolean;
+  medium?: boolean;
+  light?: boolean;
+}
+
+export function stripVishraams(text: string, options?: StripVishraamsOptions): string
