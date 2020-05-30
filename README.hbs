@@ -20,17 +20,28 @@ Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https
 
 The library can be imported into Node as below:
 ```javascript
-const { toUnicode, toAscii, firstLetters, transliterate, toShahmukhi } = require('gurmukhi-utils')
+const {
+  toUnicode,
+  toAscii,
+  firstLetters,
+  toEnglish,
+  toHindi,
+  toShahmukhi,
+  stripAccents,
+  stripVishraams,
+  isGurmukhi,
+} = require( 'gurmukhi-utils' )
 
 toUnicode('Koj')    // => ਖੋਜ
 toAscii('ਖੋਜ')      // => Koj
 firstLetters('hir hir hir gunI')  // => hhhg
 firstLetters('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ')   // => ਹਹਹਗ
-transliterate('hukmI hukmu clwey rwhu ]')  // => hukamee hukam chalaae raahu ||
+toEnglish('hukmI hukmu clwey rwhu ]')  // => hukamee hukam chalaae raahu ||
 toHindi('ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥')    // => कुल जन मधे मिल्यो सारग पान रे ॥
 toShahmukhi('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ') // => هر هر هر گُنی
 stripAccents('ਜ਼ਫ਼ੈਸ਼ਸ') // => ਜਫੈਸਸ
 stripVishraams('sbid mrY. so mir rhY; iPir.') // => sbid mrY so mir rhY iPir
+isGurmukhi('ਗੁਰਮੁਖੀ') // t=> true
 ```
 
 Additionally, the package is available for web use via [unpkg CDN](https://unpkg.com/gurmukhi-utils).

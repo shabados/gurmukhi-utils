@@ -10,6 +10,8 @@ export function toShamukhi(text: string): string
 
 export function firstLetters(text: string, stripNukta?: boolean = true, withVishraams?: boolean): string
 
+export function isGurmukhi(text: string, exhaustive?: boolean): boolean
+
 export function stripAccents(text: string): string
 interface StripVishraamsOptions {
   heavy?: boolean;
