@@ -28,6 +28,7 @@ const words = [
   [ 'ਦੁਰਲਭੰ ਏਕ ਭਗਵਾਨ ਨਾਮਹ ਨਾਨਕ ਲਬਧੵਿੰ ਸਾਧਸੰਗਿ ਕ੍ਰਿਪਾ ਪ੍ਰਭੰ ॥੩੫॥', 'durlBM eyk Bgvwn nwmh nwnk lbiD´M swDsMig ik®pw pRBM ]35]' ],
   [ 'ਜੇਨ ਕਲਾ ਸਸਿ ਸੂਰ ਨਖੵਤ੍ਰ ਜੋਤੵਿੰ ਸਾਸੰ ਸਰੀਰ ਧਾਰਣੰ ॥', 'jyn klw sis sUr nK´qR joiq´M swsM srIr DwrxM ]' ],
   [ 'ਬਸੵਿੰਤ ਰਿਖਿਅੰ ਤਿਆਗਿ ਮਾਨੰ ॥', 'bis´Mq iriKAM iqAwig mwnµ ]' ],
+  [ 'ਸ਼ ਖ਼ ਗ਼ ਜ਼ ਫ਼ ਲ਼', 'S ^ Z z & L' ],
 ]
 
 describe( 'toAscii()', () => {
