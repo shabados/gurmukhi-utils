@@ -13,7 +13,7 @@ describe( 'isGurmukhi(line)', () => {
     [ 'English & ਗੁਰਮੁਖੀ', false ],
   ]
 
-  lines.map( ( [ string, result ] ) => it( `should convert '${string}' to ${result}`, () => {
+  lines.map( ( [ string, result ] ) => it( `String '${string}' should return ${result}`, () => {
     expect( isGurmukhi( string ) ).to.equal( result )
   } ) )
 } )
@@ -29,7 +29,7 @@ describe( 'isGurmukhi(line, true)', () => {
     [ 'English & ਗੁਰਮੁਖੀ', false ],
   ]
 
-  lines.map( ( [ string, result ] ) => it( `should convert '${string}' to ${result}`, () => {
+  lines.map( ( [ string, result ] ) => it( `String '${string}' should return ${result}`, () => {
     expect( isGurmukhi( string, true ) ).to.equal( result )
   } ) )
 } )
