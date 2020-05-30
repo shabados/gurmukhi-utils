@@ -109,8 +109,8 @@ Checks if first char in string is part of the Gurmukhi Unicode block.
 
 **Example**  
 ```js
-isGurmukhi('ਗੁਰਮੁਖੀ') // => true
-isGurmukhi('gurmuKI') // => false
+isGurmukhi('ਗੁਰਮੁਖੀ') // => trueisGurmukhi('gurmuKI') // => false
+```
 ### stripAccents(text) ⇒ <code>String</code>
 Removes accents from ASCII/Unicode Gumrukhi letters with their base letter.
 Useful for generalising search queries.
