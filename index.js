@@ -6,6 +6,7 @@ const toShahmukhi = require( './lib/toShahmukhi' )
 const toHindi = require( './lib/toHindi' )
 const isGurmukhi = require( './lib/isGurmukhi' )
 const stripAccents = require( './lib/stripAccents' )
+const stripVishraams = require( './lib/stripVishraams' )
 
 module.exports = {
   toAscii,
@@ -16,4 +17,5 @@ module.exports = {
   toHindi,
   isGurmukhi,
   stripAccents,
+  stripVishraams,
 }

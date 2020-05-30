@@ -16,3 +16,4 @@ console.log(transliterate( 'ਹੁਕਮੀ ਹੁਕਮੁ ਚਲਾਏ ਰਾ�
 console.log(toShahmukhi( 'ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ' ))
 console.log(toHindi( 'ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥' ))
 console.log(stripAccents('ਜ਼ਫ਼ੈਸ਼ਸ'))
+console.log(stripVishraams('sbid mrY. so mir rhY; iPir.'))
