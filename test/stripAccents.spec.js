@@ -1,6 +1,6 @@
 const { expect } = require( 'chai' )
 
-const { toAkhar } = require( '../index' )
+const { stripAccents } = require( '../index' )
 
 // Test words
 const words = [
@@ -8,8 +8,8 @@ const words = [
   [ 'Z^Svb', 'gKsvb' ],
 ]
 
-describe( 'toAkhar()', () => {
+describe( 'stripAccents()', () => {
   words.map( ( [ complex, simple ] ) => it( `should transform '${complex}' to '${simple}'`, () => {
-    expect( toAkhar( complex ) ).to.equal( simple )
+    expect( stripAccents( complex ) ).to.equal( simple )
   } ) )
 } )
