@@ -8,7 +8,7 @@ export function toHindi(text: string): string
 
 export function toShamukhi(text: string): string
 
-export function firstLetters(text: string, stripNukta?: boolean = true, withVishraams?: boolean): string
+export function firstLetters(text: string): string
 
 export function isGurmukhi(text: string, exhaustive?: boolean): boolean
 
