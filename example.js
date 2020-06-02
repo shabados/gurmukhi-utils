@@ -7,7 +7,8 @@ const {
   toEnglish,
   stripAccents,
   stripVishraams,
-  isGurmukhi
+  stripEndings,
+  isGurmukhi,
 } = require( 'gurmukhi-utils' )
 
 console.log(toUnicode( 'Koj' ))
@@ -19,4 +20,5 @@ console.log(toShahmukhi( 'ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ' ))
 console.log(toHindi( 'ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥' ))
 console.log(stripAccents('ਜ਼ਫ਼ੈਸ਼ਸ'))
 console.log(stripVishraams('sbid mrY. so mir rhY; iPir.'))
+console.log(stripEndings('ਸੋ ਘਰੁ ਰਾਖੁ; ਵਡਾਈ ਤੋਇ ॥੧॥ ਰਹਾਉ ॥'))
 console.log(isGurmukhi('ਗੁਰਮੁਖੀ'))

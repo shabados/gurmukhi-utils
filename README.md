@@ -22,6 +22,7 @@ Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https
   * [firstLetters(line, [stripNukta], [withVishraams]) ⇒ String](#firstlettersline-stripnukta-withvishraams-%E2%87%92-string)
   * [isGurmukhi(text, [exhaustive]) ⇒ boolean](#isgurmukhitext-exhaustive-%E2%87%92-boolean)
   * [stripAccents(text) ⇒ String](#stripaccentstext-%E2%87%92-string)
+  * [stripEndings(text) ⇒ String](#stripendingstext-%E2%87%92-string)
   * [stripVishraams(text, options) ⇒ String](#stripvishraamstext-options-%E2%87%92-string)
   * [toAscii(text) ⇒ String](#toasciitext-%E2%87%92-string)
   * [toEnglish(line) ⇒ String](#toenglishline-%E2%87%92-string)
@@ -45,6 +46,7 @@ const {
   toShahmukhi,
   stripAccents,
   stripVishraams,
+  stripEndings
   isGurmukhi,
 } = require( 'gurmukhi-utils' )
 
@@ -57,7 +59,8 @@ toHindi('ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ �
 toShahmukhi('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ') // => هر هر هر گُنی
 stripAccents('ਜ਼ਫ਼ੈਸ਼ਸ') // => ਜਫੈਸਸ
 stripVishraams('sbid mrY. so mir rhY; iPir.') // => sbid mrY so mir rhY iPir
-isGurmukhi('ਗੁਰਮੁਖੀ') // t=> true
+stripEndings('ਸੋ ਘਰੁ ਰਾਖੁ; ਵਡਾਈ ਤੋਇ ॥੧॥ ਰਹਾਉ ॥') // => ਸੋ ਘਰੁ ਰਾਖੁ; ਵਡਾਈ ਤੋਇ
+isGurmukhi('ਗੁਰਮੁਖੀ') // => true
 ```
 
 Additionally, the package is available for web use via [unpkg CDN](https://unpkg.com/gurmukhi-utils).
@@ -137,6 +140,35 @@ Useful for generalising search queries.
 ```js
 stripAccents('ਜ਼ਫ਼ੈਸ਼ਸਓ') // => ਜਫੈਸਸੳ
 stripAccents('Z^Svb') // => gKsvb
+```
+### stripEndings(text) ⇒ <code>String</code>
+Strips line endings from any Gurmukhi or translation string.
+Accepts both Unicode and ASCII input.
+Useful for generating accurate first letters or modifying non-Gurbani for better display.
+*Not* designed for headings or Sirlekhs.
+
+**Returns**: <code>String</code> - A ending-less version of the text.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| text | <code>String</code> | The text to stip endings from. |
+
+**Example** *(Line ending phrases)*  
+```js
+stripEndings('ਸੋ ਘਰੁ ਰਾਖੁ; ਵਡਾਈ ਤੋਇ ॥੧॥ ਰਹਾਉ ॥') // => ਸੋ ਘਰੁ ਰਾਖੁ; ਵਡਾਈ ਤੋਇ
+stripEndings('ਹੁਕਮੁ ਪਛਾਣਿ; ਤਾ ਖਸਮੈ ਮਿਲਣਾ ॥੧॥ ਰਹਾਉ ਦੂਜਾ ॥') // => ਹੁਕਮੁ ਪਛਾਣਿ; ਤਾ ਖਸਮੈ ਮਿਲਣਾ
+stripEndings('ਜਨ ਨਾਨਕ. ਗੁਰਮੁਖਿ ਜਾਤਾ ਰਾਮ ॥੪॥੬॥ ਛਕਾ ੧ ॥') // => ਜਨ ਨਾਨਕ. ਗੁਰਮੁਖਿ ਜਾਤਾ ਰਾਮ
+```
+**Example** *(English Translations)*  
+```js
+stripEndings('O Nanak, Forever And Ever True. ||1||') // => O Nanak, Forever And Ever True.
+stripEndings('lush greenery. ||1||Pause||') // => lush greenery.
+stripEndings('always I live within the Khalsa. 519') // => always I live within the Khalsa.
+stripEndings('without your reminiscence.(1) (3)') // => without your reminiscence.
+```
+**Example** *(Spanish Translations)*  
+```js
+stripEndings('ofrece su ser en sacrificio a Ti. (4-2-9)') // => ofrece su ser en sacrificio a Ti.
 ```
 ### stripVishraams(text, options) ⇒ <code>String</code>
 Removes the specified vishraams from a string.
