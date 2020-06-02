@@ -13,6 +13,7 @@ export function firstLetters(text: string, stripNukta?: boolean = true, withVish
 export function isGurmukhi(text: string, exhaustive?: boolean): boolean
 
 export function stripAccents(text: string): string
+
 interface StripVishraamsOptions {
   heavy?: boolean;
   medium?: boolean;
@@ -20,3 +21,5 @@ interface StripVishraamsOptions {
 }
 
 export function stripVishraams(text: string, options?: StripVishraamsOptions): string
+
+export function stripEndings(text: string): string
