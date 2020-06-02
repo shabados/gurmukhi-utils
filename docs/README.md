@@ -19,7 +19,7 @@ Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https
 
 - [Usage](#usage)
 - [API](#api)
-  * [firstLetters(line, [stripNukta], [withVishraams]) ⇒ String](#firstlettersline-stripnukta-withvishraams-%E2%87%92-string)
+  * [firstLetters(line) ⇒ String](#firstlettersline-%E2%87%92-string)
   * [isGurmukhi(text, [exhaustive]) ⇒ boolean](#isgurmukhitext-exhaustive-%E2%87%92-boolean)
   * [stripAccents(text) ⇒ String](#stripaccentstext-%E2%87%92-string)
   * [stripEndings(text) ⇒ String](#stripendingstext-%E2%87%92-string)
@@ -52,7 +52,6 @@ const {
 
 toUnicode('Koj')    // => ਖੋਜ
 toAscii('ਖੋਜ')      // => Koj
-firstLetters('hir hir hir gunI')  // => hhhg
 firstLetters('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ')   // => ਹਹਹਗ
 toEnglish('hukmI hukmu clwey rwhu ]')  // => hukamee hukam chalaae raahu ||
 toHindi('ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥')    // => कुल जन मधे मिल्यो सारग पान रे ॥
@@ -73,43 +72,33 @@ Want to play around? [![Try gurmukhi-utils on RunKit](https://badge.runkitcdn.co
 
 ## API
 
-### firstLetters(line, [stripNukta], [withVishraams]) ⇒ <code>String</code>
-Generates the first letters for a given ASCII or unicode Gurmukhi string.
-By default, the function will transform letters with bindi to their simple equivalent,
-for example, zaza to jaja (ਜ਼ => ਜ).
+### firstLetters(line) ⇒ <code>String</code>
+Generates the first letters for a unicode Gurmukhi,
+Hindi transliteration, Shahmukhi transliteration, or English transliteration string.
+Includes any end-word vishraams, and line-end characters.
 
 **Returns**: <code>String</code> - The first letters of each word in the provided Gurmukhi line.  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| line | <code>String</code> |  | The line to generate the first letters for. |
-| [stripNukta] | <code>Boolean</code> | <code>true</code> | If `true`, replaces letters pair bindi (such as ਜ਼) with their equivalent without the bindi (ਜ). Also replaces open oora with closed oora. |
-| [withVishraams] | <code>Boolean</code> | <code>false</code> | Keeps the vishraam characters at the end of each word. |
+| Param | Type | Description |
+| --- | --- | --- |
+| line | <code>String</code> | The line to generate the first letters for. |
 
-**Example** *(Unicode first letters no pair bindi/nukta)*  
+**Example** *(Gurmukhi first letters)*  
 ```js
-firstLetters('ਗ਼ੈਰਿ ਹਮਦਿ ਹੱਕ ਨਿਆਇਦ ਬਰ ਜ਼ਬਾਨਮ ਹੀਚ ਗਾਹ') // => ਗਹਹਨਬਜਹਗ
+firstLetters('ਸਬਦਿ ਮਰੈ. ਸੋ ਮਰਿ ਰਹੈ; ਫਿਰਿ. ਮਰੈ ਨ, ਦੂਜੀ ਵਾਰ ॥') // => ਸਮ.ਸਮਰ;ਫ.ਮਨ,ਦਵ॥
 ```
-**Example** *(Unicode first letters with pair bindi/nukta)*  
+**Example** *(Hindi first letters)*  
 ```js
-firstLetters('ਗ਼ੈਰਿ ਹਮਦਿ ਹੱਕ ਨਿਆਇਦ ਬਰ ਜ਼ਬਾਨਮ ਹੀਚ ਗਾਹ', false) // => ਗ਼ਹਹਨਬਜ਼ਹਗ
+firstLetters('गुरमुखि लाधा मनमुखि गवाइआ ॥') // => गलमग॥
 ```
-**Example** *(Unicode first letters with vishraams)*  
+**Example** *(English first letters)*  
 ```js
-firstLetters('ਸਬਦਿ ਮਰੈ. ਸੋ ਮਰਿ ਰਹੈ; ਫਿਰਿ. ਮਰੈ ਨ, ਦੂਜੀ ਵਾਰ ॥', true, true) // => ਸਮ.ਸਮਰ;ਫ.ਮਨ,ਦਵ
+firstLetters('sabad marai. so mar rahai; fir. marai na, doojee vaar |') // => sm.smr;f.mn,dv|
 ```
-**Example** *(ASCII first letters no pair bindi/nukta)*  
+**Example** *(Shahmukhi first letters)*  
 ```js
-firstLetters('ijs no ik®pw krih iqin nwmu rqnu pwieAw ]') // => jnkkqnrp
-firstLetters('iZir&qym sMdUk drIXw AmIk ]') // => gsdA
-```
-**Example** *(ASCII first letters with pair bindi/nukta)*  
-```js
-firstLetters('iZir&qym sMdUk* drIXw AmIk* ]', false) // => Zsda
-```
-**Example** *(ASCII first letters with vishraams)*  
-```js
-firstLetters('sbid mrY. so mir rhY; iPir. mrY n, dUjI vwr ]', true, true) // => sm.smr;P.mn,dv
+firstLetters('سبد مرَے. سو مر رهَے; پھِر. مرَے ن, دُوجی وار ۔۔')
+ // => سم.سمر;پ.من,دو۔
 ```
 ### isGurmukhi(text, [exhaustive]) ⇒ <code>boolean</code>
 Checks if first char in string is part of the Gurmukhi Unicode block.

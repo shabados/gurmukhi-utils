@@ -13,7 +13,6 @@ const {
 
 console.log(toUnicode( 'Koj' ))
 console.log(toAscii('ਖੋਜ'))
-console.log(firstLetters( 'hir hir hir gun gwvhu ]' ))
 console.log(firstLetters( 'ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ' ))
 console.log(toEnglish( 'ਹੁਕਮੀ ਹੁਕਮੁ ਚਲਾਏ ਰਾਹੁ ॥' ))
 console.log(toShahmukhi( 'ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ' ))
