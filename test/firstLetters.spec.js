@@ -1,6 +1,6 @@
 const { expect } = require( 'chai' )
 
-const { firstLetters, toHindi, toEnglish, toShahmukhi } = require( '../index' )
+const { firstLetters, toHindi, toEnglish } = require( '../index' )
 
 describe( 'firstLetters(gurmukhi)', () => {
   const lines = [
@@ -22,19 +22,6 @@ describe( 'firstLetters(hindi)', () => {
     [ 'ਗ਼ੈਰਿ ਹਮਦਿ ਹੱਕ ਨਿਆਇਦ ਬਰ ਜ਼ਬਾਨਮ ਹੀਚ ਗਾਹ', 'ग़हहनबज़हग' ],
     [ 'ਸਬਦਿ ਮਰੈ. ਸੋ ਮਰਿ ਰਹੈ; ਫਿਰਿ. ਮਰੈ ਨ, ਦੂਜੀ ਵਾਰ ॥', 'सम.समर;फ.मन,दव॥' ],
   ].map( ( [ input, output ] ) => [ toHindi( input ), output ] )
-
-  lines.map( ( [ line, expectedFirstLetters ] ) => it( `should generate first letters for '${line}' as '${expectedFirstLetters}'`, () => {
-    expect( firstLetters( line ) ).to.equal( expectedFirstLetters )
-  } ) )
-} )
-
-describe( 'firstLetters(shahmukhi)', () => {
-  const lines = [
-    [ 'ਗੁਰਮੁਖਿ ਲਾਧਾ ਮਨਮੁਖਿ ਗਵਾਇਆ ॥', 'گلمگ۔' ],
-    [ 'ਜਿਨਿ ਹਰਿ ਸੇਵਿਆ ਤਿਨਿ ਸੁਖੁ ਪਾਇਆ ॥', 'جهستسپ۔' ],
-    [ 'ਗ਼ੈਰਿ ਹਮਦਿ ਹੱਕ ਨਿਆਇਦ ਬਰ ਜ਼ਬਾਨਮ ਹੀਚ ਗਾਹ', 'غههنبزهگ' ],
-    [ 'ਸਬਦਿ ਮਰੈ. ਸੋ ਮਰਿ ਰਹੈ; ਫਿਰਿ. ਮਰੈ ਨ, ਦੂਜੀ ਵਾਰ ॥', 'سم.سمر;پ.من,دو۔' ],
-  ].map( ( [ input, output ] ) => [ toShahmukhi( input ), output ] )
 
   lines.map( ( [ line, expectedFirstLetters ] ) => it( `should generate first letters for '${line}' as '${expectedFirstLetters}'`, () => {
     expect( firstLetters( line ) ).to.equal( expectedFirstLetters )

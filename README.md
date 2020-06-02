@@ -74,7 +74,7 @@ Want to play around? [![Try gurmukhi-utils on RunKit](https://badge.runkitcdn.co
 
 ### firstLetters(line) ⇒ <code>String</code>
 Generates the first letters for a unicode Gurmukhi,
-Hindi transliteration, Shahmukhi transliteration, or English transliteration string.
+Hindi transliteration, or English transliteration string.
 Includes any end-word vishraams, and line-end characters.
 
 **Returns**: <code>String</code> - The first letters of each word in the provided Gurmukhi line.  
@@ -94,11 +94,6 @@ firstLetters('गुरमुखि लाधा मनमुखि गवाइ
 **Example** *(English first letters)*  
 ```js
 firstLetters('sabad marai. so mar rahai; fir. marai na, doojee vaar |') // => sm.smr;f.mn,dv|
-```
-**Example** *(Shahmukhi first letters)*  
-```js
-firstLetters('سبد مرَے. سو مر رهَے; پھِر. مرَے ن, دُوجی وار ۔۔')
- // => سم.سمر;پ.من,دو۔
 ```
 ### isGurmukhi(text, [exhaustive]) ⇒ <code>boolean</code>
 Checks if first char in string is part of the Gurmukhi Unicode block.
