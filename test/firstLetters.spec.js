@@ -8,6 +8,7 @@ describe( 'firstLetters(gurmukhi)', () => {
     [ 'ਜਿਨਿ ਹਰਿ ਸੇਵਿਆ ਤਿਨਿ ਸੁਖੁ ਪਾਇਆ ॥', 'ਜਹਸਤਸਪ॥' ],
     [ 'ਗ਼ੈਰਿ ਹਮਦਿ ਹੱਕ ਨਿਆਇਦ ਬਰ ਜ਼ਬਾਨਮ ਹੀਚ ਗਾਹ', 'ਗ਼ਹਹਨਬਜ਼ਹਗ' ],
     [ 'ਸਬਦਿ ਮਰੈ. ਸੋ ਮਰਿ ਰਹੈ; ਫਿਰਿ. ਮਰੈ ਨ, ਦੂਜੀ ਵਾਰ ॥', 'ਸਮ.ਸਮਰ;ਫ.ਮਨ,ਦਵ॥' ],
+    [ 'ਇਕਨਾ. ਹੁਕਮੀ ਬਖਸੀਸ; ਇਕਿ, ਹੁਕਮੀ ਸਦਾ ਭਵਾਈਅਹਿ ॥', 'ੲ.ਹਬ;ੲ,ਹਸਭ॥' ],
   ]
 
   lines.map( ( [ line, expectedFirstLetters ] ) => it( `should generate first letters for '${line}' as '${expectedFirstLetters}'`, () => {
