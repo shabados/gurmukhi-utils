@@ -1,14 +1,16 @@
 const { expect } = require( 'chai' )
 
-const { firstLetters, toHindi, toEnglish } = require( '../index' )
+const { firstLetters, toUnicode, toHindi, toEnglish } = require( '../index' )
 
 describe( 'firstLetters(gurmukhi)', () => {
   const lines = [
+    [ 'ਗੁਰਮੁਖਿ  ਲਾਧਾ ਮਨਮੁਖਿ   ਗਵਾਇਆ ॥', 'ਗਲਮਗ॥' ],
     [ 'ਗੁਰਮੁਖਿ ਲਾਧਾ ਮਨਮੁਖਿ ਗਵਾਇਆ ॥', 'ਗਲਮਗ॥' ],
     [ 'ਜਿਨਿ ਹਰਿ ਸੇਵਿਆ ਤਿਨਿ ਸੁਖੁ ਪਾਇਆ ॥', 'ਜਹਸਤਸਪ॥' ],
     [ 'ਗ਼ੈਰਿ ਹਮਦਿ ਹੱਕ ਨਿਆਇਦ ਬਰ ਜ਼ਬਾਨਮ ਹੀਚ ਗਾਹ', 'ਗ਼ਹਹਨਬਜ਼ਹਗ' ],
     [ 'ਸਬਦਿ ਮਰੈ. ਸੋ ਮਰਿ ਰਹੈ; ਫਿਰਿ. ਮਰੈ ਨ, ਦੂਜੀ ਵਾਰ ॥', 'ਸਮ.ਸਮਰ;ਫ.ਮਨ,ਦਵ॥' ],
     [ 'ਇਕਨਾ. ਹੁਕਮੀ ਬਖਸੀਸ; ਇਕਿ, ਹੁਕਮੀ ਸਦਾ ਭਵਾਈਅਹਿ ॥', 'ੲ.ਹਬ;ੲ,ਹਸਭ॥' ],
+    [ toUnicode( 'ik hr hSqo Ssq Awmdw cwkrS [148[' ), 'ਕਹਹਸ਼ਅਚ।' ],
   ]
 
   lines.map( ( [ line, expectedFirstLetters ] ) => it( `should generate first letters for '${line}' as '${expectedFirstLetters}'`, () => {
