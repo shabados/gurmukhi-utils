@@ -64,6 +64,8 @@ const translationPassages = [
   ],
   [ 'Toda la Maya es Tu Deleite. Nanak, Tu Esclavo, ofrece su ser en sacrificio a Ti. (4-2-9)', 'Toda la Maya es Tu Deleite. Nanak, Tu Esclavo, ofrece su ser en sacrificio a Ti.' ],
   [ 'ese hombre ha recibido la Aprobación de Dios.  (4-40-47)', 'ese hombre ha recibido la Aprobación de Dios.' ],
+  [ 'स्री गुरू जी कहते हैं: जो रात दिन नाम जपते हैं ऐसे गुरों के मुख से वाहु वाहु बाणी प्रापत होती है॥१॥', 'स्री गुरू जी कहते हैं: जो रात दिन नाम जपते हैं ऐसे गुरों के मुख से वाहु वाहु बाणी प्रापत होती है' ],
+  [ 'नानक. मनि तनि चाउ एहु; नित प्रभ कउ लोड़े ॥२१॥१॥ सुधु कीचे', 'नानक. मनि तनि चाउ एहु; नित प्रभ कउ लोड़े' ],
 ]
 
 const passages = [
