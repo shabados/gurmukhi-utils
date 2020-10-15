@@ -16,7 +16,7 @@ jobs:
       - deploy:
           name: Release module on npm
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            if [ "${CIRCLE_BRANCH}" == "main" ]; then
               # Write npm token to .npmrc
               echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
 
