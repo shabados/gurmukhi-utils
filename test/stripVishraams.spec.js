@@ -2,7 +2,6 @@ const { expect } = require( 'chai' )
 
 const { stripVishraams } = require( '../index' )
 
-
 describe( 'stripVishraams(line)', () => {
   const lines = [
     [ 'Anhd sbd vjwey, hir jIau Gir Awey; hir gux gwvhu nwrI ]', 'Anhd sbd vjwey hir jIau Gir Awey hir gux gwvhu nwrI ]' ],

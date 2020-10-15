@@ -73,9 +73,7 @@ Want to play around? [![Try gurmukhi-utils on RunKit](https://badge.runkitcdn.co
 ## API
 
 ### firstLetters(line) ⇒ <code>String</code>
-Generates the first letters for a unicode Gurmukhi,
-Hindi transliteration, or English transliteration string.
-Includes any end-word vishraams, and line-end characters.
+Generates the first letters for a unicode Gurmukhi,Hindi transliteration, or English transliteration string.Includes any end-word vishraams, and line-end characters.
 
 **Returns**: <code>String</code> - The first letters of each word in the provided Gurmukhi line.  
 
@@ -126,10 +124,7 @@ stripAccents('ਜ਼ਫ਼ੈਸ਼ਸਓ') // => ਜਫੈਸਸੳ
 stripAccents('Z^Svb') // => gKsvb
 ```
 ### stripEndings(text) ⇒ <code>String</code>
-Strips line endings from any Gurmukhi or translation string.
-Accepts both Unicode and ASCII input.
-Useful for generating accurate first letters or modifying non-Gurbani for better display.
-*Not* designed for headings or Sirlekhs.
+Strips line endings from any Gurmukhi or translation string.Accepts both Unicode and ASCII input.Useful for generating accurate first letters or modifying non-Gurbani for better display.*Not* designed for headings or Sirlekhs.
 
 **Returns**: <code>String</code> - A ending-less version of the text.  
 
@@ -196,8 +191,7 @@ toAscii('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') 
 toAscii('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => su bYiT iekMqR ]578]
 ```
 ### toEnglish(line) ⇒ <code>String</code>
-Transliterates a line from Unicode Gurmukhi to english.
-Currently supports the `,`, `;`, `.` vishraam characters.
+Transliterates a line from Unicode Gurmukhi to english.Currently supports the `,`, `;`, `.` vishraam characters.
 
 **Returns**: <code>String</code> - The English transliteration of the provided Gurmukhi line.  
 

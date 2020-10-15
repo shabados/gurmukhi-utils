@@ -1,61 +1,77 @@
 {
-  "extends": "airbnb",
+  "extends": "airbnb-base",
+  "root": true,
   "env": {
+    "es6": true,
     "mocha": true
   },
+  "plugins": ["simple-import-sort"],
   "rules": {
-    "array-bracket-spacing": [
+    // Spacing in brackets is consistent and readable
+    "array-bracket-spacing": ["error", "always"],
+    // Spacing in brackets is consistent and readable
+    "computed-property-spacing": ["error", "always"],
+    // Spacing in brackets is consistent and readable
+    "space-in-parens": [
       "error",
-      "always"
-    ],
-    "arrow-parens": [
-      "error",
-      "as-needed",
+      "always",
       {
-        "requireForBlockBody": false
+        "exceptions": ["empty"]
       }
     ],
-    "computed-property-spacing": [
-      "error",
-      "always"
-    ],
-    "func-names": [
-      "warn",
-      "never"
-    ],
-    "import/extensions": "off",
+    // Doesn't really help to check if the module is on the filesystem, and can harm when using Docker etc: https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
     "import/no-unresolved": "off",
-    "import/prefer-default-export": "off",
-    "linebreak-style": "off",
-    "no-await-in-loop": "off",
-    "no-loop-func": "off",
-    "no-restricted-syntax": "off",
-    "no-shadow": "off",
-    "no-unused-vars": [
-      "warn",
+    // Do not require .js/ts extensions, except for .json
+    "import/extensions": [
+      "error",
+      "never",
       {
-        "argsIgnorePattern": "(res|next)"
+        "json": "always"
       }
     ],
+    // Preferable, but the author should know best for the situation
+    "import/prefer-default-export": "off",
+    // Windows users may checkout as CRLF, but check in as LF, which this rule breaks
+    "linebreak-style": "off",
+    // There's no need to have more than 1 empty line, ever
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1
+      }
+    ],
+    // No unused variables except when prepended with _, to indicate that they're not to be used, but require definition to be valid code
+    "no-unused-vars": [
+      "error",
+      {
+        "ignoreRestSiblings": true,
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    // https://eslint.org/docs/rules/no-shadow seems sensible to not have shadow variables, but can get annoying real quick, especially in the case of reducers
+    "no-shadow": "off",
+    // Be consistent about where the object braces go
     "object-curly-newline": [
       "error",
       {
         "consistent": true
       }
     ],
-    "react/jsx-filename-extension": "off",
-    "require-jsdoc": "warn",
-    "semi": [
+    // Object properties either on the same line, or all on separate, consistently
+    "object-property-newline": [
       "error",
-      "never"
+      {
+        "allowAllPropertiesOnSameLine": true
+      }
     ],
-    "semi-style": [
-      "error",
-      "first"
-    ],
-    "space-in-parens": [
-      "error",
-      "always"
-    ]
+    // Semi colons are visual garbage
+    "semi": ["error", "never"],
+    // For the few semi-colons required (e.g. inline array operations), place them at the beginning of the statement
+    "semi-style": ["error", "first"],
+    // This plugin sorts alphabetically by default
+    "simple-import-sort/sort": "error",
+    // Add new line between imports
+    "import/order": "off",
+    "sort-imports": "off"
   }
 }
