@@ -19,6 +19,7 @@ Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https
 
 - [Usage](#usage)
 - [API](#api)
+  * [countSyllables(text) ⇒ number](#countsyllablestext-%E2%87%92-number)
   * [firstLetters(line) ⇒ String](#firstlettersline-%E2%87%92-string)
   * [isGurmukhi(text, [exhaustive]) ⇒ boolean](#isgurmukhitext-exhaustive-%E2%87%92-boolean)
   * [stripAccents(text) ⇒ String](#stripaccentstext-%E2%87%92-string)
@@ -28,6 +29,7 @@ Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https
   * [toEnglish(line) ⇒ String](#toenglishline-%E2%87%92-string)
   * [toHindi(text) ⇒ String](#tohinditext-%E2%87%92-string)
   * [toShahmukhi(text) ⇒ String](#toshahmukhitext-%E2%87%92-string)
+  * [toSyllabicSymbols(text) ⇒ String](#tosyllabicsymbolstext-%E2%87%92-string)
   * [toUnicode(text) ⇒ String](#tounicodetext-%E2%87%92-string)
 - [Contributing](#contributing)
 
@@ -72,6 +74,19 @@ Want to play around? [![Try gurmukhi-utils on RunKit](https://badge.runkitcdn.co
 
 ## API
 
+### countSyllables(text) ⇒ <code>number</code>
+Calculates the number of syllables according to Sanskrit prosody, Pingala, Matra/Meter/Morae
+
+**Returns**: <code>number</code> - An integer adding up all the 1's (laghu/light/short) and 2's (guru/heavy/long).  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| text | <code>String</code> | The string to analyze |
+
+**Example**  
+```js
+countSyllables( 'ਪ੍ਰਭੂ ਪ੍ਰੇਮੀ ਪੜ੍ਹ ਚੜ੍ਹ ਦ੍ਵੈਤ' )// expected output: 14
+```
 ### firstLetters(line) ⇒ <code>String</code>
 Generates the first letters for a unicode Gurmukhi,Hindi transliteration, or English transliteration string.Includes any end-word vishraams, and line-end characters.
 
@@ -234,6 +249,19 @@ Transliterates Unicode Gurmukhi text to the Shahmukhi script.
 ```js
 toShahmukhi('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => هما ساِال لُتف هک پرورش ۔۔
 toShahmukhi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => سُ بَےٹھ ِاکںتر ۔۔۵۷۸۔۔
+```
+### toSyllabicSymbols(text) ⇒ <code>String</code>
+Represents text in syllables according to Sanskrit prosody, Pingala, Matra/Meter/Morae
+
+**Returns**: <code>String</code> - A syllabic representation of 1's (laghu/light/short) and 2's (guru/heavy/long).  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| text | <code>String</code> | The string to convert |
+
+**Example**  
+```js
+toSyllabicSymbols( 'ਪ੍ਰਭੂ ਪ੍ਰੇਮੀ ਪੜ੍ਹ ਚੜ੍ਹ ਦ੍ਵੈਤ' )// expected output: '12 22 11 11 21'
 ```
 ### toUnicode(text) ⇒ <code>String</code>
 Converts ASCII text used in the GurmukhiAkhar font to Unicode.
