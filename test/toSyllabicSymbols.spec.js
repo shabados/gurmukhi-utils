@@ -2,6 +2,11 @@ const { expect } = require( 'chai' )
 
 const { toSyllabicSymbols } = require( '../index' )
 
+// TODO: @bhajneet
+// - Add tests for ascii
+// - Add tests for unicode with two chars variant of single entity chars like ਇ
+// - Add test including ਐ
+
 const tests = [
   [ 'ਕਸਰਤ', '1111' ],
   [ 'ਬਰਕਤ', '1111' ],
