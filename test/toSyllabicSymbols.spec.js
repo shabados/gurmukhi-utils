@@ -46,6 +46,7 @@ const tests = [
   [ 'pRBU pRymI pVH cVH dÍYq', '12 22 11 11 21' ],
   [ 'AYsw', '22' ],
   [ 'ਹਫ਼ਤੇ ਵਿਚ 7 ਦਿਨ', '112 11 11' ],
+  [ 'ieMdR ieMdRwx', '21 221' ],
 ]
 
 describe( 'toSyllabicSymbols()', () => {
