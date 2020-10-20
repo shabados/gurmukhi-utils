@@ -1,5 +1,3 @@
-const { expect } = require( 'chai' )
-
 const { countSyllables } = require( '../index' )
 
 const tests = [
@@ -10,6 +8,6 @@ const tests = [
 
 describe( 'countSyllables()', () => {
   tests.map( ( [ input, output ] ) => it( `should convert '${input}' to '${output}'`, () => {
-    expect( countSyllables( input ) ).to.equal( output )
+    expect( countSyllables( input ) ).toBe( output )
   } ) )
 } )

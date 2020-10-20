@@ -1,5 +1,3 @@
-const { expect } = require( 'chai' )
-
 const { toHindi } = require( '../index' )
 
 // Test words
@@ -27,6 +25,6 @@ const words = [
 
 describe( 'toHindi()', () => {
   words.map( ( [ unicode, hindi ] ) => it( `should convert '${unicode}' to '${hindi}'`, () => {
-    expect( toHindi( unicode ) ).to.equal( hindi )
+    expect( toHindi( unicode ) ).toBe( hindi )
   } ) )
 } )
