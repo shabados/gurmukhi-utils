@@ -8,6 +8,8 @@ const isGurmukhi = require( './lib/isGurmukhi' )
 const stripAccents = require( './lib/stripAccents' )
 const stripVishraams = require( './lib/stripVishraams' )
 const stripEndings = require( './lib/stripEndings' )
+const toSyllabicSymbols = require( './lib/toSyllabicSymbols' )
+const countSyllables = require( './lib/countSyllables' )
 
 module.exports = {
   toAscii,
@@ -20,4 +22,6 @@ module.exports = {
   stripAccents,
   stripVishraams,
   stripEndings,
+  toSyllabicSymbols,
+  countSyllables,
 }

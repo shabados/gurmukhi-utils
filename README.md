@@ -19,6 +19,7 @@ Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https
 
 - [Usage](#usage)
 - [API](#api)
+  * [countSyllables(text) ⇒ number](#countsyllablestext-%E2%87%92-number)
   * [firstLetters(line) ⇒ String](#firstlettersline-%E2%87%92-string)
   * [isGurmukhi(text, [exhaustive]) ⇒ boolean](#isgurmukhitext-exhaustive-%E2%87%92-boolean)
   * [stripAccents(text) ⇒ String](#stripaccentstext-%E2%87%92-string)
@@ -28,6 +29,7 @@ Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https
   * [toEnglish(line) ⇒ String](#toenglishline-%E2%87%92-string)
   * [toHindi(text) ⇒ String](#tohinditext-%E2%87%92-string)
   * [toShahmukhi(text) ⇒ String](#toshahmukhitext-%E2%87%92-string)
+  * [toSyllabicSymbols(text) ⇒ String](#tosyllabicsymbolstext-%E2%87%92-string)
   * [toUnicode(text) ⇒ String](#tounicodetext-%E2%87%92-string)
 - [Contributing](#contributing)
 
@@ -72,6 +74,19 @@ Want to play around? [![Try gurmukhi-utils on RunKit](https://badge.runkitcdn.co
 
 ## API
 
+### countSyllables(text) ⇒ <code>number</code>
+Calculates the number of syllables according to Sanskrit prosody, Pingala, Matra/Meter/Morae
+
+**Returns**: <code>number</code> - An integer adding up all the 1's (laghu/light/short) and 2's (guru/heavy/long).  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| text | <code>String</code> | The string to analyze |
+
+**Example**  
+```js
+countSyllables( 'ਪ੍ਰਭੂ ਪ੍ਰੇਮੀ ਪੜ੍ਹ ਚੜ੍ਹ ਦ੍ਵੈਤ' )// expected output: 14
+```
 ### firstLetters(line) ⇒ <code>String</code>
 Generates the first letters for a unicode Gurmukhi,Hindi transliteration, or English transliteration string.Includes any end-word vishraams, and line-end characters.
 
@@ -105,12 +120,10 @@ Checks if first char in string is part of the Gurmukhi Unicode block.
 
 **Example**  
 ```js
-isGurmukhi('ਗੁਰਮੁਖੀ') // => true
-isGurmukhi('gurmuKI') // => false
+isGurmukhi('ਗੁਰਮੁਖੀ') // => trueisGurmukhi('gurmuKI') // => false
 ```
 ### stripAccents(text) ⇒ <code>String</code>
-Removes accents from ASCII/Unicode Gumrukhi letters with their base letter.
-Useful for generalising search queries.
+Removes accents from ASCII/Unicode Gumrukhi letters with their base letter.Useful for generalising search queries.
 
 **Returns**: <code>String</code> - A simplified version of the provided Gurmukhi string.  
 
@@ -120,8 +133,7 @@ Useful for generalising search queries.
 
 **Example**  
 ```js
-stripAccents('ਜ਼ਫ਼ੈਸ਼ਸਓ') // => ਜਫੈਸਸੳ
-stripAccents('Z^Svb') // => gKsvb
+stripAccents('ਜ਼ਫ਼ੈਸ਼ਸਓ') // => ਜਫੈਸਸੳstripAccents('Z^Svb') // => gKsvb
 ```
 ### stripEndings(text) ⇒ <code>String</code>
 Strips line endings from any Gurmukhi or translation string.Accepts both Unicode and ASCII input.Useful for generating accurate first letters or modifying non-Gurbani for better display.*Not* designed for headings or Sirlekhs.
@@ -187,8 +199,7 @@ Converts Gurmukhi unicode text to ASCII, used GurmukhiAkhar font.
 
 **Example**  
 ```js
-toAscii('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => hmw swieil luqi& hk prvrS ]
-toAscii('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => su bYiT iekMqR ]578]
+toAscii('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => hmw swieil luqi& hk prvrS ]toAscii('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => su bYiT iekMqR ]578]
 ```
 ### toEnglish(line) ⇒ <code>String</code>
 Transliterates a line from Unicode Gurmukhi to english.Currently supports the `,`, `;`, `.` vishraam characters.
@@ -218,8 +229,7 @@ Transliterates Unicode Gurmukhi text to Hindi (Devanagari script).
 
 **Example**  
 ```js
-toHindi('ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥') // => कुल जन मधे मिल्यो सारग पान रे ॥
-toHindi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => सु बैठ इकंत्र ॥५७८॥
+toHindi('ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥') // => कुल जन मधे मिल्यो सारग पान रे ॥toHindi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => सु बैठ इकंत्र ॥५७८॥
 ```
 ### toShahmukhi(text) ⇒ <code>String</code>
 Transliterates Unicode Gurmukhi text to the Shahmukhi script.
@@ -232,8 +242,20 @@ Transliterates Unicode Gurmukhi text to the Shahmukhi script.
 
 **Example**  
 ```js
-toShahmukhi('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => هما ساِال لُتف هک پرورش ۔۔
-toShahmukhi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => سُ بَےٹھ ِاکںتر ۔۔۵۷۸۔۔
+toShahmukhi('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => هما ساِال لُتف هک پرورش ۔۔toShahmukhi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => سُ بَےٹھ ِاکںتر ۔۔۵۷۸۔۔
+```
+### toSyllabicSymbols(text) ⇒ <code>String</code>
+Represents text in syllables according to Sanskrit prosody, Pingala, Matra/Meter/Morae
+
+**Returns**: <code>String</code> - A syllabic representation of 1's (laghu/light/short) and 2's (guru/heavy/long).  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| text | <code>String</code> | The string to convert |
+
+**Example**  
+```js
+toSyllabicSymbols( 'ਪ੍ਰਭੂ ਪ੍ਰੇਮੀ ਪੜ੍ਹ ਚੜ੍ਹ ਦ੍ਵੈਤ' )// expected output: '12 22 11 11 21'
 ```
 ### toUnicode(text) ⇒ <code>String</code>
 Converts ASCII text used in the GurmukhiAkhar font to Unicode.
@@ -246,8 +268,7 @@ Converts ASCII text used in the GurmukhiAkhar font to Unicode.
 
 **Example**  
 ```js
-toUnicode('kul jn mDy imil´o swrg pwn ry ]') // => ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥
-toUnicode('su bYiT iekMqR ]578]') // => ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥
+toUnicode('kul jn mDy imil´o swrg pwn ry ]') // => ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥toUnicode('su bYiT iekMqR ]578]') // => ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥
 ```
 
 ## Contributing

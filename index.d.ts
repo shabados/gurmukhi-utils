@@ -23,3 +23,7 @@ interface StripVishraamsOptions {
 export function stripVishraams(text: string, options?: StripVishraamsOptions): string
 
 export function stripEndings(text: string): string
+
+export function countSyllables(text: string): number
+
+export function toSyllabicSymbols(text: string): string
