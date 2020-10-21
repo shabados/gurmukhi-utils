@@ -3,7 +3,6 @@
   "root": true,
   "env": {
     "es6": true,
-    "mocha": true,
     "jest/globals": true
   },
   "plugins": ["jest", "simple-import-sort"],
