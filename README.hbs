@@ -1,57 +1,49 @@
 <!-- Do not modify README.md, instead modify README.hbs -->
 
-# gurmukhi-utils
+<img src="https://raw.githubusercontent.com/ShabadOS/desktop/dev/resources/icon.png" width="128" alt="Shabad OS">
 
-> General utilities for working with Gurmukhi text data.
+<h1>Gurmukhi Utils</h1>
 
-[![CircleCI](https://img.shields.io/circleci/project/github/ShabadOS/gurmukhi-utils.svg?style=for-the-badge)](https://circleci.com/gh/ShabadOS/gurmukhi-utils)
-[![Coveralls github](https://img.shields.io/coveralls/github/ShabadOS/gurmukhi-utils.svg?style=for-the-badge)](https://coveralls.io/github/ShabadOS/gurmukhi-utils)
-[![npm](https://img.shields.io/npm/v/gurmukhi-utils.svg?style=for-the-badge)](https://www.npmjs.com/package/gurmukhi-utils)
-[![license](https://img.shields.io/github/license/ShabadOS/gurmukhi-utils.svg?style=for-the-badge)](./License)
-[![Try on RunKit](https://img.shields.io/badge/Try%20on%20RunKit-Playground-brightgreen.svg?style=for-the-badge)](https://npm.runkit.com/gurmukhi-utils)
+General utilities for working with Gurmukhi text data. [Try `gurmukhi-utils` in your browser.][runkit-url]
 
+[![NPM Version][npm-image]][npm-url]
+[![NPM Downloads][downloads-image]][downloads-url]
+[![Release][release-image]][release-url]
+[![Next Release][next-image]][next-url]
+[![Test Coverage][coveralls-image]][coveralls-url]
 
-Want to speak with us? <p>[![Slack](https://slack.shabados.com/badge.svg)](https://slack.shabados.com)</p>
+```javascript
+const {
+  toAscii,
+  toUnicode,
+  toEnglish,
+  stripEndings
+} = require( 'gurmukhi-utils' )
 
-## Contents
+const unicodeGurmukhi = 'ਸੋ ਘਰੁ ਰਾਖੁ; ਵਡਾਈ ਤੋਇ ॥੧॥ ਰਹਾਉ ॥'
+const asciiGurmukhi = 'so Gru rwKu; vfweI qoie ]1] rhwau ]'
+
+toAscii( unicodeGurmukhi ) // => so Gru rwKu; vfweI qoie ]1] rhwau ]
+toUnicode( asciiGurmukhi ) // => ਸੋ ਘਰੁ ਰਾਖੁ; ਵਡਾਈ ਤੋਇ ॥੧॥ ਰਹਾਉ ॥
+toEnglish( asciiGurmukhi ) // => so ghar raakh; vaddaaee toie |1| rahaau |
+stripEndings( toEnglish( asciiGurmukhi ) ) // => so ghar raakh; vaddaaee toie
+```
+
+**Table of Contents**
 <!-- toc -->
+
+## Introduction
+
+Gurmukhi Utils is a library for converting, analyzing, and testing gurmukhi strings.
 
 ## Usage
 
-The library can be imported into Node as below:
-```javascript
-const {
-  toUnicode,
-  toAscii,
-  firstLetters,
-  toEnglish,
-  toHindi,
-  toShahmukhi,
-  stripAccents,
-  stripVishraams,
-  stripEndings
-  isGurmukhi,
-} = require( 'gurmukhi-utils' )
+Gurmukhi Utils is available as the [`gurmukhi-utils` package][npm-url] on [npm](https://www.npmjs.com/). Want to play around? [Try it out in your browser with RunKit][runkit-url]!
 
-toUnicode('Koj')    // => ਖੋਜ
-toAscii('ਖੋਜ')      // => Koj
-firstLetters('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ')   // => ਹਹਹਗ
-toEnglish('hukmI hukmu clwey rwhu ]')  // => hukamee hukam chalaae raahu ||
-toHindi('ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥')    // => कुल जन मधे मिल्यो सारग पान रे ॥
-toShahmukhi('ਹਰਿ ਹਰਿ ਹਰਿ ਗੁਨੀ') // => هر هر هر گُنی
-stripAccents('ਜ਼ਫ਼ੈਸ਼ਸ') // => ਜਫੈਸਸ
-stripVishraams('sbid mrY. so mir rhY; iPir.') // => sbid mrY so mir rhY iPir
-stripEndings('ਸੋ ਘਰੁ ਰਾਖੁ; ਵਡਾਈ ਤੋਇ ॥੧॥ ਰਹਾਉ ॥') // => ਸੋ ਘਰੁ ਰਾਖੁ; ਵਡਾਈ ਤੋਇ
-isGurmukhi('ਗੁਰਮੁਖੀ') // => true
-```
-
-Additionally, the package is available for web use via [unpkg CDN](https://unpkg.com/gurmukhi-utils).
+Additionally, the package is available for web use via [unpkg CDN](https://unpkg.com/):
 ```
 <script src="https://unpkg.com/gurmukhi-utils"></script>
 ```
-
-Want to play around? [![Try gurmukhi-utils on RunKit](https://badge.runkitcdn.com/gurmukhi-utils.svg)](https://npm.runkit.com/gurmukhi-utils)
-
 
 ## API
 
@@ -68,32 +60,92 @@ Want to play around? [![Try gurmukhi-utils on RunKit](https://badge.runkitcdn.co
 {{>members~}}
 {{/globals}}
 
+## Community
+
+Get updates on Shabad OS and chat with the project maintainers and community members.
+
+- [![Instagram][instagram-image]][instagram-url] Follow Shabad OS on Instagram
+- [![Twitter][twitter-image]][twitter-url] Follow Shabad OS on Twitter.
+- [![Chat][chat-image]][chat-url] Join the official Slack channel.
+- [![WhatsApp][whatsapp-image]][whatsapp-url] Direct message us on WhatsApp. Or chat with fellow Shabad OS community members in the WhatsApp group chat.
+
 ## Contributing
 
-We're happy to accept suggestions and pull requests!
+There are multiple ways to contribute whether you are a user or developer. For example:
 
-To get started, clone this repo and run `npm install` inside this directory. 
+- [Submit bugs and feature requests][new-issue-url].
+- Review documentation and make pull requests for anything from typos to new content.
+- Give feedback on the onboarding process to make it easier for others to join the project.
 
-This repository follows the **Airbnb's Javascript Style Guide**, with a few minor modifications. Notably, spaces should be included inside parentheses and brackets (weird, right!). An ESLint file is provided,
-and your code will automatically be checked on-commit for style.
-It is recommended to install an ESLint plugin for your editor (VS Code's `ESLint` plugin works out of the box), so you can receive
-linter suggestions as you type.
+If you're interested in contributing to the source code of Gurmukhi Utils, then please see [Contributing Guidelines](./CONTRIBUTING.md).
 
-When writing commit messages, please follow the **[seven rules](https://chris.beams.io/posts/git-commit/#seven-rules)**. 
-Markdown and HTML JSDoc documentation is generated automatically, on commit,
-however if you'd like to preview any changes to documentation, `npm run build-docs` will
-update `README.md` and the files in `docs/`. `README.md` should *not* be edited, instead
-apply modifications to `README.hbs`.
+## People
 
-The general workflow for contributing:
+The original author and current lead maintainer of Gurmukhi Utils is Harjot Singh ([@harjot1singh](https://github.com/harjot1singh)).
 
-- Fork/create a new branch.
-- Write or update existing tests with expected results
-- Implement functions/changes
-- Add JSDoc function documentation and examples.
-- Run tests with `npm test` and ensure they all pass. Testing is done with the `mocha` testing framework.
-- Create a pull request with the changes.
+"Thank you!" to [all the volunteers][contributor-url] who've already contributed to Gurmukhi Utils. Additional thanks to:
 
-*Note to contributors with push access to master:* Any commits or merge commits containing the strings 
-`#Major`, `#Minor`, `#Patch` (case-sensitive) will trigger an automatic npm release with the
-respective semver bump.
+* Preetcharan S ([@NerdSingh](https://www.instagram.com/nerdsingh/)) and Basics of Sikhi for english pronunciation guidelines
+* Dr. Gurpreet S Lehal (Punjabi University, Patiala) for his work in Gurmukhi-Hindi (Devanagri) and Gurmukhi-Shahmukhi (Urdu) transliteration
+
+## Feedback
+
+- Ask a question via [Slack][chat-url] or [WhatsApp][whatsapp-url]
+- [Upvote popular feature requests][upvote-tracker-url] using the thumbs-up/+1 reaction on the first post of a feature request
+- Follow [@shabad_os on Instagram](instagram-url) and [@shabad_os on Twitter](twitter-url) and let us know what you think!
+
+## Related Projects
+
+Projects in the Shabad OS ecosystem of free and open source software which use the `gurmukhi-utils` package include:
+
+- [Database](https://github.com/ShabadOS/database)
+- [Viewer](https://github.com/ShabadOS/viewer)
+- [Presenter](https://github.com/ShabadOS/presenter)
+- [Mobile](https://github.com/ShabadOS/mobile)
+
+## Code of Conduct
+
+Please note that this project is released under the Contributor Covenant. By participating in this project you agree to abide by its terms. Our intention is to signal a safe open-source community by welcoming all people to contribute, and pledging in return to value them as whole human beings and to foster an atmosphere of kindness, cooperation, and understanding.
+
+> We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+
+> We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
+
+> [The Contributor Covenant][contributor-covenant-url]
+
+## License
+
+The Shabad OS Docs repo is under v3 of the [GPL](LICENSE.md). It is similar to the Golden Rule: do unto others as you would have them do unto you. In exchange for benefitting from the work completed in this repo, others must share their derivative work under v3 of the [GPL](LICENSE.md).
+
+> This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+> This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+> You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+
+[runkit-url]: https://npm.runkit.com/gurmukhi-utils
+[npm-image]: https://img.shields.io/npm/v/gurmukhi-utils.svg
+[npm-url]: https://npmjs.org/package/gurmukhi-utils
+[downloads-image]: https://img.shields.io/npm/dm/gurmukhi-utils.svg
+[downloads-url]: https://npmcharts.com/compare/gurmukhi-utils?minimal=true
+[release-image]: https://img.shields.io/circleci/project/github/ShabadOS/gurmukhi-utils/master.svg?label=release
+[release-url]: https://circleci.com/gh/ShabadOS/gurmukhi-utils/tree/master
+[next-image]: https://img.shields.io/circleci/project/github/ShabadOS/gurmukhi-utils/dev.svg?label=next%20release
+[next-url]: https://circleci.com/gh/ShabadOS/gurmukhi-utils/tree/dev
+[coveralls-image]: https://img.shields.io/coveralls/github/ShabadOS/gurmukhi-utils.svg?label=test%20coverage
+[coveralls-url]: https://coveralls.io/github/ShabadOS/gurmukhi-utils
+
+[instagram-image]: https://img.shields.io/badge/Instagram-%40shabad__os-C13584.svg?logo=instagram&logoColor=white
+[instagram-url]: https://www.instagram.com/shabad_os/
+[twitter-image]: https://img.shields.io/badge/Twitter-%40shabad__os-1DA1F2.svg?logo=twitter&logoColor=white
+[twitter-url]: https://www.twitter.com/shabad_os/
+[chat-image]: https://img.shields.io/badge/Chat-Public%20Slack%20Channels-1264a3.svg?logo=slack
+[chat-url]: https://chat.shabados.com
+[whatsapp-image]: https://img.shields.io/badge/WhatsApp-%2B1%20516%20619%206059-128C7E.svg?logo=whatsapp&logoColor=white
+[whatsapp-url]: https://wa.me/15166196059
+
+[new-issue-url]: https://github.com/ShabadOS/gurmukhi-utils/issues/new
+[contributor-url]: https://github.com/shabados/gurmukhi-utils/graphs/contributors
+[upvote-tracker-url]: https://github.com/ShabadOS/gurmukhi-utils/issues?q=is%3Aopen+is%3Aissue+label%3A%22Type%3A+Feature%2FEnhancement%22+sort%3Areactions-%2B1-desc
+[contributor-covenant-url]: https://www.contributor-covenant.org/version/2/0/code_of_conduct/
