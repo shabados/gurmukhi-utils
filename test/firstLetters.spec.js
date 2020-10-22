@@ -1,5 +1,3 @@
-const { expect } = require( 'chai' )
-
 const { firstLetters, toUnicode, toHindi, toEnglish } = require( '../index' )
 
 describe( 'firstLetters(gurmukhi)', () => {
@@ -13,9 +11,12 @@ describe( 'firstLetters(gurmukhi)', () => {
     [ toUnicode( 'ik hr hSqo Ssq Awmdw cwkrS [148[' ), 'ਕਹਹਸ਼ਅਚ।' ],
   ]
 
-  lines.map( ( [ line, expectedFirstLetters ] ) => it( `should generate first letters for '${line}' as '${expectedFirstLetters}'`, () => {
-    expect( firstLetters( line ) ).to.equal( expectedFirstLetters )
-  } ) )
+  lines.map( ( [ line, expectedFirstLetters ] ) => it(
+    `should generate first letters for '${line}' as '${expectedFirstLetters}'`,
+    () => {
+      expect( firstLetters( line ) ).toBe( expectedFirstLetters )
+    },
+  ) )
 } )
 
 describe( 'firstLetters(hindi)', () => {
@@ -26,9 +27,12 @@ describe( 'firstLetters(hindi)', () => {
     [ 'ਸਬਦਿ ਮਰੈ. ਸੋ ਮਰਿ ਰਹੈ; ਫਿਰਿ. ਮਰੈ ਨ, ਦੂਜੀ ਵਾਰ ॥', 'सम.समर;फ.मन,दव॥' ],
   ].map( ( [ input, output ] ) => [ toHindi( input ), output ] )
 
-  lines.map( ( [ line, expectedFirstLetters ] ) => it( `should generate first letters for '${line}' as '${expectedFirstLetters}'`, () => {
-    expect( firstLetters( line ) ).to.equal( expectedFirstLetters )
-  } ) )
+  lines.map( ( [ line, expectedFirstLetters ] ) => it(
+    `should generate first letters for '${line}' as '${expectedFirstLetters}'`,
+    () => {
+      expect( firstLetters( line ) ).toBe( expectedFirstLetters )
+    },
+  ) )
 } )
 
 describe( 'firstLetters(english)', () => {
@@ -39,7 +43,10 @@ describe( 'firstLetters(english)', () => {
     [ 'ਸਬਦਿ ਮਰੈ. ਸੋ ਮਰਿ ਰਹੈ; ਫਿਰਿ. ਮਰੈ ਨ, ਦੂਜੀ ਵਾਰ ॥', 'sm.smr;f.mn,dv|' ],
   ].map( ( [ input, output ] ) => [ toEnglish( input ), output ] )
 
-  lines.map( ( [ line, expectedFirstLetters ] ) => it( `should generate first letters for '${line}' as '${expectedFirstLetters}'`, () => {
-    expect( firstLetters( line ) ).to.equal( expectedFirstLetters )
-  } ) )
+  lines.map( ( [ line, expectedFirstLetters ] ) => it(
+    `should generate first letters for '${line}' as '${expectedFirstLetters}'`,
+    () => {
+      expect( firstLetters( line ) ).toBe( expectedFirstLetters )
+    },
+  ) )
 } )

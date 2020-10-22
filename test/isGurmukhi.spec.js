@@ -1,5 +1,3 @@
-const { expect } = require( 'chai' )
-
 const { isGurmukhi } = require( '../index' )
 
 describe( 'isGurmukhi(line)', () => {
@@ -14,7 +12,7 @@ describe( 'isGurmukhi(line)', () => {
   ]
 
   lines.map( ( [ string, result ] ) => it( `String '${string}' should return ${result}`, () => {
-    expect( isGurmukhi( string ) ).to.equal( result )
+    expect( isGurmukhi( string ) ).toBe( result )
   } ) )
 } )
 
@@ -30,6 +28,6 @@ describe( 'isGurmukhi(line, true)', () => {
   ]
 
   lines.map( ( [ string, result ] ) => it( `String '${string}' should return ${result}`, () => {
-    expect( isGurmukhi( string, true ) ).to.equal( result )
+    expect( isGurmukhi( string, true ) ).toBe( result )
   } ) )
 } )

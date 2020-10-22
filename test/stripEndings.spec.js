@@ -1,5 +1,3 @@
-const { expect } = require( 'chai' )
-
 const { stripEndings, toAscii } = require( '..' )
 
 const gurmukhiPassages = [
@@ -77,7 +75,11 @@ const passages = [
   ...translationPassages,
 ]
 
-describe( 'stripEndings()', () => passages.map( ( [ line, result ] ) => it(
-  `should transform '${line}' to '${result}'`,
-  () => expect( stripEndings( line ) ).to.equal( result ),
-) ) )
+describe( 'stripEndings()', () => {
+  passages.map( ( [ line, result ] ) => it(
+    `should transform '${line}' to '${result}'`,
+    () => {
+      expect( stripEndings( line ) ).toBe( result )
+    },
+  ) )
+} )

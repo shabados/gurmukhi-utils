@@ -1,5 +1,3 @@
-const { expect } = require( 'chai' )
-
 const { toShahmukhi } = require( '../index' )
 
 // Test words
@@ -22,6 +20,6 @@ const words = [
 
 describe( 'toShahmukhi()', () => {
   words.map( ( [ unicode, shahmukhi ] ) => it( `should convert '${unicode}' to '${shahmukhi}'`, () => {
-    expect( toShahmukhi( unicode ) ).to.equal( shahmukhi )
+    expect( toShahmukhi( unicode ) ).toBe( shahmukhi )
   } ) )
 } )

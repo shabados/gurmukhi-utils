@@ -1,5 +1,3 @@
-const { expect } = require( 'chai' )
-
 const { stripAccents } = require( '../index' )
 
 // Test words
@@ -10,6 +8,6 @@ const words = [
 
 describe( 'stripAccents()', () => {
   words.map( ( [ complex, simple ] ) => it( `should transform '${complex}' to '${simple}'`, () => {
-    expect( stripAccents( complex ) ).to.equal( simple )
+    expect( stripAccents( complex ) ).toBe( simple )
   } ) )
 } )
