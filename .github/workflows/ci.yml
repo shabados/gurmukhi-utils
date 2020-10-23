@@ -66,7 +66,9 @@ jobs:
         run: npm ci
 
       - name: Run Tests
-        run: npm run test
+        run: npm run test:coverage
 
-      - name: Publish Coverage Report
-        run: npm run publish-coverage
+      - name: Coveralls
+        uses: coverallsapp/github-action@v1.1.2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
