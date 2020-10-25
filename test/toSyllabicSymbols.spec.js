@@ -1,5 +1,3 @@
-const { expect } = require( 'chai' )
-
 const { toSyllabicSymbols } = require( '../index' )
 
 const tests = [
@@ -51,6 +49,6 @@ const tests = [
 
 describe( 'toSyllabicSymbols()', () => {
   tests.map( ( [ input, output ] ) => it( `should convert '${input}' to '${output}'`, () => {
-    expect( toSyllabicSymbols( input ) ).to.equal( output )
+    expect( toSyllabicSymbols( input ) ).toBe( output )
   } ) )
 } )

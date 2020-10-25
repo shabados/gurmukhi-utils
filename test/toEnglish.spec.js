@@ -1,5 +1,3 @@
-const { expect } = require( 'chai' )
-
 const { toEnglish } = require( '../index' )
 
 // Test lines
@@ -30,6 +28,6 @@ const transliterations = [
 
 describe( 'toEnglish()', () => {
   transliterations.map( ( [ gurmukhi, transliteration ] ) => it( `should transliterate '${gurmukhi}' to '${transliteration}'`, () => {
-    expect( toEnglish( gurmukhi ) ).to.equal( transliteration )
+    expect( toEnglish( gurmukhi ) ).toBe( transliteration )
   } ) )
 } )

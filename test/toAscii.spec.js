@@ -1,5 +1,3 @@
-const { expect } = require( 'chai' )
-
 const { toAscii } = require( '../index' )
 
 // Test words
@@ -33,6 +31,6 @@ const words = [
 
 describe( 'toAscii()', () => {
   words.map( ( [ unicode, ascii ] ) => it( `should convert '${unicode}' to '${ascii}'`, () => {
-    expect( toAscii( unicode ) ).to.equal( ascii )
+    expect( toAscii( unicode ) ).toBe( ascii )
   } ) )
 } )

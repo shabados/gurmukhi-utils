@@ -2,6 +2,7 @@
   "recommendations": [
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
-    "github.vscode-pull-request-github"
+    "github.vscode-pull-request-github",
+    "kavod-io.vscode-jest-test-adapter"
   ]
 }
