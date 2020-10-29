@@ -1,8 +1,8 @@
-# Contributing to Gurmukhi Utils
+# Contributing to Presenter
 
 Thank you for your interest in participating!
 
-There are many ways for people to contribute, beyond writing code or programming, by: logging bugs, reporting issues, and creating suggestions. To do so, please [create a ticket](https://github.com/ShabadOS/gurmukhi-utils/issues/new) in our issue tracker. (See our readme for other ways to [Contribute](README.md#Contributing) or give [Feedback](README.md#Feedback).
+There are many ways to contribute, beyond writing code or programming, by: logging bugs, reporting issues, and creating suggestions. To do so, please [create a ticket](https://github.com/ShabadOS/gurmukhi-utils/issues/new) in our issue tracker. (See other ways to [Contribute](README.md#Contributing) or give [Feedback](README.md#Feedback).
 
 This document is for developers or programmers contributing to the source code of Gurmukhi Utils.
 
@@ -16,7 +16,7 @@ This document is for developers or programmers contributing to the source code o
 - [Workflow](#workflow)
   - [Coding Guidelines](#coding-guidelines)
   - [Scope](#scope)
-- [Thank you!](#thank-you)
+- [Thank you](#thank-you)
 
 ## Getting Started
 
@@ -34,7 +34,7 @@ You’ll need the following:
 Get the source code of `gurmukhi-utils` repo:
 
 ```
-gh repo fork shabados/gurmukhi-utils --clone=true --remote=true
+gh repo fork shabados/gurmukhi-utils --clone=true
 ```
 
 **PROTIP**: Use the [`gh` cli tool from GitHub](https://cli.github.com/) to fork the repo to your GitHub account (if not already), clone it to your local machine, and set the appropriate remotes for origin and upstream with the above command.
@@ -67,16 +67,9 @@ _Note to contributors with push access to main:_ Any commits or merge commits co
 
 ## Workflow
 
-The workflow of development (or Git Flow) is to [choose/create an issue](https://github.com/ShabadOS/gurmukhi-utils/issues) to work on, [create a feature branch](https://github.com/ShabadOS/.github/wiki/How-to-Contribute#branches), and [submit a pull request](https://github.com/ShabadOS/.github/wiki/How-to-Contribute#pull-requests).
+The workflow of development (or Git Flow) is to [choose/create an issue](https://github.com/ShabadOS/presenter/issues) to work on, [create a feature branch](https://github.com/ShabadOS/.github/wiki/How-to-Contribute#branches), and [submit a pull request](https://github.com/ShabadOS/.github/wiki/How-to-Contribute#pull-requests).
 
 **PROTIP**: Read more about our workflow (issue tracking, branching, and pull requests) in the [How To Contribute wiki article](https://github.com/ShabadOS/.github/wiki/How-to-Contribute).
-
-**Recommended Flow:**
-
-- Write or update existing tests with expected results
-- Implement functions/changes
-- Add JSDoc function documentation and examples.
-- Run tests with `npm test` and ensure they all pass.
 
 ### Coding Guidelines
 
@@ -84,13 +77,16 @@ Please see the [wiki](https://github.com/ShabadOS/.github/wiki/How-to-Contribute
 
 ### Scope
 
+To be used in [commit messages](https://github.com/ShabadOS/.github/wiki/How-to-Contribute#45-commit-messages).
+
+Usage:
+
+```shell
+<type>(<scope>): <subject>
+```
+
 The scope should be the name of the function affected (e.g. `toEnglish`, `isGurmukhi`, `stripVishraams`).
 
-A few exceptions to the above "use function name" rule:
-
-- `style`, `test`, and `refactor` changes to multiple functions do not require a scope name (e.g. `style: add missing semicolons`).
-- `docs` changes do not require a scope name (e.g. `docs: fix typo in readme.hbs`).
-
-## Thank you!
+## Thank you
 
 Your contributions to open source, large or small, make great projects like this possible. Thank you for taking the time to participate in this project.
