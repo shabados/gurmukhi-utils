@@ -123,6 +123,10 @@ const translationPassages = [
     'He said to the warriors fighting near him,',
   ],
   [
+    'Through 8.4 million incarnations you have wandered',
+    'Through 8.4 million incarnations you have wandered',
+  ],
+  [
     'Noche y día oh, dice Nanak, quien medite y vibre en el Nombre del Señor, ve cómo todos sus esfuerzos dan fruto. (20)',
     'Noche y día oh, dice Nanak, quien medite y vibre en el Nombre del Señor, ve cómo todos sus esfuerzos dan fruto.',
   ],
