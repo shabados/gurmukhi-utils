@@ -1,6 +1,6 @@
 <!-- Do not modify README.md, instead modify README.hbs -->
 
-<img src="https://raw.githubusercontent.com/ShabadOS/desktop/dev/resources/icon.png" width="128" alt="Shabad OS">
+<img src="https://raw.githubusercontent.com/shabados/presenter/dev/resources/icon.png" width="128" alt="Shabad OS">
 
 <h1>Gurmukhi Utils</h1>
 
@@ -84,13 +84,10 @@ Calculates the number of syllables according to Sanskrit prosody, Pingala, Matra
 
 **Example**  
 ```js
-countSyllables( 'ਪ੍ਰਭੂ ਪ੍ਰੇਮੀ ਪੜ੍ਹ ਚੜ੍ਹ ਦ੍ਵੈਤ' )
-// expected output: 14
+countSyllables( 'ਪ੍ਰਭੂ ਪ੍ਰੇਮੀ ਪੜ੍ਹ ਚੜ੍ਹ ਦ੍ਵੈਤ' )// expected output: 14
 ```
 ### firstLetters(line) ⇒ <code>String</code>
-Generates the first letters for a unicode Gurmukhi,
-Hindi transliteration, or English transliteration string.
-Includes any end-word vishraams, and line-end characters.
+Generates the first letters for a unicode Gurmukhi,Hindi transliteration, or English transliteration string.Includes any end-word vishraams, and line-end characters.
 
 **Returns**: <code>String</code> - The first letters of each word in the provided Gurmukhi line.  
 
@@ -122,12 +119,10 @@ Checks if first char in string is part of the Gurmukhi Unicode block.
 
 **Example**  
 ```js
-isGurmukhi('ਗੁਰਮੁਖੀ') // => true
-isGurmukhi('gurmuKI') // => false
+isGurmukhi('ਗੁਰਮੁਖੀ') // => trueisGurmukhi('gurmuKI') // => false
 ```
 ### stripAccents(text) ⇒ <code>String</code>
-Removes accents from ASCII/Unicode Gumrukhi letters with their base letter.
-Useful for generalising search queries.
+Removes accents from ASCII/Unicode Gumrukhi letters with their base letter.Useful for generalising search queries.
 
 **Returns**: <code>String</code> - A simplified version of the provided Gurmukhi string.  
 
@@ -137,14 +132,10 @@ Useful for generalising search queries.
 
 **Example**  
 ```js
-stripAccents('ਜ਼ਫ਼ੈਸ਼ਸਓ') // => ਜਫੈਸਸੳ
-stripAccents('Z^Svb') // => gKsvb
+stripAccents('ਜ਼ਫ਼ੈਸ਼ਸਓ') // => ਜਫੈਸਸੳstripAccents('Z^Svb') // => gKsvb
 ```
 ### stripEndings(text) ⇒ <code>String</code>
-Strips line endings from any Gurmukhi or translation string.
-Accepts both Unicode and ASCII input.
-Useful for generating accurate first letters or modifying non-Gurbani for better display.
-*Not* designed for headings or Sirlekhs.
+Strips line endings from any Gurmukhi or translation string.Accepts both Unicode and ASCII input.Useful for generating accurate first letters or modifying non-Gurbani for better display.*Not* designed for headings or Sirlekhs.
 
 **Returns**: <code>String</code> - A ending-less version of the text.  
 
@@ -207,12 +198,10 @@ Converts Gurmukhi unicode text to ASCII, used GurmukhiAkhar font.
 
 **Example**  
 ```js
-toAscii('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => hmw swieil luqi& hk prvrS ]
-toAscii('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => su bYiT iekMqR ]578]
+toAscii('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => hmw swieil luqi& hk prvrS ]toAscii('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => su bYiT iekMqR ]578]
 ```
 ### toEnglish(line) ⇒ <code>String</code>
-Transliterates a line from Unicode Gurmukhi to english.
-Currently supports the `,`, `;`, `.` vishraam characters.
+Transliterates a line from Unicode Gurmukhi to english.Currently supports the `,`, `;`, `.` vishraam characters.
 
 **Returns**: <code>String</code> - The English transliteration of the provided Gurmukhi line.  
 
@@ -239,8 +228,7 @@ Transliterates Unicode Gurmukhi text to Hindi (Devanagari script).
 
 **Example**  
 ```js
-toHindi('ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥') // => कुल जन मधे मिल्यो सारग पान रे ॥
-toHindi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => सु बैठ इकंत्र ॥५७८॥
+toHindi('ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥') // => कुल जन मधे मिल्यो सारग पान रे ॥toHindi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => सु बैठ इकंत्र ॥५७८॥
 ```
 ### toShahmukhi(text) ⇒ <code>String</code>
 Transliterates Unicode Gurmukhi text to the Shahmukhi script.
@@ -253,8 +241,7 @@ Transliterates Unicode Gurmukhi text to the Shahmukhi script.
 
 **Example**  
 ```js
-toShahmukhi('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => هما ساِال لُتف هک پرورش ۔۔
-toShahmukhi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => سُ بَےٹھ ِاکںتر ۔۔۵۷۸۔۔
+toShahmukhi('ਹਮਾ ਸਾਇਲਿ ਲੁਤਫ਼ਿ ਹਕ ਪਰਵਰਸ਼ ॥') // => هما ساِال لُتف هک پرورش ۔۔toShahmukhi('ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥') // => سُ بَےٹھ ِاکںتر ۔۔۵۷۸۔۔
 ```
 ### toSyllabicSymbols(text) ⇒ <code>String</code>
 Represents text in syllables according to Sanskrit prosody, Pingala, Matra/Meter/Morae
@@ -267,8 +254,7 @@ Represents text in syllables according to Sanskrit prosody, Pingala, Matra/Meter
 
 **Example**  
 ```js
-toSyllabicSymbols( 'ਪ੍ਰਭੂ ਪ੍ਰੇਮੀ ਪੜ੍ਹ ਚੜ੍ਹ ਦ੍ਵੈਤ' )
-// expected output: '12 22 11 11 21'
+toSyllabicSymbols( 'ਪ੍ਰਭੂ ਪ੍ਰੇਮੀ ਪੜ੍ਹ ਚੜ੍ਹ ਦ੍ਵੈਤ' )// expected output: '12 22 11 11 21'
 ```
 ### toUnicode(text) ⇒ <code>String</code>
 Converts ASCII text used in the GurmukhiAkhar font to Unicode.
@@ -281,8 +267,7 @@ Converts ASCII text used in the GurmukhiAkhar font to Unicode.
 
 **Example**  
 ```js
-toUnicode('kul jn mDy imil´o swrg pwn ry ]') // => ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥
-toUnicode('su bYiT iekMqR ]578]') // => ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥
+toUnicode('kul jn mDy imil´o swrg pwn ry ]') // => ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵੋਿ ਸਾਰਗ ਪਾਨ ਰੇ ॥toUnicode('su bYiT iekMqR ]578]') // => ਸੁ ਬੈਠਿ ਇਕੰਤ੍ਰ ॥੫੭੮॥
 ```
 
 ## Community
@@ -292,7 +277,6 @@ Get updates on Shabad OS and chat with the project maintainers and community mem
 - [![Instagram][instagram-image]][instagram-url] Follow Shabad OS on Instagram
 - [![Twitter][twitter-image]][twitter-url] Follow Shabad OS on Twitter.
 - [![Chat][chat-image]][chat-url] Join the official Slack channel.
-- [![WhatsApp][whatsapp-image]][whatsapp-url] Direct message us on WhatsApp. Or chat with fellow Shabad OS community members in the WhatsApp group chat.
 
 ## Contributing
 
@@ -315,7 +299,7 @@ The original author and current lead maintainer of Gurmukhi Utils is Harjot Sing
 
 ## Feedback
 
-- Ask a question via [Slack][chat-url] or [WhatsApp][whatsapp-url]
+- Ask a question via [Slack][chat-url]
 - [Upvote popular feature requests][upvote-tracker-url] using the thumbs-up/+1 reaction on the first post of a feature request
 - Follow [@shabad_os on Instagram](instagram-url) and [@shabad_os on Twitter](twitter-url) and let us know what you think!
 
@@ -323,10 +307,10 @@ The original author and current lead maintainer of Gurmukhi Utils is Harjot Sing
 
 Projects in the Shabad OS ecosystem of free and open source software which use the `gurmukhi-utils` package include:
 
-- [Database](https://github.com/ShabadOS/database)
-- [Viewer](https://github.com/ShabadOS/viewer)
-- [Presenter](https://github.com/ShabadOS/presenter)
-- [Mobile](https://github.com/ShabadOS/mobile)
+- [Database](https://github.com/shabados/database)
+- [Viewer](https://github.com/shabados/viewer)
+- [Presenter](https://github.com/shabados/presenter)
+- [Mobile](https://github.com/shabados/mobile)
 
 ## Code of Conduct
 
@@ -354,12 +338,12 @@ The Shabad OS Docs repo is under v3 of the [GPL](LICENSE.md). It is similar to t
 [npm-url]: https://npmjs.org/package/gurmukhi-utils
 [downloads-image]: https://img.shields.io/npm/dm/gurmukhi-utils.svg
 [downloads-url]: https://npmcharts.com/compare/gurmukhi-utils?minimal=true
-[release-image]: https://img.shields.io/circleci/project/github/ShabadOS/gurmukhi-utils/main.svg?label=release
-[release-url]: https://circleci.com/gh/ShabadOS/gurmukhi-utils/tree/main
-[next-image]: https://img.shields.io/circleci/project/github/ShabadOS/gurmukhi-utils/dev.svg?label=next%20release
-[next-url]: https://circleci.com/gh/ShabadOS/gurmukhi-utils/tree/dev
-[coveralls-image]: https://img.shields.io/coveralls/github/ShabadOS/gurmukhi-utils.svg?label=test%20coverage
-[coveralls-url]: https://coveralls.io/github/ShabadOS/gurmukhi-utils
+[release-image]: https://img.shields.io/circleci/project/github/shabados/gurmukhi-utils/main.svg?label=release
+[release-url]: https://circleci.com/gh/shabados/gurmukhi-utils/tree/main
+[next-image]: https://img.shields.io/circleci/project/github/shabados/gurmukhi-utils/dev.svg?label=next%20release
+[next-url]: https://circleci.com/gh/shabados/gurmukhi-utils/tree/dev
+[coveralls-image]: https://img.shields.io/coveralls/github/shabados/gurmukhi-utils.svg?label=test%20coverage
+[coveralls-url]: https://coveralls.io/github/shabados/gurmukhi-utils
 
 [instagram-image]: https://img.shields.io/badge/Instagram-%40shabad__os-C13584.svg?logo=instagram&logoColor=white
 [instagram-url]: https://www.instagram.com/shabad_os/
@@ -367,10 +351,8 @@ The Shabad OS Docs repo is under v3 of the [GPL](LICENSE.md). It is similar to t
 [twitter-url]: https://www.twitter.com/shabad_os/
 [chat-image]: https://img.shields.io/badge/Chat-Public%20Slack%20Channels-1264a3.svg?logo=slack
 [chat-url]: https://chat.shabados.com
-[whatsapp-image]: https://img.shields.io/badge/WhatsApp-%2B1%20516%20619%206059-128C7E.svg?logo=whatsapp&logoColor=white
-[whatsapp-url]: https://wa.me/15166196059
 
-[new-issue-url]: https://github.com/ShabadOS/gurmukhi-utils/issues/new
+[new-issue-url]: https://github.com/shabados/gurmukhi-utils/issues/new
 [contributor-url]: https://github.com/shabados/gurmukhi-utils/graphs/contributors
-[upvote-tracker-url]: https://github.com/ShabadOS/gurmukhi-utils/issues?q=is%3Aopen+is%3Aissue+label%3A%22Type%3A+Feature%2FEnhancement%22+sort%3Areactions-%2B1-desc
+[upvote-tracker-url]: https://github.com/shabados/gurmukhi-utils/issues?q=is%3Aopen+is%3Aissue+label%3A%22Type%3A+Feature%2FEnhancement%22+sort%3Areactions-%2B1-desc
 [contributor-covenant-url]: https://www.contributor-covenant.org/version/2/0/code_of_conduct/
