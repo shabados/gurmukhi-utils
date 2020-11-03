@@ -24,6 +24,12 @@ const transliterations = [
   [ 'ਸਹਜ; ਸਸਹਜ ਅਨਹਦ ਰਹਤ ਕਹਤ ਪਹਰ, ਸਹਸ ਮਹਲ ਟਹਲ ਕਹਨਨ ਕਹਨ', 'sehaj; sasahaj anahad rehat kehat pehar, sehas mehal ttehal kahanan kehan' ],
   [ 'ਸਭ ਭਇਓ ਪਰਾਇਓ', 'sabh bheo paraaeo' ],
   [ 'ਆਸਾ ਮਹਲਾ ੫ ਪੰਚਪਦੇ₃ ॥', 'aasaa mahalaa 5 panchapade₃ |' ],
+  [ 'ਹਰਿ', 'har' ],
+  [ 'ਸਚੁ', 'sach' ],
+  [ 'ਰਾਹੁ', 'raahu' ],
+  [ 'ਭਾਉ', 'bhaau' ],
+  [ 'ਸਤਿਗੁਰੁ ਸਤਿਗੁਰੁ ਸਚੁ; ਸਚੁ ਹਰਿ ਹਰਿ ਹਿੰਙੁ', 'satigur satigur sach; sach har har hing' ],
+  [ 'ਸੁ ਉ ਜੁ', 'su u ju' ],
 ]
 
 describe( 'toEnglish()', () => {
