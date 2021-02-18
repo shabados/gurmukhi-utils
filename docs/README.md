@@ -35,6 +35,7 @@ stripEndings( toEnglish( asciiGurmukhi ) ) // => so ghar raakh; vaddaaee toie
 
 - [Introduction](#introduction)
 - [Usage](#usage)
+- [3rd Party Ports](#3rd-party-ports)
 - [API](#api)
   * [countSyllables(text) ⇒ number](#countsyllablestext-%E2%87%92-number)
   * [firstLetters(line) ⇒ String](#firstlettersline-%E2%87%92-string)
@@ -70,6 +71,10 @@ Additionally, the package is available for web use via [unpkg CDN](https://unpkg
 ```
 <script src="https://unpkg.com/gurmukhi-utils"></script>
 ```
+
+## 3rd Party Ports
+
+- [onkarjit/GurmukhiUtils](https://github.com/onkarjit/GurmukhiUtils) is a rewrite of Shabad OS's gurmukhi-utils to [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)) for .NET applications
 
 ## API
 
