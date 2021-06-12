@@ -1,9 +1,6 @@
 name: Continuous Deployment
 
-on:
-  push:
-    branches:
-      - main
+on: workflow_dispatch
 
 jobs:
   build-publish:
@@ -11,16 +8,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Setup ShabadOS Bot
+        uses: shabados/actions/setup-git-identity@release/v1
+        with:
+          user: Shabad OS Bot
+          email: team@shabados.com
+
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
-      - name: Use Node.js 12.x
+      - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 14.x
           registry-url: "https://registry.npmjs.org"
+
+      - name: Bump version
+        uses: shabados/actions/bump-version@release/v1
 
       - name: Cache Node.js modules
         uses: actions/cache@v1
@@ -51,3 +57,9 @@ jobs:
           npm run release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_BOT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+
+      - name: Release GH release 
+        uses: shabados/actions/publish-github@release/v1
+        with:
+          github_token: ${{ secrets.GH_BOT_TOKEN }}
