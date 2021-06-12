@@ -11,7 +11,7 @@ patch_re=\#Patch
 
 echo ${log_messages}
 
-args="-n --npm.access=public --github.release --no-git.requireCleanWorkingDir --npm.skipChecks"
+args="--ci --github.release --no-git.requireCleanWorkingDir --npm.skipChecks"
 
 if [[ ${log_messages} =~ ${major_re}  ]]; then
     echo "Major Release"
