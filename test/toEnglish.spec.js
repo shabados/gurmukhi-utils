@@ -30,6 +30,7 @@ const transliterations = [
   [ 'ਭਾਉ', 'bhaau' ],
   [ 'ਸਤਿਗੁਰੁ ਸਤਿਗੁਰੁ ਸਚੁ; ਸਚੁ ਹਰਿ ਹਰਿ ਹਿੰਙੁ', 'satigur satigur sach; sach har har hing' ],
   [ 'ਸੁ ਉ ਜੁ', 'su u ju' ],
+  [ 'ਆਪੀਨੑੈ', 'aapeenai' ],
 ]
 
 describe( 'toEnglish()', () => {
