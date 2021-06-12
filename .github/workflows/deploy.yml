@@ -25,9 +25,6 @@ jobs:
           node-version: 14.x
           registry-url: "https://registry.npmjs.org"
 
-      - name: Bump version
-        uses: shabados/actions/bump-version@release/next
-
       - name: Cache Node.js modules
         uses: actions/cache@v1
         with:
@@ -58,8 +55,3 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_BOT_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-
-      - name: Release GH release 
-        uses: shabados/actions/publish-github@release/next
-        with:
-          github_token: ${{ secrets.GH_BOT_TOKEN }}
