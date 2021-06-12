@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Setup ShabadOS Bot
-        uses: shabados/actions/setup-git-identity
+        uses: shabados/actions/setup-git-identity@release/next
         with:
           user: Shabad OS Bot
           email: team@shabados.com
@@ -26,7 +26,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Bump version
-        uses: shabados/actions/bump-version
+        uses: shabados/actions/bump-version@release/next
 
       - name: Cache Node.js modules
         uses: actions/cache@v1
@@ -60,6 +60,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
 
       - name: Release GH release 
-        uses: shabados/actions/publish-github
+        uses: shabados/actions/publish-github@release/next
         with:
           github_token: ${{ secrets.GH_BOT_TOKEN }}
