@@ -6,6 +6,8 @@ const words = [
   [ 'ihr', 'ਹਿਰ' ],
   [ 'imil´o', 'ਮਿਲੵਿੋ' ],
   [ 'iBÎo', 'ਭ੍ਯਿੋ' ],
+  [ 'quohI', 'ਤੋੁਹੀ' ],
+  [ 'qouhI', 'ਤੋੁਹੀ' ],
   [ 'kul jn mDy imil´o swrg pwn ry ]', 'ਕੁਲ ਜਨ ਮਧੇ ਮਿਲੵਿੋ ਸਾਰਗ ਪਾਨ ਰੇ ॥' ],
   [ 'qU pRB dwqw dwin miq pUrw hm Qwry ByKwrI jIau ]', 'ਤੂ ਪ੍ਰਭ ਦਾਤਾ ਦਾਨਿ ਮਤਿ ਪੂਰਾ ਹਮ ਥਾਰੇ ਭੇਖਾਰੀ ਜੀਉ ॥' ],
   [ 'so bRhmu AjonI hY BI honI Gt BIqir dyKu murwrI jIau ]2]', 'ਸੋ ਬ੍ਰਹਮੁ ਅਜੋਨੀ ਹੈ ਭੀ ਹੋਨੀ ਘਟ ਭੀਤਰਿ ਦੇਖੁ ਮੁਰਾਰੀ ਜੀਉ ॥੨॥' ],
