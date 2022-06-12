@@ -6,7 +6,7 @@ export function toEnglish(text: string): string
 
 export function toHindi(text: string): string
 
-export function toShamukhi(text: string): string
+export function toShahmukhi(text: string): string
 
 export function firstLetters(text: string): string
 
