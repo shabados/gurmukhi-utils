@@ -1,10 +1,10 @@
 # Gurmukhi Utils
 
-Utilities library for converting, analyzing, and testing Gurmukhi strings.
+Utility libraries for converting, analyzing, and testing Gurmukhi strings.
 
 ## WIP
 
-These libraries are a work in progress! Note that the API can change unexpectedly when upgrading. Libraries won't use [SemVer](https://semver.org/) properly until version 1.0.0. Please do not use for critical projects yet.
+These libraries are a work in progress! Note that the API can change unexpectedly when upgrading. Libraries won't use [SemVer](https://semver.org/) properly until version 1.0.0 (or in the case of the JavaScript library until version 4.0.0). Please do not use for critical projects yet.
 
 **Progress**
 
@@ -13,6 +13,18 @@ These libraries are a work in progress! Note that the API can change unexpectedl
 | unicode to ascii  | :white_check_mark: |            | :white_check_mark: |         |      |
 | ascii to unicode  | :white_check_mark: |            | :white_check_mark: |         |      |
 | normalize unicode | :white_check_mark: |            | :white_check_mark: |         |      |
+
+## Install
+
+**Python ([PyPI](https://pypi.org/project/gurmukhiutils/))**
+
+```shell
+pip3 install gurmukhiutils
+```
+
+```shell
+poetry add gurmukhiutils
+```
 
 ## Contribute
 
@@ -37,7 +49,11 @@ Our intention is to signal a safe open-source community. Please help us foster a
 If you have a concern that doesn't warrant opening a GitHub issue, please reach out to us:
 
 Harjot Singh, Organization Lead: [@Harjot1Singh](https://github.com/Harjot1Singh)
+
 Bhajneet S.K., Python/JavaScript Maintainer: [@bhajneet](https://github.com/bhajneet/)
+
 Dilraj Singh, Ruby Maintainer: [@dsomel21](https://github.com/dsomel21)
+
 Onkarjit Singh, C# / C Sharp Maintainer: [@onkarjit](https://github.com/onkarjit)
+
 Akshdeep Singh, Dart Maintainer: [@akshdeep-singh](https://github.com/akshdeep-singh)
