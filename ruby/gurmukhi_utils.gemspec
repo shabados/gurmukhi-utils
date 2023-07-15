@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'A utility gem for converting, analyzing, and testing Gurmukhi strings.'
   spec.description   = 'Library for working with Gurmukhi text, providing various operations like unicode conversion, ascii conversion, and more.'
-  spec.homepage      = 'https://github.com/ShabadOS/gurmukhi-utils/tree/main/ruby'
+  spec.homepage      = 'https://github.com/shabados/gurmukhi-utils'
   spec.license       = 'MIT'
 
   spec.required_ruby_version = '>= 2.5.0'
