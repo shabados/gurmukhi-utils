@@ -1,6 +1,6 @@
 # Gurmukhi Utils (Ruby)
 
-GurmukhiUtils is a utility gem for converting, analyzing, and testing Gurmukhi strings. The library provides various operations like Unicode conversion, ASCII conversion, and more.
+Utilities library for converting, analyzing, and testing Gurmukhi strings.
 
 ## Prerequisites
 
