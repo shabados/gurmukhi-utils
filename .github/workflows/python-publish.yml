@@ -1,0 +1,33 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+    branches:
+      - main
+
+env:
+  POETRY_PYPI_TOKEN_PYPI: ${{ secrets.POETRY_PYPI_TOKEN_PYPI }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10.x'
+
+      - run: curl -sSL https://install.python-poetry.org | python3 -
+
+      - run: poetry install
+
+      - run: poetry build
+
+      - run: poetry publish
+
+      - run: echo 'VERSION='$(poetry version --short) >> $GITHUB_ENV
+
+      - run: gh release create "v$VERSION" ./dist/* --title "v$VERSION" --notes "Published on [PyPI](https://pypi.org/project/gurmukhiutils/)."

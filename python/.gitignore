@@ -1,0 +1,15 @@
+# Byte-compiled / optimized / DLL files
+__pycache__
+*.pyc
+
+# pytest
+.pytest_cache
+
+# macOS
+*.DS_Store
+
+# VS Code
+.vscode
+
+# Distribution / Packaging
+dist/

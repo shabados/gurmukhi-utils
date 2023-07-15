@@ -1,0 +1,137 @@
+name: Increment Version
+
+on:
+  workflow_dispatch:
+    inputs:
+      next-version:
+        description: "override with custom version number"
+        required: false
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - run: pipx install poetry
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10.x'
+          cache: 'poetry'
+
+      - run: poetry install
+
+      - name: Run bash script
+        shell: bash
+        run: |
+          # Gather new git history from after the last release
+          git log --format="%s" > log.txt
+          touch subjects.txt
+          touch types.txt
+          while IFS= read -r LINE; do
+            # Read line until colon symbol ( : )
+            SUBJECT_TYPE=$(echo $LINE | awk -F: '{print $1}')
+
+            # Stop iterating git log when reaching latest release
+            if [[ $SUBJECT_TYPE == 'release' ]]; then
+              break
+            fi
+
+            # Else continue saving subjects and commit types
+            echo "- $LINE" >> subjects.txt
+            echo $SUBJECT_TYPE >> types.txt
+          done < log.txt
+
+
+          # Save current release's version
+          VERSION=$(poetry version --short)
+
+
+          # Decide if programmatically finding next version or if manually provided one by user
+          METHOD="manual"
+          NEXT="${{ github.event.inputs.next-version }}"
+
+          if [[ -z "$NEXT" ]]; then
+            METHOD="programmatic"
+
+            # Determine which version number to bump
+            BUMP_TYPE="nv" # Meaning non-versioning commit, or affecting something outside the API. Basically ignore the types: build, chore, ci, docs, perf, refactor, revert, style, test.
+            while IFS= read -r TYPE; do
+              if [[ "$TYPE" == "BREAK" ]]; then
+                BUMP_TYPE="major"
+                break
+              elif [[ "$BUMP_TYPE" != "minor" ]]; then
+                if [[ "$TYPE" == "feat" ]]; then
+                  BUMP_TYPE="minor"
+                elif [[ "$TYPE" == "fix" ]]; then
+                  BUMP_TYPE="patch"
+                fi
+              fi
+            done < types.txt
+
+            # Instantiate version numbers
+            IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
+
+            # Get version number for next release
+            if [ "$BUMP_TYPE" == "major" ]; then
+              # Backwards incompatible API changes
+              NEXT="$((MAJOR+1)).0.0"
+            elif [ "$BUMP_TYPE" == "minor" ]; then
+              # Backwards compatible API additions/changes
+              NEXT="$MAJOR.$((MINOR+1)).0"
+            elif [ "$BUMP_TYPE" == "patch" ]; then
+              # Bug fixes not affecting the API
+              NEXT="$MAJOR.$MINOR.$((PATCH+1))"
+            else
+              NEXT=$VERSION
+            fi
+          fi
+
+          if [[ "$VERSION" != "$NEXT" ]]; then
+            # Create body of Pull Request
+            echo "### History" >> subjects.txt
+            echo "" >> subjects.txt
+            echo "Next: $NEXT ($METHOD)" >> subjects.txt
+            echo "Latest: $VERSION" >> subjects.txt
+            echo "### Release" >> subjects.txt
+            # Reverses all lines in subjects.txt
+            tac subjects.txt > temp.txt
+            BODY=$(cat temp.txt)
+
+            # Clean up files
+            rm log.txt
+            rm subjects.txt
+            rm types.txt
+            rm temp.txt
+
+            # Bump version in pyproject.toml
+            sed -i "s/version = \"$VERSION\"/version = \"$NEXT\"/g" pyproject.toml
+
+            # Set up git config for github-actions bot
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            git config --global user.name "github-actions[bot]"
+
+            # Set author to the user running workflow
+            AUTHOR="${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>"
+
+            # Checkout new branch
+            git checkout -B "release-$NEXT"
+
+            # Commit pyproject.toml
+            git add pyproject.toml
+            git commit -m "release: bump poetry version in pyproject.toml" --author="$AUTHOR"
+
+            # Push branch
+            git push --set-upstream origin "release-$NEXT" --atomic
+
+            # Open Pull Request
+            gh pr create --base "main" --title "release: increment version from $VERSION to $NEXT" --body "$BODY"
+          fi
+

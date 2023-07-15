@@ -1,0 +1,73 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "gurmukhiutils"
+version = "0.3.1"
+description = "Python utilities library for converting, analyzing, and testing Gurmukhi strings"
+license = "MIT"
+authors = ["Bhajneet S.K. <bhajneet@gmail.com>"]
+maintainers = ["Bhajneet S.K. <bhajneet@gmail.com>"]
+readme = "README.md"
+homepage = "https://github.com/shabados/gurmukhiutils"
+repository = "https://github.com/shabados/gurmukhiutils"
+documentation = "https://github.com/shabados/gurmukhiutils"
+keywords = [ "gurbani", "gurmukhi", "sikh", "transliterate", "unicode" ]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Intended Audience :: Developers",
+    "Natural Language :: Panjabi",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: Software Development :: Internationalization",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Text Processing",
+    "Topic :: Utilities",
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/shabados/gurmukhiutils/issues"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.12.0"
+flake8 = "^5.0.4"
+isort = "^5.12.0"
+mypy = "^0.961"
+pytest = "^7.3.1"
+autohooks = "^23.4.0"
+autohooks-plugin-black = "^23.4.0"
+autohooks-plugin-flake8 = "^23.4.0"
+autohooks-plugin-isort = "^23.4.0"
+autohooks-plugin-pytest = "^23.4.0"
+autohooks-plugin-mypy = "^23.3.0"
+
+[tool.isort]
+known_first_party = "gurmukhiutils"
+profile = "black"
+src_paths = ["gurmukhiutils", "tests"]
+filter_files = true
+
+[tool.black]
+line-length = 88
+
+[tool.mypy]
+disallow_any_unimported = true
+disallow_any_expr = true
+disallow_any_decorated = true
+disallow_any_explicit = true
+warn_unreachable = true
+strict = true
+show_error_codes = true
+pretty = true
+
+[tool.autohooks]
+pre-commit = ["autohooks.plugins.black", "autohooks.plugins.flake8", "autohooks.plugins.isort", "autohooks.plugins.mypy", "autohooks.plugins.pytest"]
+mode="poetry"
+
+[tool.autohooks.plugins.mypy]
+arguments = ["--disallow-any-unimported", "--disallow-any-expr", "--disallow-any-decorated", "--disallow-any-explicit", "--warn-unreachable", "--strict", "--show-error-codes", "--pretty"]
