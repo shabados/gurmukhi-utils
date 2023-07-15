@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = 'gurmukhi_utils'
-  spec.version       = '0.0.1'
+  spec.version       = '0.0.3'
   spec.authors       = ['Dilraj Singh Somel (dsomel21)']
   spec.email         = ['dsomel21@gmail.com']
 
@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/ShabadOS/gurmukhi-utils/tree/main/ruby'
   spec.license       = 'MIT'
 
-  spec.required_ruby_version = '3.2.1'
+  spec.required_ruby_version = '>= 2.5.0'
 
   spec.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec)/}) }
   spec.require_paths = ['lib']
