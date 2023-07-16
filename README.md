@@ -26,6 +26,26 @@ pip3 install gurmukhiutils
 poetry add gurmukhiutils
 ```
 
+<!-- **JavaScript ([npm](https://www.npmjs.com/package/gurmukhi-utils))**
+
+```shell
+npm i gurmukhi-utils
+```
+
+```html
+<script src="https://unpkg.com/gurmukhi-utils@^3.2.2" />
+``` -->
+
+**Ruby ([RubyGems](https://rubygems.org/gems/gurmukhi_utils))**
+
+```shell
+gem install gurmukhi_utils
+```
+
+```shell
+gem 'gurmukhi_utils', '~> 0.0.3'
+```
+
 ## Contribute
 
 If you want to help, please get started with the `CONTRIBUTING.md` doc in the respective language of choice.
