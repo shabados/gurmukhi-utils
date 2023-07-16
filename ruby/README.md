@@ -1,6 +1,6 @@
 # Gurmukhi Utils (Ruby)
 
-Utilities library for converting, analyzing, and testing Gurmukhi strings.
+Ruby library for converting, analyzing, and testing Gurmukhi strings.
 
 ## Prerequisites
 
@@ -26,15 +26,15 @@ Then run `bundle install`.
 
 You can use the GurmukhiUtils gem to perform conversions between Gurmukhi script and ASCII.
 
-```
+```ruby
 irb
 2.5.0 :001 > require 'gurmukhi_utils'
  => true
 2.5.0 :002 > GurmukhiUtils.unicode('<> siqgur pRswid ]')
  => "ੴ ਸਤਿਗੁਰ ਪ੍ਰਸਾਦਿ ॥"
- ```
+```
 
-### ASCII
+**ASCII**
 
 ```ruby
 GurmukhiUtils.ascii('ੴ ਸਤਿ ਨਾਮੁ')
@@ -47,7 +47,7 @@ GurmukhiUtils.ascii('ਸ੍ਰੀ ਵਾਹਿਗੁਰੂ ਜੀ ਕੀ ਫਤ�
 # => "sRI vwihgurU jI kI Pqh ]\n"
 ```
 
-### Unicode
+**Unicode**
 
 ```ruby
 GurmukhiUtils.unicode('vwihgurU')
@@ -60,19 +60,10 @@ GurmukhiUtils.unicode('<> siqgur pRswid ]')
 # => "ੴ ਸਤਿਗੁਰ ਪ੍ਰਸਾਦਿ ॥"
 ```
 
+## Contribute
+
+If you want to help, please get started with the [CONTRIBUTING.md](CONTRIBUTING.md) doc
+
 ## Related
 
-This library is one of many in the Gurmukhi Utils super-repo.
-
-- [Super Repo](/README.md)
-- [Python](/python/README.md)
-- [JavaScript](/javascript/README.md)
-- [Ruby](/ruby/README.md)
-- [C# / C Sharp](/csharp/README.md)
-- [Dart](/dart/README.md)
-
-## Contributing
-
-We encourage community contributions to GurmukhiUtils! If you'd like to contribute, please read our [Contributing Guidelines](CONTRIBUTING.md) to learn more about how to submit changes and how our development process works.
-
-We aim to provide a welcoming environment for all contributors. Please read our [Community Guidelines](https://shabados.com/docs/community/contributing) to learn more about contributing to the broader ShabadOS community.
+Gurmukhi Utils comes in many programming languages. [Use the Gurmukhi Utils library in another language](/README.md).

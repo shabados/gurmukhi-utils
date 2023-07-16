@@ -2,13 +2,10 @@
 
 Javascript library for converting, analyzing, and testing Gurmukhi strings
 
+## Contribute
+
+If you want to help, please get started with the [CONTRIBUTING.md](CONTRIBUTING.md) doc
+
 ## Related
 
-This library is one of many in the Gurmukhi Utils super-repo.
-
-- [Super Repo](/README.md)
-- [Python](/python/README.md)
-- [JavaScript](/javascript/README.md)
-- [Ruby](/ruby/README.md)
-- [C# / C Sharp](/csharp/README.md)
-- [Dart](/dart/README.md)
+Gurmukhi Utils comes in many programming languages. [Use the Gurmukhi Utils library in another language](/README.md).
