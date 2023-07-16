@@ -8,11 +8,11 @@ These libraries are a work in progress! Note that the API can change unexpectedl
 
 **Progress**
 
-| API               | Python             | JavaScript | Ruby               | C Sharp | Dart |
-| ----------------- | ------------------ | ---------- | ------------------ | ------- | ---- |
-| unicode to ascii  | :white_check_mark: |            | :white_check_mark: |         |      |
-| ascii to unicode  | :white_check_mark: |            | :white_check_mark: |         |      |
-| normalize unicode | :white_check_mark: |            | :white_check_mark: |         |      |
+| API               |       Python       |     JavaScript     |        Ruby        | C Sharp | Dart |
+| ----------------- | :----------------: | :----------------: | :----------------: | :-----: | :--: |
+| unicode to ascii  | :white_check_mark: |                    | :white_check_mark: |         |      |
+| ascii to unicode  | :white_check_mark: | :white_check_mark: | :white_check_mark: |         |      |
+| normalize unicode | :white_check_mark: | :white_check_mark: | :white_check_mark: |         |      |
 
 ## Install
 

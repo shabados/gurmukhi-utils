@@ -1,0 +1,62 @@
+{
+  "name": "gurmukhi-utils",
+  "version": "4.0.0-alpha.0",
+  "description": "Javascript library for converting, analyzing, and testing Gurmukhi strings",
+  "license": "MIT",
+  "author": "Bhajneet S.K. <bhajneet@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shabados/gurmukhi-utils",
+    "directory": "javascript"
+  },
+  "homepage": "https://github.com/shabados/gurmukhi-utils",
+  "bugs": "https://github.com/shabados/gurmukhi-utils/issues/new/choose",
+  "keywords": [
+    "ascii",
+    "granth",
+    "gurbani",
+    "gurmukhi",
+    "guru",
+    "punjabi",
+    "shabad",
+    "sikh",
+    "unicode"
+  ],
+  "type": "module",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./build/index.d.ts"
+      ]
+    }
+  },
+  "exports": {
+    ".": "./build/index.js",
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "node": ">= 16.0.0"
+  },
+  "scripts": {
+    "fmt": "prettier --write .",
+    "fmt:check": "prettier --check .",
+    "build": "tsc --project tsconfig.prod.json",
+    "build:check": "tsc",
+    "test": "npm run build && uvu test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "prettier": "3.0.0",
+    "typescript": "^5.1.6",
+    "uvu": "^0.5.6"
+  },
+  "files": [
+    "build"
+  ],
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  }
+}

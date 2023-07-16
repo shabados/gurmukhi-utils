@@ -1,6 +1,6 @@
-# Gurmukhi Utils (Dart)
+# Gurmukhi Utils (JavaScript)
 
-Utilities library for converting, analyzing, and testing Gurmukhi strings.
+Javascript library for converting, analyzing, and testing Gurmukhi strings
 
 ## Related
 
