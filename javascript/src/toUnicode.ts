@@ -1,7 +1,4 @@
-export class UnicodeStandard {
-  static 'Unicode Consortium' = 0
-  static 'Sant Lipi' = 1
-}
+export type UnicodeStandard = 'Sant Lipi' | 'Unicode Consortium'
 
 // Font mapping
 // AnmolLipi/GurbaniAkhar & GurbaniLipi by Kulbir S. Thind, MD
@@ -169,7 +166,7 @@ const ASCII_SIHARI_PATTERN = new RegExp(`(i)([${ASCII_BASE_LETTERS}])`, 'g')
  */
 export default function toUnicode(
   str: string,
-  unicodeStandard: UnicodeStandard = UnicodeStandard['Unicode Consortium'],
+  unicodeStandard: UnicodeStandard = 'Unicode Consortium',
 ): string {
   // Move ASCII sihari before mapping to unicode
   str = str.replaceAll(ASCII_SIHARI_PATTERN, '$2$1')
@@ -184,9 +181,9 @@ export default function toUnicode(
   }
 
   // Normalize Unicode
-  str = unicode_normalize(str)
+  str = unicodeNormalize(str)
 
-  if (unicodeStandard === UnicodeStandard['Unicode Consortium']) {
+  if (unicodeStandard === 'Unicode Consortium') {
     for (const [key, value] of Object.entries(SL_TO_UNICODE_REPLACEMENTS)) {
       str = str.replaceAll(key, value)
     }
@@ -200,10 +197,10 @@ export default function toUnicode(
  * @param {string} string
  * @returns {string}
  */
-export function unicode_normalize(str: string): string {
-  str = sort_diacritics(str)
+export function unicodeNormalize(str: string): string {
+  str = sortDiacritics(str)
 
-  str = sanitize_unicode(str)
+  str = sanitizeUnicode(str)
 
   return str
 }
@@ -244,11 +241,11 @@ const GENERATED_MATCH_ORDER = [
  * @param {string} str
  * @returns {string}
  */
-export function sort_diacritics(str: string): string {
-  return str.replaceAll(REGEX_MATCH_PATTERN, diacritic_replacer)
+export function sortDiacritics(str: string): string {
+  return str.replaceAll(REGEX_MATCH_PATTERN, diacriticReplacer)
 }
 
-function diacritic_replacer(match: string) {
+function diacriticReplacer(match: string) {
   return match
     .split('')
     .sort(
@@ -282,7 +279,7 @@ const UNICODE_SANITIZATION_MAP = {
  * @param {string} str
  * @returns {string}
  */
-export function sanitize_unicode(str: string): string {
+export function sanitizeUnicode(str: string): string {
   for (const [key, value] of Object.entries(UNICODE_SANITIZATION_MAP)) {
     str = str.replaceAll(key, value)
   }

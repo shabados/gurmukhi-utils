@@ -1,9 +1,9 @@
 import { suite } from 'uvu'
 import * as assert from 'uvu/assert'
-import toUnicode, { UnicodeStandard } from '../build/toUnicode.js'
+import toUnicode from '../build/toUnicode.js'
 
 const toUnicodeAgainAndAgain = (str) => toUnicode(toUnicode(toUnicode(str)))
-const toSantLipi = (str) => toUnicode(str, UnicodeStandard['Sant Lipi'])
+const toSantLipi = (str) => toUnicode(str, 'Sant Lipi')
 const toSantLipiAgainAndAgain = (str) => toSantLipi(toSantLipi(toSantLipi(str)))
 
 const test = suite('toUnicode')
