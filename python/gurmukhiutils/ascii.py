@@ -147,7 +147,7 @@ def ascii(
     }
     for _regex, warning in CHECKS.items():
         if re.search(_regex, string):
-            warnings.warn(f"{warning}", UserWarning)
+            raise UserWarning(f"{warning}")
 
     for key, value in ASCII_REPLACEMENTS.items():
         string = string.replace(key, value)
