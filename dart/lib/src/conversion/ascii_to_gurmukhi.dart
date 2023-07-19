@@ -1,4 +1,5 @@
 import 'dart:collection';
+import '../gurmukhi.dart';
 
 final _map = HashMap.of({
   '&': 'ਫ਼',
@@ -153,5 +154,5 @@ String asciiToGurmukhi(String text) {
     sb.write(_map[curr] ?? curr);
   }
 
-  return sb.toString();
+  return sb.toString().normalizeGurmukhi();
 }
