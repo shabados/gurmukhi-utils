@@ -107,8 +107,8 @@ void main() {
       expect(asciiToGurmukhi('mDÎ'), 'ਮਧ੍ਯ');
       expect(asciiToGurmukhi('ilKÎqy'), 'ਲਿਖ੍ਯਤੇ');
       expect(asciiToGurmukhi('mwnÎo'), 'ਮਾਨ੍ਯੋ');
-      // expect(asciiToGurmukhi('iBÎo'), 'ਭਿ੍ਯੋ');
-      // expect(asciiToGurmukhi('kIÎo'), 'ਕੀ੍ਯੋ');
+      expect(asciiToGurmukhi('iBÎo'), 'ਭਿ੍ਯੋ');
+      expect(asciiToGurmukhi('kIÎo'), 'ਕੀ੍ਯੋ');
       expect(asciiToGurmukhi('sÎwm'), 'ਸ੍ਯਾਮ');
       expect(asciiToGurmukhi('qÎwgÎo'), 'ਤ੍ਯਾਗ੍ਯੋ');
       expect(asciiToGurmukhi('jÎoN'), 'ਜ੍ਯੋਂ');

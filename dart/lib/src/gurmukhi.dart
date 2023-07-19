@@ -179,6 +179,7 @@ String _sanitizeGurmukhi(String text) {
     '\u0A32\u0A3C': '\u0A33', // ਲ਼ -> ਲ਼
     '\u0A38\u0A3C': '\u0A36', // ਸ਼ -> ਸ਼
     '\u0A71\u0A02': '\u0A01', // ੱਂ -> ਁ
+    '\u0A2F\uFE00': '\u0A4D\u0A2F', // ਯ︀ -> ੍ਯ
   };
   return text.replaceAllMapped(
     RegExp([
@@ -187,6 +188,7 @@ String _sanitizeGurmukhi(String text) {
       '\u0A73[\u0A4B\u0A41\u0A42]',
       '[\u0A16\u0A17\u0A1C\u0A2B\u0A32\u0A38]\u0A3C',
       '\u0A71\u0A02',
+      '\u0A2F\uFE00',
     ].join('|')),
     (match) => map[text.substring(match.start, match.end)]!,
   );
