@@ -101,6 +101,8 @@ final _map = HashMap.of({
   'å': 'ੴ',
   'æ': '਼',
   'ç': '੍ਚ',
+  'î': '੍ਯ',
+  'ï': 'ਯ',
   'ñ': '੦',
   'ò': '੧',
   'ó': '੨',
@@ -124,13 +126,20 @@ final _map = HashMap.of({
   '‰': '',
 });
 
-/// Converts ASCII encoded Gurmukhi text to Unicode encoded Gurmukhi text.
+/// Converts ASCII encoded Gurmukhi [text] to Unicode encoded Gurmukhi text.
 ///
 /// ```dart
 /// asciiToGurmukhi('goibMd imlx kI ieh qyrI brIAw ]');
 /// // ਗੋਬਿੰਦ ਮਿਲਣ ਕੀ ਇਹ ਤੇਰੀ ਬਰੀਆ ॥
 /// ```
-String asciiToGurmukhi(String text) {
+///
+/// Enable [extensions] to support SantLipi modifiers.
+///
+/// ```dart
+/// asciiToGurmukhi('qRsîo', extensions: true);
+/// // ਤ੍ਰਸ꠵ਯੋ
+/// ```
+String asciiToGurmukhi(String text, {bool extensions = false}) {
   final sb = StringBuffer();
 
   for (var i = 0; i < text.length; i++) {
@@ -148,6 +157,23 @@ String asciiToGurmukhi(String text) {
       if (value != null) {
         sb.write(value);
         i++;
+      }
+    }
+
+    if (extensions) {
+      if (curr == 'ˆ' && next == 'Ø') {
+        sb.write('ਁ');
+        i++;
+        continue;
+      } else if (curr == 'Î') {
+        sb.write('꠳ਯ');
+        continue;
+      } else if (curr == 'ï') {
+        sb.write('꠴ਯ');
+        continue;
+      } else if (curr == 'î') {
+        sb.write('꠵ਯ');
+        continue;
       }
     }
 

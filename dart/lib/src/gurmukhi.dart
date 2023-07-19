@@ -34,7 +34,17 @@ extension GurmukhiExtensions on String {
   /// 'ਅੰਮ੍ਰਿਤ'.splitGurmukhi(splitVirama: true);
   /// // ['ਅੰ', 'ਮ੍', 'ਰਿ', 'ਤ']
   /// ```
-  Iterable<String> splitGurmukhi({bool splitVirama = false}) sync* {
+  ///
+  /// Enable [extensions] to support SantLipi modifiers.
+  ///
+  /// ```dart
+  /// 'ਸ꠴ਯਾਮ'.splitGurmukhi(extensions: true);
+  /// // ['ਸ', '꠴ਯਾ', 'ਮ']
+  /// ```
+  Iterable<String> splitGurmukhi({
+    bool splitVirama = false,
+    bool extensions = false,
+  }) sync* {
     var br = 0; // starting index of gurmukhi letter break
 
     for (var i = 0; i < length; i++) {
@@ -42,7 +52,8 @@ extension GurmukhiExtensions on String {
       final next = i + 1 < length ? codeUnitAt(i + 1) : null;
 
       if ((next != null && _isGurmukhiDiacritic(next)) ||
-          (!splitVirama && _isGurmukhiVirama(curr))) {
+          (!splitVirama && _isGurmukhiVirama(curr)) ||
+          (extensions && _isSantLipiYayyaModifier(curr))) {
         continue;
       }
 
@@ -74,6 +85,12 @@ bool _isGurmukhiChar(int char) => char >= 0x0A00 && char <= 0x0A7F;
 bool _isGurmukhiVirama(int char) => char == 0x0A4D;
 
 bool _isGurmukhiDiacritic(int char) => _getGurmukhiDiacriticOrder(char) != 0;
+
+bool _isSantLipiYayyaModifier(int char) {
+  return (char == 0xA833)  // ꠳
+      || (char == 0xA834)  // ꠴
+      || (char == 0xA835); // ꠵
+}
 
 int _getGurmukhiDiacriticOrder(int char) {
   switch (char) {
