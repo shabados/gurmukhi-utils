@@ -93,56 +93,28 @@ bool _isSantLipiYayyaModifier(int char) {
 }
 
 int _getGurmukhiDiacriticOrder(int char) {
-  switch (char) {
-    /// nukta
-    case 0x0A3C: // ਼
-      return -2;
-
-    /// virama/halant
-    case 0x0A4D: // ੍
-      return -1;
-
-    /// signs bottom
-    case 0x0A51: // ੑ
-    case 0x0A75: // ੵ
-      return 1;
-
-    /// vowels left
-    case 0x0A3F: // ਿ
-      return 2;
-
-    /// vowels top
-    case 0x0A47: // ੇ
-    case 0x0A48: // ੈ
-    case 0x0A4B: // ੋ
-    case 0x0A4C: // ੌ
-      return 3;
-
-    /// vowels bottom
-    case 0x0A41: // ੁ
-    case 0x0A42: // ੂ
-      return 4;
-
-    /// vowels right
-    case 0x0A3E: // ਾ
-    case 0x0A40: // ੀ
-      return 5;
-
-    /// nasalization
-    case 0x0A01: // ਁ
-    case 0x0A02: // ਂ
-    case 0x0A70: // ੰ
-    case 0x0A71: // ੱ
-      return 6;
-
-    /// sign after letter
-    case 0x0A03: // ਃ
-      return 7;
-
-    /// consonant after virama
-    default:
-      return 0;
-  }
+  // nukta, virama, consonant after virama, sign, vowel (left, top, bottom, right), nasal, visarga
+  return const {
+    0x0A3C: -2, // ਼
+    0x0A4D: -1, // ੍
+    // consonant after virama: 0
+    0x0A51: 1, // ੑ
+    0x0A75: 1, // ੵ
+    0x0A3F: 2, // ਿ
+    0x0A47: 3, // ੇ
+    0x0A48: 3, // ੈ
+    0x0A4B: 3, // ੋ
+    0x0A4C: 3, // ੌ
+    0x0A41: 4, // ੁ
+    0x0A42: 4, // ੂ
+    0x0A3E: 5, // ਾ
+    0x0A40: 5, // ੀ
+    0x0A01: 6, // ਁ
+    0x0A02: 6, // ਂ
+    0x0A70: 6, // ੰ
+    0x0A71: 6, // ੱ
+    0x0A03: 7, // ਃ
+  }[char] ?? 0;
 }
 
 int _gurmukhiDiacriticComparator(int a, int b) {
