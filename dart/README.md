@@ -2,6 +2,8 @@
 
 Dart library for converting, analyzing, and testing [Gurmukhi](https://en.wikipedia.org/wiki/Gurmukhi) strings.
 
+[SantLipi](https://github.com/ShabadOS/SantLipi) extensions are supported.
+
 ## Gurmukhi String Extensions
 
 ### Remove Vishraams
@@ -61,7 +63,7 @@ Gurmukhi Text encoded in Ascii fonts (See fonts by [Dr Kulbir Thind](https://www
 asciiToGurmukhi('goibMd imlx kI ieh qyrI brIAw ]');
 // ਗੋਬਿੰਦ ਮਿਲਣ ਕੀ ਇਹ ਤੇਰੀ ਬਰੀਆ ॥
 ```
-Support SantLipi modifiers (See Ascii Font [OpenGurbaniAkhar](https://github.com/gurbaninow/gurmukhi-fonts.git)):
+Support SantLipi modifiers (See Ascii Font [OpenGurbaniAkhar](https://github.com/gurbaninow/gurmukhi-fonts)):
 ```dart
 asciiToGurmukhi('qRsîo', extensions: true);
 // ਤ੍ਰਸ꠵ਯੋ
