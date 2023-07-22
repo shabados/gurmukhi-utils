@@ -47,16 +47,30 @@ Fix Order of Diacritics:
 'ਕੰੁਚਰ'.normalizeGurmukhi();
 // ਕੁੰਚਰ
 ```
+Remove Sant Lipi Modifiers if `extensions` is not enabled:
+```dart
+'ਮਧ꠳ਯ'.normalizeGurmukhi();
+// ਮਧ੍ਯ
+```
 
 ## Conversion
 
 ### Ascii to Gurmukhi
+Gurmukhi Text encoded in Ascii fonts (See fonts by [Dr Kulbir Thind](https://www.gurbanifiles.net/other/Fonts_TT.zip)):
 ```dart
 asciiToGurmukhi('goibMd imlx kI ieh qyrI brIAw ]');
 // ਗੋਬਿੰਦ ਮਿਲਣ ਕੀ ਇਹ ਤੇਰੀ ਬਰੀਆ ॥
 ```
-Support SantLipi modifiers:
+Support SantLipi modifiers (See Ascii Font [OpenGurbaniAkhar](https://github.com/gurbaninow/gurmukhi-fonts.git)):
 ```dart
 asciiToGurmukhi('qRsîo', extensions: true);
 // ਤ੍ਰਸ꠵ਯੋ
 ```
+
+## Contribute
+
+If you want to help, please get started with the [CONTRIBUTING.md](CONTRIBUTING.md) doc
+
+## Related
+
+Gurmukhi Utils comes in many programming languages. [Use the Gurmukhi Utils library in another language](/README.md).
