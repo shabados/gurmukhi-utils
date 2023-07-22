@@ -16,6 +16,7 @@ void main() {
   // Unicode normalization of Gurmukhi text.
   print('ਅਾਦਿ'.normalizeGurmukhi());
   print('ਕੰੁਚਰ'.normalizeGurmukhi());
+  print('ਮਧ꠳ਯ'.normalizeGurmukhi());
 
   // Conversion from Ascii To Gurmukhi.
   print(asciiToGurmukhi('goibMd imlx kI ieh qyrI brIAw ]'));

@@ -75,8 +75,17 @@ extension GurmukhiExtensions on String {
   /// 'ਕੰੁਚਰ'.normalizeGurmukhi();
   /// // ਕੁੰਚਰ
   /// ```
-  String normalizeGurmukhi() {
-    return _sanitizeGurmukhi(_sortGurmukhiDiacritics(this));
+  ///
+  /// Remove SantLipi modifiers if [extensions] is not enabled:
+  /// ```dart
+  /// 'ਮਧ꠳ਯ'.normalizeGurmukhi();
+  /// // ਮਧ੍ਯ
+  /// ```
+  String normalizeGurmukhi({bool extensions = false}) {
+    return _sanitizeGurmukhi(
+      _sortGurmukhiDiacritics(this),
+      extensions: extensions,
+    );
   }
 }
 
@@ -93,7 +102,7 @@ bool _isSantLipiYayyaModifier(int char) {
 }
 
 int _getGurmukhiDiacriticOrder(int char) {
-  // nukta, virama, consonant after virama, sign, vowel (left, top, bottom, right), nasal, visarga
+  // nukta, virama, consonant after virama, sign, vowel (left, top, bottom, right), addak, nasal, visarga
   return const {
     0x0A3C: -2, // ਼
     0x0A4D: -1, // ੍
@@ -109,11 +118,11 @@ int _getGurmukhiDiacriticOrder(int char) {
     0x0A42: 4, // ੂ
     0x0A3E: 5, // ਾ
     0x0A40: 5, // ੀ
-    0x0A01: 6, // ਁ
-    0x0A02: 6, // ਂ
-    0x0A70: 6, // ੰ
     0x0A71: 6, // ੱ
-    0x0A03: 7, // ਃ
+    0x0A01: 7, // ਁ
+    0x0A02: 7, // ਂ
+    0x0A70: 7, // ੰ
+    0x0A03: 8, // ਃ
   }[char] ?? 0;
 }
 
@@ -133,7 +142,7 @@ String _sortGurmukhiDiacritics(String text) {
   }).join();
 }
 
-String _sanitizeGurmukhi(String text) {
+String _sanitizeGurmukhi(String text, {bool extensions = false}) {
   const map = {
     '\u0A05\u0A3E': '\u0A06', // ਅਾ -> ਆ
     '\u0A05\u0A48': '\u0A10', // ਅੈ -> ਐ
@@ -152,6 +161,9 @@ String _sanitizeGurmukhi(String text) {
     '\u0A38\u0A3C': '\u0A36', // ਸ਼ -> ਸ਼
     '\u0A71\u0A02': '\u0A01', // ੱਂ -> ਁ
     '\u0A2F\uFE00': '\u0A4D\u0A2F', // ਯ︀ -> ੍ਯ
+    '\uA833\u0A2F': '\u0A4D\u0A2F', // ꠳ਯ︀ -> ੍ਯ
+    '\uA834\u0A2F': '\u0A2F', // ꠴ਯ︀ -> ਯ︀
+    '\uA835\u0A2F': '\u0A4D\u0A2F', // ꠵ਯ︀ -> ੍ਯ
   };
   return text.replaceAllMapped(
     RegExp([
@@ -161,6 +173,7 @@ String _sanitizeGurmukhi(String text) {
       '[\u0A16\u0A17\u0A1C\u0A2B\u0A32\u0A38]\u0A3C',
       '\u0A71\u0A02',
       '\u0A2F\uFE00',
+      if (!extensions) '[\uA833\uA834\uA835]\u0A2F',
     ].join('|')),
     (match) => map[text.substring(match.start, match.end)]!,
   );

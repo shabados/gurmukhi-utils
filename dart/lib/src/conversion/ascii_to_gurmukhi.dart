@@ -180,5 +180,5 @@ String asciiToGurmukhi(String text, {bool extensions = false}) {
     sb.write(_map[curr] ?? curr);
   }
 
-  return sb.toString().normalizeGurmukhi();
+  return sb.toString().normalizeGurmukhi(extensions: extensions);
 }
