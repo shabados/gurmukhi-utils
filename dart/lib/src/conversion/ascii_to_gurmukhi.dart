@@ -182,3 +182,13 @@ String asciiToGurmukhi(String text, {bool extensions = false}) {
 
   return sb.toString().normalizeGurmukhi(extensions: extensions);
 }
+
+extension GurmukhiIntExtension on num {
+  /// Conversion from Number to Gurmukhi.
+  ///
+  /// ```dart
+  /// 123.toGurmukhi();
+  /// // ੧੨੩
+  /// ```
+  String toGurmukhi() => asciiToGurmukhi(toString());
+}

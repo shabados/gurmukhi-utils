@@ -23,7 +23,7 @@ Dart library for converting, analyzing, and testing [Gurmukhi](https://en.wikipe
 'ਕੈਸੀ ਆਰਤੀ ਹੋਇ ॥'.splitGurmukhi();
 // ['ਕੈ', 'ਸੀ', ' ', 'ਆ', 'ਰ', 'ਤੀ', ' ', 'ਹੋ', 'ਇ', ' ', '॥']
 ```
-Characters joined by virama `੍` can be split as:
+Characters joined by Virama `੍` can be split as:
 ```dart
 'ਅੰਮ੍ਰਿਤ'.splitGurmukhi();
 // ['ਅੰ', 'ਮ੍ਰਿ', 'ਤ']
@@ -56,6 +56,12 @@ Remove Sant Lipi Modifiers if `extensions` is not enabled:
 ```
 
 ## Conversion
+
+### Number to Gurmukhi
+```dart
+123.toGurmukhi();
+// ੧੨੩
+```
 
 ### Ascii to Gurmukhi
 Gurmukhi Text encoded in Ascii fonts (See fonts by [Dr Kulbir Thind](https://www.gurbanifiles.net/other/Fonts_TT.zip)):

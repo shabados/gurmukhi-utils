@@ -17,7 +17,9 @@ void main() {
   print('ਅਾਦਿ'.normalizeGurmukhi());
   print('ਕੰੁਚਰ'.normalizeGurmukhi());
   print('ਮਧ꠳ਯ'.normalizeGurmukhi());
-  print('ਮਧ꠳ਯ'.normalizeGurmukhi(extensions: true));
+
+  // Conversion from Number to Gurmukhi.
+  print(123.toGurmukhi());
 
   // Conversion from Ascii To Gurmukhi.
   print(asciiToGurmukhi('goibMd imlx kI ieh qyrI brIAw ]'));
