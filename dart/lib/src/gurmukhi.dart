@@ -82,8 +82,27 @@ extension GurmukhiExtensions on String {
   /// // ਮਧ੍ਯ
   /// ```
   String normalizeGurmukhi({bool extensions = false}) {
+    var text = this;
+
+    if (extensions) {
+      // Use SantLipi modifier for Addha Yayya.
+      text = text.replaceAll('੍ਯ', '꠳ਯ');
+    } else {
+      // Addha Yayya '੍ਯ' is an exceptional case, the consonant before it may
+      // have its own Matra whose position should not be changed.
+      //
+      // Example: 'ਕੀ੍ਯੋ' looks more correct than 'ਕ੍ਯੋੀ'.
+      text = text.replaceAll('੍ਯ', '꠳ਯ');
+
+      // However, in case where the consonant before has Matra 'ਿ', its better
+      // if the Matra's position is actually changed.
+      //
+      // Example: 'ਭ੍ਯਿੋ' looks more correct than 'ਭਿ੍ਯੋ'.
+      text = text.replaceAll('ਿ꠳ਯ', 'ਿ੍ਯ');
+    }
+
     return _sanitizeGurmukhi(
-      _sortGurmukhiDiacritics(this),
+      _sortGurmukhiDiacritics(text),
       extensions: extensions,
     );
   }
@@ -131,7 +150,7 @@ int _gurmukhiDiacriticComparator(int a, int b) {
 }
 
 String _sortGurmukhiDiacritics(String text) {
-  return text.splitGurmukhi().map((letter) {
+  return text.splitGurmukhi(extensions: true).map((letter) {
     if (letter.length > 1) {
       final diacritics = letter.codeUnits.sublist(1);
       diacritics.sort(_gurmukhiDiacriticComparator);
