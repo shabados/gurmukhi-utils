@@ -1,0 +1,14 @@
+name: gurmukhi_utils
+description: Dart utilities library for converting, analyzing, and testing Gurmukhi strings.
+version: 0.1.0
+repository: https://github.com/ShabadOS/gurmukhi-utils/tree/main/dart
+topics:
+  - gurmukhi
+
+environment:
+  sdk: ^3.0.0
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.21.0
+  path: ^1.8.3
