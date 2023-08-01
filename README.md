@@ -46,6 +46,12 @@ gem install gurmukhi_utils
 gem 'gurmukhi_utils', '~> 0.0.3'
 ```
 
+**Dart ([pub.dev](https://pub.dev/packages/gurmukhi_utils))**
+
+```shell
+dart pub add gurmukhi_utils
+```
+
 ## Contribute
 
 If you want to help, please get started with the `CONTRIBUTING.md` doc in the respective language of choice.
