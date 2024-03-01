@@ -34,7 +34,7 @@ def convert(
     """
 
     # Convert Unicode to Sant Lipi format
-    string = string.replace("੍ਯ", "꠳ਯ")
+    string = string.replace("੍ਯ", "\ufe00ਯ")
 
     string = unicode_normalize(string)
 

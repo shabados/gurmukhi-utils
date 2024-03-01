@@ -1,5 +1,4 @@
 import re
-import warnings
 
 from gurmukhiutils.unicode import unicode_normalize
 
@@ -112,9 +111,10 @@ def ascii(
 
     ASCII_REPLACEMENTS = {
         "੍ਯ": "Î",  # half-yayya
-        "꠳ਯ": "Î",  # sant lipi variation
-        "꠴ਯ": "ï",  # open-top yayya
-        "꠵ਯ": "î",  # open-top half-yayya
+        "\ufe00\ufe01ਯ": "î",  # open-top half-yayya
+        "\ufe00ਯ": "Î",  # sant lipi variation of half-yayya
+        "\ufe01ਯ": "ï",  # open-top yayya
+        "ਂ\u200dੀ": "ˆØI",  # bindi + bihari ligature
         "੍ਰ": "R",
         "੍ਵ": "Í",  # capital i-acute letter
         "੍ਹ": "H",
@@ -187,7 +187,6 @@ def ascii(
 
     # Make rendering changes for combos
     ASCII_COMBO_REPLACEMENTS = {
-        "I\u0a01": "ˆØI",  # bindi + bihari ligature
         "IM": "µØI",  # tippi + bihari ligature
         "Iµ": "µØI",  # tippi + bihari ligature
         "kR": "k®",  # kakka + pair-rara ligature

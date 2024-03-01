@@ -158,17 +158,14 @@ def unicode(
         #
         #
         # Open Gurbani Akhar
-        # translate capital i-circumflex letter to indic one-sixteenth + yayya:
-        ord("Î"): "꠳ਯ",  # half-yayya
-        # translate i-diaeresis letter to indic one-eight + yayya:
-        ord("ï"): "꠴ਯ",  # open-top yayya
-        # translate i-circumflex letter to indic three-sixtenths + yayya:
-        ord("î"): "꠵ਯ",  # open-top half-yayya
+        ord("Î"): "\ufe00ਯ",  # capital i-circumflex to half-yayya
+        ord("ï"): "\ufe01ਯ",  # i-diaeresis to open-top yayya
+        ord("î"): "\ufe00\ufe01ਯ",  # i-circumflex to open-top half-yayya
     }
 
     # Ordered as such to supporth both font input methods
     ASCII_TO_SL_REPLACEMENTS = {
-        "ˆØI": "ੀਁ",  # Handle pre-bihari-bindi with unused adakbindi
+        "ˆØI": "ਂ\u200dੀ",  # ︁Connect bindi before bihari with zero-width joiner
         #
         "<>": "ੴ",  # AnmolLipi/GurbaniAkhar variant
         "<": "ੴ",  # GurbaniLipi variant
@@ -180,28 +177,28 @@ def unicode(
     }
 
     UNICODE_TO_SL_REPLACEMENTS = {
-        "੍ਯ": "꠳ਯ",  # replace unicode half-yayya with Sant Lipi ligature (north indic one-sixteenth fraction + yayya)
+        "੍ਯ": "\ufe00ਯ",  # replace unicode half-yayya with Sant Lipi ligature
     }
 
     # Sant Lipi to Unicode Consortium
-    # Avoiding a translation, in case these north indic fraction chars are used for what they're actually meant for
     SL_TO_UNICODE_REPLACEMENTS = {
-        "꠳ਯ": "੍ਯ",
-        "꠴ਯ": "ਯ",
-        "꠵ਯ": "੍ਯ",
-        "ਁ": "ਂ",  # pre-bihari-bindi
+        "\ufe00\ufe01ਯ": "੍ਯ",
+        "\ufe00ਯ": "੍ਯ",
+        "\ufe01ਯ": "ਯ",
+        "ਂ\u200dੀ": "ੀਂ",  # pre-bihari-bindi
     }
 
-    # Move ASCII sihari before mapping to unicode
+    # Convert any existing Unicode Gurmukhi to Sant Lipi standard
+    for key, value in UNICODE_TO_SL_REPLACEMENTS.items():
+        string = string.replace(key, value)
+
+    # Move ASCII sihari before mapping
     ASCII_BASE_LETTERS = "\\a-zA-Z|^&Îîï"
     ASCII_SIHARI_PATTERN = rf"(i)([{ASCII_BASE_LETTERS}])"
     string = re.sub(ASCII_SIHARI_PATTERN, r"\2\1", string)
 
-    # Map any ASCII / Unicode Gurmukhi to Sant Lipi format
+    # Map any ASCII to Sant Lipi format
     for key, value in ASCII_TO_SL_REPLACEMENTS.items():
-        string = string.replace(key, value)
-
-    for key, value in UNICODE_TO_SL_REPLACEMENTS.items():
         string = string.replace(key, value)
 
     string = string.translate(ASCII_TO_SL_TRANSLATION)
@@ -233,6 +230,8 @@ def unicode_normalize(string: str) -> str:
 
     string = sort_diacritics(string)
 
+    string = sort_variation_selectors(string)
+
     string = sanitize_unicode(string)
 
     return string
@@ -252,7 +251,7 @@ def sort_diacritics(string: str) -> str:
         The same string with gurmukhi diacritics arranged in a sorted manner.
 
     Example:
-        >>> sort_diacritics("\u0a41\u0a4b") == "\u0a4b\u0a41"  # ੁੋ vs  ੋੁ
+        >>> sort_diacritics("\u0a41\u0a4b") == "\u0a4b\u0a41"  # order of ੋ and  ੁ
         True
     """
 
@@ -302,6 +301,8 @@ def sort_diacritics(string: str) -> str:
         "ਃ",
     ]
 
+    ZERO_WIDTH_CHARS = ["\u200c", "\u200d"]
+
     """
     If subjoined were single code points, we could have done a simple regex match:
     ([  list_of_diacritics  ]+)
@@ -311,10 +312,8 @@ def sort_diacritics(string: str) -> str:
     The patterns for the single-chars and the subjoined letters:
     """
 
-    GENERATED_MARKS = "".join(
-        BASE_LETTER_MODIFIERS + VOWEL_ORDER + REMAINING_MODIFIER_ORDER
-    )
-    MARK_PATTERN = f"([{GENERATED_MARKS}]*)"
+    GENERATED_MARKS = "".join(BASE_LETTER_MODIFIERS + VOWEL_ORDER + REMAINING_MODIFIER_ORDER + ZERO_WIDTH_CHARS)
+    MARK_PATTERN = f"([{GENERATED_MARKS}]*)?"
 
     VIRAMA = "੍"
     BELOW_BASE_LETTERS = "ਹਰਵਟਤਨਚ"
@@ -323,7 +322,7 @@ def sort_diacritics(string: str) -> str:
     """
     The following regex will capture all sequential diacritics containing at most one subjoined letter.
         >>> print(REGEX_MATCH_PATTERN)
-        '([਼ੵਿੇੈੋੌੁੂਾੀਁੱਂੰਃ]*)(੍[ਹਰਵਟਤਨਚ])?([਼ੵਿੇੈੋੌੁੂਾੀਁੱਂੰਃ]*)'
+        '([ੑੵ਼]*)?(੍[ਹਰਵਟਤਨਚ])?([਼ੵਿੇੈੋੌੁੂਾੀਁੱਂੰਃ]*)?'
     """
 
     REGEX_MATCH_PATTERN = f"{MARK_PATTERN}{BELOW_BASE_PATTERN}{MARK_PATTERN}"
@@ -334,13 +333,7 @@ def sort_diacritics(string: str) -> str:
         '਼ਹਰਵਟਤਨਚਿੇੈੋੌੁੂਾੀਁੱਂੰਃ'
    """
 
-    GENERATED_MATCH_ORDER = "".join(
-        BASE_LETTER_MODIFIERS
-        + [VIRAMA]
-        + [BELOW_BASE_LETTERS]
-        + VOWEL_ORDER
-        + REMAINING_MODIFIER_ORDER
-    )
+    GENERATED_MATCH_ORDER = "".join(BASE_LETTER_MODIFIERS + [VIRAMA] + [BELOW_BASE_LETTERS] + VOWEL_ORDER + REMAINING_MODIFIER_ORDER)
 
     def regex_sort_func(match: Match[str]) -> str:
         """
@@ -348,10 +341,81 @@ def sort_diacritics(string: str) -> str:
         """
 
         if len(_match := match.group()) > 1:
+            bindiBeforeBihari = False
+            # respect ordering of ਂ (bindi) before/after ੀ (bihari)
+            if "ਂ‍ੀ" in _match:
+                _match = _match.strip("ਂ‍ੀ")
+                bindiBeforeBihari = True
             _match = sorted(_match, key=lambda e: GENERATED_MATCH_ORDER.index(e))  # type: ignore
             _match = "".join(_match)
+            if bindiBeforeBihari:
+                _match = _match + "ਂ‍ੀ"
 
         return _match
+
+    string = re.sub(
+        REGEX_MATCH_PATTERN,
+        regex_sort_func,
+        string,
+    )
+
+    return string
+
+
+def sort_variation_selectors(string: str) -> str:
+    """
+    Orders the variation selectors preceding gurmukhi characters.
+
+    Arg:
+        string: The string to affect.
+
+    Returns:
+        The same string with VS arranged in ascending order.
+
+    Example:
+        >>> sort_variation_selectors("\ufe01\ufe00ਯ") == "\ufe00\ufe01ਯ"
+        True
+    """
+
+    """
+    List of 14 variation selectors in ascending order.
+
+    VS15 and VS16 are reserved to request that a character should be displayed as text or as an emoji respectively.
+
+    https://en.wikipedia.org/wiki/Variation_Selectors_(Unicode_block)
+    """
+
+    VARIATION_SELECTORS = "".join(
+        [
+            "\ufe00",
+            "\ufe01",
+            "\ufe02",
+            "\ufe03",
+            "\ufe04",
+            "\ufe05",
+            "\ufe06",
+            "\ufe07",
+            "\ufe08",
+            "\ufe09",
+            "\ufe0a",
+            "\ufe0b",
+            "\ufe0c",
+            "\ufe0d",
+        ]
+    )
+
+    # The following regex will capture all sequential VS preceding any code assignments in the gurmukhi unicode block.
+    REGEX_MATCH_PATTERN = f"([{VARIATION_SELECTORS}]*)[\u0a00-\u0a7f]"
+
+    GENERATED_MATCH_ORDER = VARIATION_SELECTORS
+
+    def regex_sort_func(match: Match[str]) -> str:
+        """
+        This re-arranges characters in "match" according to a custom sort order "GENERATED_MATCH_ORDER"
+        """
+        _match = match.group(0)
+        vs_string = match.group(1)
+        return _match.replace(vs_string, "".join(sorted(vs_string, key=lambda e: GENERATED_MATCH_ORDER.index(e))))
 
     string = re.sub(
         REGEX_MATCH_PATTERN,
@@ -383,7 +447,7 @@ def sanitize_unicode(string: str) -> str:
         "\u0a17\u0a3c": "\u0a5a",  # ਗ਼
         "\u0a1c\u0a3c": "\u0a5b",  # ਜ਼
         "\u0a2b\u0a3c": "\u0a5e",  # ਫ਼
-        "\u0a71\u0a02": "\u0a01",  # ਁ adak bindi (quite literally never used today or in the Shabad OS Database, only included for parity with the Unicode block)
+        "\u0a71\u0a02": "\u0a01",  # ਁ adak bindi
     }
 
     for key, value in UNICODE_SANITIZATION_MAP.items():

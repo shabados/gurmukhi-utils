@@ -24,17 +24,19 @@ class _TestHelper {
     final list = (json['tests'] as List).map((e) => _TestHelper.fromJson(e));
 
     for (final item in list) {
-      test(item.name, () {
-        for (final func in item.functions) {
-          for (final entry in item.assertions.entries) {
-            expect(
-              functions[func]!(entry.key),
-              entry.value,
-              reason: 'Function: $func',
-            );
+      if (item.type == "is") {
+        test(item.name, () {
+          for (final func in item.functions) {
+            for (final entry in item.assertions.entries) {
+              expect(
+                functions[func]!(entry.key),
+                entry.value,
+                reason: 'Function: $func',
+              );
+            }
           }
-        }
-      });
+        });
+      }
     }
   }
 }

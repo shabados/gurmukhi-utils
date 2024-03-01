@@ -3,23 +3,32 @@ from pathlib import Path
 
 
 def guut_is(f, a, b):
-    assert f(a) == b
+    assert (
+        f(a) == b
+    ), f"\nf = {f.__name__}\na = '{a}'\nb = '{b}'\nf(a) = '{f(a)}'\n\na = {[{item: format(ord(item), '04x')} for item in a]}\nb = {[{item: format(ord(item), '04x')} for item in b]}\nf = {[{item: format(ord(item), '04x')} for item in f(a)]}"
 
 
 def guut_is_not(f, a, b):
-    assert f(a) != b
+    assert (
+        f(a) != b
+    ), f"\nf = {f.__name__}\na = '{a}'\nb = '{b}'\nf(a) = '{f(a)}'\n\na = {[{item: format(ord(item), '04x')} for item in a]}\nb = {[{item: format(ord(item), '04x')} for item in b]}\nf = {[{item: format(ord(item), '04x')} for item in f(a)]}"
 
 
 def guut_throws(f, a):
     try:
-        assert f(a)
+        assert f(
+            a
+        ), f"\nf = {f.__name__}\na = '{a}'\nf(a) = '{f(a)}'\n\na = {[{item: format(ord(item), '04x')} for item in a]}\nf = {[{item: format(ord(item), '04x')} for item in f(a)]}"
     except Exception:
         assert True
     else:
-        assert False, f"{f}({a}) should have raised an exception."
+        assert False, f"{f.__name__}({a}) should have raised an exception."
 
 
 def guut_match(t, f, a, b=None):
+    if b is None:
+        b = a
+
     match t:
         case "is":
             guut_is(f, a, b)

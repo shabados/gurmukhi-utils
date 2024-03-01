@@ -22,6 +22,8 @@ i+a as y (ਿ + ਅ = ਯ)
 
 Better handling of nasalizations (Distinguish n and m sounds? Meaning: nasalizations preceding ਪ ਫ ਬ ਭ ਮ be switched from generic ñ to m). E.g. ਚੰਪਾ = campā,  ਸੌਂਫ = sōmph, ਅੰਬ = amb, ਆਰੰਭ = ārambh, ਅੰਮ੍ਰਿਤ = ammrit. These are all according to the more popular spellings excepting ਫ. Maybe ignore ਫ if we are switching them all to "f" according to above point e.g. ਸੌਂਫ = sōnf (iso standard "saunf" which is the popular spelling).
 
+aa + h + i/u = aa + h + e/o ? sahib vs vahiguru
+
 """
 
 
@@ -130,11 +132,11 @@ def test_guru_latn_pa_assertions() -> None:
         "ਭਿ੍ਯੋ": "bhiyo",
         "ਕੀ੍ਯੋ": "kīyo",
         "ਸ੍ਯਾਮ": "syām",
-        "ਸ꠴ਯਾਮ": "sayām",
+        "ਸ︁ਯਾਮ": "sayām",
         "ਜ੍ਯੋਂ": "jyoñ",
-        "ਨਾਮ꠴ਯ": "nāmay",
-        "ਦਿਤ꠴ਯਾਦਿਤ꠵ਯ": "ditayāditya",
-        "ਤ੍ਰਸ꠵ਯੋ": "trasyo",
+        "ਨਾਮ︁ਯ": "nāmay",
+        "ਦਿਤ︁ਯਾਦਿਤ︀︁ਯ": "ditayāditya",
+        "ਤ੍ਰਸ︀︁ਯੋ": "trasyo",
         "ਸ੍ਨੇਹੰ": "snehañ",
         "ਖਿਨੁ": "khin",
         "ਮੂਲਿ": "mūl",
@@ -278,7 +280,7 @@ def test_guru_latn_pa_haha() -> None:
         #
         "ਸੁਣਿਅਹੁ": "suṇiōh",
         #
-        "ਸੁਨੀ꠴ਯਹੁ": "sunīyōh",
+        "ਸੁਨੀ︁ਯਹੁ": "sunīyōh",
         #
         "ਸੁਆਲਿਹੁ": "suālih",
         "ਸਿਵਰਿਹੁ": "sivarih",

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-ruby '3.2.1'
+ruby '3.2.2'
 
 source 'https://rubygems.org'
 
@@ -11,4 +11,5 @@ end
 
 group :test do
   gem 'rspec'
+  gem 'json'
 end

@@ -7,30 +7,10 @@ require 'json'
 
 # test setup and config
 
-fn = 'toUnicode'
+fn = 'toUnicodeAscii'
 
-def unicode(string)
-  return GurmukhiUtils.unicode(string)
-end
-
-def unicode3(string)
-  return unicode(unicode(unicode(string)))
-end
-
-def santlipi(string)
-  return GurmukhiUtils.unicode(string, "Sant Lipi")
-end
-
-def santlipi3(string)
-  return santlipi(santlipi(santlipi(string)))
-end
-
-def unisant(string)
-  return unicode(santlipi(string))
-end
-
-def unisant2(string)
-  return unisant(unisant(string))
+def a2a(string)
+  return GurmukhiUtils.ascii(GurmukhiUtils.unicode(string, "Sant Lipi"))
 end
 
 # re-usable code below
@@ -54,5 +34,6 @@ RSpec.describe do
     end
   end
 end
+
 
 # rubocop:enable Metrics/BlockLength

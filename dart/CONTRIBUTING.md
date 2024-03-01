@@ -4,13 +4,28 @@ Please see our [community docs on contributing](https://shabados.com/docs/commun
 
 This document is for developers or programmers contributing to source code. If you're interested in contributing a different way, please see the link above.
 
+## Project Structure
+
+For gurmukhi conversions, make changes in [lib/src/conversion](lib/src/conversion) folder.
+
+For gurmukhi utilities, make changes in [lib/src/gurmukhi.dart](lib/src/gurmukhi.dart) file.
+
+## Testing
+
+_Role: contributors wishing to change the project source code_
+
+- Local tests are located in the dart folder.
+- The tests run against the root gurmukhi-utils `test` folder.
+- The test runner is the default built in [dart `package:test` library](https://pub.dev/packages/test)
+- Run tests by setting the dart folder as your current working directory in the terminal and then executing `dart test test`.
+
 ## Pull Request
 
 _Role: contributors wishing to change the project source code_
 
 **Requirements:**
 
-- [Dart](https://dart.dev) (see sdk in `pubspec.yaml`)
+- [Dart](https://dart.dev/get-dart#install) (see sdk in `pubspec.yaml`)
 
 **Workflow:**
 
@@ -23,9 +38,8 @@ Note: Before creating new branches, ensuring that the forked `main` is up to dat
 
 **Development:**
 
-For gurmukhi conversions, make changes in [lib/src/conversion](lib/src/conversion) folder.
-
-For gurmukhi utilities, make changes in [lib/src/gurmukhi.dart](lib/src/gurmukhi.dart) file.
+- Install project dependencies with `dart pub get`.
+- Run tests with `dart test test`.
 
 ## PR Merge
 

@@ -4,6 +4,15 @@ Please see our [community docs on contributing](https://shabados.com/docs/commun
 
 This document is for developers or programmers contributing to source code. If you're interested in contributing a different way, please see the link above.
 
+## Testing
+
+_Role: contributors wishing to change the project source code_
+
+- Local tests are located in the python folder.
+- The in-house global test runner `guut` is located at `python/tests/globals.py`. These are intended to run against the root gurmukhi-utils `test` folder.
+- The `guut` global test runner is based off the default built in [python `assert` function](https://docs.python.org/3/reference/simple_stmts.html#grammar-token-python-grammar-assert_stmt)
+- Run tests by setting the python folder as your current working directory in the terminal and then executing `poetry run pytest`.
+
 ## Pull Request
 
 _Role: contributors wishing to change the project source code_

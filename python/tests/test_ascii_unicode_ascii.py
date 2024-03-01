@@ -1,5 +1,3 @@
-from pytest import warns
-
 from gurmukhiutils.ascii import ascii
 from gurmukhiutils.unicode import unicode
 
@@ -207,30 +205,32 @@ def test_a2a_db4_fixes() -> None:
         assert from_ascii_to_ascii(key) == value
 
 
-def test_a2a_throw_errors() -> None:
-    assertions = {
-        "Oo",
-        "oO",
-        "Oy",
-        "OY",
-        "oy",
-        "oY",
-        "wY",
-        "wy",
-        "yw",
-        "Yw",
-        "WY",
-        "Wy",
-        "yW",
-        "YW",
-        "wu",
-        "Wu",
-        "wU",
-        "WU",
-        "uU",
-        "Uu",
-    }
+# from pytest import warns
+#
+# def test_a2a_throw_errors() -> None:
+#     assertions = {
+#         "Oo",
+#         "oO",
+#         "Oy",
+#         "OY",
+#         "oy",
+#         "oY",
+#         "wY",
+#         "wy",
+#         "yw",
+#         "Yw",
+#         "WY",
+#         "Wy",
+#         "yW",
+#         "YW",
+#         "wu",
+#         "Wu",
+#         "wU",
+#         "WU",
+#         "uU",
+#         "Uu",
+#     }
 
-    # for string in assertions:
-    #     with warns(UserWarning):
-    #         from_ascii_to_ascii(string)
+#     for string in assertions:
+#         with warns(UserWarning):
+#             from_ascii_to_ascii(string)

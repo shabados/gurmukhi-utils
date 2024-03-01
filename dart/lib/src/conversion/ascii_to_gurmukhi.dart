@@ -91,7 +91,7 @@ final _map = HashMap.of({
   'Æ': '',
   'Ç': '☬',
   'Í': '੍ਵ',
-  'Î': '੍ਯ',
+  'Î': '\ufe00ਯ',
   'Ï': 'ੵ',
   'Ò': '॥',
   'Ó': '',
@@ -101,8 +101,8 @@ final _map = HashMap.of({
   'å': 'ੴ',
   'æ': '਼',
   'ç': '੍ਚ',
-  'î': '੍ਯ',
-  'ï': 'ਯ',
+  'î': '\ufe00\ufe01ਯ',
+  'ï': '\ufe01ਯ',
   'ñ': '੦',
   'ò': '੧',
   'ó': '੨',
@@ -129,15 +129,13 @@ final _map = HashMap.of({
 /// Converts ASCII encoded Gurmukhi [text] to Unicode encoded Gurmukhi text.
 ///
 /// ```dart
-/// asciiToGurmukhi('goibMd imlx kI ieh qyrI brIAw ]');
-/// // ਗੋਬਿੰਦ ਮਿਲਣ ਕੀ ਇਹ ਤੇਰੀ ਬਰੀਆ ॥
+/// asciiToGurmukhi('goibMd imlx kI ieh qyrI brIAw') == 'ਗੋਬਿੰਦ ਮਿਲਣ ਕੀ ਇਹ ਤੇਰੀ ਬਰੀਆ'
 /// ```
 ///
 /// Enable [extensions] to support SantLipi modifiers.
 ///
 /// ```dart
-/// asciiToGurmukhi('qRsîo', extensions: true);
-/// // ਤ੍ਰਸ꠵ਯੋ
+/// asciiToGurmukhi('qRsîo', extensions: true) == 'ਤ੍ਰਸ︀︁ਯੋ'
 /// ```
 String asciiToGurmukhi(String text, {bool extensions = false}) {
   final sb = StringBuffer();
@@ -162,17 +160,8 @@ String asciiToGurmukhi(String text, {bool extensions = false}) {
 
     if (extensions) {
       if (curr == 'ˆ' && next == 'Ø') {
-        sb.write('ਁ');
+        sb.write('ਂ\u200d');
         i++;
-        continue;
-      } else if (curr == 'Î') {
-        sb.write('꠳ਯ');
-        continue;
-      } else if (curr == 'ï') {
-        sb.write('꠴ਯ');
-        continue;
-      } else if (curr == 'î') {
-        sb.write('꠵ਯ');
         continue;
       }
     }
@@ -187,8 +176,7 @@ extension GurmukhiIntExtension on num {
   /// Conversion from Number to Gurmukhi.
   ///
   /// ```dart
-  /// 123.toGurmukhi();
-  /// // ੧੨੩
+  /// 123.toGurmukhi() == '੧੨੩'
   /// ```
   String toGurmukhi() => asciiToGurmukhi(toString());
 }

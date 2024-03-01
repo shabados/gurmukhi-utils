@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 # Copied from https://github.com/shabados/gurmukhiutils/blob/b7a1ca9f0d341b64715158893afb93675c773823/gurmukhiutils/unicode.py
-require 'strscan'
 
 module GurmukhiUtils
   UNICODE_STANDARDS = ['Unicode Consortium', 'Sant Lipi'].freeze
@@ -107,13 +106,13 @@ module GurmukhiUtils
     '‰'.ord => nil,       # Box drawing right flower
     'Ó'.ord => nil,       # Box drawing top flower
     'Ô'.ord => nil,       # Box drawing bottom flower
-    'Î'.ord => '꠳ਯ',      # half-yayya
-    'ï'.ord => '꠴ਯ',      # open-top yayya
-    'î'.ord => '꠵ਯ'       # open-top half-yayya
+    'Î'.ord => "\ufe00ਯ",      # half-yayya
+    'ï'.ord => "\ufe01ਯ",      # open-top yayya
+    'î'.ord => "\ufe00\ufe01ਯ"       # open-top half-yayya
   }.freeze
 
   ASCII_TO_SL_REPLACEMENTS = {
-    'ˆØI' => 'ੀਁ', # Handle pre-bihari-bindi with unused adakbindi
+    'ˆØI' => "ਂ\u200dੀ", # ︁Connect bindi before bihari with zero-width joiner
     '<>' => 'ੴ', # AnmolLipi/GurbaniAkhar variant
     '<' => 'ੴ',  # GurbaniLipi variant
     '>' => '☬',  # GurbaniLipi variant
@@ -123,14 +122,14 @@ module GurmukhiUtils
   }.freeze
 
   UNICODE_TO_SL_REPLACEMENTS = {
-    '੍ਯ' => '꠳ਯ' # replace unicode half-yayya with Sant Lipi ligature (north indic one-sixteenth fraction + yayya)
+    '੍ਯ' => "\ufe00ਯ"  # replace unicode half-yayya with Sant Lipi ligature
   }.freeze
 
   SL_TO_UNICODE_REPLACEMENTS = {
-    '꠳ਯ' => '੍ਯ',
-    '꠴ਯ' => 'ਯ',
-    '꠵ਯ' => '੍ਯ',
-    'ਁ' => 'ਂ' # pre-bihari-bindi
+    "\ufe00\ufe01ਯ" => "੍ਯ",
+    "\ufe00ਯ" => "੍ਯ",
+    "\ufe01ਯ" => "ਯ",
+    "ਂ\u200dੀ" => "ੀਂ",  # pre-bihari-bindi
   }.freeze
 
   ##
@@ -157,6 +156,12 @@ module GurmukhiUtils
   #   #=> "ਗੁਰੂ"
   ##
   def self.unicode(string, unicode_standard = 'Unicode Consortium')
+
+    # Convert any existing Unicode Gurmukhi to Sant Lipi standard
+    UNICODE_TO_SL_REPLACEMENTS.each do |key, value|
+      string = string.gsub(key, value)
+    end
+
     # Move ASCII sihari before mapping to unicode
     ascii_base_letters = '\\a-zA-Z|^&Îîï'
     ascii_sihari_pattern = Regexp.new("(i)([#{ascii_base_letters}])")
@@ -167,11 +172,13 @@ module GurmukhiUtils
       string.gsub!(key, value)
     end
 
-    UNICODE_TO_SL_REPLACEMENTS.each do |key, value|
-      string.gsub!(key, value)
-    end
-
-    string = string.chars.map { |c| ASCII_TO_SL_TRANSLATION[c.ord] || c }.join
+    string = string.chars.map { |c|
+      if ASCII_TO_SL_TRANSLATION.has_key?(c.ord)
+        ASCII_TO_SL_TRANSLATION[c.ord]
+      else
+        c
+      end
+    }.join
 
     string = unicode_normalize(string)
 
@@ -260,7 +267,7 @@ module GurmukhiUtils
       "\u0a17\u0a3c" => "\u0a5a",  # ਗ਼
       "\u0a1c\u0a3c" => "\u0a5b",  # ਜ਼
       "\u0a2b\u0a3c" => "\u0a5e",  # ਫ਼
-      "\u0a71\u0a02" => "\u0a01" # ਁ adak bindi (quite literally never used today or in the Shabad OS Database, only included for parity with the Unicode block)
+      "\u0a71\u0a02" => "\u0a01" # ਁ adak bindi
     }
 
     unicode_sanitization_map.each do |key, value|

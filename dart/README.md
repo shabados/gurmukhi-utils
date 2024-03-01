@@ -7,72 +7,79 @@ Dart library for converting, analyzing, and testing [Gurmukhi](https://en.wikipe
 ## Gurmukhi String Extensions
 
 ### Remove Vishraams
+
 ```dart
-'ਸਭਨਾ ਜੀਆ ਕਾ, ਇਕੁ ਦਾਤਾ; ਸੋ. ਮੈ ਵਿਸਰਿ ਨ ਜਾਈ ॥੫॥'.removeVishraams();
-// 'ਸਭਨਾ ਜੀਆ ਕਾ ਇਕੁ ਦਾਤਾ ਸੋ ਮੈ ਵਿਸਰਿ ਨ ਜਾਈ ॥੫॥'
+'ਸਭਨਾ ਜੀਆ ਕਾ, ਇਕੁ ਦਾਤਾ; ਸੋ. ਮੈ ਵਿਸਰਿ ਨ ਜਾਈ ॥੫॥'.removeVishraams() == 'ਸਭਨਾ ਜੀਆ ਕਾ ਇਕੁ ਦਾਤਾ ਸੋ ਮੈ ਵਿਸਰਿ ਨ ਜਾਈ ॥੫॥'
 ```
 
 ### First Letters
+
 ```dart
-'ਜਿਸਨੋ ਕ੍ਰਿਪਾ ਕਰਹਿ ਤਿਨਿ ਨਾਮ ਰਤਨੁ ਪਾਇਆ ॥'.firstGurmukhiLetters();
-// ['ਜ', 'ਕ', 'ਕ', 'ਤ', 'ਨ', 'ਰ', 'ਪ']
+'ਜਿਸਨੋ ਕ੍ਰਿਪਾ ਕਰਹਿ ਤਿਨਿ ਨਾਮ ਰਤਨੁ ਪਾਇਆ ॥'.firstGurmukhiLetters() == ['ਜ', 'ਕ', 'ਕ', 'ਤ', 'ਨ', 'ਰ', 'ਪ']
 ```
 
 ### Split
+
 ```dart
-'ਕੈਸੀ ਆਰਤੀ ਹੋਇ ॥'.splitGurmukhi();
-// ['ਕੈ', 'ਸੀ', ' ', 'ਆ', 'ਰ', 'ਤੀ', ' ', 'ਹੋ', 'ਇ', ' ', '॥']
+'ਕੈਸੀ ਆਰਤੀ ਹੋਇ ॥'.splitGurmukhi() == ['ਕੈ', 'ਸੀ', ' ', 'ਆ', 'ਰ', 'ਤੀ', ' ', 'ਹੋ', 'ਇ', ' ', '॥']
 ```
+
 Characters joined by Virama `੍` can be split as:
+
 ```dart
-'ਅੰਮ੍ਰਿਤ'.splitGurmukhi();
-// ['ਅੰ', 'ਮ੍ਰਿ', 'ਤ']
+'ਅੰਮ੍ਰਿਤ'.splitGurmukhi() == ['ਅੰ', 'ਮ੍ਰਿ', 'ਤ']
 ```
+
 ```dart
-'ਅੰਮ੍ਰਿਤ'.splitGurmukhi(splitVirama: true);
-// ['ਅੰ', 'ਮ੍', 'ਰਿ', 'ਤ']
+'ਅੰਮ੍ਰਿਤ'.splitGurmukhi(splitVirama: true) == ['ਅੰ', 'ਮ੍', 'ਰਿ', 'ਤ']
 ```
+
 Support SantLipi modifiers:
+
 ```dart
-'ਸ꠴ਯਾਮ'.splitGurmukhi(extensions: true);
-// ['ਸ', '꠴ਯਾ', 'ਮ']
+'ਸ︁ਯਾਮ'.splitGurmukhi(extensions: true) == ['ਸ', '︁ਯਾ', 'ਮ']
 ```
 
 ### Unicode Normalization
+
 Fix Matras of `ੳ`, `ਅ`, and `ੲ`:
+
 ```dart
-'ਅਾਦਿ'.normalizeGurmukhi();
-// ਆਦਿ
+'ਅਾਦਿ'.normalizeGurmukhi() == 'ਆਦਿ'
 ```
+
 Fix Order of Diacritics:
+
 ```dart
-'ਕੰੁਚਰ'.normalizeGurmukhi();
-// ਕੁੰਚਰ
+'ਕੰੁਚਰ'.normalizeGurmukhi() == 'ਕੁੰਚਰ'
 ```
+
 Remove Sant Lipi Modifiers if `extensions` is not enabled:
+
 ```dart
-'ਮਧ꠳ਯ'.normalizeGurmukhi();
-// ਮਧ੍ਯ
+'ਮਧ︀ਯ'.normalizeGurmukhi() == 'ਮਧ੍ਯ'
 ```
 
 ## Conversion
 
 ### Number to Gurmukhi
+
 ```dart
-123.toGurmukhi();
-// ੧੨੩
+123.toGurmukhi() == '੧੨੩'
 ```
 
 ### Ascii to Gurmukhi
+
 Gurmukhi Text encoded in Ascii fonts (See fonts by [Dr Kulbir Thind](https://www.gurbanifiles.net/other/Fonts_TT.zip)):
+
 ```dart
-asciiToGurmukhi('goibMd imlx kI ieh qyrI brIAw ]');
-// ਗੋਬਿੰਦ ਮਿਲਣ ਕੀ ਇਹ ਤੇਰੀ ਬਰੀਆ ॥
+asciiToGurmukhi('goibMd imlx kI ieh qyrI brIAw') == 'ਗੋਬਿੰਦ ਮਿਲਣ ਕੀ ਇਹ ਤੇਰੀ ਬਰੀਆ'
 ```
+
 Support SantLipi modifiers (See Ascii Font [OpenGurbaniAkhar](https://github.com/gurbaninow/gurmukhi-fonts)):
+
 ```dart
-asciiToGurmukhi('qRsîo', extensions: true);
-// ਤ੍ਰਸ꠵ਯੋ
+asciiToGurmukhi('qRsîo', extensions: true) == 'ਤ੍ਰਸ︀︁ਯੋ'
 ```
 
 ## Contribute

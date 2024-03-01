@@ -6,9 +6,9 @@ from gurmukhiutils.unicode import unicode_normalize
 ROMAN_REPLACEMENTS = {
     "ਕ਼": "q",
     "੍ਯ": "y̶",  # half-yayya uses strikethrough U+0336
-    "꠳ਯ": "y̶",
-    "꠴ਯ": "ƴ",  # open-top yayya uses latin y with hook U+01B4
-    "꠵ਯ": "ƴ̶",  # open-top half-yayya is a combination of U+01B4 and U+0336
+    "\ufe00ਯ": "y̶",
+    "\ufe01ਯ": "ƴ",  # open-top yayya uses latin y with hook U+01B4
+    "\ufe00\ufe01ਯ": "ƴ̶",  # open-top half-yayya is a combination of U+01B4 and U+0336
     "ੵ": "ʸ",
     "੍ਹ": "ʰ",
     "੍ਰ": "ʳ",
@@ -122,13 +122,13 @@ def guru_latn(
     string = unicode_normalize(string)
 
     # Ik Oankar
-    string = string.replace("ੴ", "ਇਕ ਓਅੰਕਾਰ")
+    string = string.replace("ੴ", "ਇੱਕ ਓਅੰਕਾਰ")
 
     # Add inherent vowel / Mukta (ਮੁਕਤਾ = ਅ)
 
     # Between words
     NON_VOWEL_MODIFIERS = "਼ੑੵ਼"
-    PRE_BASE_LIGATURE = "꠳꠴꠵"
+    PRE_BASE_LIGATURE = "\ufe00\ufe01"
     POST_LETTERS = "ਆਏਐਇਈਓਔਉਊ"
     PRE_POST_MODIFIERS = "ੱਂੰ"
 

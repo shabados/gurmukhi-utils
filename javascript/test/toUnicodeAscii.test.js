@@ -1,14 +1,14 @@
-import { toAscii } from '../build/index.js'
+import { toAscii, toUnicode } from '../build/index.js'
 import { guutMatch } from './globals.js'
 import { suite } from 'uvu'
 
 // test setup and config
 
-const ascii = (str) => toAscii(str)
+const a2a = (str) => toAscii(toUnicode(str, 'Sant Lipi'))
 
-const funcs = { ascii }
+const funcs = { a2a }
 
-const fn = 'toAscii'
+const fn = 'toUnicodeAscii'
 
 // re-usable code below
 

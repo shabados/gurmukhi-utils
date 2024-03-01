@@ -5,7 +5,7 @@ export type UnicodeStandard = 'Sant Lipi' | 'Unicode Consortium'
 // OpenGurbaniAkhar by Sarabveer Singh (GurbaniNow)
 const ASCII_TO_SL_REPLACEMENTS = {
   // Ordered as such to support both font input methods
-  ˆØI: 'ੀਁ', // Handle pre-bihari-bindi with unused adakbindi
+  ˆØI: 'ਂ\u200dੀ', // Connect bindi before bihari with zero-width joiner
   //
   '<>': 'ੴ', // AnmolLipi/GurbaniAkhar variant
   '<': 'ੴ', // GurbaniLipi variant
@@ -134,24 +134,21 @@ const ASCII_TO_SL_REPLACEMENTS = {
   //
   //
   // Open Gurbani Akhar
-  // translate capital i-circumflex letter to indic one-sixteenth + yayya:
-  Î: '꠳ਯ', // half-yayya
-  // translate i-diaeresis letter to indic one-eight + yayya:
-  ï: '꠴ਯ', // open-top yayya
-  // translate i-circumflex letter to indic three-sixtenths + yayya:
-  î: '꠵ਯ', // open-top half-yayya
+  Î: '\ufe00ਯ', // capital i-circumflex to half-yayya
+  ï: '\ufe01ਯ', // i-diaeresis letter to open-top yayya
+  î: '\ufe00\ufe01ਯ', // i-circumflex to open-top half-yayya
 }
 
 const UNICODE_TO_SL_REPLACEMENTS = {
-  '੍ਯ': '꠳ਯ', // replace unicode half-yayya with Sant Lipi ligature (north indic one-sixteenth fraction + yayya)
+  '੍ਯ': '\ufe00ਯ', // replace unicode half-yayya with Sant Lipi ligature
 }
 
 // Sant Lipi to Unicode Consortium
 const SL_TO_UNICODE_REPLACEMENTS = {
-  '꠳ਯ': '੍ਯ',
-  '꠴ਯ': 'ਯ',
-  '꠵ਯ': '੍ਯ',
-  'ਁ': 'ਂ', // pre-bihari-bindi
+  '\ufe00\ufe01ਯ': '੍ਯ',
+  '\ufe00ਯ': '੍ਯ',
+  '\ufe01ਯ': 'ਯ',
+  'ਂ\u200dੀ': 'ੀਂ', // pre-bihari-bindi
 }
 
 // Regex to move ASCII sihari (before mapping to unicode)
@@ -168,15 +165,16 @@ export default function toUnicode(
   str: string,
   unicodeStandard: UnicodeStandard = 'Unicode Consortium',
 ): string {
+  // Convert any existing Unicode Gurmukhi to Sant Lipi standard
+  for (const [key, value] of Object.entries(UNICODE_TO_SL_REPLACEMENTS)) {
+    str = str.replaceAll(key, value)
+  }
+
   // Move ASCII sihari before mapping to unicode
   str = str.replaceAll(ASCII_SIHARI_PATTERN, '$2$1')
 
   // Map any ASCII / Unicode Gurmukhi to Sant Lipi format
   for (const [key, value] of Object.entries(ASCII_TO_SL_REPLACEMENTS)) {
-    str = str.replaceAll(key, value)
-  }
-
-  for (const [key, value] of Object.entries(UNICODE_TO_SL_REPLACEMENTS)) {
     str = str.replaceAll(key, value)
   }
 
@@ -199,6 +197,8 @@ export default function toUnicode(
  */
 export function unicodeNormalize(str: string): string {
   str = sortDiacritics(str)
+
+  str = sortVariationSelectors(str)
 
   str = sanitizeUnicode(str)
 
@@ -255,6 +255,49 @@ function diacriticReplacer(match: string) {
     .join('')
 }
 
+const VARIATION_SELECTORS = [
+  '\ufe00',
+  '\ufe01',
+  '\ufe02',
+  '\ufe03',
+  '\ufe04',
+  '\ufe05',
+  '\ufe06',
+  '\ufe07',
+  '\ufe08',
+  '\ufe09',
+  '\ufe0a',
+  '\ufe0b',
+  '\ufe0c',
+  '\ufe0d',
+]
+
+const REGEX_MATCH_VS_PATTERN = new RegExp(
+  `([${VARIATION_SELECTORS.join('')}]*)([\u0a00-\u0a7f])`,
+  'g',
+)
+
+/**
+ * Orders the variation selectors preceding Gurmukhi in ascending order.
+ * @param {string} str
+ * @returns {string}
+ */
+export function sortVariationSelectors(str: string): string {
+  return str.replaceAll(REGEX_MATCH_VS_PATTERN, vsReplacer)
+}
+
+function vsReplacer(_: string, p1: string, p2: string) {
+  return (
+    p1
+      .split('')
+      .sort(
+        (a, b): number =>
+          VARIATION_SELECTORS.indexOf(a) - VARIATION_SELECTORS.indexOf(b),
+      )
+      .join('') + p2
+  )
+}
+
 const UNICODE_SANITIZATION_MAP = {
   '\u0a73\u0a4b': '\u0a13', // ਓ
   '\u0a05\u0a3e': '\u0a06', // ਅ + ਾ = ਆ
@@ -271,7 +314,7 @@ const UNICODE_SANITIZATION_MAP = {
   '\u0a17\u0a3c': '\u0a5a', // ਗ਼
   '\u0a1c\u0a3c': '\u0a5b', // ਜ਼
   '\u0a2b\u0a3c': '\u0a5e', // ਫ਼
-  '\u0a71\u0a02': '\u0a01', // ਁ adak bindi (quite literally never used today or in the Shabad OS Database, only included for parity with the Unicode block)
+  '\u0a71\u0a02': '\u0a01', // ਁ adak bindi
 }
 
 /**

@@ -19,7 +19,7 @@ def unicode3(str):
 ```
 
 ```js
-import toUnicode from '../build/toUnicode.js'
+import { toUnicode } from '../build/index.js'
 
 const unicode3 = (str) => toUnicode(toUnicode(toUnicode(str)))
 ```
@@ -38,7 +38,7 @@ E.g.
 ```
 
 ```js
-import toUnicode from '../build/toUnicode.js'
+import { toUnicode } from '../build/index.js'
 
 const unicode3 = (str) => toUnicode(toUnicode(toUnicode(str)))
 const santlipi = (str) => toUnicode(str, 'Sant Lipi')
@@ -49,7 +49,8 @@ const unisant = (str) => toUnicode(toUnicode(str, 'Sant Lipi'))
 
 The following tests are implemented, but more can be added with a universal keyword:
 
-- `equality` - Strictly equal (E.g. in JavaScript `a === b`)
+- `is` - Strictly equal (E.g. in JavaScript `a === b`)
+- `is not` - Not equal (E.g. in JavaScript `a != b`)
 - `throws` - Results in an error/exception being thrown/raised
 
 ## Test Array

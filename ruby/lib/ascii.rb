@@ -85,10 +85,11 @@ module GurmukhiUtils
   }.freeze
 
   ASCII_REPLACEMENTS = {
-    '੍ਯ' => 'Î',  # half-yayya
-    '꠳ਯ' => 'Î',  # sant lipi variation
-    '꠴ਯ' => 'ï',  # open-top yayya
-    '꠵ਯ' => 'î',  # open-top half-yayya
+    "੍ਯ" => "Î",  # half-yayya
+    "\ufe00\ufe01ਯ" => "î",  # open-top half-yayya
+    "\ufe00ਯ" => "Î",  # sant lipi variation of half-yayya
+    "\ufe01ਯ" => "ï",  # open-top yayya
+    "ਂ\u200dੀ" => "ˆØI",  # bindi + bihari ligature
     '੍ਰ' => 'R',
     '੍ਵ' => 'Í',  # capital i-acute letter
     '੍ਹ' => 'H',
@@ -112,7 +113,7 @@ module GurmukhiUtils
     string = string.chars.map { |c| ASCII_TRANSLATION[c.ord] || c }.join
 
     # Re-arrange sihari
-    ascii_base_letters = 'AeshkKgG|cCjJ\tTfFxqQdDnpPbBmXrlvVSz^&ZLÎïî'
+    ascii_base_letters = 'AeshkKgG|cCjJ\\\\tTfFxqQdDnpPbBmXrlvVSz^&ZLÎïî'
     ascii_modifiers = 'æ@´ÚwIuUyYoO`MNRÍHç†œ˜ü¨®µˆW~¤Ï'
     regex = Regexp.new("([#{ascii_base_letters}][#{ascii_modifiers}]*)i([#{ascii_modifiers}]*)")
     string.gsub!(regex, 'i\1\2')
@@ -144,7 +145,6 @@ module GurmukhiUtils
 
     # Make rendering changes for combos
     ascii_combo_replacements = {
-      'Iਁ' => 'ˆØI',  # bindi + bihari ligature
       'IM' => 'µØI',  # tippi + bihari ligature
       'Iµ' => 'µØI',  # tippi + bihari ligature
       'kR' => 'k®', # kakka + pair-rara ligature

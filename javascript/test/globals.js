@@ -10,6 +10,9 @@ export const guutThrows = (f, a) =>
   })
 
 export const guutMatch = (t, f, a, b = '') => {
+  if (b === '') {
+    b = a
+  }
   switch (t) {
     case 'is':
       guutIs(f, a, b)

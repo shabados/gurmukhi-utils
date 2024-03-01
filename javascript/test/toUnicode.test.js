@@ -1,4 +1,4 @@
-import toUnicode from '../build/toUnicode.js'
+import { toUnicode } from '../build/index.js'
 import { guutMatch } from './globals.js'
 import { suite } from 'uvu'
 
