@@ -64,6 +64,13 @@ If you want to help, please get started with the `CONTRIBUTING.md` doc in the re
 - [C# / C Sharp](/csharp/CONTRIBUTING.md)
 - [Dart](/dart/CONTRIBUTING.md)
 
+**Helpful Tools**
+
+- Unicode Resources [Online Tools](https://unicode.org/resources/online-tools.html) has a lot of good ones such as:
+  - [Unicode Code Converter](https://r12a.github.io/app-conversion/)
+  - [Unicode Breaks (Segmentation)](https://util.unicode.org/UnicodeJsps/breaks.jsp)
+- Sarabveer's [Gurmukhi Unicode Converter](https://unicode.sarabveer.me/)
+
 ## Community
 
 The easiest way to communicate is via [GitHub issues](https://github.com/shabados/gurmukhi-utils/issues). Please search for similar issues regarding your concerns before opening a new issue.
