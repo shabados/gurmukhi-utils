@@ -1,0 +1,5 @@
+[tools]
+ruby = { version = "3" }
+
+[settings]
+ruby = { ruby_install = false }

@@ -18,9 +18,9 @@ This project follows a standard Ruby gem structure. Here's a brief overview of t
 
 ## Development
 
-- Install ruby. This project's ruby version is listed in `Gemfile`.
-- Install project dependencies with `bundle install`.
-- Run tests with `bundle exec rspec`.
+- Install [Mise](https://mise.jdx.dev/)
+- Run `mise install` to install the correct version of ruby + bundler. Ensure you have the [required dependencies installed.](https://github.com/rbenv/ruby-build/wiki#suggested-build-environment)
+- Run `bundle install` to install the project dependencies.
 
 ## Testing
 

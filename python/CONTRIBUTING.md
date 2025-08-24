@@ -4,6 +4,12 @@ Please see our [community docs on contributing](https://shabados.com/docs/commun
 
 This document is for developers or programmers contributing to source code. If you're interested in contributing a different way, please see the link above.
 
+## Setup
+
+- Install [Mise](https://mise.jdx.dev/)
+- Run `mise install` to install the correct version of python + poetry.
+- Run `poetry install` to install the project dependencies.
+
 ## Testing
 
 _Role: contributors wishing to change the project source code_

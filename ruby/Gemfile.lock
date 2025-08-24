@@ -46,15 +46,13 @@ GEM
 PLATFORMS
   arm64-darwin-22
   x86_64-darwin-19
+  x86_64-linux
 
 DEPENDENCIES
   json
   rspec
   rubocop
   rubocop-rspec
-
-RUBY VERSION
-   ruby 3.2.2p53
 
 BUNDLED WITH
    2.4.7

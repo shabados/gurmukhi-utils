@@ -1,0 +1,3 @@
+[tools]
+poetry = { version="1" }
+python = "3"
