@@ -1,98 +1,95 @@
-{
-  "functions": ["rv", "rvh", "rvm", "rvl", "rvhm", "rle"],
-  "tests": [
-    {
-      "name": "remove vishram",
-      "functions": ["rv"],
-      "type": "is",
-      "assertions": {
-        "ਸਬਦ. ਸਬਦ, ਸਬਦ; ਸਬਦ ॥": "ਸਬਦ ਸਬਦ ਸਬਦ ਸਬਦ ॥",
-        "sbd, sbd sbd; sbd ]": "sbd sbd sbd sbd ]",
-        "sbd sbd sbd ]": "sbd sbd sbd ]"
-      }
-    },
-    {
-      "name": "remove heavy vishram",
-      "functions": ["rvh"],
-      "type": "is",
-      "assertions": {
-        "sbd, sbd sbd; sbd ]": "sbd, sbd sbd sbd ]",
-        "ਸਬਦ. ਸਬਦ; ਸਬਦ ਸਬਦ ॥": "ਸਬਦ. ਸਬਦ ਸਬਦ ਸਬਦ ॥"
-      }
-    },
-    {
-      "name": "remove medium vishram",
-      "functions": ["rvm"],
-      "type": "is",
-      "assertions": {
-        "sbd, sbd sbd; sbd ]": "sbd sbd sbd; sbd ]",
-        "ਸਬਦ. ਸਬਦ; ਸਬਦ ਸਬਦ ॥": "ਸਬਦ. ਸਬਦ; ਸਬਦ ਸਬਦ ॥"
-      }
-    },
-    {
-      "name": "remove light vishram",
-      "functions": ["rvl"],
-      "type": "is",
-      "assertions": {
-        "sbd, sbd sbd; sbd ]": "sbd, sbd sbd; sbd ]",
-        "ਸਬਦ. ਸਬਦ; ਸਬਦ ਸਬਦ ॥": "ਸਬਦ ਸਬਦ; ਸਬਦ ਸਬਦ ॥"
-      }
-    },
-    {
-      "name": "remove heavy and medium vishram",
-      "functions": ["rvhm"],
-      "type": "is",
-      "assertions": {
-        "sbd, sbd sbd; sbd ]": "sbd sbd sbd sbd ]",
-        "ਸਬਦ. ਸਬਦ; ਸਬਦ ਸਬਦ ॥": "ਸਬਦ. ਸਬਦ ਸਬਦ ਸਬਦ ॥"
-      }
-    },
-    {
-      "name": "remove line endings",
-      "functions": ["rle"],
-      "type": "is",
-      "assertions": {
-        "ਸਬਦ ॥ ਰਹਾਉ ॥": "ਸਬਦ",
-        "सबद ॥ रहाउ ॥": "सबद",
-        "ਸਬਦ ॥੧॥ ਰਹਾਉ ॥": "ਸਬਦ",
-        "सबद ॥१॥ रहाउ ॥": "सबद",
-        "ਸਬਦ ॥੧॥ ਰਹਾਉ ਦੂਜਾ ॥": "ਸਬਦ",
-        "ਸਬਦ ॥੪॥੬॥ ਛਕਾ ੧ ॥": "ਸਬਦ",
-        "ਸਬਦ ॥੨॥੧੨॥ ਛਕੇ ੨ ॥": "ਸਬਦ",
-        "ਸਬਦ ।੪੯।੧। ਇਕੁ ।": "ਸਬਦ",
-        "ਸਬਦ ॥੪॥੯॥ ਦੁਤੁਕੇ": "ਸਬਦ",
-        "ਸਬਦ ॥੨੧॥੧॥ ਸੁਧੁ ਕੀਚੇ": "ਸਬਦ",
-        "ਸਬਦ ॥੫੧੭॥ ਪੜ੍ਹੋ ਵੀਚਾਰ ਕਬਿੱਤ ੫੦੬": "ਸਬਦ",
-        "ਸਬਦ ॥੧॥": "ਸਬਦ",
-        "ਸਬਦ  ॥੧॥": "ਸਬਦ",
-        "ਸਬਦ॥੨੦": "ਸਬਦ",
-        "ਸਬਦ ॥੨॥੨॥": "ਸਬਦ",
-        "ਸਬਦ ॥ ਰਹਾਉ ਦੂਜਾ ॥੧॥੩॥": "ਸਬਦ",
-        "ਸਬਦ ।੧੪੮।": "ਸਬਦ",
-        "ਸਬਦ ॥ ਸਬਦ ॥": "ਸਬਦ ਸਬਦ",
-        "॥ ਸਬਦ ॥": "ਸਬਦ",
-        "ਸਬਦ ॥ ਸਬਦ ॥੨॥੨॥": "ਸਬਦ ਸਬਦ",
-        "Example test. ||1||": "Example test.",
-        "Example test. ||1||Pause||": "Example test.",
-        "Example test. ||Pause||": "Example test.",
-        "sabad |4|6| chhakaa 1 |": "sabad",
-        "sabad | rahaau doojaa |1|3| sabad": "sabad",
-        "sabad | rahau doojaa |1|3| sabad": "sabad",
-        "sabad | rahao doojaa |1|3| sabad": "sabad",
-        "sabad | sabad |": "sabad sabad",
-        "| sabad |": "sabad"
-      }
-    },
-    {
-      "name": "remove line endings - negative",
-      "functions": ["rle"],
-      "type": "is",
-      "assertions": {
-        "ਮਹਲਾ ੧": "ਮਹਲਾ ੧",
-        "ਮਹਲਾ ੫": "ਮਹਲਾ ੫",
-        "mahalaa 1": "mahalaa 1",
-        "महला ५": "महला ५"
-      }
+[
+  {
+    "name": "remove vishram",
+    "functions": ["rv"],
+    "type": "is",
+    "assertions": {
+      "ਸਬਦ. ਸਬਦ, ਸਬਦ; ਸਬਦ ॥": "ਸਬਦ ਸਬਦ ਸਬਦ ਸਬਦ ॥",
+      "sbd, sbd sbd; sbd ]": "sbd sbd sbd sbd ]",
+      "sbd sbd sbd ]": "sbd sbd sbd ]"
     }
-  ]
-}
+  },
+  {
+    "name": "remove heavy vishram",
+    "functions": ["rvh"],
+    "type": "is",
+    "assertions": {
+      "sbd, sbd sbd; sbd ]": "sbd, sbd sbd sbd ]",
+      "ਸਬਦ. ਸਬਦ; ਸਬਦ ਸਬਦ ॥": "ਸਬਦ. ਸਬਦ ਸਬਦ ਸਬਦ ॥"
+    }
+  },
+  {
+    "name": "remove medium vishram",
+    "functions": ["rvm"],
+    "type": "is",
+    "assertions": {
+      "sbd, sbd sbd; sbd ]": "sbd sbd sbd; sbd ]",
+      "ਸਬਦ. ਸਬਦ; ਸਬਦ ਸਬਦ ॥": "ਸਬਦ. ਸਬਦ; ਸਬਦ ਸਬਦ ॥"
+    }
+  },
+  {
+    "name": "remove light vishram",
+    "functions": ["rvl"],
+    "type": "is",
+    "assertions": {
+      "sbd, sbd sbd; sbd ]": "sbd, sbd sbd; sbd ]",
+      "ਸਬਦ. ਸਬਦ; ਸਬਦ ਸਬਦ ॥": "ਸਬਦ ਸਬਦ; ਸਬਦ ਸਬਦ ॥"
+    }
+  },
+  {
+    "name": "remove heavy and medium vishram",
+    "functions": ["rvhm"],
+    "type": "is",
+    "assertions": {
+      "sbd, sbd sbd; sbd ]": "sbd sbd sbd sbd ]",
+      "ਸਬਦ. ਸਬਦ; ਸਬਦ ਸਬਦ ॥": "ਸਬਦ. ਸਬਦ ਸਬਦ ਸਬਦ ॥"
+    }
+  },
+  {
+    "name": "remove line endings",
+    "functions": ["rle"],
+    "type": "is",
+    "assertions": {
+      "ਸਬਦ ॥ ਰਹਾਉ ॥": "ਸਬਦ",
+      "सबद ॥ रहाउ ॥": "सबद",
+      "ਸਬਦ ॥੧॥ ਰਹਾਉ ॥": "ਸਬਦ",
+      "सबद ॥१॥ रहाउ ॥": "सबद",
+      "ਸਬਦ ॥੧॥ ਰਹਾਉ ਦੂਜਾ ॥": "ਸਬਦ",
+      "ਸਬਦ ॥੪॥੬॥ ਛਕਾ ੧ ॥": "ਸਬਦ",
+      "ਸਬਦ ॥੨॥੧੨॥ ਛਕੇ ੨ ॥": "ਸਬਦ",
+      "ਸਬਦ ।੪੯।੧। ਇਕੁ ।": "ਸਬਦ",
+      "ਸਬਦ ॥੪॥੯॥ ਦੁਤੁਕੇ": "ਸਬਦ",
+      "ਸਬਦ ॥੨੧॥੧॥ ਸੁਧੁ ਕੀਚੇ": "ਸਬਦ",
+      "ਸਬਦ ॥੫੧੭॥ ਪੜ੍ਹੋ ਵੀਚਾਰ ਕਬਿੱਤ ੫੦੬": "ਸਬਦ",
+      "ਸਬਦ ॥੧॥": "ਸਬਦ",
+      "ਸਬਦ  ॥੧॥": "ਸਬਦ",
+      "ਸਬਦ॥੨੦": "ਸਬਦ",
+      "ਸਬਦ ॥੨॥੨॥": "ਸਬਦ",
+      "ਸਬਦ ॥ ਰਹਾਉ ਦੂਜਾ ॥੧॥੩॥": "ਸਬਦ",
+      "ਸਬਦ ।੧੪੮।": "ਸਬਦ",
+      "ਸਬਦ ॥ ਸਬਦ ॥": "ਸਬਦ ਸਬਦ",
+      "॥ ਸਬਦ ॥": "ਸਬਦ",
+      "ਸਬਦ ॥ ਸਬਦ ॥੨॥੨॥": "ਸਬਦ ਸਬਦ",
+      "Example test. ||1||": "Example test.",
+      "Example test. ||1||Pause||": "Example test.",
+      "Example test. ||Pause||": "Example test.",
+      "sabad |4|6| chhakaa 1 |": "sabad",
+      "sabad | rahaau doojaa |1|3| sabad": "sabad",
+      "sabad | rahau doojaa |1|3| sabad": "sabad",
+      "sabad | rahao doojaa |1|3| sabad": "sabad",
+      "sabad | sabad |": "sabad sabad",
+      "| sabad |": "sabad"
+    }
+  },
+  {
+    "name": "remove line endings - negative",
+    "functions": ["rle"],
+    "type": "is",
+    "assertions": {
+      "ਮਹਲਾ ੧": "ਮਹਲਾ ੧",
+      "ਮਹਲਾ ੫": "ਮਹਲਾ ੫",
+      "mahalaa 1": "mahalaa 1",
+      "महला ५": "महला ५"
+    }
+  }
+]

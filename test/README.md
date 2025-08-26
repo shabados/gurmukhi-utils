@@ -5,10 +5,18 @@ This folder contains json files for all the tests that every language must pass.
 Example showing how the test suite `unicode3` function is implemented across a few languages:
 
 ```json
-// example of a file in this folder that defines functions for use in the tests
-{
-  "functions": ["unicode3"]
-}
+[
+  {
+    "name": "ascii",
+    "functions": ["unicode3"],
+    "type": "is",
+    "assertions": {
+      "123": "੧੨੩",
+      "<> > <": "ੴ ☬ ੴ",
+      "gurU": "ਗੁਰੂ"
+    }
+  }
+]
 ```
 
 ```python
@@ -28,21 +36,29 @@ const unicode3 = (str) => toUnicode(toUnicode(toUnicode(str)))
 
 If a function like `toUnicode` also needs to test different parameters, then the universal test suite defines a new function for it.
 
-E.g.
-
-```json
-// example of a file in this folder that defines functions for use in the tests
-{
-  "functions": ["unicode3", "santlipi", "unisant"]
-}
-```
-
 ```js
 import { toUnicode } from '../build/index.js'
 
 const unicode3 = (str) => toUnicode(toUnicode(toUnicode(str)))
 const santlipi = (str) => toUnicode(str, 'Sant Lipi')
 const unisant = (str) => toUnicode(toUnicode(str, 'Sant Lipi'))
+```
+
+and in the test unit file:
+
+```json
+[
+  {
+    "name": "ascii",
+    "functions": ["unicode3"],
+    "type": "is",
+    "assertions": {
+      "123": "੧੨੩",
+      "<> > <": "ੴ ☬ ੴ",
+      "gurU": "ਗੁਰੂ"
+    }
+  }
+]
 ```
 
 ## Types of tests
@@ -60,16 +76,16 @@ The json files then list all tests with a name, the functions to execute, the ty
 E.g.
 
 ```json
-"tests": [
-    {
-        "name": "Ascii to Unicode",
-        "functions": ["unicode3"],
-        "type": "is",
-        "assertions": {
-            "123": "੧੨੩",
-            "<> > <": "ੴ ☬ ੴ",
-            "gurU": "ਗੁਰੂ"
-        }
+[
+  {
+    "name": "Ascii to Unicode",
+    "functions": ["unicode3"],
+    "type": "is",
+    "assertions": {
+      "123": "੧੨੩",
+      "<> > <": "ੴ ☬ ੴ",
+      "gurU": "ਗੁਰੂ"
     }
+  }
 ]
 ```

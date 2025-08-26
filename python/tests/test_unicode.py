@@ -1,5 +1,5 @@
 from gurmukhiutils.unicode import unicode
-from tests.globals import guut
+from .guut import guut
 
 
 def unicode3(str: str) -> str:
@@ -23,6 +23,4 @@ def unisant2(str: str) -> str:
 
 
 def test():
-    fnames = ["unicode", "unicode3", "santlipi", "santlipi3", "unisant", "unisant2"]
-    functions = {key: globals()[key] for key in fnames}
-    guut(functions, "toUnicode")
+    guut("toUnicode", globals())

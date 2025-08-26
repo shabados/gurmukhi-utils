@@ -26,8 +26,8 @@ This project follows a standard Ruby gem structure. Here's a brief overview of t
 
 - Local tests are located in the ruby folder.
 - The tests run against the root gurmukhi-utils `test` folder.
-- The test runner is [`rspec`](https://rspec.info/).
-- Run tests by setting the ruby folder as your current working directory in the terminal and then executing `bundle exec rspec`.
+- The test runner is [`minitest`](https://github.com/minitest/minitest).
+- Run tests by setting the ruby folder as your current working directory in the terminal and then executing `rake test`.
 
 ## Adding New Features to `GurmukhiUtils`
 

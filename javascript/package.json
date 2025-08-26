@@ -44,13 +44,13 @@
     "fmt:check": "prettier --check .",
     "build": "tsc --project tsconfig.prod.json",
     "build:check": "tsc",
-    "test": "npm run build && uvu test"
+    "test": "node --test test/*.test.ts"
   },
   "dependencies": {},
   "devDependencies": {
+    "@types/node": "^24.3.0",
     "prettier": "3.0.0",
-    "typescript": "^5.1.6",
-    "uvu": "^0.5.6"
+    "typescript": "^5.9.2"
   },
   "files": [
     "build"

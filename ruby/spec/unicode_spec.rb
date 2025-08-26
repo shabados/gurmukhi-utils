@@ -1,58 +1,42 @@
-# rubocop:disable Metrics/BlockLength
 # frozen_string_literal: true
 
-require 'spec_helper'
+require 'minitest/autorun'
 require 'gurmukhi_utils'
-require 'json'
-
-# test setup and config
-
-fn = 'toUnicode'
+require_relative 'guut'
 
 def unicode(string)
-  return GurmukhiUtils.unicode(string)
+  GurmukhiUtils.unicode(string)
 end
 
 def unicode3(string)
-  return unicode(unicode(unicode(string)))
+  unicode(unicode(unicode(string)))
 end
 
 def santlipi(string)
-  return GurmukhiUtils.unicode(string, "Sant Lipi")
+  GurmukhiUtils.unicode(string, "Sant Lipi")
 end
 
 def santlipi3(string)
-  return santlipi(santlipi(santlipi(string)))
+  santlipi(santlipi(santlipi(string)))
 end
 
 def unisant(string)
-  return unicode(santlipi(string))
+  unicode(santlipi(string))
 end
 
 def unisant2(string)
-  return unisant(unisant(string))
+  unisant(unisant(string))
 end
 
-# re-usable code below
-
-file = File.read("../test/#{fn}.json")
-data_hash = JSON.parse(file)
-
-RSpec.describe do
-  data_hash['tests'].each do |test|
-    if test["type"] == "is"
-      it test["name"] do
-        test["assertions"].each do |a, b|
-          if b == nil
-            b = a
-          end
-          test["functions"].each do |f|
-            expect(send(f, a)).to eq(b)
-          end
-        end
-      end
-    end
-  end
+class UnicodeTest < Minitest::Test
+  functions = {
+    'unicode' => method(:unicode),
+    'unicode3' => method(:unicode3),
+    'santlipi' => method(:santlipi),
+    'santlipi3' => method(:santlipi3),
+    'unisant' => method(:unisant),
+    'unisant2' => method(:unisant2)
+  }
+  
+  Guut.guut('toUnicode', functions, self)
 end
-
-# rubocop:enable Metrics/BlockLength

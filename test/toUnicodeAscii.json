@@ -1,186 +1,175 @@
-{
-  "functions": ["a2a"],
-  "tests": [
-    {
-      "name": "basic",
-      "functions": ["a2a"],
-      "type": "is",
-      "assertions": ["123", "<>", "gurU"]
-    },
-    {
-      "name": "diacritics",
-      "functions": ["a2a"],
-      "type": "is",
-      "assertions": [
-        "k®W",
-        "sÍWiq",
-        "iBRMg",
-        "inR`qy",
-        "ik®`sM",
-        "AMimR`q",
-        "Qwin´µ",
-        "k®Wq",
-        "k®ü`D",
-        "ijnHYN",
-        "hÍYübo",
-        "ƒ",
-        "^u`d",
-        "PzUM",
-        "kwrmu`l-k`rwm",
-        "&ru`^y",
-        "^u`ro",
-        "douAwlY",
-        "idRV@IAw",
-        "kwn@ü",
-        "ijMn@I",
-        "El@w",
-        "swm@Y",
-        "kqybhuˆ"
-      ]
-    },
-    {
-      "name": "sihari",
-      "functions": ["a2a"],
-      "type": "is",
-      "assertions": ["BuiKAw."]
-    },
-    {
-      "name": "nasalization",
-      "functions": ["a2a"],
-      "type": "is",
-      "assertions": [
-        "iQqµØI",
-        "kµØI",
-        "nµØIbu",
-        "nµØIbw",
-        "dyNih",
-        "guxˆØI",
-        "sKˆØI"
-      ]
-    },
-    {
-      "name": "conversions",
-      "functions": ["a2a"],
-      "type": "is",
-      "assertions": [
-        "DR¨A",
-        "AwilsÎ",
-        "dwin",
-        "BIqir",
-        "jIau",
-        "[1[2[3[4[5[",
-        "]1]2]3]4]5]",
-        "sauifsies",
-        "z`rrw",
-        "^urSYd",
-        "luqi&",
-        "iekMqR",
-        "pRBU"
-      ]
-    },
-    {
-      "name": "subscripts",
-      "functions": ["a2a"],
-      "type": "is",
-      "assertions": [
-        "isRis†",
-        "ik®s˜M",
-        "dsœgIrI",
-        "insçl",
-        "sÍwd",
-        "suDwK´r",
-        "cV§",
-        "im´wny",
-        "iD´wvY",
-        "idÍj",
-        "imQ´Mq",
-        "sMswrs´"
-      ]
-    },
-    {
-      "name": "yayya",
-      "functions": ["a2a"],
-      "type": "is",
-      "assertions": [
-        "XkIN",
-        "ipRX",
-        "hXw`iq",
-        "hmwXUM",
-        "BXou",
-        "XkIn",
-        "mDÎ",
-        "ilKÎqy",
-        "mwnÎo",
-        "iBÎo",
-        "kIÎo",
-        "sÎwm",
-        "qÎwgÎo",
-        "jÎoN",
-        "nwmï",
-        "sunIïhu",
-        "AdyïM",
-        "kFïo",
-        "sïwm",
-        "idqïwidqî",
-        "qRsîo"
-      ]
-    },
-    {
-      "name": "db4",
-      "functions": ["a2a"],
-      "type": "is",
-      "assertions": [
-        "suMi\\Aw",
-        "au~cI",
-        "au~im",
-        "au~cM",
-        "ieauN",
-        "BauNh",
-        "gwauN",
-        "bqwauN",
-        "aUNGn",
-        "aUNDy",
-        "kmwaUN;",
-        "pwaUN"
-      ]
-    },
-    {
-      "name": "normalizations (adhak positioning)",
-      "functions": ["a2a"],
-      "type": "is",
-      "assertions": {
-        "im~qr": "im`qr",
-        "s~jn": "s`jn",
-        "sb¤k": "sb`k",
-        "h¤k": "h`k"
-      }
-    },
-    {
-      "name": "normalizations (simplify chars)",
-      "functions": ["a2a"],
-      "type": "is",
-      "assertions": {
-        "nUµ": "ƒ",
-        "cunUµ": "cuƒ",
-        "swnUµ": "swƒ",
-        "mjnUM": "mjƒ",
-        "hnUMmq": "hƒmq",
-        "knUM": "kƒ",
-        "kolH¨": "kol§",
-        "cVH¨": "cV§",
-        "Ru": "Rü",
-        "uR": "Rü",
-        "uH": "Hü",
-        "Hu": "Hü",
-        "®u": "Rü",
-        "k®u": "k®ü",
-        "lµ": "lM",
-        "TM": "Tµ",
-        "TUM": "TUµ",
-        "n´M": "n´µ",
-        "cuN": "cuˆ",
-        "kR": "k®"
-      }
+[
+  {
+    "name": "basic",
+    "functions": ["a2a"],
+    "type": "is-self",
+    "assertions": ["123", "<>", "gurU"]
+  },
+  {
+    "name": "diacritics",
+    "functions": ["a2a"],
+    "type": "is-self",
+    "assertions": [
+      "k®W",
+      "sÍWiq",
+      "iBRMg",
+      "inR`qy",
+      "ik®`sM",
+      "AMimR`q",
+      "Qwin´µ",
+      "k®Wq",
+      "k®ü`D",
+      "ijnHYN",
+      "hÍYübo",
+      "ƒ",
+      "^u`d",
+      "PzUM",
+      "kwrmu`l-k`rwm",
+      "&ru`^y",
+      "^u`ro",
+      "douAwlY",
+      "idRV@IAw",
+      "kwn@ü",
+      "ijMn@I",
+      "El@w",
+      "swm@Y",
+      "kqybhuˆ"
+    ]
+  },
+  {
+    "name": "sihari",
+    "functions": ["a2a"],
+    "type": "is-self",
+    "assertions": ["BuiKAw."]
+  },
+  {
+    "name": "nasalization",
+    "functions": ["a2a"],
+    "type": "is-self",
+    "assertions": ["iQqµØI", "kµØI", "nµØIbu", "nµØIbw", "dyNih", "guxˆØI", "sKˆØI"]
+  },
+  {
+    "name": "conversions",
+    "functions": ["a2a"],
+    "type": "is-self",
+    "assertions": [
+      "DR¨A",
+      "AwilsÎ",
+      "dwin",
+      "BIqir",
+      "jIau",
+      "[1[2[3[4[5[",
+      "]1]2]3]4]5]",
+      "sauifsies",
+      "z`rrw",
+      "^urSYd",
+      "luqi&",
+      "iekMqR",
+      "pRBU"
+    ]
+  },
+  {
+    "name": "subscripts",
+    "functions": ["a2a"],
+    "type": "is-self",
+    "assertions": [
+      "isRis†",
+      "ik®s˜M",
+      "dsœgIrI",
+      "insçl",
+      "sÍwd",
+      "suDwK´r",
+      "cV§",
+      "im´wny",
+      "iD´wvY",
+      "idÍj",
+      "imQ´Mq",
+      "sMswrs´"
+    ]
+  },
+  {
+    "name": "yayya",
+    "functions": ["a2a"],
+    "type": "is-self",
+    "assertions": [
+      "XkIN",
+      "ipRX",
+      "hXw`iq",
+      "hmwXUM",
+      "BXou",
+      "XkIn",
+      "mDÎ",
+      "ilKÎqy",
+      "mwnÎo",
+      "iBÎo",
+      "kIÎo",
+      "sÎwm",
+      "qÎwgÎo",
+      "jÎoN",
+      "nwmï",
+      "sunIïhu",
+      "AdyïM",
+      "kFïo",
+      "sïwm",
+      "idqïwidqî",
+      "qRsîo"
+    ]
+  },
+  {
+    "name": "db4",
+    "functions": ["a2a"],
+    "type": "is-self",
+    "assertions": [
+      "suMi\\Aw",
+      "au~cI",
+      "au~im",
+      "au~cM",
+      "ieauN",
+      "BauNh",
+      "gwauN",
+      "bqwauN",
+      "aUNGn",
+      "aUNDy",
+      "kmwaUN;",
+      "pwaUN"
+    ]
+  },
+  {
+    "name": "normalizations (adhak positioning)",
+    "functions": ["a2a"],
+    "type": "is-self",
+    "assertions": {
+      "im~qr": "im`qr",
+      "s~jn": "s`jn",
+      "sb¤k": "sb`k",
+      "h¤k": "h`k"
     }
-  ]
-}
+  },
+  {
+    "name": "normalizations (simplify chars)",
+    "functions": ["a2a"],
+    "type": "is-self",
+    "assertions": {
+      "nUµ": "ƒ",
+      "cunUµ": "cuƒ",
+      "swnUµ": "swƒ",
+      "mjnUM": "mjƒ",
+      "hnUMmq": "hƒmq",
+      "knUM": "kƒ",
+      "kolH¨": "kol§",
+      "cVH¨": "cV§",
+      "Ru": "Rü",
+      "uR": "Rü",
+      "uH": "Hü",
+      "Hu": "Hü",
+      "®u": "Rü",
+      "k®u": "k®ü",
+      "lµ": "lM",
+      "TM": "Tµ",
+      "TUM": "TUµ",
+      "n´M": "n´µ",
+      "cuN": "cuˆ",
+      "kR": "k®"
+    }
+  }
+]
