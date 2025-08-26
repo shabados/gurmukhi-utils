@@ -15,8 +15,9 @@
     "sourceMap": true,
     "declaration": true,
     "lib": ["es2022", "DOM"],
-    "outDir": "./build"
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true
   },
-  "include": ["./src/**/*"],
   "exclude": ["./build"]
 }

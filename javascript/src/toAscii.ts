@@ -1,4 +1,4 @@
-import { unicodeNormalize } from './toUnicode.js'
+import { unicodeNormalize } from './toUnicode.ts'
 
 const ASCII_REPLACEMENTS = {
   '੍ਯ': 'Î', // half-yayya
