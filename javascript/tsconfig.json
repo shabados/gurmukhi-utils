@@ -1,12 +1,21 @@
 {
   "compilerOptions": {
-    "target": "ES2021",
-    "lib": ["ES2021", "DOM"],
-    "moduleResolution": "NodeNext",
-    "module": "NodeNext",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "es2022",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
     "strict": true,
-    "outDir": "./build",
-    "declaration": true
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "module": "NodeNext",
+    "sourceMap": true,
+    "declaration": true,
+    "lib": ["es2022", "DOM"],
+    "outDir": "./build"
   },
   "include": ["./src/**/*"],
   "exclude": ["./build"]
