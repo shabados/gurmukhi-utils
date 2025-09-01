@@ -3,6 +3,7 @@ from typing import Literal
 from gurmukhiutils.converters.guru_latn import guru_latn
 from gurmukhiutils.converters.guru_latn_pa import guru_latn_pa
 from gurmukhiutils.unicode import unicode_normalize
+from gurmukhiutils.constants.unicode import UNICODE_TO_SANT_LIPI_REPLACEMENTS
 
 TRANSLATORS = Literal["guru_latn", "guru_latn_pa"]
 
@@ -33,8 +34,9 @@ def convert(
         'gurū'
     """
 
-    # Convert Unicode to Sant Lipi format
-    string = string.replace("੍ਯ", "\ufe00ਯ")
+    # Convert any existing Unicode Gurmukhi to Sant Lipi standard
+    for key, value in UNICODE_TO_SANT_LIPI_REPLACEMENTS.items():
+        string = string.replace(key, value)
 
     string = unicode_normalize(string)
 

@@ -13,3 +13,5 @@ __pycache__
 
 # Distribution / Packaging
 dist/
+
+gurmukhiutils/constants/

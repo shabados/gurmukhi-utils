@@ -1,0 +1,11 @@
+{
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/to-json.ts",
+    "postbuild": "node scripts/to-constants/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "json5": "^2.2.3"
+  }
+}

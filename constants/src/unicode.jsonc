@@ -1,0 +1,198 @@
+{
+  "BASE_LETTERS": "ਸਹਕਖਗਘਙਚਛਜਝਞਟਠਡਢਣਤਥਦਧਨਪਫਬਭਮਯਰਲਵੜਸ਼ਖ਼ਗ਼ਜ਼ਫ਼ਲ਼",
+  "VOWEL_LETTERS": "ਅਆਏਐਇਈਓਔਉਊ",
+  "BELOW_LETTERS": "ਹਰਵਟਤਨਚ",
+  "VIRAMA": "੍",
+  "YAKASH": "ੵ",
+  /**
+    Nukta is essential to form a new base letter and must be ordered first.
+    Udaat, Yakash, and subjoined letters should follow.
+    Subjoined letters are constructed (they are not single char), so they cannot be used in the same regex group pattern.
+  */
+  "BASE_LETTER_MODIFIERS": ["਼", "ੑ", "ੵ"],
+  /*
+    More generally, when a consonant or independent vowel is modified by multiple vowel signs, the sequence of the vowel signs in the underlying representation of the text should be: left, top, bottom, right.
+    p. 491 of The Unicode® Standard Version 14.0 – Core Specification
+    https://www.unicode.org/versions/Unicode14.0.0/ch12.pdf
+  */
+  "ORDERED_VOWELS": ["ਿ", "ੇ", "ੈ", "ੋ", "ੌ", "ੁ", "ੂ", "ਾ", "ੀ"],
+  /**
+    These remaining diacritics are to be sorted at the end
+  */
+  "ORDERED_MODIFIERS": ["ਁ", "ੱ", "ਂ", "ੰ", "ਃ"],
+  "ZERO_WIDTH_CHARS": ["\u200c", "\u200d"],
+  "BINDI_BEFORE_BIHARI": "ਂ‍ੀ",
+  /*
+    List of 14 variation selectors in ascending order, found in VARIATION_SELECTORS
+    VS15 and VS16 are reserved to request that a character should be displayed as text or as an emoji respectively.
+    https://en.wikipedia.org/wiki/Variation_Selectors_(Unicode_block)
+  */
+  "VARIATION_SELECTORS": [
+    "\ufe00",
+    "\ufe01",
+    "\ufe02",
+    "\ufe03",
+    "\ufe04",
+    "\ufe05",
+    "\ufe06",
+    "\ufe07",
+    "\ufe08",
+    "\ufe09",
+    "\ufe0a",
+    "\ufe0b",
+    "\ufe0c",
+    "\ufe0d"
+  ],
+  "UNICODE_SANITIZATION_MAP": {
+    "\u0a73\u0a4b": "ਓ", // ਓ
+    "\u0a05\u0a3e": "ਆ", // ਅ + ਾ = ਆ
+    "\u0a72\u0a3f": "ਇ", // ਇ
+    "\u0a72\u0a40": "ਈ", // ਈ
+    "\u0a73\u0a41": "ਉ", // ਉ
+    "\u0a73\u0a42": "ਊ", // ਊ
+    "\u0a72\u0a47": "ਏ", // ਏ
+    "\u0a05\u0a48": "ਐ", // ਐ
+    "\u0a05\u0a4c": "ਔ", // ਔ
+    "\u0a32\u0a3c": "ਲ਼", // ਲ਼
+    "\u0a38\u0a3c": "ਸ਼", // ਸ਼
+    "\u0a16\u0a3c": "ਖ਼", // ਖ਼
+    "\u0a17\u0a3c": "ਗ਼", // ਗ਼
+    "\u0a1c\u0a3c": "ਜ਼", // ਜ਼
+    "\u0a2b\u0a3c": "ਫ਼", // ਫ਼
+    "\u0a71\u0a02": "ਁ"
+  },
+  // Font mapping
+  // AnmolLipi/GurbaniAkhar & GurbaniLipi by Kulbir S. Thind, MD
+  // OpenGurbaniAkhar by Sarabveer Singh (GurbaniNow)
+  "ASCII_TO_SANT_LIPI_TRANSLATION_MAP": {
+    "a": "ੳ",
+    "b": "ਬ",
+    "c": "ਚ",
+    "d": "ਦ",
+    "e": "ੲ",
+    "f": "ਡ",
+    "g": "ਗ",
+    "h": "ਹ",
+    "i": "ਿ",
+    "j": "ਜ",
+    "k": "ਕ",
+    "l": "ਲ",
+    "m": "ਮ",
+    "n": "ਨ",
+    "o": "ੋ",
+    "p": "ਪ",
+    "q": "ਤ",
+    "r": "ਰ",
+    "s": "ਸ",
+    "t": "ਟ",
+    "u": "ੁ",
+    "v": "ਵ",
+    "w": "ਾ",
+    "x": "ਣ",
+    "y": "ੇ",
+    "z": "ਜ਼",
+    "A": "ਅ",
+    "B": "ਭ",
+    "C": "ਛ",
+    "D": "ਧ",
+    "E": "ਓ",
+    "F": "ਢ",
+    "G": "ਘ",
+    "H": "੍ਹ",
+    "I": "ੀ",
+    "J": "ਝ",
+    "K": "ਖ",
+    "L": "ਲ਼",
+    "M": "ੰ",
+    "N": "ਂ",
+    "O": "ੌ",
+    "P": "ਫ",
+    "Q": "ਥ",
+    "R": "੍ਰ",
+    "S": "ਸ਼",
+    "T": "ਠ",
+    "U": "ੂ",
+    "V": "ੜ",
+    "W": "ਾਂ",
+    "X": "ਯ",
+    "Y": "ੈ",
+    "Z": "ਗ਼",
+    "0": "੦",
+    "1": "੧",
+    "2": "੨",
+    "3": "੩",
+    "4": "੪",
+    "5": "੫",
+    "6": "੬",
+    "7": "੭",
+    "8": "੮",
+    "9": "੯",
+    "[": "।",
+    "]": "॥",
+    "\\": "ਞ",
+    "|": "ਙ",
+    "`": "ੱ",
+    "~": "ੱ",
+    "@": "ੑ",
+    "^": "ਖ਼",
+    "&": "ਫ਼",
+    "†": "੍ਟ", // dagger symbol
+    "ü": "ੁ", // u-diaeresis letter
+    "®": "੍ਰ", // registered symbol
+    "´": "ੵ", // acute accent (´)
+    "¨": "ੂ", // diaeresis accent (¨)
+    "µ": "ੰ", // mu letter
+    "æ": "਼",
+    "¡": "ੴ", // inverted exclamation (¡)
+    "ƒ": "ਨੂੰ", // florin symbol
+    "œ": "੍ਤ",
+    "Í": "੍ਵ", // capital i-acute letter
+    "Ï": "ੵ", // capital i-diaeresis letter
+    "Ò": "॥", // capital o-grave letter
+    "Ú": "ਃ", // capital u-acute letter
+    "ˆ": "ਂ", // circumflex accent (ˆ)
+    "˜": "੍ਨ", // small tilde (˜)
+    /*** AnmolLipi/GurbaniAkhar mappings: ***/
+    "§": "੍ਹੂ", // section symbol
+    "¤": "ੱ", // currency symbol
+    /*** GurbaniLipi mappings: ***/
+    "ç": "੍ਚ", // c-cedilla letter
+    /*** AnmolLipi/GurbaniAkhar overriding GurbaniLipi mapping: ***/
+    "Ç": "☬", // khanda instead of california state symbol
+    /*** Miscellaneous: ***/
+    "‚": "❁", // single low-9 quotation (‚) mark
+    /*** Nullify ***/
+    /*** Either the 2nd portion of ੴ or a symbol of USA: ***/
+    "Æ": "",
+    "Ø": "", // This is a topline / shirorekha (शिरोरेखा) extender
+    "ÿ": "", // This is the author Kulbir S Thind's stamp
+    "Œ": "", // Box drawing left flower
+    "‰": "", // Box drawing right flower
+    "Ó": "", // Box drawing top flower
+    "Ô": "", // Box drawing bottom flower
+    /*** Open Gurbani Akhar ***/
+    //? This is a duplicate from above, is it this same?
+    "Î": "\ufe00ਯ", // capital i-circumflex to half-yayya
+    "ï": "\ufe01ਯ", // i-diaeresis to open-top yayya
+    "î": "\ufe00\ufe01ਯ" // i-circumflex to open-top half-yayya
+  },
+  "ASCII_TO_SANT_LIPI_REPLACEMENTS": {
+    "ˆØI": "ਂ\u200dੀ", // ︁Connect bindi before bihari with zero-width joiner
+    "<>": "ੴ", // AnmolLipi/GurbaniAkhar variant
+    "<": "ੴ", // GurbaniLipi variant
+    ">": "☬", // GurbaniLipi variant
+    "Åå": "ੴ", // AnmolLipi/GurbaniAkhar variant
+    "Å": "ੴ", // GurbaniLipi variant
+    "å": "ੴ" // GurbaniLipi variant
+  },
+  "UNICODE_TO_SANT_LIPI_REPLACEMENTS": {
+    "੍ਯ": "\ufe00ਯ" // replace unicode half-yayya with Sant Lipi ligature
+  },
+  "SANT_LIPI_TO_UNICODE_REPLACEMENTS": {
+    "\ufe00\ufe01ਯ": "੍ਯ",
+    "\ufe00ਯ": "੍ਯ",
+    "\ufe01ਯ": "ਯ",
+    "ਂ\u200dੀ": "ੀਂ" // pre-bihari-bindi
+  },
+  "ASCII_BASE_LETTERS": "\\a-zA-Z|^&Îîï"
+}

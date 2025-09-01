@@ -1,6 +1,14 @@
 import re
 
-from gurmukhiutils.constants import VISHRAMS
+from gurmukhiutils.constants.vishraams import (
+    VISHRAM_LIGHT,
+    VISHRAM_MEDIUM,
+    VISHRAM_HEAVY,
+)
+from gurmukhiutils.constants.lines import LINE_ENDINGS, RAHAO, GURMUKHI_NUMBER_RANGE
+
+VISHRAMS = [VISHRAM_LIGHT, VISHRAM_MEDIUM, VISHRAM_HEAVY]
+LINE_ENDINGS_STR = "".join(LINE_ENDINGS)
 
 
 def remove(string: str, removals: list[str]) -> str:
@@ -72,14 +80,11 @@ def remove_line_endings(string: str) -> str:
     """
 
     line_ending_patterns = [
-        "[।॥] *(ਰਹਾਉ|रहाउ).*",
-        "[|] *Pause.*",
-        "[|] *(rahaau|rahau|rahao).*",
-        "[।॥][੦-੯|०-९].*",
-        "[|]\\d.*",
-        "[।॥|]",
+        rf"[{LINE_ENDINGS_STR}] *({'|'.join(RAHAO)}).*",
+        rf"[{LINE_ENDINGS_STR}][{GURMUKHI_NUMBER_RANGE}].*",
+        rf"[{LINE_ENDINGS_STR}]\d.*",
+        rf"[{LINE_ENDINGS_STR}]",
     ]
-
     return remove_regex(string, line_ending_patterns)
 
 

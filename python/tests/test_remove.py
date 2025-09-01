@@ -1,4 +1,8 @@
-from gurmukhiutils.constants import VISHRAM_HEAVY, VISHRAM_LIGHT, VISHRAM_MEDIUM
+from gurmukhiutils.constants.vishraams import (
+    VISHRAM_HEAVY,
+    VISHRAM_LIGHT,
+    VISHRAM_MEDIUM,
+)
 from gurmukhiutils.remove import remove, remove_line_endings, remove_vishrams
 from .guut import guut
 

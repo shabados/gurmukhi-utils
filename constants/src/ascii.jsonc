@@ -1,0 +1,122 @@
+{
+  "TRANSLATION_MAP": {
+    "ੳ": "a",
+    "ਅ": "A",
+    "ੲ": "e",
+    "ਸ": "s",
+    "ਹ": "h",
+    "ਕ": "k",
+    "ਖ": "K",
+    "ਗ": "g",
+    "ਘ": "G",
+    "ਙ": "|",
+    "ਚ": "c",
+    "ਛ": "C",
+    "ਜ": "j",
+    "ਝ": "J",
+    "ਞ": "\\",
+    "ਟ": "t",
+    "ਠ": "T",
+    "ਡ": "f",
+    "ਢ": "F",
+    "ਣ": "x",
+    "ਤ": "q",
+    "ਥ": "Q",
+    "ਦ": "d",
+    "ਧ": "D",
+    "ਨ": "n",
+    "ਪ": "p",
+    "ਫ": "P",
+    "ਬ": "b",
+    "ਭ": "B",
+    "ਮ": "m",
+    "ਯ": "X",
+    "ਰ": "r",
+    "ਲ": "l",
+    "ਵ": "v",
+    "ੜ": "V",
+    "ਸ਼": "S",
+    "ਜ਼": "z",
+    "ਖ਼": "^",
+    "ਫ਼": "&",
+    "ਗ਼": "Z",
+    "ਲ਼": "L",
+    "਼": "æ",
+    "ੑ": "@",
+    "ੵ": "´",
+    "ਃ": "Ú",
+    "ਓ": "E",
+    "ਆ": "Aw",
+    "ਇ": "ei",
+    "ਈ": "eI",
+    "ਉ": "au",
+    "ਊ": "aU",
+    "ਏ": "ey",
+    "ਐ": "AY",
+    "ਔ": "AO",
+    "ਾ": "w",
+    "ਿ": "i",
+    "ੀ": "I",
+    "ੁ": "u",
+    "ੂ": "U",
+    "ੇ": "y",
+    "ੈ": "Y",
+    "ੋ": "o",
+    "ੌ": "O",
+    "ੰ": "M",
+    "ਂ": "N",
+    "ੱ": "~",
+    "।": "[",
+    "॥": "]",
+    "੦": "0",
+    "੧": "1",
+    "੨": "2",
+    "੩": "3",
+    "੪": "4",
+    "੫": "5",
+    "੬": "6",
+    "੭": "7",
+    "੮": "8",
+    "੯": "9",
+    "ੴ": "<>",
+    "☬": "Ç"
+  },
+  "REPLACEMENTS": {
+    "੍ਯ": "Î", // half-yayya
+    "\ufe00\ufe01ਯ": "î", // open-top half-yayya
+    "\ufe00ਯ": "Î", // sant lipi variation of half-yayya
+    "\ufe01ਯ": "ï", // open-top yayya
+    "ਂ\u200dੀ": "ˆØI", // bindi + bihari ligature
+    "੍ਰ": "R",
+    "੍ਵ": "Í",
+    "੍ਹ": "H",
+    "੍ਚ": "ç",
+    "੍ਟ": "†",
+    "੍ਤ": "œ",
+    "੍ਨ": "˜"
+  },
+  "ABOVE_VOWEL_MARKS": ["ੇ", "ੈ", "ੋ", "ੌ"],
+  "BELOW_VOWEL_MARKS": ["ੁ", "ੂ"],
+  "BASE_LETTERS": "AeshkKgG|cCjJ\\\\tTfFxqQdDnpPbBmXrlvVSz^&ZLÎïî",
+  "MODIFIERS": "æ@\u00b4ÚwIuUyYoO`MNRÍHç†œ\u02dcü\u00a8®µ\u02c6W~¤Ï",
+  "BELOW_BASE_LETTERS": "RÍHç†œ\u02dc\u00b4@",
+  "BELOW_VOWEL_MAPPINGS": {
+    "u": "ü",
+    "U": "¨"
+  },
+  "CENTER_STROKE_LETTERS": "nT",
+  "NON_ABOVE_MODIFIERS": "æ@\u00b4ÚwuURÍHç†œ\u02dcü\u00a8®Ï",
+  "NASALIZATION_MAPPINGS": {
+    "N": "ˆ",
+    "~": "`"
+  },
+  "COMBO_REPLACEMENTS": {
+    "IM": "µØI", // tippi + bihari ligature
+    "Iµ": "µØI", // tippi + bihari ligature
+    "kR": "k®", // kakka + pair-rara ligature
+    "H¨": "§",
+    "wN": "W", // addhak positioning
+    "wˆ": "W", // addhak positioning
+    "nUµ": "ƒ"
+  }
+}
