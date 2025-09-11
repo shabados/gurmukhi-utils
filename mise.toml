@@ -1,0 +1,6 @@
+[tools]
+rust = { version = "1",  targets = "wasm32-unknown-unknown" }
+python = "3"
+
+[env]
+_.python.venv = { path = ".venv", create = true }
