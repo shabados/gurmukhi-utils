@@ -41,7 +41,6 @@ pub fn sant_lipi_to_unicode_consortium_2(s: String) -> String {
 }
 
 #[rstest]
-/* Ascii to unicode cases */
 #[case("123", "੧੨੩")]
 #[case("<> > <", "ੴ ☬ ੴ")]
 #[case("gurU", "ਗੁਰੂ")]
@@ -58,7 +57,15 @@ pub fn sant_lipi_to_unicode_consortium_2(s: String) -> String {
 #[case("luqi&", "ਲੁਤਫ਼ਿ")]
 #[case("iekMqR", "ਇਕੰਤ੍ਰ")]
 #[case("pRBU", "ਪ੍ਰਭੂ")]
-/* Diacritics */
+#[trace]
+fn to_unicode_basic_test(#[case] input: String, #[case] expected: String) {
+    let fns = [to_unicode_consortium, to_unicode_consortium_3];
+
+    fns.iter()
+        .for_each(|f| assert_eq!(f(input.clone()), expected));
+}
+
+#[rstest]
 #[case("kRwN", "ਕ੍ਰਾਂ")]
 #[case("sÍwNiq", "ਸ੍ਵਾਂਤਿ")]
 #[case("iBRMg", "ਭ੍ਰਿੰਗ")]
@@ -83,7 +90,15 @@ pub fn sant_lipi_to_unicode_consortium_2(s: String) -> String {
 #[case("El@w", "ਓਲੑਾ")]
 #[case("swm@Y", "ਸਾਮੑੈ")]
 #[case("kqybhuˆ", "ਕਤੇਬਹੁਂ")]
-/* Sihari */
+#[trace]
+fn to_unicode_diacritics_test(#[case] input: String, #[case] expected: String) {
+    let fns = [to_unicode_consortium, to_unicode_consortium_3];
+
+    fns.iter()
+        .for_each(|f| assert_eq!(f(input.clone()), expected));
+}
+
+#[rstest]
 #[case("BuiKAw.", "ਭੁਖਿਆ.")]
 #[case("ਭੁਖiਆ.", "ਭੁਖਿਆ.")]
 #[case("ਮi", "ਮਿ")]
@@ -92,13 +107,29 @@ pub fn sant_lipi_to_unicode_consortium_2(s: String) -> String {
 #[case("suMi\\Aw", "ਸੁੰਞਿਆ")]
 #[case("|i||", "ਙਙਿਙ")]
 #[case("di&", "ਦਫ਼ਿ")]
-/* Nasalization */
+#[trace]
+fn to_unicode_sihari_test(#[case] input: String, #[case] expected: String) {
+    let fns = [to_unicode_consortium, to_unicode_consortium_3];
+
+    fns.iter()
+        .for_each(|f| assert_eq!(f(input.clone()), expected));
+}
+
+#[rstest]
 #[case("iQqMØI", "ਥਿਤੀੰ")]
 #[case("kMØI", "ਕੀੰ")]
 #[case("nµØIbu", "ਨੀੰਬੁ")]
 #[case("nµØIbw", "ਨੀੰਬਾ")]
 #[case("dyNih", "ਦੇਂਹਿ")]
-/* Ascii Subscripts */
+#[trace]
+fn to_unicode_nasalization_test(#[case] input: String, #[case] expected: String) {
+    let fns = [to_unicode_consortium, to_unicode_consortium_3];
+
+    fns.iter()
+        .for_each(|f| assert_eq!(f(input.clone()), expected));
+}
+
+#[rstest]
 #[case("isRis†", "ਸ੍ਰਿਸ੍ਟਿ")]
 #[case("ik®s˜M", "ਕ੍ਰਿਸ੍ਨੰ")]
 #[case("dsœgIrI", "ਦਸ੍ਤਗੀਰੀ")]
@@ -115,7 +146,15 @@ pub fn sant_lipi_to_unicode_consortium_2(s: String) -> String {
 #[case("imQ´Mq", "ਮਿਥੵੰਤ")]
 #[case("rKÏw", "ਰਖੵਾ")]
 #[case("sMswrsÏ", "ਸੰਸਾਰਸੵ")]
-/* Diacritic Ordering */
+#[trace]
+fn to_unicode_subscripts_test(#[case] input: String, #[case] expected: String) {
+    let fns = [to_unicode_consortium, to_unicode_consortium_3];
+
+    fns.iter()
+        .for_each(|f| assert_eq!(f(input.clone()), expected));
+}
+
+#[rstest]
 #[case("guoibMd", "\u{0a17}\u{0a4b}\u{0a41}\u{0a2c}\u{0a3f}\u{0a70}\u{0a26}")]
 #[case("gouibMd", "\u{0a17}\u{0a4b}\u{0a41}\u{0a2c}\u{0a3f}\u{0a70}\u{0a26}")]
 #[case("guoibµd", "\u{0a17}\u{0a4b}\u{0a41}\u{0a2c}\u{0a3f}\u{0a70}\u{0a26}")]
@@ -153,7 +192,15 @@ pub fn sant_lipi_to_unicode_consortium_2(s: String) -> String {
 #[case("joiqMÏ", "\u{0a1c}\u{0a4b}\u{0a24}\u{0a75}\u{0a3f}\u{0a70}")]
 #[case("bisÏMq", "\u{0a2c}\u{0a38}\u{0a75}\u{0a3f}\u{0a70}\u{0a24}")]
 #[case("bisMÏq", "\u{0a2c}\u{0a38}\u{0a75}\u{0a3f}\u{0a70}\u{0a24}")]
-/* Santization */
+#[trace]
+fn to_unicode_diacritic_ordering_test(#[case] input: String, #[case] expected: String) {
+    let fns = [to_unicode_consortium, to_unicode_consortium_3];
+
+    fns.iter()
+        .for_each(|f| assert_eq!(f(input.clone()), expected));
+}
+
+#[rstest]
 #[case("aou", "\u{0a13}\u{0a41}")]
 #[case("auo", "\u{0a13}\u{0a41}")]
 #[case("aoU", "\u{0a13}\u{0a42}")]
@@ -162,7 +209,7 @@ pub fn sant_lipi_to_unicode_consortium_2(s: String) -> String {
 #[case("ANw", "\u{0a06}\u{0a02}")]
 #[case("AwN", "\u{0a06}\u{0a02}")]
 #[trace]
-fn to_unicode_test(#[case] input: String, #[case] expected: String) {
+fn to_unicode_sanitization_test(#[case] input: String, #[case] expected: String) {
     let fns = [to_unicode_consortium, to_unicode_consortium_3];
 
     fns.iter()
@@ -192,7 +239,6 @@ fn bindi_before_bihari_error_test(#[case] input: String, #[case] expected: Strin
 }
 
 #[rstest]
-/* Yaya renders correctly */
 #[case("XkIN", "ਯਕੀਂ")]
 #[case("ipRX", "ਪ੍ਰਿਯ")]
 #[case("hX¤wiq", "ਹਯਾੱਤਿ")]
@@ -200,27 +246,51 @@ fn bindi_before_bihari_error_test(#[case] input: String, #[case] expected: Strin
 #[case("hmwXUM", "ਹਮਾਯੂੰ")]
 #[case("BXuo", "ਭਯੋੁ")]
 #[case("XkIn", "ਯਕੀਨ")]
-/* Half-Y (open-left) with no diacritics renders correctly */
+#[trace]
+fn unicode_consortium_yaya_test(#[case] input: String, #[case] expected: String) {
+    let fns = [
+        to_unicode_consortium,
+        to_unicode_consortium_3,
+        sant_lipi_to_unicode_consortium,
+        sant_lipi_to_unicode_consortium_2,
+    ];
+
+    fns.iter()
+        .for_each(|f| assert_eq!(f(input.clone()), expected));
+}
+
+#[rstest]
 #[case("mDÎ", "ਮਧ੍ਯ")]
 #[case("ilKÎqy", "ਲਿਖ੍ਯਤੇ")]
-/* Half-Y with any diacritics may render incorrectly with sub-par fonts / shaping engines */
 #[case("mwnÎo", "ਮਾਨ੍ਯੋ")]
 #[case("iBÎo", "ਭਿ੍ਯੋ")]
 #[case("kIÎo", "ਕੀ੍ਯੋ")]
 #[case("sÎwm", "ਸ੍ਯਾਮ")]
 #[case("qÎwgÎo", "ਤ੍ਯਾਗ੍ਯੋ")]
 #[case("jÎoN", "ਜ੍ਯੋਂ")]
-/* Open-top Yayya doesn't exist in Unicode 14.0, converts base-letter to Yayya */
+#[trace]
+fn unicode_consortium_half_yaya_test(#[case] input: String, #[case] expected: String) {
+    let fns = [
+        to_unicode_consortium,
+        to_unicode_consortium_3,
+        sant_lipi_to_unicode_consortium,
+        sant_lipi_to_unicode_consortium_2,
+    ];
+
+    fns.iter()
+        .for_each(|f| assert_eq!(f(input.clone()), expected));
+}
+
+#[rstest]
 #[case("nwmï", "ਨਾਮਯ")]
 #[case("sunIïhu", "ਸੁਨੀਯਹੁ")]
 #[case("AdyïM", "ਅਦੇਯੰ")]
 #[case("kFïo", "ਕਢਯੋ")]
 #[case("sïwm", "ਸਯਾਮ")]
-/* Open-top Half-Y doesn't exist in Unicode 14.0, converts to half-y which may render incorrectly with sub-par fonts / shaping engines */
 #[case("idqïwidqî", "ਦਿਤਯਾਦਿਤ੍ਯ")]
 #[case("qRsîo", "ਤ੍ਰਸ੍ਯੋ")]
 #[trace]
-fn unicode_consortium_yaya_test(#[case] input: String, #[case] expected: String) {
+fn unicode_consortium_open_top_yaya_test(#[case] input: String, #[case] expected: String) {
     let fns = [
         to_unicode_consortium,
         to_unicode_consortium_3,
@@ -240,6 +310,15 @@ fn unicode_consortium_yaya_test(#[case] input: String, #[case] expected: String)
 #[case("hmwXUM", "ਹਮਾਯੂੰ")]
 #[case("BXuo", "ਭਯੋੁ")]
 #[case("XkIn", "ਯਕੀਨ")]
+#[trace]
+fn sant_lipi_yaya_test(#[case] input: String, #[case] expected: String) {
+    let fns = [to_unicode_sant_lipi, to_unicode_sant_lipi_3];
+
+    fns.iter()
+        .for_each(|f| assert_eq!(f(input.clone()), expected));
+}
+
+#[rstest]
 #[case("mDÎ", "ਮਧ︀ਯ")]
 #[case("ilKÎqy", "ਲਿਖ︀ਯਤੇ")]
 #[case("mwnÎo", "ਮਾਨ︀ਯੋ")]
@@ -248,6 +327,15 @@ fn unicode_consortium_yaya_test(#[case] input: String, #[case] expected: String)
 #[case("sÎwm", "ਸ︀ਯਾਮ")]
 #[case("qÎwgÎo", "ਤ︀ਯਾਗ︀ਯੋ")]
 #[case("jÎoN", "ਜ︀ਯੋਂ")]
+#[trace]
+fn sant_lipi_half_yaya_test(#[case] input: String, #[case] expected: String) {
+    let fns = [to_unicode_sant_lipi, to_unicode_sant_lipi_3];
+
+    fns.iter()
+        .for_each(|f| assert_eq!(f(input.clone()), expected));
+}
+
+#[rstest]
 #[case("nwmï", "ਨਾਮ︁ਯ")]
 #[case("sunIïhu", "ਸੁਨੀ︁ਯਹੁ")]
 #[case("AdyïM", "ਅਦੇ︁ਯੰ")]
@@ -256,7 +344,7 @@ fn unicode_consortium_yaya_test(#[case] input: String, #[case] expected: String)
 #[case("idqïwidqî", "ਦਿਤ︁ਯਾਦਿਤ︀︁ਯ")]
 #[case("qRsîo", "ਤ੍ਰਸ︀︁ਯੋ")]
 #[trace]
-fn sant_lipi_yaya_test(#[case] input: String, #[case] expected: String) {
+fn sant_lipi_open_top_yaya_test(#[case] input: String, #[case] expected: String) {
     let fns = [to_unicode_sant_lipi, to_unicode_sant_lipi_3];
 
     fns.iter()
