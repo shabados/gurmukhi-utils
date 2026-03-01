@@ -171,7 +171,6 @@
     "Ó": "", // Box drawing top flower
     "Ô": "", // Box drawing bottom flower
     /*** Open Gurbani Akhar ***/
-    //? This is a duplicate from above, is it this same?
     "Î": "\ufe00ਯ", // capital i-circumflex to half-yayya
     "ï": "\ufe01ਯ", // i-diaeresis to open-top yayya
     "î": "\ufe00\ufe01ਯ" // i-circumflex to open-top half-yayya
