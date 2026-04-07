@@ -4,10 +4,6 @@ require 'minitest/autorun'
 require 'gurmukhi_utils'
 require_relative 'guut'
 
-def ascii(string)
-  GurmukhiUtils.ascii(string)
-end
-
 class AsciiTest < Minitest::Test
-  Guut.guut('toAscii', { 'ascii' => method(:ascii) }, self)
+  Guut.guut('toAscii', { 'ascii' => ->(s) { GurmukhiUtils.to_ascii(s) } }, self)
 end
