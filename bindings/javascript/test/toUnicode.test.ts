@@ -3,7 +3,7 @@ import { suite } from 'node:test'
 import { run, type TestUnit } from './guut.ts'
 
 import { toUnicode } from '../src/index.ts'
-import testUnits from '../../test/toUnicode.json' with { type: 'json' }
+import testUnits from '../../../test/toUnicode.json' with { type: 'json' }
 
 const santlipi = (str: string) => toUnicode(str, 'Sant Lipi')
 const unisant = (str: string) => toUnicode(santlipi(str))

@@ -74,7 +74,7 @@ module Guut
   end
 
   def self.guut(test_name, functions, test_class)
-    file_path = File.join(__dir__, '..', '..', 'test', "#{test_name}.json")
+    file_path = File.join(__dir__, '..', '..', '..', 'test', "#{test_name}.json")
     file = File.read(file_path)
     data = JSON.parse(file)
     

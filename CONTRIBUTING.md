@@ -22,15 +22,14 @@ You should always build the `constants` package before building any language pac
 
 Please check the CONTRIBUTING.md file located within each language folder.
 
-- [Python](/python/CONTRIBUTING.md)
-- [JavaScript](/javascript/CONTRIBUTING.md)
-- [Ruby](/ruby/CONTRIBUTING.md)
-- [C# / C Sharp](/csharp/CONTRIBUTING.md)
-- [Dart](/dart/CONTRIBUTING.md)
+- [Python](/bindings/python/CONTRIBUTING.md)
+- [JavaScript](/bindings/javascript/CONTRIBUTING.md)
+- [Ruby](/bindings/ruby/CONTRIBUTING.md)
+- [Dart](/bindings/dart/CONTRIBUTING.md)
 
 ## Testing
 
-Each language should implement the `guut` runner, and run all the tests specified in the `test` folder. See the [JavaScript implementation](javascript/test/guut.ts) as an example.
+Each language should implement the `guut` runner, and run all the tests specified in the `test` folder. See the [JavaScript implementation](bindings/javascript/test/guut.ts) as an example.
 
 ## Thank you
 
