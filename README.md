@@ -8,11 +8,11 @@ These libraries are a work in progress! Note that the API can change unexpectedl
 
 **Progress**
 
-| API               |       Python       |     JavaScript     |        Ruby        | C Sharp |        Dart        |
-| ----------------- | :----------------: | :----------------: | :----------------: | :-----: | :----------------: |
-| unicode to ascii  | :white_check_mark: | :white_check_mark: | :white_check_mark: |         |                    |
-| ascii to unicode  | :white_check_mark: | :white_check_mark: | :white_check_mark: |         | :white_check_mark: |
-| normalize unicode | :white_check_mark: | :white_check_mark: | :white_check_mark: |         | :white_check_mark: |
+| API               |       Rust         |     JavaScript     |        Ruby        |       Kotlin       |       Swift        |        Python       |        Dart        |
+| ----------------- | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: | :-----------------: | :----------------: |
+| unicode to ascii  | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark:  |                    |
+| ascii to unicode  | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark:  | :white_check_mark: |
+| normalize unicode | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark:  | :white_check_mark: |
 
 ## Install
 
@@ -61,7 +61,6 @@ If you want to help, please get started with the `CONTRIBUTING.md` doc in the re
 - [Python](/bindings/python/CONTRIBUTING.md)
 - [JavaScript](/bindings/javascript/CONTRIBUTING.md)
 - [Ruby](/bindings/ruby/CONTRIBUTING.md)
-- [C# / C Sharp](/csharp/CONTRIBUTING.md)
 - [Dart](/bindings/dart/CONTRIBUTING.md)
 
 **Helpful Tools**
@@ -86,7 +85,5 @@ Harjot Singh, Organization Lead: [@Harjot1Singh](https://github.com/Harjot1Singh
 Bhajneet S.K., Python/JavaScript Maintainer: [@bhajneet](https://github.com/bhajneet/)
 
 Dilraj Singh, Ruby Maintainer: [@dsomel21](https://github.com/dsomel21)
-
-Onkarjit Singh, C# / C Sharp Maintainer: [@onkarjit](https://github.com/onkarjit)
 
 Akshdeep Singh, Dart Maintainer: [@akshdeep-singh](https://github.com/akshdeep-singh)
