@@ -9,6 +9,11 @@ node_modules/
 bindings/packages/**/pkg/
 bindings/packages/**/target/
 
+# Generated (build artifacts)
+generated/
+rust_modules/
+out/
+
 # Python
 **/.pytest_cache/
 **/__pycache__/
