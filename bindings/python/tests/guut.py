@@ -50,7 +50,7 @@ def run(units: List[TestUnit], fns: Dict[str, Any]) -> None:
 
 
 def guut(fn, functions):
-    fp = Path(__file__).parent.parent.parent.joinpath("test/" + fn + ".json")
+    fp = Path(__file__).parent.parent.parent.parent.joinpath("test/" + fn + ".json")
 
     with open(fp, "r") as file:
         data = json.load(file)

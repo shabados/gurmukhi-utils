@@ -58,11 +58,11 @@ If you want to help, please get started with the `CONTRIBUTING.md` doc in the re
 
 **Contributing Docs**
 
-- [Python](/python/CONTRIBUTING.md)
-- [JavaScript](/javascript/CONTRIBUTING.md)
-- [Ruby](/ruby/CONTRIBUTING.md)
+- [Python](/bindings/python/CONTRIBUTING.md)
+- [JavaScript](/bindings/javascript/CONTRIBUTING.md)
+- [Ruby](/bindings/ruby/CONTRIBUTING.md)
 - [C# / C Sharp](/csharp/CONTRIBUTING.md)
-- [Dart](/dart/CONTRIBUTING.md)
+- [Dart](/bindings/dart/CONTRIBUTING.md)
 
 **Helpful Tools**
 
