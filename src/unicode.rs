@@ -137,7 +137,7 @@ const ASCII_TO_SANT_LIPI_MAP: fn(char) -> String = translation_map!(
         'î'=> "\u{fe00}\u{fe01}ਯ" // i-circumflex to open-top half-yayya
 );
 
-// #[uniffi::export(default())]
+#[uniffi::export]
 /// Converts any ascii (or unicode) gurmukhi characters to normalized unicode gurmukhi of a given standard
 ///
 /// Note:
