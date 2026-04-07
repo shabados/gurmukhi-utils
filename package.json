@@ -1,0 +1,18 @@
+{
+  "name": "gurmukhi-utils",
+  "version": "0.0.1",
+  "type": "module",
+  "repository": {
+    "url": "https://github.com/shabados/gurmukhi-utils"
+  },
+  "scripts": {
+    "test": "bun test test/web.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "tsx": "^4.21.0"
+  },
+  "dependencies": {
+    "uniffi-bindgen-react-native": "^0.30.0-1"
+  }
+}
