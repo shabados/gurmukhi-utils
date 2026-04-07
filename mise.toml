@@ -1,6 +1,69 @@
 [tools]
-rust = { version = "1",  targets = "wasm32-unknown-unknown" }
+rust = { version = "1", targets = "wasm32-unknown-unknown" }
 python = "3"
 
 [env]
 _.python.venv = { path = ".venv", create = true }
+
+[tasks.build]
+description = "Build Rust cdylib"
+run = "cargo build --release"
+
+[tasks.generate]
+description = "Generate UniFFI bindings for a language"
+depends = ["build"]
+env = { UNIFFI_LIB = "target/release/libgurmukhi_utils.so" }
+run = """
+cargo run --release --bin uniffi-bindgen -- generate \
+  --library $UNIFFI_LIB \
+  --language $UNIFFI_LANG \
+  --out-dir $UNIFFI_OUT \
+  --no-format
+"""
+
+[tasks."generate:ruby"]
+description = "Generate Ruby bindings"
+env = { UNIFFI_LANG = "ruby", UNIFFI_OUT = "bindings/ruby/lib/gurmukhi_utils" }
+run = "mise run generate"
+
+[tasks."generate:kotlin"]
+description = "Generate Kotlin bindings"
+env = { UNIFFI_LANG = "kotlin", UNIFFI_OUT = "bindings/kotlin/lib" }
+run = "mise run generate"
+
+[tasks."generate:swift"]
+description = "Generate Swift bindings"
+depends = ["build"]
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+tmpdir=$(mktemp -d)
+UNIFFI_LANG=swift UNIFFI_OUT="$tmpdir" mise run generate
+mv "$tmpdir/gurmukhi_utilsFFI.h" bindings/swift/Sources/gurmukhi_utilsFFI/
+mv "$tmpdir/gurmukhi_utilsFFI.modulemap" bindings/swift/Sources/gurmukhi_utilsFFI/
+mv "$tmpdir/gurmukhi_utils.swift" bindings/swift/Sources/GurmukhiUtils/
+rm -rf "$tmpdir"
+"""
+
+[tasks."generate:all"]
+description = "Generate all language bindings"
+depends = ["generate:ruby", "generate:kotlin", "generate:swift"]
+
+[tasks."test:rust"]
+description = "Run Rust tests"
+run = "cargo test"
+
+[tasks."test:ruby"]
+description = "Run Ruby tests"
+depends = ["generate:ruby"]
+run = "cd bindings/ruby && LD_LIBRARY_PATH=../../target/release bundle exec rake test"
+
+[tasks."test:kotlin"]
+description = "Run Kotlin tests"
+depends = ["generate:kotlin"]
+run = "cd bindings/kotlin && LD_LIBRARY_PATH=../../target/release gradle test"
+
+[tasks."test:swift"]
+description = "Run Swift tests"
+depends = ["generate:swift"]
+run = "cd bindings/swift && LD_LIBRARY_PATH=../../target/release swift test"

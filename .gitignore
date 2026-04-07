@@ -6,13 +6,17 @@ target/
 
 # JS/Bindings
 node_modules/
-bindings/packages/**/pkg/
-bindings/packages/**/target/
 
 # Generated (build artifacts)
 generated/
 rust_modules/
 out/
+
+# UniFFI generated bindings
+bindings/ruby/lib/gurmukhi_utils/
+bindings/kotlin/lib/
+bindings/swift/Sources/gurmukhi_utilsFFI/gurmukhi_utilsFFI.*
+bindings/swift/Sources/GurmukhiUtils/gurmukhi_utils.swift
 
 # Python
 **/.pytest_cache/
