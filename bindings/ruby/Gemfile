@@ -2,12 +2,10 @@
 
 source 'https://rubygems.org'
 
-group :development do
-  gem 'rubocop'
-  gem 'rubocop-rspec', :require => false
-end
+gem 'ffi', '~> 1.0'
 
 group :test do
   gem 'minitest'
+  gem 'rake'
   gem 'json'
 end
