@@ -50,20 +50,41 @@ jobs:
             target/wasm32-unknown-unknown/release/gurmukhi.wasm
 
   generate:
-    name: Generate (${{ matrix.language }})
+    name: Generate + Smoke (${{ matrix.language }})
     needs: [build]
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         language: [ruby, kotlin, swift, python, javascript]
+        include:
+          - language: ruby
+            setup: gem install ffi --no-document
+          - language: kotlin
+            setup: true
+          - language: swift
+            setup: true
+          - language: python
+            setup: true
+          - language: javascript
+            setup: true
     steps:
       - uses: actions/checkout@v6
       - uses: jdx/mise-action@v4
+      - uses: actions/setup-java@v4
+        if: matrix.language == 'kotlin'
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: swift-actions/setup-swift@v2
+        if: matrix.language == 'swift'
       - uses: actions/download-artifact@v8
         with:
           name: build-artifacts
           path: target
       - run: chmod +x target/release/uniffi-bindgen target/release/uniffi-bindgen-js target/release/libgurmukhi.so
       - run: mise run generate:${{ matrix.language }}
+      - run: ${{ matrix.setup }}
+      - run: mise run smoke:stage
+      - run: mise run smoke:${{ matrix.language }}
 
