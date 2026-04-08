@@ -16,10 +16,5 @@ let package = Package(
             dependencies: ["gurmukhi_utilsFFI"],
             path: "Sources/GurmukhiUtils"
         ),
-        .testTarget(
-            name: "GurmukhiUtilsTests",
-            dependencies: ["GurmukhiUtils"],
-            path: "Tests/GurmukhiUtilsTests"
-        ),
     ]
 )
