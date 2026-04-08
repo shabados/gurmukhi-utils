@@ -80,6 +80,19 @@ scripts/                  # JS post-generation transforms
 mise.toml                 # Build tasks and tool versions
 ```
 
+## Commits & releases
+
+This project uses [Conventional Commits](https://www.conventionalcommits.org/) and [release-please](https://github.com/googleapis/release-please) for automated versioning.
+
+Write commits like `feat: add new function` or `fix: handle edge case`. The prefix determines the version bump:
+
+- `feat:` → minor (1.0.0 → 1.1.0)
+- `fix:` → patch (1.0.0 → 1.0.1)
+- `feat!:` or `BREAKING CHANGE:` footer → major (1.0.0 → 2.0.0)
+- `chore:`, `ci:`, `docs:`, `refactor:`, `style:`, `test:` → no release
+
+When commits land on `main`, release-please opens a Release PR with version bumps and a changelog. Merging that PR publishes to package registries.
+
 ## Thank you
 
 Your contributions to open source, large or small, make great projects like this possible. Thank you for taking the time to participate in this project.
