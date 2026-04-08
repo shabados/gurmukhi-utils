@@ -7,7 +7,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/shabados/gurmukhi-utils",
-    "directory": "javascript"
+    "directory": "bindings/javascript"
   },
   "homepage": "https://github.com/shabados/gurmukhi-utils",
   "bugs": "https://github.com/shabados/gurmukhi-utils/issues/new/choose",
@@ -20,42 +20,25 @@
     "punjabi",
     "shabad",
     "sikh",
-    "unicode"
+    "unicode",
+    "wasm"
   ],
   "type": "module",
-  "main": "./build/index.js",
-  "types": "./build/index.d.ts",
-  "typesVersions": {
-    "*": {
-      ".": [
-        "./build/index.d.ts"
-      ]
+  "exports": {
+    ".": {
+      "bun": "./generated/native/index.js",
+      "node": "./generated/native/index.js",
+      "browser": "./generated/wasm/index.ts",
+      "default": "./generated/wasm/index.ts"
     }
   },
-  "exports": {
-    ".": "./build/index.js",
-    "./package.json": "./package.json"
-  },
-  "engines": {
-    "node": ">= 16.0.0"
-  },
-  "scripts": {
-    "fmt": "prettier --write .",
-    "fmt:check": "prettier --check .",
-    "build": "tsc --project tsconfig.build.json",
-    "build:check": "tsc",
-    "test": "node --test test/*.test.ts"
-  },
-  "devDependencies": {
-    "@types/node": "^24.3.0",
-    "prettier": "3.0.0",
-    "typescript": "^5.9.2"
-  },
   "files": [
-    "build"
+    "generated/"
   ],
-  "prettier": {
-    "semi": false,
-    "singleQuote": true
+  "engines": {
+    "node": ">= 18.0.0"
+  },
+  "dependencies": {
+    "koffi": "^2.15.3"
   }
 }

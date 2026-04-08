@@ -5,11 +5,5 @@
   "type": "module",
   "repository": {
     "url": "https://github.com/shabados/gurmukhi-utils"
-  },
-  "devDependencies": {
-    "@types/node": "^25.5.0"
-  },
-  "dependencies": {
-    "uniffi-bindgen-react-native": "^0.30.0-1"
   }
 }
