@@ -83,7 +83,6 @@ jobs:
     needs: [check, test, build, generate, release-please]
     if: needs.release-please.outputs.release_created
     runs-on: ubuntu-latest
-    environment: crates-io
     steps:
       - uses: actions/checkout@v6
       - uses: jdx/mise-action@v4
