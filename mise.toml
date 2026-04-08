@@ -79,9 +79,14 @@ uniffi-bindgen-js generate \
 bun scripts/flatten-wasm-namespace.ts bindings/javascript/generated/wasm
 """
 
+[tasks."generate:python"]
+description = "Generate Python bindings"
+env = { UNIFFI_LANG = "python", UNIFFI_OUT = "bindings/python/gurmukhiutils" }
+run = "mise run generate"
+
 [tasks."generate:all"]
 description = "Generate all language bindings"
-depends = ["generate:ruby", "generate:kotlin", "generate:swift", "generate:javascript"]
+depends = ["generate:ruby", "generate:kotlin", "generate:swift", "generate:javascript", "generate:python"]
 
 [tasks."test:rust"]
 description = "Run Rust tests"
