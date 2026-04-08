@@ -20,30 +20,49 @@ const NASALS: &[char] = &['ੰ', 'ਂ', 'ਁ'];
 const ACCENTS: &[char] = &['ੑ', 'ੵ'];
 const VISARGA: char = 'ਃ';
 
+/// A semantic feature that can be detected in or removed from Gurmukhi text.
+///
+/// Features are composable — pass any combination to [`detect`] or [`remove`].
+/// Grouping helpers like [`vishraams`], [`vowels`], and [`modifiers`] return
+/// common subsets.
 #[derive(uniffi::Enum, Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum Feature {
-    // Vishrams
+    /// Heavy pause marker (`;`). Indicates a major breath or stop.
     VishramHeavy,
+    /// Medium pause marker (`,`). Indicates a moderate pause.
     VishramMedium,
+    /// Light pause marker (`.`). Indicates a brief pause.
     VishramLight,
 
-    // Line endings
+    /// Rahao line ending (e.g. `॥ ਰਹਾਉ ॥`). Marks the refrain/pause verse.
     RahaoEnding,
+    /// Numbered line ending (e.g. `॥੧॥`). Marks a numbered verse boundary.
     NumberedEnding,
+    /// Bare line ending (`।`, `॥`, `|`). A line boundary without numbering.
     BareEnding,
 
-    // Vowels
+    /// Dependent vowel sign / matra (ਾ ਿ ੀ ੁ ੂ ੇ ੈ ੋ ੌ).
     VowelSign,
+    /// Independent vowel carrier (ੲ ੳ ਅ) and precomposed vowel letters (ਆ ਇ ਈ etc.).
     VowelCarrier,
 
-    // Modifiers
+    /// Nukta (਼). Sub-dot modifying a consonant for borrowed sounds.
     Nukta,
+    /// Adhak (ੱ). Gemination marker — doubles the following consonant.
     Adhak,
+    /// Nasal markers (ੰ tippi, ਂ bindi, ਁ adak bindi).
     Nasal,
+    /// Accent markers (ੑ udaat, ੵ yakash).
     Accent,
+    /// Visarga (ਃ). Aspiration marker borrowed from Sanskrit.
     Visarga,
 }
 
+/// A detected feature occurrence with its position in the input string.
+///
+/// `start` and `end` are character indices (not byte offsets), so they work
+/// directly with `string.slice(start, end)` in JavaScript, `string[start:end]`
+/// in Python, and equivalent string slicing in other languages.
 #[derive(uniffi::Record, Clone, Debug, PartialEq, Eq)]
 pub struct FeatureMatch {
     pub feature: Feature,

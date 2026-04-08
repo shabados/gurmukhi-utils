@@ -2,9 +2,19 @@ use crate::helpers::{pipe, regex, replace_regex, replace_str, translate_str, tra
 
 pub mod normalize;
 
+/// Which Unicode representation to target when converting to Gurmukhi Unicode.
+///
+/// The two standards differ in how they encode yayya (ਯ) variants and
+/// bindi-bihari ligatures. Sant Lipi is recommended for most use cases
+/// because many fonts and text shaping engines fail to render half-yayya
+/// (੍ਯ) correctly under the Unicode Consortium standard.
 #[derive(uniffi::Enum)]
 pub enum UnicodeStandard {
+    /// Official Unicode Consortium encoding. Destructive for open-top yayya
+    /// variants — substitutes them with their shirorekha/top-line equivalents.
     UnicodeConsortium,
+    /// Sant Lipi standard. Preserves yayya variants using variation selectors.
+    /// Recommended for better rendering across fonts.
     SantLipi,
 }
 
@@ -136,12 +146,19 @@ const ASCII_TO_SANT_LIPI_MAP: fn(char) -> String = translation_map!(
         'î'=> "\u{fe00}\u{fe01}ਯ" // i-circumflex to open-top half-yayya
 );
 
-#[uniffi::export]
-/// Converts any ascii (or unicode) gurmukhi characters to normalized unicode gurmukhi of a given standard
+/// Converts ASCII-encoded (or mixed) Gurmukhi to normalized Unicode of the given
+/// [`UnicodeStandard`].
 ///
-/// Note:
-/// Converting yayya (ਯ) variants with an open top using the Unicode Consortium standard is considered destructive. This function will substitute the original with it's shirorekha/top-line equivalent.
-/// Many fonts and text shaping engines fail to render half-yayya (੍ਯ) correctly. Regardless of the standard used, it is recommended to use the Sant Lipi standard.
+/// Handles both legacy ASCII input (GurmukhiAkhar-style) and existing Unicode
+/// Gurmukhi, normalizing everything to a consistent representation.
+///
+/// # Note
+///
+/// Converting yayya (ਯ) variants with an open top using
+/// [`UnicodeStandard::UnicodeConsortium`] is destructive — the original is
+/// replaced with its shirorekha/top-line equivalent. Use
+/// [`UnicodeStandard::SantLipi`] to preserve these distinctions.
+#[uniffi::export]
 pub fn to_unicode(input: String, standard: UnicodeStandard) -> String {
     pipe!(
         input,
