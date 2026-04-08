@@ -235,6 +235,8 @@ fn latin_scholar_test(#[case] input: String, #[case] expected: String) {
 #[case("ਸ︁ਯਾਮ", "sayām")]
 #[case("ਜ੍ਯੋਂ", "jyoñ")]
 #[case("ਨਾਮ︁ਯ", "nāmay")]
+#[case("ਦਿਤ︁ਯਾਦਿਤ︀︁ਯ", "ditayāditya")]
+#[case("ਤ੍ਰਸ︀︁ਯੋ", "trasyo")]
 #[case("ਸ੍ਨੇਹੰ", "snehañ")]
 #[case("ਖਿਨੁ", "khin")]
 #[case("ਮੂਲਿ", "mūl")]
