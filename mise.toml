@@ -1,4 +1,5 @@
 [tools]
+bun = "1"
 rust = { version = "1", targets = "wasm32-unknown-unknown" }
 python = "3"
 
@@ -8,6 +9,10 @@ _.python.venv = { path = ".venv", create = true }
 [tasks.build]
 description = "Build Rust cdylib"
 run = "cargo build --release"
+
+[tasks."build:wasm"]
+description = "Build Rust WASM binary"
+run = "cargo build --release --target wasm32-unknown-unknown"
 
 [tasks.generate]
 description = "Generate UniFFI bindings for a language"
@@ -45,9 +50,38 @@ mv "$tmpdir/gurmukhi_utils.swift" bindings/swift/Sources/GurmukhiUtils/
 rm -rf "$tmpdir"
 """
 
+[tasks."generate:javascript"]
+description = "Generate JavaScript bindings (native + WASM)"
+depends = ["generate:javascript:native", "generate:javascript:wasm"]
+
+[tasks."generate:javascript:native"]
+description = "Generate native Node/Bun bindings via uniffi-bindgen-node-js"
+depends = ["build"]
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+uniffi-bindgen-node-js generate \
+  --manifest-path Cargo.toml \
+  --out-dir bindings/javascript/generated/native \
+  target/release/libgurmukhi_utils.so
+bun scripts/camelcase-exports.ts bindings/javascript/generated/native
+"""
+
+[tasks."generate:javascript:wasm"]
+description = "Generate WASM bindings for browser via uniffi-bindgen-js"
+depends = ["build:wasm"]
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+uniffi-bindgen-js generate \
+  --out-dir bindings/javascript/generated/wasm \
+  target/wasm32-unknown-unknown/release/gurmukhi_utils.wasm
+bun scripts/flatten-wasm-namespace.ts bindings/javascript/generated/wasm
+"""
+
 [tasks."generate:all"]
 description = "Generate all language bindings"
-depends = ["generate:ruby", "generate:kotlin", "generate:swift"]
+depends = ["generate:ruby", "generate:kotlin", "generate:swift", "generate:javascript"]
 
 [tasks."test:rust"]
 description = "Run Rust tests"

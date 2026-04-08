@@ -1,8 +1,0 @@
-rust:
-  directory: .
-  manifestPath: Cargo.toml
-web:
-  target: web
-  wasmCrateName: gurmukhi-utils-wasm
-  entrypoint: generated/web/index.ts
-  tsBindings: generated/web
