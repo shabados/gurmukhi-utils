@@ -139,6 +139,24 @@ fn sort_diacritics(input: String) -> String {
     )(input)
 }
 
+/// Decomposes precomposed independent vowels into carrier + matra.
+/// Reverse of the vowel portion of `sanitize_unicode`.
+pub fn decompose_vowels(input: String) -> String {
+    [
+        ("ਆ", "ਅਾ"),
+        ("ਇ", "ੲਿ"),
+        ("ਈ", "ੲੀ"),
+        ("ਉ", "ੳੁ"),
+        ("ਊ", "ੳੂ"),
+        ("ਏ", "ੲੇ"),
+        ("ਐ", "ਅੈ"),
+        ("ਓ", "ੳੋ"),
+        ("ਔ", "ਅੌ"),
+    ]
+    .iter()
+    .fold(input, |acc, (from, to)| acc.replace(from, to))
+}
+
 /// Normalizes Gurmukhi according to Unicode Standards
 #[uniffi::export]
 pub fn normalize_unicode(input: String) -> String {
