@@ -2,34 +2,83 @@
 
 Please see our [community docs on contributing](https://shabados.com/docs/community/contributing).
 
-This document is for developers or programmers contributing to source code. If you're interested in contributing a different way, please see the links above.
+This document is for developers contributing to source code.
 
-## Principles
+## Architecture
 
-Each language's implementation should mirror the other languages' implementations, minus the language specific function calls. So if we have a function called `toGurmukhi` in the JavaScript implementation, we should have a function called `toGurmukhi` in the Python implementation, and so on (with idiomatic differences in naming).
+All logic lives in Rust (`src/`). [UniFFI](https://mozilla.github.io/uniffi-rs/) generates language bindings from the compiled library — the bindings are derived, not hand-written. Contributing means writing Rust.
 
-Constants should be shared between languages, and should be built from the JSON5 files in the `constants` directory. Each language should import or copy the constants in from the `@gurmukhi-utils/constants` package. We only want the language implementations to mirror the language-specific functions, not the constants.
+## Prerequisites
 
-## Tooling
+Install [Mise](https://mise.jdx.dev/) for tool version management, then:
 
-Use [Mise](https://mise.jdx.dev/) to manage tool versions in the project. Each language has its own `mise.toml` file, and you can use the `mise install` command to install the correct version of the tool for your project.
+```shell
+mise install
+```
 
-## Setup
+This installs Rust (with WASM target), Bun, and Python.
 
-You should always build the `constants` package before building any language package. This will generate constants files for each language.
+## Build & test
 
-## Language Specific
+```shell
+mise run build          # Build Rust cdylib (.so/.dylib/.dll)
+mise run build:wasm     # Build WASM binary
+mise run test           # Run Rust tests
+mise run fmt            # Check formatting
+mise run lint           # Run clippy
+mise run check          # All of the above
+```
 
-Please check the CONTRIBUTING.md file located within each language folder.
+## Generate bindings
 
-- [Python](/bindings/python/CONTRIBUTING.md)
-- [JavaScript](/bindings/javascript/CONTRIBUTING.md)
-- [Ruby](/bindings/ruby/CONTRIBUTING.md)
-- [Dart](/bindings/dart/CONTRIBUTING.md)
+```shell
+mise run generate:all   # Build + generate everything
+```
 
-## Testing
+Or per-language:
 
-Each language should implement the `guut` runner, and run all the tests specified in the `test` folder. See the [JavaScript implementation](bindings/javascript/test/guut.ts) as an example.
+```shell
+mise run generate:ruby
+mise run generate:kotlin
+mise run generate:swift
+mise run generate:python
+mise run generate:javascript   # Native (Node/Bun) + WASM
+```
+
+JavaScript bindings go through post-processing: `scripts/camelcase-exports.ts` converts snake_case to camelCase, and `scripts/flatten-wasm-namespace.ts` flattens the WASM module namespace.
+
+## Adding a new function
+
+1. Write the function in the appropriate `src/*.rs` module
+2. Annotate with `#[uniffi::export]`
+3. Add tests in `tests/`
+4. Run `mise run generate:all` to regenerate all bindings
+
+That's it — all 5 language bindings are updated automatically.
+
+## Project layout
+
+```
+src/
+  lib.rs                  # Crate root
+  ascii.rs                # to_ascii
+  unicode.rs              # to_unicode, UnicodeStandard enum
+  unicode/normalize.rs    # normalize_unicode
+  transcribe.rs           # transcribe, Script enum
+  transcribe/schemes/     # Per-script implementations (devanagari, latin, latin_scholar)
+  transcribe/constants.rs # Shared character class patterns
+  feature.rs              # detect, remove, Feature enum, grouping helpers
+  helpers.rs              # Internal macros (pipe!, translation_map!, regex!)
+bindings/
+  javascript/             # npm package (native via koffi + WASM)
+  python/                 # PyPI package
+  ruby/                   # RubyGems gem
+  kotlin/                 # Gradle / JNA
+  swift/                  # Swift Package Manager
+tests/                    # Integration tests
+scripts/                  # JS post-generation transforms
+mise.toml                 # Build tasks and tool versions
+```
 
 ## Thank you
 
