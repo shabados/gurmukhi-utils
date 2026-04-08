@@ -42,10 +42,10 @@ mise run generate:ruby
 mise run generate:kotlin
 mise run generate:swift
 mise run generate:python
-mise run generate:javascript   # Native (Node/Bun) + WASM
+mise run generate:javascript   # WASM
 ```
 
-JavaScript bindings go through post-processing: `scripts/camelcase-exports.ts` converts snake_case to camelCase, and `scripts/flatten-wasm-namespace.ts` flattens the WASM module namespace.
+JavaScript bindings go through post-processing: `scripts/flatten-wasm-namespace.ts` flattens the WASM module namespace.
 
 ## Adding a new function
 
@@ -70,7 +70,7 @@ src/
   feature.rs              # detect, remove, Feature enum, grouping helpers
   helpers.rs              # Internal macros (pipe!, translation_map!, regex!)
 bindings/
-  javascript/             # npm package (native via koffi + WASM)
+  javascript/             # npm package (WASM)
   python/                 # PyPI package
   ruby/                   # RubyGems gem
   kotlin/                 # Gradle / JNA

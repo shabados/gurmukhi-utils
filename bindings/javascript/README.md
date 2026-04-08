@@ -2,7 +2,7 @@
 
 Convert, transcribe, normalize, and analyze Gurmukhi text.
 
-Native (Node/Bun) and WASM (browser) builds are resolved automatically via package exports.
+Uses WASM — works in Node, Bun, and browsers.
 
 ## Install
 

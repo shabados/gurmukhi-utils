@@ -25,20 +25,9 @@
   ],
   "type": "module",
   "exports": {
-    ".": {
-      "bun": "./generated/native/index.js",
-      "node": "./generated/native/index.js",
-      "browser": "./generated/wasm/index.ts",
-      "default": "./generated/wasm/index.ts"
-    }
+    ".": "./generated/wasm/gurmukhi.ts"
   },
   "files": [
-    "generated/"
-  ],
-  "engines": {
-    "node": ">= 18.0.0"
-  },
-  "dependencies": {
-    "koffi": "^2.15.3"
-  }
+    "generated/wasm/"
+  ]
 }
