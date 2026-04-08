@@ -10,3 +10,10 @@ node_modules/
 # Generated (build artifacts)
 rust_modules/
 out/
+
+# Smoke test symlinks (staged native libraries)
+bindings/python/gurmukhi/libgurmukhi.so
+
+# Swift build artifacts
+bindings/swift/.build/
+bindings/swift/Sources/gurmukhiFFI/module.modulemap
