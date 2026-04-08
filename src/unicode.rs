@@ -3,8 +3,6 @@ use crate::helpers::{pipe, regex, replace_regex, replace_str, translate_str, tra
 pub mod normalize;
 
 #[derive(uniffi::Enum)]
-
-///
 pub enum UnicodeStandard {
     UnicodeConsortium,
     SantLipi,

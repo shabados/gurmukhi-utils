@@ -1,5 +1,5 @@
 use gurmukhi_utils::feature::{
-    all_features, detect, line_endings, modifiers, remove, vishraams, vowels, Feature,
+    Feature, all_features, detect, line_endings, modifiers, remove, vishraams, vowels,
 };
 use pretty_assertions::assert_eq;
 use rstest::*;

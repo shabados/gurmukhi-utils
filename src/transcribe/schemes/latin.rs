@@ -27,9 +27,9 @@ const PA_ROMAN_LIT2SCRIPT_TRANSLATIONS: fn(char) -> String = translation_map!(
 
 const PA_ROMAN_LIT2SCRIPT_REPLACEMENTS: &[(&str, &str)] = &[
     ("y\u{0336}", "y"),               // y̶ → y
-    ("\u{01b4}\u{0336}", "y"),         // ƴ̶ → y
-    ("\u{1d57}\u{0323}", "\u{1e6d}"),  // ᵗ̣ → ṭ
-    ("\u{1d57}", "t"),                 // ᵗ → t
+    ("\u{01b4}\u{0336}", "y"),        // ƴ̶ → y
+    ("\u{1d57}\u{0323}", "\u{1e6d}"), // ᵗ̣ → ṭ
+    ("\u{1d57}", "t"),                // ᵗ → t
 ];
 
 // ─── Haha rules ───
@@ -69,18 +69,16 @@ fn haha_uhri(input: String) -> String {
 
 /// Letter + (nasal?) + ਹਿ → Letter + ੈ + nasal + ਹ‧
 fn haha_dulavan(input: String) -> String {
-    replace_regex!(
-        formatcp!("([ਅ{BASE_LETTERS}])([ੰਂ]?)(ਹਿ)"),
-        "${1}ੈ${2}ਹ‧"
-    )(input)
+    replace_regex!(formatcp!("([ਅ{BASE_LETTERS}])([ੰਂ]?)(ਹਿ)"), "${1}ੈ${2}ਹ‧")(
+        input,
+    )
 }
 
 /// Letter + (nasal?) + ਹੁ → Letter + ੌ + nasal + ਹ‧
 fn haha_kanora(input: String) -> String {
-    replace_regex!(
-        formatcp!("([ਅ{BASE_LETTERS}])([ੰਂ]?)(ਹੁ)"),
-        "${1}ੌ${2}ਹ‧"
-    )(input)
+    replace_regex!(formatcp!("([ਅ{BASE_LETTERS}])([ੰਂ]?)(ਹੁ)"), "${1}ੌ${2}ਹ‧")(
+        input,
+    )
 }
 
 /// Letter + (nasal?) + ਹ + (not forbidden) → Letter + ੈ + nasal + ਹ
@@ -116,10 +114,9 @@ fn remove_grammatical_vowels(input: String) -> String {
         return input;
     }
 
-    replace_regex!(
-        "(ਿ?)(ੇ?ੈ?ੋ?ੌ?)(ੁ?)(ੂ?ਾ?ੀ?)(ਁ?ੱ?ਂ?ੰ?ਃ?)(‧|\\s|$)",
-        "${2}${4}${5}${6}"
-    )(input)
+    replace_regex!("(ਿ?)(ੇ?ੈ?ੋ?ੌ?)(ੁ?)(ੂ?ਾ?ੀ?)(ਁ?ੱ?ਂ?ੰ?ਃ?)(‧|\\s|$)", "${2}${4}${5}${6}")(
+        input,
+    )
 }
 
 /// Shorten doubled HORA_ONKAR (ੋੁ) at word start.
@@ -144,18 +141,12 @@ fn shorten_dulavan_onkar(input: String) -> String {
 
 /// Add mukta after ending half-y.
 fn half_y_mukta_add(input: String) -> String {
-    replace_regex!(
-        "a([y\u{01b4}]\u{0336})(\\s|$)",
-        "${1}a${2}"
-    )(input)
+    replace_regex!("a([y\u{01b4}]\u{0336})(\\s|$)", "${1}a${2}")(input)
 }
 
 /// Nullify mukta before half-y.
 fn half_y_mukta_nullify(input: String) -> String {
-    replace_regex!(
-        "a([y\u{01b4}]\u{0336})",
-        "${1}"
-    )(input)
+    replace_regex!("a([y\u{01b4}]\u{0336})", "${1}")(input)
 }
 
 /// Geminate/double consonant following adhak (˘).
