@@ -1,1 +1,2 @@
-lib/constants/
+# UniFFI generated bindings
+lib/gurmukhi_utils/
