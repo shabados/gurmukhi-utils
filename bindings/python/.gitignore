@@ -1,17 +1,6 @@
-# Byte-compiled / optimized / DLL files
-__pycache__
+__pycache__/
 *.pyc
-
-# pytest
-.pytest_cache
-
-# macOS
-*.DS_Store
-
-# VS Code
-.vscode
-
-# Distribution / Packaging
+.pytest_cache/
+*.egg-info/
 dist/
-
-gurmukhiutils/constants/
+.vscode/

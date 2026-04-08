@@ -1,2 +1,5 @@
 build/
 .gradle/
+
+# UniFFI generated bindings
+lib/
