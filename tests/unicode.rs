@@ -1,4 +1,4 @@
-use gurmukhi_utils::{helpers, pipe, unicode};
+use gurmukhi::{helpers, pipe, unicode};
 use pretty_assertions::{assert_eq, assert_ne};
 use rstest::*;
 

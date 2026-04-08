@@ -8,7 +8,7 @@ _.python.venv = { path = ".venv", create = true }
 
 [tasks.build]
 description = "Build Rust cdylib"
-run = "cargo build --release"
+run = "cargo build --release --features bindgen"
 
 [tasks."build:wasm"]
 description = "Build Rust WASM binary"
@@ -16,7 +16,7 @@ run = "cargo build --release --target wasm32-unknown-unknown"
 
 [tasks.generate]
 description = "Generate UniFFI bindings for a language"
-env = { UNIFFI_LIB = "target/release/libgurmukhi_utils.so" }
+env = { UNIFFI_LIB = "target/release/libgurmukhi.so" }
 run = """
 mkdir -p $UNIFFI_OUT
 target/release/uniffi-bindgen generate \
@@ -28,7 +28,7 @@ target/release/uniffi-bindgen generate \
 
 [tasks."generate:ruby"]
 description = "Generate Ruby bindings"
-env = { UNIFFI_LANG = "ruby", UNIFFI_OUT = "bindings/ruby/lib/gurmukhi_utils" }
+env = { UNIFFI_LANG = "ruby", UNIFFI_OUT = "bindings/ruby/lib/gurmukhi" }
 run = "mise run generate"
 
 [tasks."generate:kotlin"]
@@ -43,10 +43,10 @@ run = """
 set -euo pipefail
 tmpdir=$(mktemp -d)
 UNIFFI_LANG=swift UNIFFI_OUT="$tmpdir" mise run generate
-mkdir -p bindings/swift/Sources/gurmukhi_utilsFFI bindings/swift/Sources/GurmukhiUtils
-mv "$tmpdir/gurmukhi_utilsFFI.h" bindings/swift/Sources/gurmukhi_utilsFFI/
-mv "$tmpdir/gurmukhi_utilsFFI.modulemap" bindings/swift/Sources/gurmukhi_utilsFFI/
-mv "$tmpdir/gurmukhi_utils.swift" bindings/swift/Sources/GurmukhiUtils/
+mkdir -p bindings/swift/Sources/gurmukhiFFI bindings/swift/Sources/Gurmukhi
+mv "$tmpdir/gurmukhiFFI.h" bindings/swift/Sources/gurmukhiFFI/
+mv "$tmpdir/gurmukhiFFI.modulemap" bindings/swift/Sources/gurmukhiFFI/
+mv "$tmpdir/gurmukhi.swift" bindings/swift/Sources/Gurmukhi/
 rm -rf "$tmpdir"
 """
 
@@ -63,7 +63,7 @@ mkdir -p bindings/javascript/generated/native
 target/release/uniffi-bindgen-node-js generate \
   --manifest-path Cargo.toml \
   --out-dir bindings/javascript/generated/native \
-  target/release/libgurmukhi_utils.so
+  target/release/libgurmukhi.so
 bun scripts/camelcase-exports.ts bindings/javascript/generated/native
 """
 
@@ -75,13 +75,13 @@ set -euo pipefail
 mkdir -p bindings/javascript/generated/wasm
 target/release/uniffi-bindgen-js generate \
   --out-dir bindings/javascript/generated/wasm \
-  target/wasm32-unknown-unknown/release/gurmukhi_utils.wasm
+  target/wasm32-unknown-unknown/release/gurmukhi.wasm
 bun scripts/flatten-wasm-namespace.ts bindings/javascript/generated/wasm
 """
 
 [tasks."generate:python"]
 description = "Generate Python bindings"
-env = { UNIFFI_LANG = "python", UNIFFI_OUT = "bindings/python/gurmukhiutils" }
+env = { UNIFFI_LANG = "python", UNIFFI_OUT = "bindings/python/gurmukhi" }
 run = "mise run generate"
 
 [tasks."generate:all"]
@@ -103,3 +103,11 @@ depends = ["fmt", "lint", "test"]
 [tasks.test]
 description = "Run Rust tests"
 run = "cargo test"
+
+[tasks.publish]
+description = "Publish Rust crate to crates.io"
+run = "cargo publish"
+
+[tasks."publish:dry-run"]
+description = "Dry-run publish to verify package"
+run = "cargo publish --dry-run"

@@ -362,8 +362,8 @@ dependencies = [
 ]
 
 [[package]]
-name = "gurmukhi-utils"
-version = "0.0.0"
+name = "gurmukhi"
+version = "1.0.0"
 dependencies = [
  "clap",
  "const_format",

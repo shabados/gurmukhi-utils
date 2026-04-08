@@ -1,17 +1,23 @@
 [workspace.package]
-version = "0.1.0"
+version = "1.0.0"
 edition = "2024"
-description = ""
-documentation = ""
+description = "Utility library for converting, analyzing, and manipulating Gurmukhi strings"
 license = "MIT"
-repository = "https://github.com/shabados/gurmukhi-utils"
-authors = []
+repository = "https://github.com/shabados/gurmukhi"
 
 [workspace.lints]
 
 [package]
-name = "gurmukhi-utils"
-edition = "2024"
+name = "gurmukhi"
+version.workspace = true
+edition.workspace = true
+description.workspace = true
+license.workspace = true
+repository.workspace = true
+readme = "README.md"
+keywords = ["gurmukhi", "unicode", "transliteration", "punjabi", "sikh"]
+categories = ["text-processing", "internationalization"]
+exclude = ["uniffi-bindgen*.rs", "bindings/", "scripts/", ".github/", ".vscode/", "mise.toml", "package.json", "release-please-config.json", ".release-please-manifest.json", "CONTRIBUTING.md"]
 
 [[bin]]
 name = "uniffi-bindgen"
@@ -20,31 +26,35 @@ path = "uniffi-bindgen.rs"
 [[bin]]
 name = "uniffi-bindgen-js"
 path = "uniffi-bindgen-js.rs"
+required-features = ["bindgen"]
 
 [[bin]]
 name = "uniffi-bindgen-node-js"
 path = "uniffi-bindgen-node-js.rs"
+required-features = ["bindgen"]
 
 [lib]
-name = "gurmukhi_utils"
+name = "gurmukhi"
 crate-type = ["rlib", "cdylib", "staticlib"]
 
 [lints]
 workspace = true
 
+[features]
+bindgen = ["dep:clap", "dep:uniffi-bindgen-js", "dep:uniffi-bindgen-node-js"]
+
 [dependencies]
-clap = { version = "4", features = ["derive"] }
+clap = { version = "4", features = ["derive"], optional = true }
 const_format = "0.2.34"
 once_cell = "1.21.3"
 regex = "1.11.2"
-uniffi = { version = "0.31", features = [ "cli", "wasm-unstable-single-threaded" ] }
-uniffi-bindgen-js = "0.2.1"
-uniffi-bindgen-node-js = "0.0.11"
+uniffi = { version = "0.31", features = ["cli", "wasm-unstable-single-threaded"] }
+uniffi-bindgen-js = { version = "0.2.1", optional = true }
+uniffi-bindgen-node-js = { version = "0.0.11", optional = true }
 wasm-bindgen = "0.2"
 
-
 [build-dependencies]
-uniffi = { version = "0.31", features = [ "build" ] }
+uniffi = { version = "0.31", features = ["build"] }
 
 [dev-dependencies]
 pretty_assertions = "1.4.1"

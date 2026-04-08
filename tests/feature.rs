@@ -1,4 +1,4 @@
-use gurmukhi_utils::feature::{
+use gurmukhi::feature::{
     Feature, all_features, detect, line_endings, modifiers, remove, vishraams, vowels,
 };
 use pretty_assertions::assert_eq;
