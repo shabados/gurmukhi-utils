@@ -20,7 +20,8 @@ const ASCII_TO_SANT_LIPI_REPLACEMENTS: &[(&str, &str)] = &[
     ("å", "ੴ"),
 ];
 
-const UNICODE_CONSORTIUM_TO_SANT_LIPI_REPLACEMENTS: &[(&str, &str)] = &[("੍ਯ", "︀ਯ")];
+pub(crate) const UNICODE_CONSORTIUM_TO_SANT_LIPI_REPLACEMENTS: &[(&str, &str)] =
+    &[("\u{0a4d}\u{0a2f}", "\u{fe00}\u{0a2f}")];
 
 const SANT_LIPI_TO_UNICODE_CONSORTIUM_REPLACEMENTS: &[(&str, &str)] =
     &[("︀︁ਯ", "੍ਯ"), ("︀ਯ", "੍ਯ"), ("︁ਯ", "ਯ"), ("ਂ‍ੀ", "ੀਂ")];
