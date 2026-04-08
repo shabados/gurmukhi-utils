@@ -2,19 +2,24 @@
 import PackageDescription
 
 let package = Package(
-    name: "GurmukhiUtils",
+    name: "Gurmukhi",
     products: [
-        .library(name: "GurmukhiUtils", targets: ["GurmukhiUtils"]),
+        .library(name: "Gurmukhi", targets: ["Gurmukhi"]),
     ],
     targets: [
         .systemLibrary(
-            name: "gurmukhi_utilsFFI",
-            path: "Sources/gurmukhi_utilsFFI"
+            name: "gurmukhiFFI",
+            path: "Sources/gurmukhiFFI"
         ),
         .target(
-            name: "GurmukhiUtils",
-            dependencies: ["gurmukhi_utilsFFI"],
-            path: "Sources/GurmukhiUtils"
+            name: "Gurmukhi",
+            dependencies: ["gurmukhiFFI"],
+            path: "Sources/Gurmukhi"
+        ),
+        .executableTarget(
+            name: "SmokeTest",
+            dependencies: ["Gurmukhi"],
+            path: "smoke"
         ),
     ]
 )

@@ -96,3 +96,47 @@ run = "cargo publish"
 [tasks."publish:dry-run"]
 description = "Dry-run publish to verify package"
 run = "cargo publish --dry-run"
+
+[tasks."smoke:stage"]
+description = "Symlink native library into binding directories"
+run = "ln -sf ../../../target/release/libgurmukhi.so bindings/python/gurmukhi/libgurmukhi.so"
+
+[tasks."smoke:javascript"]
+description = "Smoke test: JavaScript WASM"
+run = "bun bindings/javascript/smoke/wasm.ts"
+
+[tasks."smoke:python"]
+description = "Smoke test: Python"
+run = "python bindings/python/smoke_test.py"
+
+[tasks."smoke:ruby"]
+description = "Smoke test: Ruby"
+run = "LD_LIBRARY_PATH=target/release ruby bindings/ruby/smoke_test.rb"
+
+[tasks."smoke:kotlin"]
+description = "Smoke test: Kotlin"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+kotlinc -classpath "bindings/kotlin/lib:$(find ~/.gradle -name 'jna-*.jar' 2>/dev/null | head -1)" \
+  bindings/kotlin/lib/uniffi/gurmukhi/gurmukhi.kt \
+  bindings/kotlin/smoke/SmokeTest.kt \
+  -include-runtime -d /tmp/smoke-kotlin.jar 2>&1
+LD_LIBRARY_PATH=target/release java -jar /tmp/smoke-kotlin.jar
+"""
+
+[tasks."smoke:swift"]
+description = "Smoke test: Swift"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+cd bindings/swift
+swift build --product SmokeTest \
+  -Xlinker -L../../target/release \
+  -Xlinker -lgurmukhi 2>&1
+LD_LIBRARY_PATH=../../target/release .build/debug/SmokeTest
+"""
+
+[tasks."smoke:all"]
+description = "Run all smoke tests"
+depends = ["smoke:stage", "smoke:javascript", "smoke:python", "smoke:ruby", "smoke:kotlin", "smoke:swift"]
