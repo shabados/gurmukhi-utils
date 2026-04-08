@@ -1,0 +1,121 @@
+# Migrating to Gurmukhi
+
+This guide covers upgrading from the old language-native packages (`gurmukhi-utils`, `gurmukhiutils`, `gurmukhi_utils`) to the new Rust-backed `gurmukhi` package.
+
+## What changed
+
+- **Single Rust core** — all languages now share one implementation via UniFFI-generated bindings
+- **Type-safe enums** replace magic strings everywhere (`UnicodeStandard`, `Script`, `Feature`)
+- **Composable feature model** replaces ad-hoc strip/remove helpers
+- **`convert` renamed to `transcribe`** — see [DESIGN.md](DESIGN.md) for why
+- **Internal functions no longer exported** — `sort_diacritics`, `sanitize_unicode`, `decode_unicode`, `encode_unicode` are now implementation details of `normalize_unicode`
+
+## JavaScript
+
+Old: `gurmukhi-utils` v2/v3. New: `gurmukhi`.
+
+```shell
+npm remove gurmukhi-utils && npm i gurmukhi
+```
+
+| Old | New | Notes |
+| --- | --- | --- |
+| `toAscii(s)` | `toAscii(s)` | Same |
+| `toUnicode(s)` | `toUnicode(s, UnicodeStandard.SantLipi)` | Now requires a standard argument |
+| `toEnglish(s)` | `transcribe(s, Script.Latin)` | Renamed, pronunciation-aware |
+| `toHindi(s)` | `transcribe(s, Script.Devanagari)` | Renamed |
+| `stripVishraams(s)` | `remove(s, vishraams())` | Composable — pass individual Feature variants for fine control |
+| `stripVishraams(s, { heavy: true })` | `remove(s, [Feature.VishramHeavy])` | |
+| `stripEndings(s)` | `remove(s, lineEndings())` | |
+| `stripAccents(s)` | `remove(s, [Feature.Nukta])` | |
+
+```javascript
+// Before
+import { toUnicode, toEnglish, stripVishraams } from "gurmukhi-utils";
+toUnicode("gurU");
+toEnglish("ਜਾਨ");
+stripVishraams("ਸਬਦ; ਸਬਦ");
+
+// After
+import { toUnicode, UnicodeStandard, transcribe, Script, remove, vishraams } from "gurmukhi";
+toUnicode("gurU", UnicodeStandard.SantLipi);
+transcribe("ਜਾਨ", Script.Latin);
+remove("ਸਬਦ; ਸਬਦ", vishraams());
+```
+
+New functions with no v2/v3 equivalent: `normalizeUnicode`, `transcribe` (with `Script.LatinScholar`), `detect`, `featureChars`, and all grouping helpers.
+
+### Deprecated
+
+These v2/v3 functions have been removed without replacement:
+
+| Function | Reason |
+| --- | --- |
+| `toShahmukhi(s)` | Insufficient demand and no expert input for correctness |
+| `countSyllables(s)` | Niche use case, not part of the core text processing scope |
+| `toSyllabicSymbols(s)` | Niche use case, not part of the core text processing scope |
+
+### Changed approach
+
+| Old | New | Notes |
+| --- | --- | --- |
+| `firstLetters(s)` | Compose with `remove` + split | Strip modifiers/vowels, then take first character of each word |
+| `isGurmukhi(s)` | Not yet available | Under consideration — script detection is a separate concern from the Feature model |
+
+`firstLetters` example:
+
+```javascript
+import { remove, modifiers, vowels } from "gurmukhi";
+
+const firstLetters = (s) =>
+  remove(s, [...modifiers(), ...vowels()])
+    .split(" ")
+    .map((w) => w[0])
+    .join("");
+```
+
+## Python
+
+Old: `gurmukhiutils` v0.3.x. New: `gurmukhi`.
+
+```shell
+pip uninstall gurmukhiutils && pip install gurmukhi
+```
+
+| Old | New |
+| --- | --- |
+| `from gurmukhiutils.ascii import ascii` | `from gurmukhi import to_ascii` |
+| `ascii(s)` | `to_ascii(s)` |
+| `from gurmukhiutils.unicode import unicode` | `from gurmukhi import to_unicode, UnicodeStandard` |
+| `unicode(s, "Unicode Consortium")` | `to_unicode(s, UnicodeStandard.UNICODE_CONSORTIUM)` |
+| `unicode(s, "Sant Lipi")` | `to_unicode(s, UnicodeStandard.SANT_LIPI)` |
+| `from gurmukhiutils.unicode import unicode_normalize` | `from gurmukhi import normalize_unicode` |
+| `unicode_normalize(s)` | `normalize_unicode(s)` |
+| `from gurmukhiutils.convert import convert` | `from gurmukhi import transcribe, Script` |
+| `convert(s, "guru_latn_pa")` | `transcribe(s, Script.LATIN)` |
+| `convert(s, "guru_latn")` | `transcribe(s, Script.LATIN_SCHOLAR)` |
+| `from gurmukhiutils.remove import remove_vishrams` | `from gurmukhi import remove, vishraams` |
+| `remove_vishrams(s)` | `remove(s, vishraams())` |
+| `remove_line_endings(s)` | `remove(s, line_endings())` |
+| `sort_diacritics(s)` | Folded into `normalize_unicode(s)` |
+| `sanitize_unicode(s)` | Folded into `normalize_unicode(s)` |
+| `sort_variation_selectors(s)` | Folded into `normalize_unicode(s)` |
+
+## Ruby
+
+Old: `gurmukhi_utils` v0.x. New: `gurmukhi`.
+
+```shell
+gem uninstall gurmukhi_utils && gem install gurmukhi
+```
+
+| Old | New |
+| --- | --- |
+| `GurmukhiUtils.ascii(s)` | `Gurmukhi.to_ascii(s)` |
+| `GurmukhiUtils.unicode(s, standard)` | `Gurmukhi.to_unicode(s, standard)` |
+| `GurmukhiUtils.unicode_normalize(s)` | `Gurmukhi.normalize_unicode(s)` |
+| `GurmukhiUtils.remove_vishrams(s)` | `Gurmukhi.remove(s, Gurmukhi.vishraams)` |
+
+## Dart
+
+Dart support is not available yet. UniFFI bindings for Dart exist but are less mature, and Rust-Dart bridging tools like `flutter_rust_bridge` may be a better path. If there is demand, Dart support could be added in the future.
