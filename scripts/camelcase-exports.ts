@@ -16,7 +16,7 @@ if (!dir) {
 
 const toCamelCase = (s: string) => s.replace(/_([a-z])/g, (_, c) => c.toUpperCase())
 
-const targets = ['gurmukhi_utils.js', 'gurmukhi_utils.d.ts']
+const targets = ['gurmukhi.js', 'gurmukhi.d.ts']
 
 for (const file of targets) {
   const path = join(dir, file)

@@ -14,7 +14,7 @@ if (!dir) {
   process.exit(1)
 }
 
-const file = join(dir, 'gurmukhi_utils.ts')
+const file = join(dir, 'gurmukhi.ts')
 const code = readFileSync(file, 'utf8')
 
 const patched = code
