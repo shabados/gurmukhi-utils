@@ -259,7 +259,10 @@ fn latin_assertions_test(#[case] input: String, #[case] expected: String) {
 #[case("ਵਾਹਿ‧ਗੁਰੂ", "vāhgurū")]
 #[case("ਗੁਰਦੁਆਰਾ", "guraduārā")]
 #[case("ਗੁਰ‧ਦੁਆਰਾ", "gurduārā")]
-#[case("ਵਾਹਿਗੁਰੂ ਜੀ ਕਾ ਖਾਲ‧ਸਾ ਵਾਹਿਗੁਰੂ ਜੀ ਕੀ ਫ਼ਤਿਹ", "vāhigurū jī kā khālsā vāhigurū jī kī fateh")]
+#[case(
+    "ਵਾਹਿਗੁਰੂ ਜੀ ਕਾ ਖਾਲ‧ਸਾ ਵਾਹਿਗੁਰੂ ਜੀ ਕੀ ਫ਼ਤਿਹ",
+    "vāhigurū jī kā khālsā vāhigurū jī kī fateh"
+)]
 #[case("ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ", "sat srī akāl")]
 #[case("ਬੋਲੇ ਸੋ ਨਿਹਾਲ", "bole so nihāl")]
 #[case("ਚੜ੍ਹਦੀ ਕਲਾ", "caṛhadī kalā")]
@@ -491,13 +494,13 @@ fn latin_vava_test(#[case] input: String, #[case] expected: String) {
 #[case("ਵਾਹਿਗੁਰੂ", "वाहिगुरू")]
 #[case("ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ", "सति स्री अकाल")]
 // Special cases
-#[case("ੴ", "ੴ")]              // ik onkar: kept as-is
-#[case("ੱ", "")]                 // adhak: dropped
-#[case("ੰ", "ं")]               // tippi → anusvara
-#[case("ੵ", "्य")]              // yakash → halant+ya
+#[case("ੴ", "ੴ")] // ik onkar: kept as-is
+#[case("ੱ", "")] // adhak: dropped
+#[case("ੰ", "ं")] // tippi → anusvara
+#[case("ੵ", "्य")] // yakash → halant+ya
 // Nukta consonants
 #[case("ਸ਼ੇਰ", "शेर")]
-#[case("ਖ਼ਾਲਸਾ", "\u{0959}\u{093e}\u{0932}\u{0938}\u{093e}")]  // precomposed ख़ालसा
+#[case("ਖ਼ਾਲਸਾ", "\u{0959}\u{093e}\u{0932}\u{0938}\u{093e}")] // precomposed ख़ालसा
 #[case("ਜ਼ਿੰਦਗੀ", "\u{095b}\u{093f}\u{0902}\u{0926}\u{0917}\u{0940}")] // precomposed ज़िंदगी
 // Mixed text
 #[case("Hello ਜੀ", "Hello जी")]

@@ -202,7 +202,7 @@ fn remove_one(input: String, feature: &Feature) -> String {
 /// Removes the specified features from the input string.
 #[uniffi::export]
 pub fn remove(input: String, features: Vec<Feature>) -> String {
-    let result = features.iter().fold(input, |acc, f| remove_one(acc, f));
+    let result = features.iter().fold(input, remove_one);
     let result = regex!(r" {2,}").replace_all(&result, " ");
     result.trim().to_string()
 }

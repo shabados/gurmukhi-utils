@@ -10,18 +10,18 @@ const PHRASE_REPLACEMENTS: &[(&str, &str)] = &[("\u{0a74}", "ਇੱਕ ਓਅੰ
 const ROMAN_REPLACEMENTS: &[(&str, &str)] = &[
     // Longer matches first to avoid partial matching
     ("\u{fe00}\u{fe01}\u{0a2f}", "\u{01b4}\u{0336}"), // ︀︁ਯ → ƴ̶ (open-top half-yayya)
-    ("\u{0a15}\u{0a3c}", "q"),                          // ਕ਼ → q
-    ("\u{0a4d}\u{0a2f}", "y\u{0336}"),                  // ੍ਯ → y̶
-    ("\u{fe00}\u{0a2f}", "y\u{0336}"),                  // ︀ਯ → y̶
-    ("\u{fe01}\u{0a2f}", "\u{01b4}"),                   // ︁ਯ → ƴ
-    ("\u{0a75}", "\u{02b8}"),                           // ੵ → ʸ
-    ("\u{0a4d}\u{0a39}", "\u{02b0}"),                   // ੍ਹ → ʰ
-    ("\u{0a4d}\u{0a30}", "\u{02b3}"),                   // ੍ਰ → ʳ
-    ("\u{0a4d}\u{0a35}", "\u{1d5b}"),                   // ੍ਵ → ᵛ
-    ("\u{0a4d}\u{0a1f}", "\u{1d57}\u{0323}"),           // ੍ਟ → ᵗ̣
-    ("\u{0a4d}\u{0a24}", "\u{1d57}"),                   // ੍ਤ → ᵗ
-    ("\u{0a4d}\u{0a28}", "\u{207f}"),                   // ੍ਨ → ⁿ
-    ("\u{0a4d}\u{0a1a}", "\u{1d9c}"),                   // ੍ਚ → ᶜ
+    ("\u{0a15}\u{0a3c}", "q"),                        // ਕ਼ → q
+    ("\u{0a4d}\u{0a2f}", "y\u{0336}"),                // ੍ਯ → y̶
+    ("\u{fe00}\u{0a2f}", "y\u{0336}"),                // ︀ਯ → y̶
+    ("\u{fe01}\u{0a2f}", "\u{01b4}"),                 // ︁ਯ → ƴ
+    ("\u{0a75}", "\u{02b8}"),                         // ੵ → ʸ
+    ("\u{0a4d}\u{0a39}", "\u{02b0}"),                 // ੍ਹ → ʰ
+    ("\u{0a4d}\u{0a30}", "\u{02b3}"),                 // ੍ਰ → ʳ
+    ("\u{0a4d}\u{0a35}", "\u{1d5b}"),                 // ੍ਵ → ᵛ
+    ("\u{0a4d}\u{0a1f}", "\u{1d57}\u{0323}"),         // ੍ਟ → ᵗ̣
+    ("\u{0a4d}\u{0a24}", "\u{1d57}"),                 // ੍ਤ → ᵗ
+    ("\u{0a4d}\u{0a28}", "\u{207f}"),                 // ੍ਨ → ⁿ
+    ("\u{0a4d}\u{0a1a}", "\u{1d9c}"),                 // ੍ਚ → ᶜ
 ];
 
 const ROMAN_TRANSLATION_MAP: fn(char) -> String = translation_map!(
@@ -122,10 +122,6 @@ fn is_inherent_vowel_trigger(c: char) -> bool {
         || BASE_LETTERS.contains(c)
         || POST_LETTERS.contains(c)
         || PRE_POST_MODIFIERS.contains(c)
-}
-
-fn is_below_letter(c: char) -> bool {
-    BELOW_LETTERS.contains(c)
 }
 
 /// Insert inherent vowel (mukta / ਅ) between consonants and before triggers.

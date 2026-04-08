@@ -7,7 +7,7 @@ macro_rules! pipe {
         $func($input)
     };
     ($input:expr, $func:expr, $($rest:expr),+) => {
-        crate::helpers::pipe!($func($input), $($rest),+)
+        $crate::helpers::pipe!($func($input), $($rest),+)
     };
 }
 pub use pipe;
