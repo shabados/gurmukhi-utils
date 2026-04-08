@@ -88,21 +88,6 @@ run = "mise run generate"
 description = "Generate all language bindings"
 depends = ["generate:ruby", "generate:kotlin", "generate:swift", "generate:javascript", "generate:python"]
 
-[tasks."test:rust"]
+[tasks.test]
 description = "Run Rust tests"
 run = "cargo test"
-
-[tasks."test:ruby"]
-description = "Run Ruby tests"
-depends = ["generate:ruby"]
-run = "cd bindings/ruby && LD_LIBRARY_PATH=../../target/release bundle exec rake test"
-
-[tasks."test:kotlin"]
-description = "Run Kotlin tests"
-depends = ["generate:kotlin"]
-run = "cd bindings/kotlin && LD_LIBRARY_PATH=../../target/release gradle test"
-
-[tasks."test:swift"]
-description = "Run Swift tests"
-depends = ["generate:swift"]
-run = "cd bindings/swift && LD_LIBRARY_PATH=../../target/release swift test"
