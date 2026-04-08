@@ -46,7 +46,6 @@ jobs:
           path: |
             target/release/uniffi-bindgen
             target/release/uniffi-bindgen-js
-            target/release/uniffi-bindgen-node-js
             target/release/libgurmukhi.so
             target/wasm32-unknown-unknown/release/gurmukhi.wasm
 
@@ -65,6 +64,6 @@ jobs:
         with:
           name: build-artifacts
           path: target
-      - run: chmod +x target/release/uniffi-bindgen target/release/uniffi-bindgen-js target/release/uniffi-bindgen-node-js
+      - run: chmod +x target/release/uniffi-bindgen target/release/uniffi-bindgen-js target/release/libgurmukhi.so
       - run: mise run generate:${{ matrix.language }}
 

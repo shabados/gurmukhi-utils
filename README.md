@@ -16,7 +16,7 @@ cargo add gurmukhi
 npm i gurmukhi
 ```
 
-Native (Node/Bun) and WASM (browser) builds are resolved automatically.
+Uses WASM — works in Node, Bun, and browsers.
 
 **Python** ([PyPI](https://pypi.org/project/gurmukhi/))
 

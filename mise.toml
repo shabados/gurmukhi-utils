@@ -48,27 +48,12 @@ mv "$tmpdir/gurmukhiFFI.h" bindings/swift/Sources/gurmukhiFFI/
 mv "$tmpdir/gurmukhiFFI.modulemap" bindings/swift/Sources/gurmukhiFFI/
 mv "$tmpdir/gurmukhi.swift" bindings/swift/Sources/Gurmukhi/
 rm -rf "$tmpdir"
+sed -i '/use "Darwin"/d' bindings/swift/Sources/gurmukhiFFI/gurmukhiFFI.modulemap
+ln -sf gurmukhiFFI.modulemap bindings/swift/Sources/gurmukhiFFI/module.modulemap
 """
 
 [tasks."generate:javascript"]
-description = "Generate JavaScript bindings (native + WASM)"
-depends = ["generate:javascript:native", "generate:javascript:wasm"]
-
-[tasks."generate:javascript:native"]
-description = "Generate native Node/Bun bindings via uniffi-bindgen-node-js"
-run = """
-#!/usr/bin/env bash
-set -euo pipefail
-mkdir -p bindings/javascript/generated/native
-target/release/uniffi-bindgen-node-js generate \
-  --manifest-path Cargo.toml \
-  --out-dir bindings/javascript/generated/native \
-  target/release/libgurmukhi.so
-bun scripts/camelcase-exports.ts bindings/javascript/generated/native
-"""
-
-[tasks."generate:javascript:wasm"]
-description = "Generate WASM bindings for browser via uniffi-bindgen-js"
+description = "Generate JavaScript WASM bindings"
 run = """
 #!/usr/bin/env bash
 set -euo pipefail

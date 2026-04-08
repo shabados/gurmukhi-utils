@@ -6,7 +6,7 @@ The thinking behind gurmukhi's API surface, trade-offs, and extensibility model.
 
 Gurmukhi was originally implemented independently in JavaScript, Python, Ruby, and Dart. Each language had its own bugs, its own test gaps, and its own interpretation of edge cases. A fix in one language didn't automatically reach the others.
 
-The Rust + UniFFI architecture solves this. One implementation, one test suite, one source of truth — with bindings automatically generated for JavaScript (native + WASM), Python, Ruby, Kotlin, and Swift.
+The Rust + UniFFI architecture solves this. One implementation, one test suite, one source of truth — with bindings automatically generated for JavaScript (WASM), Python, Ruby, Kotlin, and Swift.
 
 **Trade-off:** we lost idiomatic per-language APIs. A Rubyist might prefer `String#to_ascii` over `Gurmukhi.to_ascii(s)`. We accepted this because correctness across languages matters more than per-language ergonomics for a library that processes sacred text. A single implementation can be reasoned about, audited, and trusted.
 
