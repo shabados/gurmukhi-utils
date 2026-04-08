@@ -17,6 +17,14 @@ edition = "2024"
 name = "uniffi-bindgen"
 path = "uniffi-bindgen.rs"
 
+[[bin]]
+name = "uniffi-bindgen-js"
+path = "uniffi-bindgen-js.rs"
+
+[[bin]]
+name = "uniffi-bindgen-node-js"
+path = "uniffi-bindgen-node-js.rs"
+
 [lib]
 name = "gurmukhi_utils"
 crate-type = ["rlib", "cdylib", "staticlib"]
@@ -25,15 +33,18 @@ crate-type = ["rlib", "cdylib", "staticlib"]
 workspace = true
 
 [dependencies]
+clap = { version = "4", features = ["derive"] }
 const_format = "0.2.34"
 once_cell = "1.21.3"
 regex = "1.11.2"
-uniffi = { version = "0.30", features = [ "cli", "wasm-unstable-single-threaded" ] }
+uniffi = { version = "0.31", features = [ "cli", "wasm-unstable-single-threaded" ] }
+uniffi-bindgen-js = "0.2.1"
+uniffi-bindgen-node-js = "0.0.11"
 wasm-bindgen = "0.2"
 
 
 [build-dependencies]
-uniffi = { version = "0.30", features = [ "build" ] }
+uniffi = { version = "0.31", features = [ "build" ] }
 
 [dev-dependencies]
 pretty_assertions = "1.4.1"
