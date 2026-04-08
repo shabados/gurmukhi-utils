@@ -9,11 +9,9 @@ description = "Python utilities library for converting, analyzing, and testing G
 license = "MIT"
 authors = ["Bhajneet S.K. <bhajneet@gmail.com>"]
 maintainers = ["Bhajneet S.K. <bhajneet@gmail.com>"]
-readme = "README.md"
-homepage = "https://github.com/shabados/gurmukhiutils"
-repository = "https://github.com/shabados/gurmukhiutils"
-documentation = "https://github.com/shabados/gurmukhiutils"
-keywords = [ "gurbani", "gurmukhi", "sikh", "transliterate", "unicode" ]
+homepage = "https://github.com/shabados/gurmukhi-utils"
+repository = "https://github.com/shabados/gurmukhi-utils"
+keywords = ["gurbani", "gurmukhi", "sikh", "transliterate", "unicode"]
 classifiers = [
     "Development Status :: 1 - Planning",
     "Intended Audience :: Developers",
@@ -29,6 +27,3 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.10"
-
-[tool.poetry.urls]
-"Bug Tracker" = "https://github.com/shabados/gurmukhiutils/issues"
