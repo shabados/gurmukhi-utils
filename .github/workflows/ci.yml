@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - run: rustup component add rustfmt clippy
+      - uses: Swatinem/rust-cache@v2
+      - run: mise run fmt
+      - run: mise run lint
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - uses: Swatinem/rust-cache@v2
+      - run: mise run test
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - run: rustup target add wasm32-unknown-unknown
+      - uses: Swatinem/rust-cache@v2
+      - run: mise run build
+      - run: mise run build:wasm
+      - uses: actions/upload-artifact@v7
+        with:
+          name: build-artifacts
+          path: |
+            target/release/uniffi-bindgen
+            target/release/uniffi-bindgen-js
+            target/release/uniffi-bindgen-node-js
+            target/release/libgurmukhi_utils.so
+            target/wasm32-unknown-unknown/release/gurmukhi_utils.wasm
+
+  generate:
+    name: Generate (${{ matrix.language }})
+    needs: [build]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ruby, kotlin, swift, python, javascript]
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - uses: actions/download-artifact@v8
+        with:
+          name: build-artifacts
+          path: target
+      - run: chmod +x target/release/uniffi-bindgen target/release/uniffi-bindgen-js target/release/uniffi-bindgen-node-js
+      - run: mise run generate:${{ matrix.language }}

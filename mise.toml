@@ -1,6 +1,6 @@
 [tools]
 bun = "1"
-rust = { version = "1", targets = "wasm32-unknown-unknown" }
+rust = { version = "1", targets = "wasm32-unknown-unknown", components = "rustfmt,clippy" }
 python = "3"
 
 [env]
@@ -16,10 +16,10 @@ run = "cargo build --release --target wasm32-unknown-unknown"
 
 [tasks.generate]
 description = "Generate UniFFI bindings for a language"
-depends = ["build"]
 env = { UNIFFI_LIB = "target/release/libgurmukhi_utils.so" }
 run = """
-cargo run --release --bin uniffi-bindgen -- generate \
+mkdir -p $UNIFFI_OUT
+target/release/uniffi-bindgen generate \
   --library $UNIFFI_LIB \
   --language $UNIFFI_LANG \
   --out-dir $UNIFFI_OUT \
@@ -38,12 +38,12 @@ run = "mise run generate"
 
 [tasks."generate:swift"]
 description = "Generate Swift bindings"
-depends = ["build"]
 run = """
 #!/usr/bin/env bash
 set -euo pipefail
 tmpdir=$(mktemp -d)
 UNIFFI_LANG=swift UNIFFI_OUT="$tmpdir" mise run generate
+mkdir -p bindings/swift/Sources/gurmukhi_utilsFFI bindings/swift/Sources/GurmukhiUtils
 mv "$tmpdir/gurmukhi_utilsFFI.h" bindings/swift/Sources/gurmukhi_utilsFFI/
 mv "$tmpdir/gurmukhi_utilsFFI.modulemap" bindings/swift/Sources/gurmukhi_utilsFFI/
 mv "$tmpdir/gurmukhi_utils.swift" bindings/swift/Sources/GurmukhiUtils/
@@ -56,11 +56,11 @@ depends = ["generate:javascript:native", "generate:javascript:wasm"]
 
 [tasks."generate:javascript:native"]
 description = "Generate native Node/Bun bindings via uniffi-bindgen-node-js"
-depends = ["build"]
 run = """
 #!/usr/bin/env bash
 set -euo pipefail
-uniffi-bindgen-node-js generate \
+mkdir -p bindings/javascript/generated/native
+target/release/uniffi-bindgen-node-js generate \
   --manifest-path Cargo.toml \
   --out-dir bindings/javascript/generated/native \
   target/release/libgurmukhi_utils.so
@@ -69,11 +69,11 @@ bun scripts/camelcase-exports.ts bindings/javascript/generated/native
 
 [tasks."generate:javascript:wasm"]
 description = "Generate WASM bindings for browser via uniffi-bindgen-js"
-depends = ["build:wasm"]
 run = """
 #!/usr/bin/env bash
 set -euo pipefail
-uniffi-bindgen-js generate \
+mkdir -p bindings/javascript/generated/wasm
+target/release/uniffi-bindgen-js generate \
   --out-dir bindings/javascript/generated/wasm \
   target/wasm32-unknown-unknown/release/gurmukhi_utils.wasm
 bun scripts/flatten-wasm-namespace.ts bindings/javascript/generated/wasm
@@ -86,7 +86,19 @@ run = "mise run generate"
 
 [tasks."generate:all"]
 description = "Generate all language bindings"
-depends = ["generate:ruby", "generate:kotlin", "generate:swift", "generate:javascript", "generate:python"]
+depends = ["build", "build:wasm", "generate:ruby", "generate:kotlin", "generate:swift", "generate:javascript", "generate:python"]
+
+[tasks.fmt]
+description = "Check code formatting"
+run = "cargo fmt --check"
+
+[tasks.lint]
+description = "Run clippy lints"
+run = "cargo clippy -- -D warnings"
+
+[tasks.check]
+description = "Run all checks (fmt, lint, test)"
+depends = ["fmt", "lint", "test"]
 
 [tasks.test]
 description = "Run Rust tests"
