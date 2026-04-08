@@ -6,7 +6,7 @@ dist/
 .vscode/
 
 # UniFFI generated bindings
-gurmukhiutils/gurmukhi_utils.py
-gurmukhiutils/*.so
-gurmukhiutils/*.dylib
-gurmukhiutils/*.dll
+gurmukhi/gurmukhi.py
+gurmukhi/*.so
+gurmukhi/*.dylib
+gurmukhi/*.dll

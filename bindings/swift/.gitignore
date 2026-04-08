@@ -2,5 +2,5 @@
 .swiftpm/
 
 # UniFFI generated bindings
-Sources/gurmukhi_utilsFFI/gurmukhi_utilsFFI.*
-Sources/GurmukhiUtils/gurmukhi_utils.swift
+Sources/gurmukhiFFI/gurmukhiFFI.*
+Sources/Gurmukhi/gurmukhi.swift
