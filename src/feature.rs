@@ -211,23 +211,26 @@ pub fn remove(input: String, features: Vec<Feature>) -> String {
 
 fn detect_chars(input: &str, feature: Feature, chars: &[char]) -> Vec<FeatureMatch> {
     input
-        .char_indices()
+        .chars()
+        .enumerate()
         .filter(|(_, c)| chars.contains(c))
-        .map(|(idx, c)| FeatureMatch {
+        .map(|(cp_idx, _)| FeatureMatch {
             feature,
-            start: idx as u64,
-            end: (idx + c.len_utf8()) as u64,
+            start: cp_idx as u64,
+            end: (cp_idx + 1) as u64,
         })
         .collect()
 }
 
 fn detect_single_char(input: &str, feature: Feature, c: char) -> Vec<FeatureMatch> {
     input
-        .match_indices(c)
-        .map(|(idx, _)| FeatureMatch {
+        .chars()
+        .enumerate()
+        .filter(|(_, ch)| *ch == c)
+        .map(|(cp_idx, _)| FeatureMatch {
             feature,
-            start: idx as u64,
-            end: (idx + c.len_utf8()) as u64,
+            start: cp_idx as u64,
+            end: (cp_idx + 1) as u64,
         })
         .collect()
 }
@@ -238,6 +241,10 @@ const LINE_ENDING_FEATURES: &[Feature] = &[
     Feature::BareEnding,
 ];
 
+fn byte_to_codepoint(input: &str, byte_offset: usize) -> u64 {
+    input[..byte_offset].chars().count() as u64
+}
+
 fn detect_line_endings(input: &str, features: &[Feature]) -> Vec<FeatureMatch> {
     let mut covered: Vec<(usize, usize)> = Vec::new();
     let mut matches = Vec::new();
@@ -245,6 +252,7 @@ fn detect_line_endings(input: &str, features: &[Feature]) -> Vec<FeatureMatch> {
     // Run ALL patterns (most-specific first) for correct overlap detection.
     // Always extend coverage even for overlapping matches, so lower-priority
     // patterns can't claim territory that belongs to higher-priority ones.
+    // Overlap tracking uses byte offsets (from regex), output uses character indices.
     for p in line_ending_patterns() {
         for m in p.regex.find_iter(input) {
             let (start, end) = (m.start(), m.end());
@@ -256,8 +264,8 @@ fn detect_line_endings(input: &str, features: &[Feature]) -> Vec<FeatureMatch> {
             if features.contains(&p.feature) {
                 matches.push(FeatureMatch {
                     feature: p.feature,
-                    start: start as u64,
-                    end: end as u64,
+                    start: byte_to_codepoint(input, start),
+                    end: byte_to_codepoint(input, end),
                 });
             }
         }
