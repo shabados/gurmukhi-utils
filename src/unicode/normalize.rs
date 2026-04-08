@@ -157,7 +157,15 @@ pub fn decompose_vowels(input: String) -> String {
     .fold(input, |acc, (from, to)| acc.replace(from, to))
 }
 
-/// Normalizes Gurmukhi according to Unicode Standards
+/// Normalizes Gurmukhi Unicode to a canonical form.
+///
+/// Applies three transformations:
+/// 1. **Diacritic ordering** — sorts marks into left → top → bottom → right
+///    order per Unicode Standard Version 14.0
+/// 2. **Variation selector ordering** — sorts variation selectors preceding
+///    Gurmukhi characters into canonical sequence
+/// 3. **Precomposed form sanitization** — replaces decomposed vowel sequences
+///    (carrier + matra) with their single-character equivalents
 #[uniffi::export]
 pub fn normalize_unicode(input: String) -> String {
     pipe!(

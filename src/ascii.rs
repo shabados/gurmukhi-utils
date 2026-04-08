@@ -170,6 +170,11 @@ fn fix_nasalization(input: String) -> String {
     )(input)
 }
 
+/// Converts normalized Gurmukhi Unicode to the ASCII encoding used by legacy fonts
+/// (e.g. GurmukhiAkhar, AnmolLipi).
+///
+/// The input is normalized before conversion. The ASCII encoding is a legacy
+/// representation still used by older Gurbani databases and software like SikhiToTheMax.
 #[uniffi::export]
 pub fn to_ascii(input: String) -> String {
     pipe!(
