@@ -1,4 +1,4 @@
-use gurmukhi_utils::transcribe::{Script, transcribe};
+use gurmukhi::transcribe::{Script, transcribe};
 use pretty_assertions::assert_eq;
 use rstest::*;
 
