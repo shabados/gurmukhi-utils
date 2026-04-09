@@ -130,8 +130,9 @@ description = "Symlink native library into binding directories"
 run = """
 #!/usr/bin/env bash
 set -euo pipefail
-ln -sf ../../../target/release/libgurmukhi.so bindings/python/gurmukhi/libgurmukhi.so
-ln -sf ../../../target/release/libgurmukhi.so bindings/ruby/lib/gurmukhi/libgurmukhi.so
+[ -d bindings/python/gurmukhi ] && ln -sf ../../../target/release/libgurmukhi.so bindings/python/gurmukhi/libgurmukhi.so
+[ -d bindings/ruby/lib/gurmukhi ] && ln -sf ../../../target/release/libgurmukhi.so bindings/ruby/lib/gurmukhi/libgurmukhi.so
+true
 """
 
 [tasks."smoke:javascript"]

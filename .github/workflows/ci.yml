@@ -53,7 +53,7 @@ jobs:
     uses: ./.github/workflows/build-native.yml
 
   generate:
-    name: Generate + Smoke (${{ matrix.language }})
+    name: Generate (${{ matrix.language }})
     needs: [build]
     runs-on: ubuntu-latest
     strategy:
@@ -62,7 +62,7 @@ jobs:
         language: [ruby, kotlin, swift, python, javascript]
         include:
           - language: ruby
-            setup: gem install ffi --no-document
+            setup: sudo gem install ffi --no-document
           - language: kotlin
             setup: true
           - language: swift
