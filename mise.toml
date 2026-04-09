@@ -14,6 +14,29 @@ run = "cargo build --release --features bindgen"
 description = "Build Rust WASM binary"
 run = "cargo build --release --target wasm32-unknown-unknown"
 
+[tasks."build:native"]
+description = "Cross-compile native library (e.g. TARGET=aarch64-apple-darwin mise run build:native)"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+command -v cargo-zigbuild >/dev/null || pip install cargo-zigbuild
+rustup target add "${TARGET:?Set TARGET to a Rust triple}" 2>/dev/null || true
+cargo zigbuild --release --target "$TARGET" --lib
+"""
+
+[tasks."build:native:all"]
+description = "Cross-compile native library for all platforms"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+command -v cargo-zigbuild >/dev/null || pip install cargo-zigbuild
+for target in x86_64-unknown-linux-gnu aarch64-unknown-linux-gnu x86_64-apple-darwin aarch64-apple-darwin x86_64-pc-windows-gnu; do
+  echo "Building $target..."
+  rustup target add "$target" 2>/dev/null || true
+  cargo zigbuild --release --target "$target" --lib
+done
+"""
+
 [tasks.generate]
 description = "Generate UniFFI bindings for a language"
 env = { UNIFFI_LIB = "target/release/libgurmukhi.so" }
@@ -29,7 +52,10 @@ target/release/uniffi-bindgen generate \
 [tasks."generate:ruby"]
 description = "Generate Ruby bindings"
 env = { UNIFFI_LANG = "ruby", UNIFFI_OUT = "bindings/ruby/lib/gurmukhi" }
-run = "mise run generate"
+run = """
+mise run generate
+sed -i "s|ffi_lib 'gurmukhi'|ffi_lib File.join(File.dirname(__FILE__), 'libgurmukhi')|" bindings/ruby/lib/gurmukhi/gurmukhi.rb
+"""
 
 [tasks."generate:kotlin"]
 description = "Generate Kotlin bindings"
@@ -99,7 +125,12 @@ run = "cargo publish --dry-run"
 
 [tasks."smoke:stage"]
 description = "Symlink native library into binding directories"
-run = "ln -sf ../../../target/release/libgurmukhi.so bindings/python/gurmukhi/libgurmukhi.so"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+ln -sf ../../../target/release/libgurmukhi.so bindings/python/gurmukhi/libgurmukhi.so
+ln -sf ../../../target/release/libgurmukhi.so bindings/ruby/lib/gurmukhi/libgurmukhi.so
+"""
 
 [tasks."smoke:javascript"]
 description = "Smoke test: JavaScript WASM"
@@ -111,7 +142,7 @@ run = "python bindings/python/smoke_test.py"
 
 [tasks."smoke:ruby"]
 description = "Smoke test: Ruby"
-run = "LD_LIBRARY_PATH=target/release ruby bindings/ruby/smoke_test.rb"
+run = "ruby bindings/ruby/smoke_test.rb"
 
 [tasks."smoke:kotlin"]
 description = "Smoke test: Kotlin"

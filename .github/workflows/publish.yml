@@ -21,3 +21,155 @@ jobs:
         if: github.event_name != 'workflow_dispatch'
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+
+  build-native:
+    uses: ./.github/workflows/build-native.yml
+
+  python:
+    name: Python
+    needs: [build-native]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - target: x86_64-unknown-linux-gnu
+            plat: manylinux_2_17_x86_64
+            lib: libgurmukhi.so
+          - target: aarch64-unknown-linux-gnu
+            plat: manylinux_2_17_aarch64
+            lib: libgurmukhi.so
+          - target: x86_64-apple-darwin
+            plat: macosx_10_12_x86_64
+            lib: libgurmukhi.dylib
+          - target: aarch64-apple-darwin
+            plat: macosx_11_0_arm64
+            lib: libgurmukhi.dylib
+          - target: x86_64-pc-windows-gnu
+            plat: win_amd64
+            lib: gurmukhi.dll
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - uses: actions/download-artifact@v8
+        with:
+          name: native-${{ matrix.target }}
+          path: native
+      - run: pip install build wheel
+      - run: |
+          cp native/${{ matrix.lib }} bindings/python/gurmukhi/
+          python -m build --wheel bindings/python --outdir dist
+          python -m wheel tags --remove --platform-tag ${{ matrix.plat }} --python-tag py3 --abi-tag none dist/*.whl
+      - uses: actions/upload-artifact@v7
+        with:
+          name: wheel-${{ matrix.target }}
+          path: dist/*.whl
+
+  publish-python:
+    name: Publish Python
+    needs: [python]
+    runs-on: ubuntu-latest
+    if: github.event_name != 'workflow_dispatch'
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          path: dist
+          pattern: wheel-*
+          merge-multiple: true
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
+          password: ${{ secrets.PYPI_TOKEN }}
+
+  ruby:
+    name: Ruby
+    needs: [build-native]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - target: x86_64-unknown-linux-gnu
+            plat: x86_64-linux
+            lib: libgurmukhi.so
+          - target: aarch64-unknown-linux-gnu
+            plat: aarch64-linux
+            lib: libgurmukhi.so
+          - target: x86_64-apple-darwin
+            plat: x86_64-darwin
+            lib: libgurmukhi.dylib
+          - target: aarch64-apple-darwin
+            plat: arm64-darwin
+            lib: libgurmukhi.dylib
+          - target: x86_64-pc-windows-gnu
+            plat: x64-mingw-ucrt
+            lib: gurmukhi.dll
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - uses: actions/download-artifact@v8
+        with:
+          name: native-${{ matrix.target }}
+          path: native
+      - run: |
+          cp native/${{ matrix.lib }} bindings/ruby/lib/gurmukhi/
+          cd bindings/ruby
+          gem build gurmukhi.gemspec --platform ${{ matrix.plat }}
+      - uses: actions/upload-artifact@v7
+        with:
+          name: gem-${{ matrix.target }}
+          path: bindings/ruby/*.gem
+
+  publish-ruby:
+    name: Publish Ruby
+    needs: [ruby]
+    runs-on: ubuntu-latest
+    if: github.event_name != 'workflow_dispatch'
+    env:
+      GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          path: gems
+          pattern: gem-*
+          merge-multiple: true
+      - run: |
+          for gem in gems/*.gem; do
+            gem push "$gem"
+          done
+
+  kotlin:
+    name: Kotlin
+    needs: [build-native]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      - uses: actions/download-artifact@v8
+        with:
+          path: artifacts
+          pattern: native-*
+      - name: Stage native libraries for JNA
+        run: |
+          declare -A JNA_DIRS=(
+            ["x86_64-unknown-linux-gnu"]="linux-x86-64/libgurmukhi.so"
+            ["aarch64-unknown-linux-gnu"]="linux-aarch64/libgurmukhi.so"
+            ["x86_64-apple-darwin"]="darwin-x86-64/libgurmukhi.dylib"
+            ["aarch64-apple-darwin"]="darwin-aarch64/libgurmukhi.dylib"
+            ["x86_64-pc-windows-gnu"]="win32-x86-64/gurmukhi.dll"
+          )
+          for target in "${!JNA_DIRS[@]}"; do
+            dest="bindings/kotlin/resources/${JNA_DIRS[$target]}"
+            mkdir -p "$(dirname "$dest")"
+            src="artifacts/native-$target/$(basename "$dest")"
+            [ -f "$src" ] && cp "$src" "$dest" && echo "Staged $dest"
+          done
+      - run: cd bindings/kotlin && gradle publishToMavenLocal
+      - run: cd bindings/kotlin && gradle publish
+        if: github.event_name != 'workflow_dispatch'
+        env:
+          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
