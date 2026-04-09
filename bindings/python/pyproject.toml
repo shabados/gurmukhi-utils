@@ -7,7 +7,11 @@ name = "gurmukhi"
 version = "1.0.0"
 description = "Python utilities library for converting, analyzing, and testing Gurmukhi strings"
 license = "MIT"
-authors = [{ name = "Shabad OS", email = "team@shabados.com" }]
+authors = [
+    { name = "Shabad OS", email = "team@shabados.com" },
+    { name = "Bhajneet S.K", email = "bhajneet@gmail.com" },
+    { name = "Harjot Singh", email = "harjot@harkul.com" },
+]
 requires-python = ">=3.10"
 keywords = ["gurbani", "gurmukhi", "sikh", "transliterate", "unicode"]
 classifiers = [
@@ -23,8 +27,8 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/shabados/gurmukhi-utils"
-Repository = "https://github.com/shabados/gurmukhi-utils"
+Homepage = "https://github.com/shabados/gurmukhi"
+Repository = "https://github.com/shabados/gurmukhi"
 
 [tool.setuptools.packages.find]
 include = ["gurmukhi"]

@@ -2,6 +2,7 @@
 version = "1.0.0"
 edition = "2024"
 description = "Utility library for converting, analyzing, and manipulating Gurmukhi strings"
+authors = ["Shabad OS <team@shabados.com>", "Bhajneet S.K <bhajneet@gmail.com>", "Harjot Singh <harjot@harkul.com>"]
 license = "MIT"
 repository = "https://github.com/shabados/gurmukhi"
 
@@ -12,6 +13,7 @@ name = "gurmukhi"
 version.workspace = true
 edition.workspace = true
 description.workspace = true
+authors.workspace = true
 license.workspace = true
 repository.workspace = true
 readme = "README.md"
