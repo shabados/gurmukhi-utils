@@ -1,19 +1,17 @@
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
 
-[tool.poetry]
-name = "gurmukhiutils"
-version = "0.3.1"
+[project]
+name = "gurmukhi"
+version = "1.0.0"
 description = "Python utilities library for converting, analyzing, and testing Gurmukhi strings"
 license = "MIT"
-authors = ["Bhajneet S.K. <bhajneet@gmail.com>"]
-maintainers = ["Bhajneet S.K. <bhajneet@gmail.com>"]
-homepage = "https://github.com/shabados/gurmukhi-utils"
-repository = "https://github.com/shabados/gurmukhi-utils"
+authors = [{ name = "Shabad OS", email = "team@shabados.com" }]
+requires-python = ">=3.10"
 keywords = ["gurbani", "gurmukhi", "sikh", "transliterate", "unicode"]
 classifiers = [
-    "Development Status :: 1 - Planning",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Natural Language :: Panjabi",
     "Operating System :: MacOS",
@@ -22,8 +20,14 @@ classifiers = [
     "Topic :: Software Development :: Internationalization",
     "Topic :: Software Development :: Libraries",
     "Topic :: Text Processing",
-    "Topic :: Utilities",
 ]
 
-[tool.poetry.dependencies]
-python = "^3.10"
+[project.urls]
+Homepage = "https://github.com/shabados/gurmukhi-utils"
+Repository = "https://github.com/shabados/gurmukhi-utils"
+
+[tool.setuptools.packages.find]
+include = ["gurmukhi"]
+
+[tool.setuptools.package-data]
+gurmukhi = ["*.so", "*.dylib", "*.dll"]

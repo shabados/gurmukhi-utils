@@ -49,6 +49,9 @@ jobs:
             target/release/libgurmukhi.so
             target/wasm32-unknown-unknown/release/gurmukhi.wasm
 
+  build-native:
+    uses: ./.github/workflows/build-native.yml
+
   generate:
     name: Generate + Smoke (${{ matrix.language }})
     needs: [build]
