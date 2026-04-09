@@ -131,7 +131,7 @@ run = """
 #!/usr/bin/env bash
 set -euo pipefail
 [ -d bindings/python/gurmukhi ] && ln -sf ../../../target/release/libgurmukhi.so bindings/python/gurmukhi/libgurmukhi.so
-[ -d bindings/ruby/lib/gurmukhi ] && ln -sf ../../../target/release/libgurmukhi.so bindings/ruby/lib/gurmukhi/libgurmukhi.so
+[ -d bindings/ruby/lib/gurmukhi ] && ln -sf ../../../../target/release/libgurmukhi.so bindings/ruby/lib/gurmukhi/libgurmukhi.so
 true
 """
 
@@ -149,15 +149,7 @@ run = "ruby bindings/ruby/smoke_test.rb"
 
 [tasks."smoke:kotlin"]
 description = "Smoke test: Kotlin"
-run = """
-#!/usr/bin/env bash
-set -euo pipefail
-kotlinc -classpath "bindings/kotlin/lib:$(find ~/.gradle -name 'jna-*.jar' 2>/dev/null | head -1)" \
-  bindings/kotlin/lib/uniffi/gurmukhi/gurmukhi.kt \
-  bindings/kotlin/smoke/SmokeTest.kt \
-  -include-runtime -d /tmp/smoke-kotlin.jar 2>&1
-LD_LIBRARY_PATH=target/release java -jar /tmp/smoke-kotlin.jar
-"""
+run = "cd bindings/kotlin && gradle runSmoke --quiet"
 
 [tasks."smoke:swift"]
 description = "Smoke test: Swift"

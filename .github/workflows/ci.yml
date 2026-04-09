@@ -79,6 +79,8 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+        if: matrix.language == 'kotlin'
       - uses: swift-actions/setup-swift@v2
         if: matrix.language == 'swift'
       - uses: actions/download-artifact@v8

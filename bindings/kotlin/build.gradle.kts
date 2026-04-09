@@ -21,6 +21,19 @@ sourceSets {
     }
 }
 
+val smoke by sourceSets.creating {
+    kotlin.srcDirs("smoke")
+    compileClasspath += sourceSets["main"].output + sourceSets["main"].compileClasspath
+    runtimeClasspath += sourceSets["main"].output + sourceSets["main"].runtimeClasspath
+}
+
+tasks.register<JavaExec>("runSmoke") {
+    dependsOn(tasks.named("compileSmokeKotlin"))
+    classpath = smoke.runtimeClasspath
+    mainClass.set("SmokeTestKt")
+    systemProperty("jna.library.path", file("../../target/release").absolutePath)
+}
+
 publishing {
     publications {
         create<MavenPublication>("maven") {
