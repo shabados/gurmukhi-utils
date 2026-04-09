@@ -112,9 +112,12 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         if: matrix.language == 'kotlin'
       - uses: swift-actions/setup-swift@v2
-        if: matrix.language == 'swift'
-      - name: Setup Ruby FFI
-        if: matrix.language == 'ruby'
+        if: matrix.language == 'swift' && runner.os == 'Linux'
+      - name: Setup Ruby FFI (Linux)
+        if: matrix.language == 'ruby' && runner.os == 'Linux'
+        run: sudo gem install ffi --no-document
+      - name: Setup Ruby FFI (macOS/Windows)
+        if: matrix.language == 'ruby' && runner.os != 'Linux'
         run: gem install ffi --no-document
       - name: Stage native library
         shell: bash
