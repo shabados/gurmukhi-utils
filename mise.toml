@@ -56,7 +56,7 @@ description = "Generate Ruby bindings"
 env = { UNIFFI_LANG = "ruby", UNIFFI_OUT = "bindings/ruby/lib/gurmukhi" }
 run = """
 mise run generate
-sed -i "s|ffi_lib 'gurmukhi'|ffi_lib File.join(File.dirname(__FILE__), 'libgurmukhi')|" bindings/ruby/lib/gurmukhi/gurmukhi.rb
+sed -i "s|ffi_lib 'gurmukhi'|ffi_lib File.join(File.dirname(__FILE__), FFI.map_library_name('gurmukhi'))|" bindings/ruby/lib/gurmukhi/gurmukhi.rb
 """
 
 [tasks."generate:kotlin"]
