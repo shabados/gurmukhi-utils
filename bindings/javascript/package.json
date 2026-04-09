@@ -25,9 +25,19 @@
   ],
   "type": "module",
   "exports": {
-    ".": "./generated/wasm/gurmukhi.ts"
+    ".": {
+      "types": "./generated/wasm/gurmukhi.d.ts",
+      "default": "./generated/wasm/gurmukhi.js"
+    }
   },
   "files": [
-    "generated/wasm/"
-  ]
+    "generated/wasm/gurmukhi.js",
+    "generated/wasm/gurmukhi.d.ts",
+    "generated/wasm/uniffi_runtime.js",
+    "generated/wasm/uniffi_runtime.d.ts",
+    "generated/wasm/gurmukhi.wasm"
+  ],
+  "devDependencies": {
+    "@types/node": "^25.5.2"
+  }
 }
