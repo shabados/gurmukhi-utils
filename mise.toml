@@ -19,6 +19,7 @@ description = "Cross-compile native library (e.g. TARGET=aarch64-apple-darwin mi
 run = """
 #!/usr/bin/env bash
 set -euo pipefail
+command -v zig >/dev/null || { echo "Install zig: mise install zig"; exit 1; }
 command -v cargo-zigbuild >/dev/null || pip install cargo-zigbuild
 rustup target add "${TARGET:?Set TARGET to a Rust triple}" 2>/dev/null || true
 cargo zigbuild --release --target "$TARGET" --lib
@@ -29,6 +30,7 @@ description = "Cross-compile native library for all platforms"
 run = """
 #!/usr/bin/env bash
 set -euo pipefail
+command -v zig >/dev/null || { echo "Install zig: mise install zig"; exit 1; }
 command -v cargo-zigbuild >/dev/null || pip install cargo-zigbuild
 for target in x86_64-unknown-linux-gnu aarch64-unknown-linux-gnu x86_64-apple-darwin aarch64-apple-darwin x86_64-pc-windows-gnu; do
   echo "Building $target..."
