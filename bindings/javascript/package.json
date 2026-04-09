@@ -1,16 +1,20 @@
 {
-  "name": "gurmukhi-utils",
-  "version": "4.0.0-alpha.0",
+  "name": "gurmukhi",
+  "version": "1.0.0",
   "description": "Javascript library for converting, analyzing, and testing Gurmukhi strings",
   "license": "MIT",
-  "author": "Bhajneet S.K. <bhajneet@gmail.com>",
+  "contributors": [
+    "Shabad OS <team@shabados.com>",
+    "Bhajneet S.K <bhajneet@gmail.com>",
+    "Harjot Singh <harjot@harkul.com>"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/shabados/gurmukhi-utils",
+    "url": "https://github.com/shabados/gurmukhi",
     "directory": "bindings/javascript"
   },
-  "homepage": "https://github.com/shabados/gurmukhi-utils",
-  "bugs": "https://github.com/shabados/gurmukhi-utils/issues/new/choose",
+  "homepage": "https://github.com/shabados/gurmukhi",
+  "bugs": "https://github.com/shabados/gurmukhi/issues/new/choose",
   "keywords": [
     "ascii",
     "granth",
