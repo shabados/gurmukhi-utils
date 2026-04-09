@@ -157,10 +157,15 @@ run = """
 #!/usr/bin/env bash
 set -euo pipefail
 cd bindings/swift
+# Fix dylib install name if on macOS (cross-compiled dylibs have absolute Linux paths)
+if [[ "$(uname)" == "Darwin" ]] && [ -f ../../target/release/libgurmukhi.dylib ]; then
+  install_name_tool -id @rpath/libgurmukhi.dylib ../../target/release/libgurmukhi.dylib
+fi
 swift build --product SmokeTest \
   -Xlinker -L../../target/release \
-  -Xlinker -lgurmukhi 2>&1
-LD_LIBRARY_PATH=../../target/release .build/debug/SmokeTest
+  -Xlinker -lgurmukhi \
+  -Xlinker -rpath -Xlinker ../../target/release 2>&1
+.build/debug/SmokeTest
 """
 
 [tasks."smoke:all"]
