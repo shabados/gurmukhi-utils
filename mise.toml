@@ -85,11 +85,13 @@ description = "Generate JavaScript WASM bindings"
 run = """
 #!/usr/bin/env bash
 set -euo pipefail
+rm -rf bindings/javascript/generated/wasm
 mkdir -p bindings/javascript/generated/wasm
 target/release/uniffi-bindgen-js generate \
   --out-dir bindings/javascript/generated/wasm \
   target/wasm32-unknown-unknown/release/gurmukhi.wasm
 bun scripts/flatten-wasm-namespace.ts bindings/javascript/generated/wasm
+cd bindings/javascript && npx tsc
 """
 
 [tasks."generate:python"]
