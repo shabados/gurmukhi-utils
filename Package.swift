@@ -10,17 +10,17 @@ let package = Package(
     targets: [
         .systemLibrary(
             name: "gurmukhiFFI",
-            path: "Sources/gurmukhiFFI"
+            path: "bindings/swift/Sources/gurmukhiFFI"
         ),
         .target(
             name: "Gurmukhi",
             dependencies: ["gurmukhiFFI"],
-            path: "Sources/Gurmukhi"
+            path: "bindings/swift/Sources/Gurmukhi"
         ),
         .executableTarget(
             name: "SmokeTest",
             dependencies: ["Gurmukhi"],
-            path: "smoke"
+            path: "bindings/swift/smoke"
         ),
     ]
 )

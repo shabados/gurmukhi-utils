@@ -17,7 +17,7 @@ repository.workspace = true
 readme = "README.md"
 keywords = ["gurmukhi", "unicode", "transliteration", "punjabi", "sikh"]
 categories = ["text-processing", "internationalization"]
-exclude = ["uniffi-bindgen*.rs", "bindings/", "scripts/", ".github/", ".vscode/", "mise.toml", "package.json", "release-please-config.json", ".release-please-manifest.json", "CONTRIBUTING.md"]
+exclude = ["uniffi-bindgen*.rs", "bindings/", "scripts/", ".github/", ".vscode/", "mise.toml", "package.json", "Package.swift", "release-please-config.json", ".release-please-manifest.json", "CONTRIBUTING.md"]
 
 [[bin]]
 name = "uniffi-bindgen"
