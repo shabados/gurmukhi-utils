@@ -156,15 +156,14 @@ description = "Smoke test: Swift"
 run = """
 #!/usr/bin/env bash
 set -euo pipefail
-cd bindings/swift
 # Fix dylib install name if on macOS (cross-compiled dylibs have absolute Linux paths)
-if [[ "$(uname)" == "Darwin" ]] && [ -f ../../target/release/libgurmukhi.dylib ]; then
-  install_name_tool -id @rpath/libgurmukhi.dylib ../../target/release/libgurmukhi.dylib
+if [[ "$(uname)" == "Darwin" ]] && [ -f target/release/libgurmukhi.dylib ]; then
+  install_name_tool -id @rpath/libgurmukhi.dylib target/release/libgurmukhi.dylib
 fi
 swift build --product SmokeTest \
-  -Xlinker -L../../target/release \
+  -Xlinker -Ltarget/release \
   -Xlinker -lgurmukhi \
-  -Xlinker -rpath -Xlinker ../../target/release 2>&1
+  -Xlinker -rpath -Xlinker target/release 2>&1
 .build/debug/SmokeTest
 """
 

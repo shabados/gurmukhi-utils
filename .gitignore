@@ -16,7 +16,7 @@ bindings/python/gurmukhi/libgurmukhi.so
 bindings/ruby/lib/gurmukhi/libgurmukhi.so
 
 # Swift build artifacts
-bindings/swift/.build/
+.build/
 bindings/swift/Sources/gurmukhiFFI/module.modulemap
 
 # Kotlin staged native libraries
