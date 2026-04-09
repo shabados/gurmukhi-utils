@@ -60,20 +60,50 @@ jobs:
       fail-fast: false
       matrix:
         language: [ruby, kotlin, swift, python, javascript]
-        include:
-          - language: ruby
-            setup: sudo gem install ffi --no-document
-          - language: kotlin
-            setup: true
-          - language: swift
-            setup: true
-          - language: python
-            setup: true
-          - language: javascript
-            setup: true
     steps:
       - uses: actions/checkout@v6
       - uses: jdx/mise-action@v4
+      - uses: actions/download-artifact@v8
+        with:
+          name: build-artifacts
+          path: target
+      - run: chmod +x target/release/uniffi-bindgen target/release/uniffi-bindgen-js target/release/libgurmukhi.so
+      - run: mise run generate:${{ matrix.language }}
+      - uses: actions/upload-artifact@v7
+        with:
+          name: bindings-${{ matrix.language }}
+          path: bindings/${{ matrix.language }}/
+
+  smoke:
+    name: Smoke (${{ matrix.language }}, ${{ matrix.os }})
+    needs: [generate, build-native]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [javascript, python, ruby, kotlin, swift]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        exclude:
+          - language: swift
+            os: windows-latest
+        include:
+          - os: ubuntu-latest
+            native-target: x86_64-unknown-linux-gnu
+          - os: macos-latest
+            native-target: aarch64-apple-darwin
+          - os: windows-latest
+            native-target: x86_64-pc-windows-gnu
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - uses: actions/download-artifact@v8
+        with:
+          name: bindings-${{ matrix.language }}
+          path: bindings/${{ matrix.language }}
+      - uses: actions/download-artifact@v8
+        with:
+          name: native-${{ matrix.native-target }}
+          path: native
       - uses: actions/setup-java@v4
         if: matrix.language == 'kotlin'
         with:
@@ -83,13 +113,34 @@ jobs:
         if: matrix.language == 'kotlin'
       - uses: swift-actions/setup-swift@v2
         if: matrix.language == 'swift'
-      - uses: actions/download-artifact@v8
-        with:
-          name: build-artifacts
-          path: target
-      - run: chmod +x target/release/uniffi-bindgen target/release/uniffi-bindgen-js target/release/libgurmukhi.so
-      - run: mise run generate:${{ matrix.language }}
-      - run: ${{ matrix.setup }}
-      - run: mise run smoke:stage
-      - run: mise run smoke:${{ matrix.language }}
-
+      - name: Setup Ruby FFI
+        if: matrix.language == 'ruby'
+        run: gem install ffi --no-document
+      - name: Stage native library
+        shell: bash
+        run: |
+          # Copy native lib next to binding code where each language expects it
+          case "${{ matrix.language }}" in
+            python)
+              cp native/libgurmukhi.* bindings/python/gurmukhi/ 2>/dev/null || cp native/gurmukhi.dll bindings/python/gurmukhi/ 2>/dev/null
+              ;;
+            ruby)
+              cp native/libgurmukhi.* bindings/ruby/lib/gurmukhi/ 2>/dev/null || cp native/gurmukhi.dll bindings/ruby/lib/gurmukhi/ 2>/dev/null
+              ;;
+            kotlin)
+              # JNA loads from jna.library.path — stage in target/release for consistency
+              mkdir -p target/release
+              cp native/* target/release/
+              ;;
+            swift)
+              mkdir -p target/release
+              cp native/* target/release/
+              ;;
+            javascript)
+              # WASM is platform-independent, already in generated/wasm/
+              true
+              ;;
+          esac
+      - name: Smoke test
+        shell: bash
+        run: mise run smoke:${{ matrix.language }}
