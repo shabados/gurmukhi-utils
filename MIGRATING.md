@@ -18,16 +18,18 @@ Old: `gurmukhi-utils` v2/v3. New: `gurmukhi`.
 npm remove gurmukhi-utils && npm i gurmukhi
 ```
 
+In JavaScript, enums are plain string literals (`"SantLipi"`, `"Latin"`, `"Nukta"`). TypeScript users get exhaustive checking via the exported union types (`UnicodeStandard`, `Script`, `Feature`) — there are no runtime enum objects to import.
+
 | Old | New | Notes |
 | --- | --- | --- |
 | `toAscii(s)` | `toAscii(s)` | Same |
-| `toUnicode(s)` | `toUnicode(s, UnicodeStandard.SantLipi)` | Now requires a standard argument |
-| `toEnglish(s)` | `transcribe(s, Script.Latin)` | Renamed, pronunciation-aware |
-| `toHindi(s)` | `transcribe(s, Script.Devanagari)` | Renamed |
+| `toUnicode(s)` | `toUnicode(s, "SantLipi")` | Now requires a standard argument |
+| `toEnglish(s)` | `transcribe(s, "Latin")` | Renamed, pronunciation-aware |
+| `toHindi(s)` | `transcribe(s, "Devanagari")` | Renamed |
 | `stripVishraams(s)` | `remove(s, vishraams())` | Composable — pass individual Feature variants for fine control |
-| `stripVishraams(s, { heavy: true })` | `remove(s, [Feature.VishramHeavy])` | |
+| `stripVishraams(s, { heavy: true })` | `remove(s, ["VishramHeavy"])` | |
 | `stripEndings(s)` | `remove(s, lineEndings())` | |
-| `stripAccents(s)` | `remove(s, [Feature.Nukta])` | |
+| `stripAccents(s)` | `remove(s, ["Nukta"])` | |
 
 ```javascript
 // Before
@@ -37,13 +39,22 @@ toEnglish("ਜਾਨ");
 stripVishraams("ਸਬਦ; ਸਬਦ");
 
 // After
-import { toUnicode, UnicodeStandard, transcribe, Script, remove, vishraams } from "gurmukhi";
-toUnicode("gurU", UnicodeStandard.SantLipi);
-transcribe("ਜਾਨ", Script.Latin);
+import { toUnicode, transcribe, remove, vishraams } from "gurmukhi";
+toUnicode("gurU", "SantLipi");
+transcribe("ਜਾਨ", "Latin");
 remove("ਸਬਦ; ਸਬਦ", vishraams());
 ```
 
-New functions with no v2/v3 equivalent: `normalizeUnicode`, `transcribe` (with `Script.LatinScholar`), `detect`, `featureChars`, and all grouping helpers.
+New functions with no v2/v3 equivalent: `normalizeUnicode`, `transcribe` (with `"LatinScholar"`), `detect`, `featureChars`, and all grouping helpers.
+
+### Packaging notes (WASM)
+
+The JavaScript package wraps a WASM binary (~950 KB raw, ~335 KB gzipped) loaded via top-level `await` — the API is fully synchronous after import, with no init call.
+
+- **ESM-only.** `require()` does not work; from CommonJS use dynamic `import()`.
+- **Modern runtimes.** Node ≥ 18, Bun, Deno, and evergreen browsers all work out of the box. Node reads the binary from disk; browsers use streaming compilation over `fetch`.
+- **Bundlers** must support the `new URL("./gurmukhi.wasm", import.meta.url)` asset pattern — Vite, webpack 5+, and Rollup do. Jest (under CJS transforms) and Metro do not.
+- **React Native is not supported** (Metro has no WASM runtime) — a native binding would be a separate effort.
 
 ### Deprecated
 
