@@ -2,7 +2,8 @@
 bun = "1"
 rust = { version = "1", targets = "wasm32-unknown-unknown", components = "rustfmt,clippy" }
 python = "3"
-"ubi:WebAssembly/binaryen" = { version = "latest", exe = "wasm-opt", extract_all = "true", bin_path = "bin" }
+# Pinned tag: binaryen's version_XXX scheme makes "latest" resolve to stale semver tags
+"ubi:WebAssembly/binaryen" = { version = "version_131", exe = "wasm-opt", extract_all = "true", bin_path = "bin" }
 
 [env]
 _.python.venv = { path = ".venv", create = true }
