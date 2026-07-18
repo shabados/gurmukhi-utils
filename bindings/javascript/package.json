@@ -28,9 +28,11 @@
     "wasm"
   ],
   "type": "module",
+  "react-native": "./src/index.rn.ts",
   "exports": {
     ".": {
       "types": "./generated/wasm/gurmukhi.d.ts",
+      "react-native": "./src/index.rn.ts",
       "default": "./generated/wasm/gurmukhi.js"
     }
   },
@@ -39,9 +41,39 @@
     "generated/wasm/gurmukhi.d.ts",
     "generated/wasm/uniffi_runtime.js",
     "generated/wasm/uniffi_runtime.d.ts",
-    "generated/wasm/gurmukhi.wasm"
+    "generated/wasm/gurmukhi.wasm",
+    "src",
+    "cpp",
+    "android",
+    "ios",
+    "*.podspec",
+    "GurmukhiFramework.xcframework"
   ],
+  "codegenConfig": {
+    "name": "RNGurmukhiSpec",
+    "type": "modules",
+    "jsSrcsDir": "src",
+    "android": {
+      "javaPackageName": "com.shabados.gurmukhi"
+    }
+  },
+  "dependencies": {
+    "@ubjs/core": "0.31.0-3",
+    "uniffi-bindgen-react-native": "0.31.0-3"
+  },
+  "peerDependencies": {
+    "react-native": "*"
+  },
+  "peerDependenciesMeta": {
+    "react-native": {
+      "optional": true
+    }
+  },
   "devDependencies": {
-    "@types/node": "^25.5.2"
+    "@types/node": "^25.5.2",
+    "react-native": "^0.86.0",
+    "@types/react": "^19.2.17",
+    "@ubjs/node": "0.31.0-3",
+    "react": "^19.2.7"
   }
 }

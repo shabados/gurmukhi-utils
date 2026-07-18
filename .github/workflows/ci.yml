@@ -72,7 +72,59 @@ jobs:
       - uses: actions/upload-artifact@v7
         with:
           name: bindings-${{ matrix.language }}
-          path: bindings/${{ matrix.language }}/
+          path: |
+            bindings/${{ matrix.language }}/
+            !bindings/${{ matrix.language }}/node_modules/
+
+  generate-react-native:
+    name: Generate (react-native)
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - uses: actions/download-artifact@v8
+        with:
+          name: build-artifacts
+          path: target
+      - run: chmod +x target/release/libgurmukhi.so
+      - run: mise run generate:react-native
+      - run: mise run smoke:react-native
+
+  build-android:
+    name: Build (Android)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - run: rustup target add aarch64-linux-android armv7-linux-androideabi x86_64-linux-android
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: android
+      - run: cargo install cargo-ndk --locked
+      - run: cd bindings/javascript && bun install --frozen-lockfile
+      - run: cd bindings/javascript && bunx ubrn build android --config ubrn.config.yaml --release
+      - uses: actions/upload-artifact@v7
+        with:
+          name: android-jniLibs
+          path: bindings/javascript/android/src/main/jniLibs/
+
+  build-ios:
+    name: Build (iOS)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - run: rustup target add aarch64-apple-ios aarch64-apple-ios-sim
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: ios
+      - run: cd bindings/javascript && bun install --frozen-lockfile
+      - run: cd bindings/javascript && bunx ubrn build ios --config ubrn.config.yaml --release
+      - uses: actions/upload-artifact@v7
+        with:
+          name: ios-xcframework
+          path: bindings/javascript/GurmukhiFramework.xcframework/
 
   smoke:
     name: Smoke (${{ matrix.language }}, ${{ matrix.os }})
