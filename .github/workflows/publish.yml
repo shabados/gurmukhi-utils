@@ -25,6 +25,92 @@ jobs:
   build-native:
     uses: ./.github/workflows/build-native.yml
 
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - run: rustup target add wasm32-unknown-unknown
+      - uses: Swatinem/rust-cache@v2
+      - run: mise run build
+      - run: mise run build:wasm
+      - uses: actions/upload-artifact@v7
+        with:
+          name: build-artifacts
+          path: |
+            target/release/uniffi-bindgen
+            target/release/uniffi-bindgen-js
+            target/release/libgurmukhi.so
+            target/wasm32-unknown-unknown/wasm-release/gurmukhi.wasm
+
+  js-android:
+    name: JavaScript (Android)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - run: rustup target add aarch64-linux-android armv7-linux-androideabi x86_64-linux-android
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: android
+      - run: cargo install cargo-ndk --locked
+      - run: cd bindings/javascript && bun install --frozen-lockfile
+      - run: cd bindings/javascript && bunx ubrn build android --config ubrn.config.yaml --release
+      - uses: actions/upload-artifact@v7
+        with:
+          name: android-jniLibs
+          path: bindings/javascript/android/src/main/jniLibs/
+
+  js-ios:
+    name: JavaScript (iOS)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - run: rustup target add aarch64-apple-ios aarch64-apple-ios-sim
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: ios
+      - run: cd bindings/javascript && bun install --frozen-lockfile
+      - run: cd bindings/javascript && bunx ubrn build ios --config ubrn.config.yaml --release
+      - uses: actions/upload-artifact@v7
+        with:
+          name: ios-xcframework
+          path: bindings/javascript/GurmukhiFramework.xcframework/
+
+  javascript:
+    name: JavaScript
+    needs: [build, js-android, js-ios]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - uses: actions/download-artifact@v8
+        with:
+          name: build-artifacts
+          path: target
+      - run: chmod +x target/release/uniffi-bindgen-js target/release/libgurmukhi.so
+      - run: mise run generate:javascript
+      - run: mise run generate:react-native
+      - uses: actions/download-artifact@v8
+        with:
+          name: android-jniLibs
+          path: bindings/javascript/android/src/main/jniLibs
+      - uses: actions/download-artifact@v8
+        with:
+          name: ios-xcframework
+          path: bindings/javascript/GurmukhiFramework.xcframework
+      - run: cd bindings/javascript && npm publish --dry-run
+      - run: cd bindings/javascript && npm publish --access public
+        if: github.event_name != 'workflow_dispatch'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
   python:
     name: Python
     needs: [build-native]

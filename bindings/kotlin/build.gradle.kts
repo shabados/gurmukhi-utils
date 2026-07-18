@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.shabados"
-version = "1.0.0"
+version = "1.0.0" // x-release-please-version
 
 repositories {
     mavenCentral()

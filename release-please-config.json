@@ -4,7 +4,27 @@
       "release-type": "rust",
       "package-name": "gurmukhi",
       "changelog-path": "CHANGELOG.md",
-      "bump-minor-pre-major": true
+      "bump-minor-pre-major": true,
+      "extra-files": [
+        {
+          "type": "json",
+          "path": "bindings/javascript/package.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "toml",
+          "path": "bindings/python/pyproject.toml",
+          "jsonpath": "$.project.version"
+        },
+        {
+          "type": "generic",
+          "path": "bindings/ruby/gurmukhi.gemspec"
+        },
+        {
+          "type": "generic",
+          "path": "bindings/kotlin/build.gradle.kts"
+        }
+      ]
     }
   }
 }
