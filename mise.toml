@@ -2,6 +2,7 @@
 bun = "1"
 rust = { version = "1", targets = "wasm32-unknown-unknown", components = "rustfmt,clippy" }
 python = "3"
+"ubi:WebAssembly/binaryen" = { version = "latest", exe = "wasm-opt", extract_all = "true", bin_path = "bin" }
 
 [env]
 _.python.venv = { path = ".venv", create = true }
@@ -11,8 +12,8 @@ description = "Build Rust cdylib"
 run = "cargo build --release --features bindgen"
 
 [tasks."build:wasm"]
-description = "Build Rust WASM binary"
-run = "cargo build --release --target wasm32-unknown-unknown"
+description = "Build Rust WASM binary (size-optimized)"
+run = "cargo build --profile wasm-release --target wasm32-unknown-unknown"
 
 [tasks."build:native"]
 description = "Cross-compile native library (e.g. TARGET=aarch64-apple-darwin mise run build:native)"
@@ -89,9 +90,13 @@ rm -rf bindings/javascript/generated/wasm
 mkdir -p bindings/javascript/generated/wasm
 target/release/uniffi-bindgen-js generate \
   --out-dir bindings/javascript/generated/wasm \
-  target/wasm32-unknown-unknown/release/gurmukhi.wasm
+  target/wasm32-unknown-unknown/wasm-release/gurmukhi.wasm
+# Shrink the shipped binary after bindgen (bindgen needs uniffi metadata sections intact)
+wasm-opt -Oz --enable-bulk-memory --enable-nontrapping-float-to-int \
+  bindings/javascript/generated/wasm/gurmukhi.wasm \
+  -o bindings/javascript/generated/wasm/gurmukhi.wasm
 bun scripts/flatten-wasm-namespace.ts bindings/javascript/generated/wasm
-cd bindings/javascript && npx tsc
+cd bindings/javascript && bun install --frozen-lockfile && bunx tsc
 """
 
 [tasks."generate:python"]
