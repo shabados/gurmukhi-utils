@@ -21,3 +21,9 @@ bindings/swift/Sources/gurmukhiFFI/module.modulemap
 
 # Kotlin staged native libraries
 bindings/kotlin/resources/
+
+# React Native build artifacts and staged native libraries
+bindings/javascript/android/src/main/jniLibs/
+bindings/javascript/GurmukhiFramework.xcframework/
+bindings/javascript/build/
+bindings/javascript/smoke/napi/

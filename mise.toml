@@ -100,6 +100,20 @@ bun scripts/flatten-wasm-namespace.ts bindings/javascript/generated/wasm
 cd bindings/javascript && bun install --frozen-lockfile && bunx tsc
 """
 
+[tasks."generate:react-native"]
+description = "Generate React Native JSI bindings and turbo-module scaffolding"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+(cd bindings/javascript && bun install --frozen-lockfile)
+rm -rf bindings/javascript/src/generated bindings/javascript/cpp/generated
+bun bindings/javascript/node_modules/.bin/ubrn generate jsi bindings \
+  --library target/release/libgurmukhi.so \
+  --ts-dir bindings/javascript/src/generated \
+  --cpp-dir bindings/javascript/cpp/generated
+(cd bindings/javascript && bunx ubrn generate jsi turbo-module --config ubrn.config.yaml gurmukhi && bunx tsc -p tsconfig.rn.json)
+"""
+
 [tasks."generate:python"]
 description = "Generate Python bindings"
 env = { UNIFFI_LANG = "python", UNIFFI_OUT = "bindings/python/gurmukhi" }
@@ -146,6 +160,20 @@ true
 [tasks."smoke:javascript"]
 description = "Smoke test: JavaScript WASM"
 run = "bun bindings/javascript/smoke/wasm.ts"
+
+[tasks."smoke:react-native"]
+description = "Smoke test: ubrn bindings via Node N-API runtime (no emulator)"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+rm -rf bindings/javascript/smoke/napi
+bun bindings/javascript/node_modules/.bin/ubrn generate napi bindings \
+  --library target/release/libgurmukhi.so \
+  --ts-dir bindings/javascript/smoke/napi \
+  --lib-colocated
+cp target/release/libgurmukhi.so bindings/javascript/smoke/napi/
+bun bindings/javascript/smoke/native.ts
+"""
 
 [tasks."smoke:python"]
 description = "Smoke test: Python"

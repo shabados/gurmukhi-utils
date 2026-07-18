@@ -1,0 +1,27 @@
+rust:
+  directory: ../..
+  manifestPath: Cargo.toml
+
+bindings:
+  cpp: cpp/generated
+  ts: src/generated
+  uniffiToml: ../../uniffi.toml
+
+turboModule:
+  cpp: cpp
+
+android:
+  cargoExtras: ["--lib"]
+  targets:
+    - arm64-v8a
+    - armeabi-v7a
+    - x86_64
+
+ios:
+  cargoExtras: ["--lib"]
+  targets:
+    - aarch64-apple-ios
+    - aarch64-apple-ios-sim
+
+noOverwrite:
+  - src/index.rn.ts
