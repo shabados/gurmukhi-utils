@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = 'gurmukhi'
-  spec.version       = '1.0.0'
+  spec.version       = '1.0.0' # x-release-please-version
   spec.authors       = ['Shabad OS', 'Bhajneet S.K', 'Harjot Singh']
   spec.email         = ['team@shabados.com', 'bhajneet@gmail.com', 'harjot@harkul.com']
 
