@@ -47,7 +47,7 @@ jobs:
             target/release/uniffi-bindgen
             target/release/uniffi-bindgen-js
             target/release/libgurmukhi.so
-            target/wasm32-unknown-unknown/release/gurmukhi.wasm
+            target/wasm32-unknown-unknown/wasm-release/gurmukhi.wasm
 
   build-native:
     uses: ./.github/workflows/build-native.yml

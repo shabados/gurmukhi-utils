@@ -40,6 +40,15 @@ workspace = true
 [features]
 bindgen = ["dep:clap", "dep:uniffi-bindgen-js"]
 
+# WASM ships to browsers — optimize for size over speed
+[profile.wasm-release]
+inherits = "release"
+opt-level = "z"
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true
+
 [dependencies]
 clap = { version = "4", features = ["derive"], optional = true }
 const_format = "0.2.34"
