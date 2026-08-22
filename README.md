@@ -1,3 +1,10 @@
+# Development has moved to [shabados/shabados](https://github.com/shabados/shabados)
+
+This repo has been archived in favor of the above monorepo.
+
+<details>
+<summary>Archived README</summary>
+
 # Gurmukhi
 
 Convert, transcribe, normalize, and analyze Gurmukhi text. Successor to [gurmukhi-utils](https://github.com/shabados/gurmukhi-utils/tree/3.2.2). Rust core with bindings for JavaScript, Python, Ruby, Kotlin, and Swift.
@@ -58,9 +65,9 @@ to_ascii("ਸਬਦ".into())  // "sbd"
 ```
 
 ```javascript
-import { toAscii } from 'gurmukhi'
+import { toAscii } from "gurmukhi";
 
-toAscii('ਗੁਰੂ') // "gurU"
+toAscii("ਗੁਰੂ"); // "gurU"
 ```
 
 ### to_unicode
@@ -74,9 +81,9 @@ to_unicode("gurU".into(), UnicodeStandard::SantLipi) // "ਗੁਰੂ"
 ```
 
 ```javascript
-import { toUnicode, UnicodeStandard } from 'gurmukhi'
+import { toUnicode, UnicodeStandard } from "gurmukhi";
 
-toUnicode('gurU', UnicodeStandard.SantLipi) // "ਗੁਰੂ"
+toUnicode("gurU", UnicodeStandard.SantLipi); // "ਗੁਰੂ"
 ```
 
 #### UnicodeStandard
@@ -99,9 +106,9 @@ normalize_unicode("ਅੌ".into()) // "ਔ" (decomposed → precomposed)
 ```
 
 ```javascript
-import { normalizeUnicode } from 'gurmukhi'
+import { normalizeUnicode } from "gurmukhi";
 
-normalizeUnicode('ਅੌ') // "ਔ"
+normalizeUnicode("ਅੌ"); // "ਔ"
 ```
 
 ### transcribe
@@ -118,11 +125,11 @@ transcribe("ਕ".into(), Script::Devanagari)        // "क"
 ```
 
 ```javascript
-import { transcribe, Script } from 'gurmukhi'
+import { transcribe, Script } from "gurmukhi";
 
-transcribe('ਸੁਤੁ', Script.LatinScholar) // "sutu"
-transcribe('ਸੁਤੁ', Script.Latin) // "sut"
-transcribe('ਕ', Script.Devanagari) // "क"
+transcribe("ਸੁਤੁ", Script.LatinScholar); // "sutu"
+transcribe("ਸੁਤੁ", Script.Latin); // "sut"
+transcribe("ਕ", Script.Devanagari); // "क"
 ```
 
 #### Script
@@ -146,16 +153,16 @@ remove("ਸਬਦ. ਸਬਦ, ਸਬਦ; ਸਬਦ ॥".into(), vishraams())
 ```
 
 ```javascript
-import { remove, vishraams, detect, Feature } from 'gurmukhi'
+import { remove, vishraams, detect, Feature } from "gurmukhi";
 
-remove('ਸਬਦ. ਸਬਦ, ਸਬਦ; ਸਬਦ ॥', vishraams())
+remove("ਸਬਦ. ਸਬਦ, ਸਬਦ; ਸਬਦ ॥", vishraams());
 // "ਸਬਦ ਸਬਦ ਸਬਦ ਸਬਦ ॥"
 
 // Detect features — returns character positions you can use with string.slice()
-const input = 'ਸਬਦ ॥੧॥'
-const match = detect(input, [Feature.NumberedEnding])[0]
+const input = "ਸਬਦ ॥੧॥";
+const match = detect(input, [Feature.NumberedEnding])[0];
 // { feature: "NumberedEnding", start: 4, end: 7 }
-input.slice(match.start, match.end) // "॥੧॥"
+input.slice(match.start, match.end); // "॥੧॥"
 ```
 
 #### Feature variants
@@ -203,3 +210,5 @@ If you're upgrading from `gurmukhi-utils` (JavaScript v2/v3), `gurmukhiutils` (P
 The easiest way to communicate is via [GitHub issues](https://github.com/shabados/gurmukhi-utils/issues). Please search for similar issues before opening a new one.
 
 Join us on [Slack](https://chat.shabados.com/).
+
+</details>
